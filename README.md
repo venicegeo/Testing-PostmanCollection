@@ -1,2 +1,2 @@
 # pztest-integration
-Unit and integrated tests from Postman Collections
+Integrated tests from Postman Collections
