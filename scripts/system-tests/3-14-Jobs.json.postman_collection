@@ -1,0 +1,439 @@
+{
+	"id": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+	"name": "Piazza Development",
+	"description": "",
+	"order": [
+		"3cd7f91b-7c56-357c-057d-986d4e58e3bf",
+		"ff102802-0308-8872-cdd1-bb57820155f8",
+		"77771e6f-8e90-aa3f-884a-faa2231a7620",
+		"44822b63-c963-a679-d565-7d32b231197f",
+		"81915968-9587-7436-b389-23a4910f8f72",
+		"5fbef07d-a144-395d-744f-83ba7b82994b",
+		"0c96a8c4-7a17-dfeb-4c2c-6619928040b2",
+		"e1311c90-e96b-55d5-f6ef-8f86677eee09",
+		"d86b0f17-efd0-ed27-5de9-dfc193287ff1",
+		"612055ec-4889-5bb8-876e-4ce4fe6ce12a",
+		"aa638a39-295e-cecf-258a-449606c89b33",
+		"f4370dd0-f826-25c1-4e60-a3a7748972ad",
+		"605b3560-9826-27d5-ce2f-292c0e6a5c16",
+		"b143016a-c850-9ec8-2f70-6dcf8d312f43",
+		"9e38845b-070a-ef83-b30c-b5d50263535e"
+	],
+	"folders": [],
+	"timestamp": 1452013960158,
+	"owner": "265325",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "0c96a8c4-7a17-dfeb-4c2c-6619928040b2",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"raster\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Raster\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t}\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": null,
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457961908693,
+			"name": "Ingest GeoTIFF",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "3cd7f91b-7c56-357c-057d-986d4e58e3bf",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \t\"type\": \"get\", \t\"jobId\": \"3e7177d5-028e-4f2d-a7f6-414b8d6d1f7a\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457010322278,
+			"name": "Get Job",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "44822b63-c963-a679-d565-7d32b231197f",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \t\"type\": \"ingest\", \t\"host\": true, \t\"data\" : { \t\"dataType\": { \t\t\t\t\"type\": \"shapefile\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Shapefile\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \"classification\": \"unclassified\" } \t\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": {
+						"0": {}
+					},
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457961673979,
+			"name": "Ingest Shelters",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "5fbef07d-a144-395d-744f-83ba7b82994b",
+			"headers": "",
+			"url": "http://localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"false\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"wfs\", \t\t\t\t\"url\": \"http://geoserver.dev:8080/geoserver/wfs\", \t\t\t\t\"featureType\": \"piazza:shelters\", \t\t\t\t\"version\": \"1.0.0\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Shapefile\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t}\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457966880390,
+			"name": "Ingest WFS External",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13"
+		},
+		{
+			"id": "605b3560-9826-27d5-ce2f-292c0e6a5c16",
+			"headers": "",
+			"url": "http://localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \"type\": \"access\", \"dataId\": \"85dfa5cc-ce5e-42a4-8083-0a2fa4b51d63\", \t\"deploymentType\": \"file\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457963405976,
+			"name": "Access File",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "612055ec-4889-5bb8-876e-4ce4fe6ce12a",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{     \"apiKey\": \"my-api-key-38n987\",     \"jobType\": {         \"type\": \"ingest\",         \"host\": \"false\",         \"data\": {             \"dataType\": {                 \"type\": \"pointcloud\",                 \"location\": {                     \"type\": \"s3\",                     \"bucketName\": \"external-public-access-test\",                     \"fileName\": \"03faf315-dec2-48dd-9d9f-1e9df1a54cdd-samp711111111111111111111111.laz\",                     \"domainName\": \"s3.amazonaws.com\"                 }             },             \"metadata\": {                 \"name\": \"My Test point cloud\",                 \"description\": \"This is a test.\",                 \"classType\": {\"classification\":\"unclassified\"}             }         }     } }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457965829925,
+			"name": "Ingest PointCloud External",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "77771e6f-8e90-aa3f-884a-faa2231a7620",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"text\", \t\t\t\t\"mimeType\": \"application/text\", \t\t\t\t\"content\": \"This text itself is the raw data to be ingested. In reality, it could be some GML, or GeoJSON, or whatever.\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"Testing some Text Input\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t} \t\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457961876873,
+			"name": "Ingest Text",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "81915968-9587-7436-b389-23a4910f8f72",
+			"headers": "",
+			"url": "http://localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"wfs\", \t\t\t\t\"url\": \"http://geoserver.dev:8080/geoserver/wfs\", \t\t\t\t\"featureType\": \"piazza:shelters\", \t\t\t\t\"version\": \"1.0.0\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Shapefile\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t}\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457961887584,
+			"name": "Ingest WFS",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13"
+		},
+		{
+			"id": "9e38845b-070a-ef83-b30c-b5d50263535e",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \"type\": \"repeat\", \"jobId\": \"7e823cb0-a550-4b6e-8ae9-451889119abb\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1456235015174,
+			"name": "Repeat Job",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "aa638a39-295e-cecf-258a-449606c89b33",
+			"headers": "",
+			"url": "http://localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-dfaoji\", \"jobType\": { \"type\": \"get-resource\", \"resourceId\": \"036aa548-d206-44e8-b848-bda03012f7c8\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457010520222,
+			"name": "Get Resource Data",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "b143016a-c850-9ec8-2f70-6dcf8d312f43",
+			"headers": "",
+			"url": "localhost:8081/file",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"dataId\": \"70f42e96-31fa-4bef-9896-07a8bd169417\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457967064748,
+			"name": "Download File",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "d86b0f17-efd0-ed27-5de9-dfc193287ff1",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\": { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"pointcloud\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test point cloud\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t} \t\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457963776889,
+			"name": "Ingest PointCloud",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "e1311c90-e96b-55d5-f6ef-8f86677eee09",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{     \"apiKey\": \"my-api-key-38n987\",     \"jobType\": {         \"type\": \"ingest\",         \"host\": \"false\",         \"data\": {             \"dataType\": {                 \"type\": \"raster\",                 \"location\": {                     \"type\": \"s3\",                     \"bucketName\": \"external-public-access-test\",                     \"fileName\": \"elevation.tif\",                     \"domainName\": \"s3.amazonaws.com\"                 }             },             \"metadata\": {                 \"name\": \"My Test raster external file\",                 \"description\": \"This is a test.\",                 \"classType\": \"unclassified\"             }         }     } }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457966564608,
+			"name": "Ingest GeoTIFF External",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "f4370dd0-f826-25c1-4e60-a3a7748972ad",
+			"headers": "",
+			"url": "http://localhost:8081/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \"type\": \"access\", \"dataId\": \"036aa548-d206-44e8-b848-bda03012f7c8\", \t\"deploymentType\": \"geoserver\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457010950467,
+			"name": "Access GeoServer",
+			"description": "",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"responses": []
+		},
+		{
+			"id": "ff102802-0308-8872-cdd1-bb57820155f8",
+			"headers": "",
+			"url": "localhost:8081/job",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "228d7933-0f6b-0352-dd7a-8755a1743d13",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"abort\", \t\t\"jobId\": \"8504ceff-2af6-405b-bd8a-6804e7759676\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Abort Job",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1452014136197,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"timestamp": null
+		}
+	]
+}
