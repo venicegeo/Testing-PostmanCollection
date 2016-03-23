@@ -9,7 +9,7 @@ source $base/vars.sh
 
 #Run the test
 
-newman -sc $base/system-tests/PiazzaDevelopment.json.postman_collection
+newman -sc $base/system-tests/PiazzaCloudFoundryTests.json.postman_collection
 newman -sc $base/system-tests/pz-register-test.json
 newman -sc $base/system-tests/testServiceControllerRestServicesSeq.json.postman_collection
 newman -sc $base/system-tests/UUID_Logger.json.postman_collection
