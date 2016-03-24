@@ -1,0 +1,464 @@
+{
+	"id": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+	"name": "Piazza Production - Stage",
+	"description": "",
+	"order": [
+		"bc0f8502-ba94-1f61-669e-1d54b3eab29d",
+		"36277718-a268-90a6-abfd-7c81cbf129ce",
+		"cb6dd3f2-e120-760f-c65c-2739efdea1ca",
+		"0df7a509-b551-78fe-716a-c1a35c700161",
+		"25809b01-1c5a-26ec-a39e-d567860e971e",
+		"5ef73350-80e9-5440-9160-0009990f0742",
+		"42dc7ef0-2f20-62ac-43ac-da442571789a",
+		"f2e22a4a-acfe-0bf8-2427-aadfd2fb0741",
+		"e92691f3-53bc-1953-e51c-0d04d457aaf6",
+		"341f4256-934a-e410-5901-3727f875c9db",
+		"59a7db46-0322-d821-b10f-b84c8090c7c6",
+		"95a58d09-3909-75dd-1442-099665a72333",
+		"5c456227-c1c0-52b3-2d00-cff78cec4e9f",
+		"c5e0dbe1-b3e7-f089-b657-bcc14713674a",
+		"688cfef7-0349-93e7-042e-76d962cd7464",
+		"3bbdd93b-3297-76a0-d2af-3c3e4495f29d"
+	],
+	"folders": [],
+	"timestamp": 1458576813752,
+	"owner": "265325",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "0df7a509-b551-78fe-716a-c1a35c700161",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"text\", \t\t\t\t\"mimeType\": \"application/text\", \t\t\t\t\"content\": \"This text itself is the raw data to be ingested. In reality, it could be some GML, or GeoJSON, or whatever.\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"Testing some Text Input\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t} \t\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577401539,
+			"name": "Ingest Text",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "25809b01-1c5a-26ec-a39e-d567860e971e",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \t\"type\": \"ingest\", \t\"host\": true, \t\"data\" : { \t\"dataType\": { \t\t\t\t\"type\": \"shapefile\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Shapefile\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \"classification\": \"unclassified\" } \t\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": {
+						"0": {}
+					},
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577404660,
+			"name": "Ingest Shelters",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "341f4256-934a-e410-5901-3727f875c9db",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\": { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"pointcloud\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test point cloud\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t} \t\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577416299,
+			"name": "Ingest PointCloud",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "36277718-a268-90a6-abfd-7c81cbf129ce",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"search-query\", \t\t\"data\": { \"query\" : { \"match\" : { \"_all\" : \"kitten\" } } } \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577396427,
+			"name": "Search Query",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "3bbdd93b-3297-76a0-d2af-3c3e4495f29d",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \"type\": \"repeat\", \"jobId\": \"7e823cb0-a550-4b6e-8ae9-451889119abb\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577433196,
+			"name": "Repeat Job",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "42dc7ef0-2f20-62ac-43ac-da442571789a",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"false\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"wfs\", \t\t\t\t\"url\": \"http://geoserver.dev:8080/geoserver/wfs\", \t\t\t\t\"featureType\": \"piazza:shelters\", \t\t\t\t\"version\": \"1.0.0\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Shapefile\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t}\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577409747,
+			"name": "Ingest WFS External",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22"
+		},
+		{
+			"id": "59a7db46-0322-d821-b10f-b84c8090c7c6",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{     \"apiKey\": \"my-api-key-38n987\",     \"jobType\": {         \"type\": \"ingest\",         \"host\": \"false\",         \"data\": {             \"dataType\": {                 \"type\": \"pointcloud\",                 \"location\": {                     \"type\": \"s3\",                     \"bucketName\": \"external-public-access-test\",                     \"fileName\": \"03faf315-dec2-48dd-9d9f-1e9df1a54cdd-samp711111111111111111111111.laz\",                     \"domainName\": \"s3.amazonaws.com\"                 }             },             \"metadata\": {                 \"name\": \"My Test point cloud\",                 \"description\": \"This is a test.\",                 \"classType\": {\"classification\":\"unclassified\"}             }         }     } }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577418348,
+			"name": "Ingest PointCloud External",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "5c456227-c1c0-52b3-2d00-cff78cec4e9f",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \"type\": \"access\", \"dataId\": \"036aa548-d206-44e8-b848-bda03012f7c8\", \t\"deploymentType\": \"geoserver\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577422564,
+			"name": "Access GeoServer",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "5ef73350-80e9-5440-9160-0009990f0742",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"wfs\", \t\t\t\t\"url\": \"http://geoserver.dev:8080/geoserver/wfs\", \t\t\t\t\"featureType\": \"piazza:shelters\", \t\t\t\t\"version\": \"1.0.0\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Shapefile\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t}\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577406948,
+			"name": "Ingest WFS",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22"
+		},
+		{
+			"id": "688cfef7-0349-93e7-042e-76d962cd7464",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/file",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"dataId\": \"8e510728-0fb5-419b-9838-1308a202be33\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458652106690,
+			"name": "Download File",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "95a58d09-3909-75dd-1442-099665a72333",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-dfaoji\", \"jobType\": { \"type\": \"get-resource\", \"resourceId\": \"8e510728-0fb5-419b-9838-1308a202be33\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458651989058,
+			"name": "Get Resource Data",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "bc0f8502-ba94-1f61-669e-1d54b3eab29d",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \t\"type\": \"get\", \t\"jobId\": \"081f50af-de73-4495-aa26-5d391ed87256\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458651152384,
+			"name": "Get Job",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "c5e0dbe1-b3e7-f089-b657-bcc14713674a",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \"jobType\": { \"type\": \"access\", \"dataId\": \"8e510728-0fb5-419b-9838-1308a202be33\", \t\"deploymentType\": \"file\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458652080546,
+			"name": "Access File",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "cb6dd3f2-e120-760f-c65c-2739efdea1ca",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"abort\", \t\t\"jobId\": \"8504ceff-2af6-405b-bd8a-6804e7759676\" \t} }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577399196,
+			"name": "Abort Job",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "e92691f3-53bc-1953-e51c-0d04d457aaf6",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{     \"apiKey\": \"my-api-key-38n987\",     \"jobType\": {         \"type\": \"ingest\",         \"host\": \"false\",         \"data\": {             \"dataType\": {                 \"type\": \"raster\",                 \"location\": {                     \"type\": \"s3\",                     \"bucketName\": \"external-public-access-test\",                     \"fileName\": \"elevation.tif\",                     \"domainName\": \"s3.amazonaws.com\"                 }             },             \"metadata\": {                 \"name\": \"My Test raster external file\",                 \"description\": \"This is a test.\",                 \"classType\": \"unclassified\"             }         }     } }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577414188,
+			"name": "Ingest GeoTIFF External",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		},
+		{
+			"id": "f2e22a4a-acfe-0bf8-2427-aadfd2fb0741",
+			"headers": "",
+			"url": "https://pz-gateway.stage.geointservices.io/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"apiKey\": \"my-api-key-38n987\", \t\"jobType\": { \t\t\"type\": \"ingest\", \t\t\"host\": \"true\", \t\t\"data\" : { \t\t\t\"dataType\": { \t\t\t\t\"type\": \"raster\" \t\t\t}, \t\t\t\"metadata\": { \t\t\t\t\"name\": \"My Test Raster\", \t\t\t\t\"description\": \"This is a test.\", \t\t\t\t\"classType\": { \t\t\t\t\t\"classification\": \"unclassified\" \t\t\t\t}\t\t} \t\t} \t} }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": null,
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1458577412140,
+			"name": "Ingest GeoTIFF",
+			"description": "",
+			"collectionId": "c108b6d3-b28e-fc19-1f74-752ef0d47c22",
+			"responses": []
+		}
+	]
+}
