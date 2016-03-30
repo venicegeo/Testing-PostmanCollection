@@ -20,7 +20,7 @@
 	"requests": [
 		{
 			"id": "18c9cdfa-8774-1bb5-996e-4c1a7094d555",
-			"headers": "Content-Type: application/json\n",
+			"headers": "//Content-Type: application/json\n",
 			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/describeService?resourceId={{resourceId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -31,7 +31,7 @@
 			"tests": "var data = JSON.parse(responseBody);\ntests[\"descriptionUpdated\"] = data.description == \"The rain in Spain\"",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1459262344351,
+			"time": 1459349609426,
 			"name": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/describeService?resourceId={{resourceId}}",
 			"description": "",
 			"collectionId": "f5b0b829-fb35-8a3e-73bb-fccb32ac590b"
@@ -39,7 +39,7 @@
 		{
 			"id": "78e4407a-cc17-a808-c9fa-d3a61b490998",
 			"headers": "Content-Type: application/json\n",
-			"url": "https://pz-servicecontroller.stage.geointservices.io/service/registerService",
+			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/registerService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -49,7 +49,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1459348342955,
+			"time": 1459349479748,
 			"name": "https://pz-servicecontroller.stage.geointservices.io",
 			"description": "",
 			"collectionId": "f5b0b829-fb35-8a3e-73bb-fccb32ac590b",
@@ -88,7 +88,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1459345270503,
-			"name": "https://pz-servicecontroller.stage.geointservices.io/listService",
+			"name": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/listService",
 			"description": "",
 			"collectionId": "f5b0b829-fb35-8a3e-73bb-fccb32ac590b"
 		},
@@ -113,7 +113,7 @@
 		},
 		{
 			"id": "d13bb4cb-b92e-aeb3-6d0e-9746621497d1",
-			"headers": "Content-Type: application/json\n",
+			"headers": "//Content-Type: application/json\n",
 			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/listService",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -124,14 +124,14 @@
 			"tests": "var dataArray = JSON.parse(responseBody);\nvar testObject = \"error\"\nfor (var i=0;i<dataArray.length;i++) {\n    \n    if (dataArray[i].id == environment[\"resourceId\"]) {\n        \n        testObject = dataArray[i];\n       \n        \n    }\n}\n\nif (typeof(testObject) == 'string') {\n    tests[\"Resource Deleted\"] = true\n}\nelse {\n    postman.setEnvironmentVariable(\"testObject\",testObject)\n    tests[\"Resource Deleted\"] = false\n}\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1459262392735,
+			"time": 1459350028514,
 			"name": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/listService",
 			"description": "",
 			"collectionId": "f5b0b829-fb35-8a3e-73bb-fccb32ac590b"
 		},
 		{
 			"id": "e9ddbaa7-63af-a28c-612b-6f323c9c2003",
-			"headers": "Content-Type: application/json\n",
+			"headers": "//Content-Type: application/json\n",
 			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/describeService?resourceId={{resourceId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -142,7 +142,7 @@
 			"tests": "var data = JSON.parse(responseBody);\ntests[\"resourceDeleted\"] = data.availability == \"OUT OF SERVICE\"",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1459262362804,
+			"time": 1459349599365,
 			"name": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/describeService?resourceId={{resourceId}}",
 			"description": "",
 			"collectionId": "f5b0b829-fb35-8a3e-73bb-fccb32ac590b"
@@ -160,7 +160,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1459348453878,
+			"time": 1459349622848,
 			"name": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/deleteService?resourceId={{resourceId}}",
 			"description": "",
 			"collectionId": "f5b0b829-fb35-8a3e-73bb-fccb32ac590b"
