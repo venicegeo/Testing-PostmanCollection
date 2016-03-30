@@ -68,9 +68,7 @@
 				},
 				{
 					"key": "file",
-					"value": {
-						"0": {}
-					},
+					"value": null,
 					"type": "file",
 					"enabled": true
 				}
