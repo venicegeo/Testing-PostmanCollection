@@ -13,7 +13,10 @@
 		"f9db4d38-3131-2a51-b3f2-f26e2d8ecf4d",
 		"a4d02a68-f2d0-55dd-00f0-4ac441483fe6",
 		"cac9cd29-faff-7730-7bad-7bee4d7cefc9",
-		"ee18ceac-85cd-b356-17c3-d920de4e9ad6"
+		"ee18ceac-85cd-b356-17c3-d920de4e9ad6",
+		"1bbe105e-100a-f0d1-b03c-a99fc400dddc",
+		"a26b876a-2c36-2875-ac6f-f1a513f2eba4",
+		"d46c9536-3ba4-1bee-4d7a-4884ded60982"
 	],
 	"folders": [],
 	"timestamp": 1457729348231,
@@ -24,7 +27,7 @@
 		{
 			"id": "0088a744-d1c6-26b4-1e3c-87a00f113bd0",
 			"headers": "Content-Type: application/json\n",
-			"url": "http://pz-servicecontroller.cf.piazzageo.io/servicecontroller/registerService",
+			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/registerService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -34,11 +37,11 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1457909939948,
+			"time": 1459371137287,
 			"name": "registerService - coordianteConversion",
 			"description": "",
 			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
-			"rawModeData": "{\r\n  \"id\" : \"8\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"Coordinate Conversion\",\r\n    \"description\" : \"Read and convert various types of geospatial location formats\",\r\n    \"url\" : \"http://pzsvc-coordinate-conversion.cf.piazzageo.io/location/convert\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"converted coordinates\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"Convert coordinates\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"coordinated coords\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
+			"rawModeData": "{\r\n  \"id\" : \"8\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"Coordinate Conversion\",\r\n    \"description\" : \"Read and convert various types of geospatial location formats\",\r\n    \"url\" : \"http://pzsvc-coordinate-conversion.stage.geointservices.io/location/convert\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"converted coordinates\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"Convert coordinates\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"coordinated coords\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
 		},
 		{
 			"id": "0920df6b-1081-a949-3588-c7d06d51fb5d",
@@ -58,6 +61,25 @@
 			"description": "",
 			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
 			"rawModeData": "{\r\n  \"id\" : \"8\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"toUpper Params\",\r\n    \"description\" : \"Service to convert string to uppercase\",\r\n    \"url\" : \"https://pz-servicecontroller.stage.geointservices.io/jumpstart/string/toUpper\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"aString\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"Upper Case message\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"ConvertToUpperCase\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"Upper Case Text\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
+		},
+		{
+			"id": "1bbe105e-100a-f0d1-b03c-a99fc400dddc",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/search",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459371801736,
+			"name": "Search",
+			"description": "",
+			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
+			"rawModeData": "{\r\n  \"field\":\"name\",\r\n  \"pattern\":\"to\"\r\n}"
 		},
 		{
 			"id": "22557f6a-b699-e067-6e15-dcbd68b68a1c",
@@ -100,7 +122,7 @@
 		{
 			"id": "739f1c9d-9c7c-55f5-9de9-f3c8842fceda",
 			"headers": "Content-Type: application/json\n",
-			"url": "http://pz-servicecontroller.cf.piazzageo.io/servicecontroller/executeService",
+			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/executeService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -110,16 +132,16 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1457910196596,
+			"time": 1459371419192,
 			"name": "executeService-coordinateConversino-Benghazi",
 			"description": "",
 			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
-			"rawModeData": "{\r\n  \"serviceId\" : \"30e11c90-b672-4f03-bf46-f22d4d30f9f1\",\r\n  \"dataInputs\" : {\r\n    \"\" : {\r\n      \"content\" : \"Benghazi\",\r\n      \"type\" : \"text\"\r\n    }\r\n  }\r\n}"
+			"rawModeData": "{\r\n  \"serviceId\" : \"1165b188-6c94-4aa8-995d-cc94877221fc\",\r\n  \"dataInputs\" : {\r\n    \"\" : {\r\n      \"content\" : \"Benghazi\",\r\n      \"type\" : \"text\"\r\n    }\r\n  }\r\n}"
 		},
 		{
 			"id": "7fa4c404-da6c-2f87-c07e-ae691c136eee",
-			"headers": "Content-Type: application/json\n",
-			"url": "http://pz-servicecontroller.cf.piazzageo.io/servicecontroller/executeService",
+			"headers": "//Content-Type: application/json\n",
+			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/executeService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -129,11 +151,30 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1457910107210,
+			"time": 1459371304066,
 			"name": "executeService-coordinateConversion",
 			"description": "",
 			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
-			"rawModeData": "{\r\n  \"serviceId\" : \"30e11c90-b672-4f03-bf46-f22d4d30f9f1\",\r\n  \"dataInputs\" : {\r\n    \"\" : {\r\n      \"content\" : \"123456N 1234556W\",\r\n      \"type\" : \"text\"\r\n    }\r\n  }\r\n}"
+			"rawModeData": "{\r\n  \"serviceId\" : \"dcaf1960-27a8-4cab-bc73-45df23888fd4\",\r\n  \"dataInputs\" : {\r\n    \"\" : {\r\n      \"content\" : \"123456N 1234556W\",\r\n      \"type\" : \"text\"\r\n    }\r\n  }\r\n}"
+		},
+		{
+			"id": "a26b876a-2c36-2875-ac6f-f1a513f2eba4",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/search",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459372239763,
+			"name": "Search For Preview Generator",
+			"description": "This should return results.",
+			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
+			"rawModeData": "{\r\n  \"field\":\"name\",\r\n  \"pattern\":\"pz-s\"\r\n}"
 		},
 		{
 			"id": "a4d02a68-f2d0-55dd-00f0-4ac441483fe6",
@@ -173,11 +214,11 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1459189742529,
+			"time": 1459371954996,
 			"name": "executeService - upperCase",
 			"description": "",
 			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
-			"rawModeData": "{\r\n  \"serviceId\" : \"f5828fc0-1ba8-4da2-bb92-9f4eeb9bf1ae\",\r\n  \"dataInputs\" : {\r\n    \"aString\" : {\r\n      \"type\" : \"text\",\r\n      \"content\" : \"The stars At night, are big and bright....clap clap clap clap dEEp in the Heart of Texas\",\r\n      \"type\" : \"text\"\r\n    }\r\n  }\r\n}"
+			"rawModeData": "{\r\n  \"serviceId\" : \"f2589f4c-cd20-47b3-a202-7a6b2d67ea20\",\r\n  \"dataInputs\" : {\r\n    \"aString\" : {\r\n      \"type\" : \"text\",\r\n      \"content\" : \"The stars At night, are big and bright....clap clap clap clap dEEp in the Heart of Texas\"\r\n    }\r\n  }\r\n}"
 		},
 		{
 			"id": "cac9cd29-faff-7730-7bad-7bee4d7cefc9",
@@ -203,6 +244,25 @@
 			"name": "listServices",
 			"description": "",
 			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8"
+		},
+		{
+			"id": "d46c9536-3ba4-1bee-4d7a-4884ded60982",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/search",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459372334884,
+			"name": "Search Bug",
+			"description": "This should return results but it does not",
+			"collectionId": "e67f9a57-5794-f5a9-d71f-b27eb8851dd8",
+			"rawModeData": "{\r\n  \"field\":\"name\",\r\n  \"pattern\":\"BF_\"\r\n}"
 		},
 		{
 			"id": "ee18ceac-85cd-b356-17c3-d920de4e9ad6",
