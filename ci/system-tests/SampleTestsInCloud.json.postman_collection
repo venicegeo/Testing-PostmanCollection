@@ -82,7 +82,7 @@
 		},
 		{
 			"id": "55f21d24-9f4e-acf9-9e34-59b15fe5916b",
-			"headers": "size: 30\nfrom: 0\nkey: stamp\norder: true\nContent-Type: application/json\n",
+			"headers": "size: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/describeService?resourceId={{resourceId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -100,7 +100,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1460403937369,
+			"time": 1460404552913,
 			"name": "describeService - toUpper",
 			"description": "",
 			"collectionId": "2a706bf3-9b02-a68a-0ef9-d7c4ea685500"
