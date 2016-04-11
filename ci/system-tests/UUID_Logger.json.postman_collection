@@ -1,10 +1,10 @@
 {
-	"id": "ee8184a9-783b-e174-9c23-c970d9148d35",
+	"id": "d8961e02-fe0b-66e9-0b92-01de92b8769a",
 	"name": "UUID_Logger",
 	"description": "MVP 1 autmated testing for UUID and Logger services",
 	"order": [
-		"0dabd3e4-33bf-fec2-68ca-4014b7d5d05e",
-		"6feae0b1-b66e-1514-ea64-dd92e6ce7d79"
+		"28d143e0-1c11-66fb-6198-454b1d8aaf2d",
+		"616574e0-3725-4f6c-d0e5-8e8d831a11d6"
 	],
 	"folders": [],
 	"timestamp": 1456428123327,
@@ -13,27 +13,7 @@
 	"public": false,
 	"requests": [
 		{
-			"id": "0dabd3e4-33bf-fec2-68ca-4014b7d5d05e",
-			"headers": "",
-			"url": " http://pz-uuidgen.stage.geointservices.io/v1/uuids?count=10",
-			"pathVariables": {},
-			"preRequestScript": "",
-			"method": "POST",
-			"collectionId": "ee8184a9-783b-e174-9c23-c970d9148d35",
-			"data": [],
-			"dataMode": "params",
-			"name": " http://pz-uuidgen.stage.geointservices.io/v1/uuids?count=10",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1456428158326,
-			"version": 2,
-			"responses": [],
-			"tests": "",
-			"currentHelper": "normal",
-			"helperAttributes": {}
-		},
-		{
-			"id": "6feae0b1-b66e-1514-ea64-dd92e6ce7d79",
+			"id": "28d143e0-1c11-66fb-6198-454b1d8aaf2d",
 			"headers": "Content-Type: application/json\n",
 			"url": " http://pz-logger.stage.geointservices.io/v1/messages",
 			"preRequestScript": "",
@@ -45,12 +25,31 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1456432803461,
+			"time": 1460380775845,
 			"name": " http://pz-logger.stage.geointservices.io/v1/messages",
 			"description": "",
-			"collectionId": "ee8184a9-783b-e174-9c23-c970d9148d35",
+			"collectionId": "d8961e02-fe0b-66e9-0b92-01de92b8769a",
 			"responses": [],
-			"rawModeData": "{\r\n    \"service\": \"log-tester\",\r\n    \"address\": \"128.1.2.3\",\r\n    \"time\": \"2007-04-05T14:30:00Z\",\r\n    \"severity\": \"Info\",\r\n    \"message\": \"The quick brown fox\" \r\n}"
+			"rawModeData": "{\r\n    \"service\":  \"log-tester\",\r\n    \"address\":  \"128.1.2.3\",\r\n    \"stamp\":    123456789,\r\n    \"severity\": \"Info\",\r\n    \"message\":  \"The quick brown fox\" \r\n}"
+		},
+		{
+			"id": "616574e0-3725-4f6c-d0e5-8e8d831a11d6",
+			"headers": "",
+			"url": " http://pz-uuidgen.stage.geointservices.io/v1/uuids?count=10",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1460380789719,
+			"name": " http://pz-uuidgen.stage.geointservices.io/v1/uuids?count=10",
+			"description": "",
+			"collectionId": "d8961e02-fe0b-66e9-0b92-01de92b8769a",
+			"responses": []
 		}
 	]
 }
