@@ -26,7 +26,7 @@
 		{
 			"id": "34d20f03-ff3c-6b2f-ef7f-08c94651ec16",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/search",
+			"url": "http://pz-servicecontroller.{{domain}}/servicecontroller/search",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -45,7 +45,7 @@
 		{
 			"id": "36c119d0-7b6b-950f-6678-cdc196fb127c",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/registerService",
+			"url": "https://pz-servicecontroller.{{domain}}/servicecontroller/registerService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -59,12 +59,12 @@
 			"name": "registerService-toLower",
 			"description": "",
 			"collectionId": "2a706bf3-9b02-a68a-0ef9-d7c4ea685500",
-			"rawModeData": " {  \n    \"id\" : \"8\",\n    \"resourceMetadata\" : {  \n           \"name\":\"The toLower Service\",  \n          \"description\":\"Service to convert string to lower case\",  \n          \"url\":\"http://pz-servicecontroller.stage.geointservices.io/jumpstart/string/toLower\",  \n          \"method\":\"POST\"\n    },\n    \"inputs\" : [ {\n    \"name\" : \"aString\",\n    \"minOccurs\" : 1,\n    \"maxOccurs\" : 1,\n    \"dataType\" : {\n      \"type\" : \"urlparameter\"\n    },\n    \"metadata\" : null,\n    \"formats\" : null\n  } ],\n  \"outputs\" : [ {\n    \"name\" : \"Lower Case message\",\n    \"minOccurs\" : 1,\n    \"maxOccurs\" : 1,\n    \"dataType\" : {\n      \"mimeType\" : \"application/json\",\n      \"type\" : \"text\"\n    },\n    \"metadata\" : {\n      \"about\" : \"ConvertToLowerCase\",\n      \"href\" : null,\n      \"role\" : null,\n      \"title\" : \"Lower Case Text\"\n    },\n    \"formats\" : [ {\n      \"mimeType\" : \"application/json\",\n      \"encoding\" : null,\n      \"schema\" : null,\n      \"maximumMegabytes\" : null,\n      \"dataType\" : null\n    } ]\n  } ]\n}"
+			"rawModeData": " {  \n    \"id\" : \"8\",\n    \"resourceMetadata\" : {  \n           \"name\":\"The toLower Service\",  \n          \"description\":\"Service to convert string to lower case\",  \n          \"url\":\"http://pz-servicecontroller.{{domain}}/jumpstart/string/toLower\",  \n          \"method\":\"POST\"\n    },\n    \"inputs\" : [ {\n    \"name\" : \"aString\",\n    \"minOccurs\" : 1,\n    \"maxOccurs\" : 1,\n    \"dataType\" : {\n      \"type\" : \"urlparameter\"\n    },\n    \"metadata\" : null,\n    \"formats\" : null\n  } ],\n  \"outputs\" : [ {\n    \"name\" : \"Lower Case message\",\n    \"minOccurs\" : 1,\n    \"maxOccurs\" : 1,\n    \"dataType\" : {\n      \"mimeType\" : \"application/json\",\n      \"type\" : \"text\"\n    },\n    \"metadata\" : {\n      \"about\" : \"ConvertToLowerCase\",\n      \"href\" : null,\n      \"role\" : null,\n      \"title\" : \"Lower Case Text\"\n    },\n    \"formats\" : [ {\n      \"mimeType\" : \"application/json\",\n      \"encoding\" : null,\n      \"schema\" : null,\n      \"maximumMegabytes\" : null,\n      \"dataType\" : null\n    } ]\n  } ]\n}"
 		},
 		{
 			"id": "47c6c508-e2b7-aae1-2088-b1268c3477cd",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/registerService",
+			"url": "https://pz-servicecontroller.{{domain}}/servicecontroller/registerService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -78,12 +78,12 @@
 			"name": "registerService - coordianteConversion",
 			"description": "",
 			"collectionId": "2a706bf3-9b02-a68a-0ef9-d7c4ea685500",
-			"rawModeData": "{\r\n  \"id\" : \"8\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"Coordinate Conversion\",\r\n    \"description\" : \"Read and convert various types of geospatial location formats\",\r\n    \"url\" : \"http://pzsvc-coordinate-conversion.stage.geointservices.io/location/convert\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"converted coordinates\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"Convert coordinates\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"coordinated coords\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
+			"rawModeData": "{\r\n  \"id\" : \"8\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"Coordinate Conversion\",\r\n    \"description\" : \"Read and convert various types of geospatial location formats\",\r\n    \"url\" : \"http://pzsvc-coordinate-conversion.{{domain}}/location/convert\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"converted coordinates\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"Convert coordinates\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"coordinated coords\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
 		},
 		{
 			"id": "55f21d24-9f4e-acf9-9e34-59b15fe5916b",
 			"headers": "size: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/describeService?resourceId={{resourceId}}",
+			"url": "http://pz-servicecontroller.{{domain}}/servicecontroller/describeService?resourceId={{resourceId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -108,7 +108,7 @@
 		{
 			"id": "68470867-ab1b-6bae-d1e5-ba92ee693a6d",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/registerService",
+			"url": "https://pz-servicecontroller.{{domain}}/servicecontroller/registerService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -122,12 +122,12 @@
 			"name": "registerService-toUpper",
 			"description": "",
 			"collectionId": "2a706bf3-9b02-a68a-0ef9-d7c4ea685500",
-			"rawModeData": "{\r\n  \"id\" : \"8\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"toUpper Params\",\r\n    \"description\" : \"Service to convert string to uppercase\",\r\n    \"url\" : \"https://pz-servicecontroller.stage.geointservices.io/jumpstart/string/toUpper\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"aString\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"Upper Case message\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"ConvertToUpperCase\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"Upper Case Text\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
+			"rawModeData": "{\r\n  \"id\" : \"8\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"toUpper Params\",\r\n    \"description\" : \"Service to convert string to uppercase\",\r\n    \"url\" : \"https://pz-servicecontroller.{{domain}}/jumpstart/string/toUpper\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"aString\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"Upper Case message\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"ConvertToUpperCase\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"Upper Case Text\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
 		},
 		{
 			"id": "7009e560-53ab-63d6-b5b4-549120f82030",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/updateService",
+			"url": "http://pz-servicecontroller.{{domain}}/servicecontroller/updateService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "PUT",
@@ -141,12 +141,12 @@
 			"name": "UpdateService",
 			"description": "",
 			"collectionId": "2a706bf3-9b02-a68a-0ef9-d7c4ea685500",
-			"rawModeData": "{\r\n  \"id\" : \"{{resourceId}}\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"toUpper Params\",\r\n    \"description\" : \"This service is a service that converts text to upper case...\",\r\n    \"url\" : \"http://pz-servicecontroller.stage.geointservices.io/jumpstart/string/toUpper\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"aString\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"Upper Case message\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"ConvertToUpperCase\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"Upper Case Text\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
+			"rawModeData": "{\r\n  \"id\" : \"{{resourceId}}\",\r\n  \"resourceMetadata\" : {\r\n    \"name\" : \"toUpper Params\",\r\n    \"description\" : \"This service is a service that converts text to upper case...\",\r\n    \"url\" : \"http://pz-servicecontroller.{{domain}}/jumpstart/string/toUpper\",\r\n    \"method\" : \"POST\"\r\n  },\r\n  \"inputs\" : [ {\r\n    \"name\" : \"aString\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"type\" : \"urlparameter\"\r\n    },\r\n    \"metadata\" : null,\r\n    \"formats\" : null\r\n  } ],\r\n  \"outputs\" : [ {\r\n    \"name\" : \"Upper Case message\",\r\n    \"minOccurs\" : 1,\r\n    \"maxOccurs\" : 1,\r\n    \"dataType\" : {\r\n      \"mimeType\" : \"application/json\",\r\n      \"type\" : \"text\",\r\n      \"type\" : \"text\"\r\n    },\r\n    \"metadata\" : {\r\n      \"about\" : \"ConvertToUpperCase\",\r\n      \"href\" : null,\r\n      \"role\" : null,\r\n      \"title\" : \"Upper Case Text\"\r\n    },\r\n    \"formats\" : [ {\r\n      \"mimeType\" : \"application/json\",\r\n      \"encoding\" : null,\r\n      \"schema\" : null,\r\n      \"maximumMegabytes\" : null,\r\n      \"dataType\" : null\r\n    } ]\r\n  } ]\r\n}"
 		},
 		{
 			"id": "7aebe68f-560d-c4c3-837d-515699269fa6",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/search",
+			"url": "http://pz-servicecontroller.{{domain}}/servicecontroller/search",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -165,7 +165,7 @@
 		{
 			"id": "a293d8c5-6a25-d484-6f8a-e3fb02a61b5a",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/executeService",
+			"url": "https://pz-servicecontroller.{{domain}}/servicecontroller/executeService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -184,7 +184,7 @@
 		{
 			"id": "b3f1811c-6c37-894c-8fdf-0419a383a3c7",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/search",
+			"url": "http://pz-servicecontroller.{{domain}}/servicecontroller/search",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -203,7 +203,7 @@
 		{
 			"id": "cf2f03ba-1061-15cb-1083-3ba2a83af3e2",
 			"headers": "Content-Type: application/json\nsize: 30\nkey: stamp\nfrom: 0\norder: true\n",
-			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/executeService",
+			"url": "https://pz-servicecontroller.{{domain}}/servicecontroller/executeService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -222,7 +222,7 @@
 		{
 			"id": "d0b17cde-625d-f5ee-31a1-0e8e39570166",
 			"headers": "size: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "http://pz-servicecontroller.stage.geointservices.io/servicecontroller/deleteService?resourceId={{resourceId}}",
+			"url": "http://pz-servicecontroller.{{domain}}/servicecontroller/deleteService?resourceId={{resourceId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -247,7 +247,7 @@
 		{
 			"id": "f2f98f69-e83e-6819-d650-f115c221b3eb",
 			"headers": "size: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "https://pz-servicecontroller.stage.geointservices.io/servicecontroller/listService",
+			"url": "https://pz-servicecontroller.{{domain}}/servicecontroller/listService",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",

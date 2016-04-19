@@ -4,7 +4,14 @@ pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
 
-#Run the test
-for f in $base/system-tests/*.postman_collection; do
-  newman -sc $f
+[ -z "$space" ] && space=stage
+
+envfile=$base/environments/$space.postman_environment
+
+[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
+
+cmd="newman -se $envfile -c"
+
+for f in $(ls -1 $base/postman/*postman_collection); do
+  $cmd $f
 done
