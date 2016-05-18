@@ -15,7 +15,7 @@ envfile=$base/environments/$space.postman_environment
 
 [ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-cmd="newman -se $envfile -c"
+cmd="newman -e $envfile -c"
 
 for f in $(ls -1 $base/postman/*postman_collection); do
   $cmd $f
