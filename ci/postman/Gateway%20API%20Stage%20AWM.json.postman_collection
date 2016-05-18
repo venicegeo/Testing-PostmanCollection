@@ -6,6 +6,7 @@
 		"6696ff39-f7a9-f071-15c1-a31639e534d2",
 		"5b35921d-2ebc-ae2b-3eef-dd5337be4f28",
 		"5db2a03f-c53b-289c-9fb0-2933ae6f3288",
+		"5db2a03f-c53b-289c-9fb0-2933ae6f3289",
 		"3bada7c7-01ef-b66d-4857-9a1a47a16a72",
 		"a2488462-b4fa-4556-aed8-f3a2e9d9cbfd",
 		"eb341e6e-f04c-0ce5-f38a-74b2002f6909",
@@ -270,7 +271,27 @@
 			"description": "",
 			"collectionId": "19fee865-86e0-b4b3-ea9f-d884ed757834",
 			"responses": [],
-			"rawModeData": "{\n\t\"type\": \"search-query\",\n\t\"data\": {\n\t\t\"query\": {\n\t\t\t\"match\": {\n\t\t\t\t\"_all\": \"*\"\n\t\t\t}\n\t\t}\n\t}\n}"
+			"rawModeData": "{\n\t\"query\": {\n\t\t\"match\": {\n\t\t\t\"_all\": \"*\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "5db2a03f-c53b-289c-9fb0-2933ae6f3289",
+			"headers": "Content-Type: application/json\n",
+			"url": "https://pz-gateway.stage.geointservices.io/service/query",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1462470296790,
+			"name": "Service Query",
+			"description": "",
+			"collectionId": "19fee865-86e0-b4b3-ea9f-d884ed757834",
+			"responses": [],
+			"rawModeData": "{\n\t\"query\": {\n\t\t\"match\": {\n\t\t\t\"_all\": \"*\"\n\t\t}\n\t}\n}"
 		},
 		{
 			"id": "65e20a36-75eb-3abe-828f-49c14dc2ade5",
