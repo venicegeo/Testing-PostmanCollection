@@ -2,7 +2,7 @@
 
 #mail settings
 RCVR="abcmauck@gmail.com"
-SUBJ= $BUILD_URL
+SUBJ= "$BUILD_URL"
 echo $BUILD_URL 
 echo "Fizbin"
 #awm
