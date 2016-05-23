@@ -2,9 +2,8 @@
 
 #mail settings
 RCVR="abcmauck@gmail.com"
-SUBJ= "$BUILD_URL"
-echo $BUILD_URL 
-echo "Fizbin"
+SUBJ= "Test fail"
+
 #awm
 
 pushd `dirname $0` > /dev/null
