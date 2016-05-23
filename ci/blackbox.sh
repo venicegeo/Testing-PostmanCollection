@@ -2,7 +2,7 @@
 
 #mail settings
 RCVR="abcmauck@gmail.com"
-SUBJ= "Test fail"
+SUBJ= 
 
 #awm
 
