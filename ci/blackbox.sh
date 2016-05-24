@@ -22,7 +22,7 @@ for f in $(ls -1 $base/postman/*postman_collection); do
   $cmd $f
   #send mail if return value of last command is not 0
 	if ["$?" -ne "0" ];then
-		mail $RCVR -s "$SUBJ"
+		mail -s "$SUBJ" $RCVR < /dev/null  
 	fi
    #awm	
 done
