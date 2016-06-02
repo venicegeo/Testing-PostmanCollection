@@ -15,6 +15,7 @@
 		"2bbea364-c544-7787-f35e-51db81d2805d",
 		"46afdff3-cc15-d672-103f-c25e3b37b1e5",
 		"c403d99e-dab4-0bf1-4442-035be8a65d47",
+		"c8c01a25-8c8e-cd63-174c-29d7510deb2c",
 		"0aaaec36-f777-cb9c-9d41-96320dd0d76a",
 		"3c972886-38f3-6d2d-a532-c55bf7bad70f",
 		"d2a387bf-5b58-3b64-d0d7-be097a567714",
@@ -35,7 +36,8 @@
 		"2b057269-0608-f79d-0b84-bf23050e598e",
 		"8bdfb75c-7178-e52a-d6e8-3dabde4b4b30",
 		"abf6e94b-726e-2cea-0a62-bc0ecf04ba3d",
-		"e4e58f60-ddea-a5e1-2a53-208a2d31bffb"
+		"e4e58f60-ddea-a5e1-2a53-208a2d31bffb",
+		"b69eed78-42bb-c7f0-9310-1faa7c251293"
 	],
 	"folders": [],
 	"timestamp": 1464032119234,
@@ -45,7 +47,7 @@
 	"requests": [
 		{
 			"id": "0aaaec36-f777-cb9c-9d41-96320dd0d76a",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.stage.geointservices.io/data/query",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -61,12 +63,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1464270007550,
+			"time": 1464727644890,
 			"name": "Search Query",
 			"description": "",
 			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
 			"responses": [],
-			"rawModeData": "{\n\t\"type\": \"search-query\",\n\t\"data\": {\n\t\t\"query\": {\n\t\t\t\"match\": {\n\t\t\t\t\"_all\": \"kitten\"\n\t\t\t}\n\t\t}\n\t}\n}"
+			"rawModeData": "{\n\n\t\t\"query\": {\n\t\t\t\"match\": {\n\t\t\t\t\"_all\": \"kitten\"\n\t\t\t\n\t\t}\n\t}\n}"
 		},
 		{
 			"id": "0b998cad-e5f7-ceac-89ad-e98091ffdb6a",
@@ -168,8 +170,8 @@
 		},
 		{
 			"id": "2b057269-0608-f79d-0b84-bf23050e598e",
-			"headers": "count-type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"url": "https://pz-gateway.stage.geointservices.io/data/",
+			"headers": "count-type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.stage.geointservices.io/data/{{dataId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -191,7 +193,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1464270082790,
+			"time": 1464720582244,
 			"name": "Get Data",
 			"description": "",
 			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
@@ -605,6 +607,37 @@
 			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"false\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"raer\",\n\t\t\t\"location\": {\n\t\t\t\t\"type\": \"s3\",\n\t\t\t\t\"bucketName\": \"external-public-access-test\",\n\t\t\t\t\"fileName\": \"elevation.tif\",\n\t\t\t\t\"domainName\": \"s3.amazonaws.com\"\n\t\t\t}\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test raster external file\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
 		},
 		{
+			"id": "b69eed78-42bb-c7f0-9310-1faa7c251293",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.stage.geointservices.io/data/{{dataId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "body",
+					"value": "{ \t\"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1464720505268,
+			"name": "Delete data",
+			"description": "",
+			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
+			"responses": []
+		},
+		{
 			"id": "bcbe669f-e204-d15d-9b13-c572ad7fbd8d",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.stage.geointservices.io/service",
@@ -701,6 +734,31 @@
 			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
 			"responses": [],
 			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"false\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"ster\",\n\t\t\t\"location\": {\n\t\t\t\t\"type\": \"s3\",\n\t\t\t\t\"bucketName\": \"external-public-access-test\",\n\t\t\t\t\"fileName\": \"elevation.tif\",\n\t\t\t\t\"domainName\": \"s3.amazonaws.com\"\n\t\t\t}\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test raster external file\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "c8c01a25-8c8e-cd63-174c-29d7510deb2c",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.stage.geointservices.io/data/query",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1464727725418,
+			"name": "Search Query all",
+			"description": "",
+			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
+			"responses": [],
+			"rawModeData": "{\n\n\t\t\"query\": {\n\t\t\t\"matchAll\": {\n\t\t\t\t\n\t\t\t}\n\t\t}\n\t}\n"
 		},
 		{
 			"id": "ceba0fdf-35e3-b207-aade-313e50a0dc5f",
