@@ -33,8 +33,8 @@
 		"f3a81336-58b8-b18c-ac5f-f2e3ce981309",
 		"9cd148b1-3e4c-9352-9cc6-f21cf02dc5fd",
 		"3308a04f-6aa3-de18-5013-0ef9436f02a6",
-		"2b057269-0608-f79d-0b84-bf23050e598e",
 		"8bdfb75c-7178-e52a-d6e8-3dabde4b4b30",
+		"2b057269-0608-f79d-0b84-bf23050e598e",
 		"abf6e94b-726e-2cea-0a62-bc0ecf04ba3d",
 		"e4e58f60-ddea-a5e1-2a53-208a2d31bffb",
 		"b69eed78-42bb-c7f0-9310-1faa7c251293"
@@ -185,7 +185,7 @@
 			],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data[0].dataId)\npostman.setEnvironmentVariable(\"type\",data.data[0].dataType.type)\n\n\n\n",
+			"tests": "\n\n\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -193,7 +193,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1464720582244,
+			"time": 1464895511360,
 			"name": "Get Data",
 			"description": "",
 			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
@@ -226,7 +226,7 @@
 		},
 		{
 			"id": "3308a04f-6aa3-de18-5013-0ef9436f02a6",
-			"headers": "",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.stage.geointservices.io/service/{{serviceId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -242,12 +242,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1464270079072,
+			"time": 1464895191370,
 			"name": "Unregister Service",
 			"description": "",
 			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
 			"responses": [],
-			"rawModeData": "{\n    \"id\": \"21da1961-3b36-4825-aacf-50f0e9725ac9\",\n    \"resourceMetadata\": {\n      \"name\": \"The toLower Service\",\n      \"description\": \"The bottom of the barrel\",\n      \"url\": \"http://pz-servicecontroller.stage.geointservices.io/jumpstart/string/toLower\",\n      \"availability\": \"OUT OF SERVICE\",\n      \"method\": \"POST\"\n    },\n    \"inputs\": [\n      {\n        \"name\": \"aString\",\n        \"minOccurs\": 1,\n        \"maxOccurs\": 1,\n        \"dataType\": {\n          \"type\": \"urlparameter\"\n        },\n        \"metadata\": null,\n        \"formats\": null\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"Lower Case message\",\n        \"minOccurs\": 1,\n        \"maxOccurs\": 1,\n        \"dataType\": {\n          \"type\": \"text\",\n          \"mimeType\": \"application/json\"\n        },\n        \"metadata\": {\n          \"about\": \"ConvertToLowerCase\",\n          \"href\": null,\n          \"role\": null,\n          \"title\": \"Lower Case Text\"\n        },\n        \"formats\": [\n          {\n            \"mimeType\": \"application/json\",\n            \"encoding\": null,\n            \"schema\": null,\n            \"maximumMegabytes\": null,\n            \"dataType\": null\n          }\n        ]\n      }\n    ]\n  }"
+			"rawModeData": ""
 		},
 		{
 			"id": "3c972886-38f3-6d2d-a532-c55bf7bad70f",
@@ -503,7 +503,7 @@
 		},
 		{
 			"id": "9cd148b1-3e4c-9352-9cc6-f21cf02dc5fd",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.stage.geointservices.io/service/*()_",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -511,7 +511,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"tests": "",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -519,12 +519,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1464270075374,
+			"time": 1464895304631,
 			"name": "Unregister Service Error Status",
 			"description": "",
 			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
 			"responses": [],
-			"rawModeData": "{\n    \"id\": \"21da1961-3b36-4825-aacf-50f0e9725ac9\",\n    \"resourceMetadata\": {\n      \"name\": \"The toLower Service\",\n      \"description\": \"The bottom of the barrel\",\n      \"url\": \"http://pz-servicecontroller.stage.geointservices.io/jumpstart/string/toLower\",\n      \"availability\": \"OUT OF SERVICE\",\n      \"method\": \"POST\"\n    },\n    \"inputs\": [\n      {\n        \"name\": \"aString\",\n        \"minOccurs\": 1,\n        \"maxOccurs\": 1,\n        \"dataType\": {\n          \"type\": \"urlparameter\"\n        },\n        \"metadata\": null,\n        \"formats\": null\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"Lower Case message\",\n        \"minOccurs\": 1,\n        \"maxOccurs\": 1,\n        \"dataType\": {\n          \"type\": \"text\",\n          \"mimeType\": \"application/json\"\n        },\n        \"metadata\": {\n          \"about\": \"ConvertToLowerCase\",\n          \"href\": null,\n          \"role\": null,\n          \"title\": \"Lower Case Text\"\n        },\n        \"formats\": [\n          {\n            \"mimeType\": \"application/json\",\n            \"encoding\": null,\n            \"schema\": null,\n            \"maximumMegabytes\": null,\n            \"dataType\": null\n          }\n        ]\n      }\n    ]\n  }"
+			"rawModeData": ""
 		},
 		{
 			"id": "a5f30c3b-a9e4-a0c8-f5d2-30db825ee8cd",
@@ -613,17 +613,10 @@
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
-			"data": [
-				{
-					"key": "body",
-					"value": "{ \t\"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
+			"data": [],
+			"dataMode": "raw",
 			"version": 2,
-			"tests": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -631,11 +624,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1464720505268,
+			"time": 1464894888395,
 			"name": "Delete data",
 			"description": "",
 			"collectionId": "435457d5-48ac-8dc9-9142-a09bfd24b5a2",
-			"responses": []
+			"responses": [],
+			"rawModeData": ""
 		},
 		{
 			"id": "bcbe669f-e204-d15d-9b13-c572ad7fbd8d",
