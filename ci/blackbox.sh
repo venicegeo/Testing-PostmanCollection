@@ -10,7 +10,7 @@ pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
 
-[ -z "$space" ] && space=stage
+[ -z "$space" ] && space=int
 
 envfile=$base/environments/$space.postman_environment
 
