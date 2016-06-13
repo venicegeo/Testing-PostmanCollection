@@ -10,9 +10,12 @@ pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
 
-[ -z "$space" ] && $space=int
+[ -z "$space" ] && space=int
 
+echo $space
 envfile=$base/environments/$space.postman_environment
+
+echo $envfile
 
 [ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
