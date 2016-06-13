@@ -22,6 +22,7 @@ echo $envfile
 cmd="newman -xe $envfile -c"
 
 for f in $(ls -1 $base/postman/*postman_collection); do
+echo $f	
   $cmd $f
   #send mail if return value of last command is not 0
 	if [ "$?" -ne "0" ];then
