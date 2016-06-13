@@ -24,6 +24,7 @@ for f in $(ls -1 $base/postman/*postman_collection); do
 	if [ "$?" -ne "0" ];then
 		mail -s "$SUBJ" $RCVR < /dev/null  
 	fi
+done
    #awm	
 
 
