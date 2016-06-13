@@ -18,12 +18,12 @@ envfile=$base/environments/$space.postman_environment
 
 cmd="newman -xe $envfile -c"
 
-#for f in $(ls -1 $base/postman/*postman_collection); do
-#  $cmd $f
-#  #send mail if return value of last command is not 0
-#	if [ "$?" -ne "0" ];then
-#		mail -s "$SUBJ" $RCVR < /dev/null  
-#	fi
+for f in $(ls -1 $base/postman/*postman_collection); do
+  $cmd $f
+  #send mail if return value of last command is not 0
+	if [ "$?" -ne "0" ];then
+		mail -s "$SUBJ" $RCVR < /dev/null  
+	fi
    #awm	
 
 
