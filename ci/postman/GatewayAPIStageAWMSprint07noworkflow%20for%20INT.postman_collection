@@ -38,7 +38,11 @@
 		"08b78ac8-0c3b-82a5-375c-3918879d04ae",
 		"9c03cc4e-2b5c-1c0e-b193-7980a93a4bf2",
 		"898592e6-0f03-2331-e7f8-e0292bd408b7",
-		"68516b85-b61e-eede-aeb0-34a4787f8c95"
+		"68516b85-b61e-eede-aeb0-34a4787f8c95",
+		"28c37838-c4f7-8788-2ec0-8be330c3e98a",
+		"8235c053-bbd3-4022-fcef-e614d3ee09ec",
+		"d019d839-744a-aa73-8e15-dded73e9f8e3",
+		"41729d40-5d99-fc86-c3e5-0aa1e18f5b0a"
 	],
 	"folders": [],
 	"timestamp": 0,
@@ -950,6 +954,106 @@
 			},
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
 			"rawModeData": "{\n\n    \"query\": {\n      \"match\": {\n        \"_all\": \"kitten\"\n      \n    }\n  }\n}"
+		},
+		{
+			"id": "28c37838-c4f7-8788-2ec0-8be330c3e98a",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465848692404,
+			"name": "Post Shapefile Data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"responses": [],
+			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"false\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"shapefile\",\n\t\t\t\"location\": {\n\t\t\t\t\"type\": \"s3\",\n\t\t\t\t\"bucketName\": \"external-public-access-test\",\n\t\t\t\t\"fileName\": \"TestShape.zip\",\n\t\t\t\t\"domainName\": \"s3.amazonaws.com\"\n\t\t\t}\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test shapefile external file\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "8235c053-bbd3-4022-fcef-e614d3ee09ec",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465848725482,
+			"name": "Post GeoJSON Data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"responses": [],
+			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"false\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"geojson\",\n\t\t\t\"location\": {\n\t\t\t\t\"type\": \"s3\",\n\t\t\t\t\"bucketName\": \"external-public-access-test\",\n\t\t\t\t\"fileName\": \"TestGeoJSON.geojson\",\n\t\t\t\t\"domainName\": \"s3.amazonaws.com\"\n\t\t\t}\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test GeoJSON external file\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "d019d839-744a-aa73-8e15-dded73e9f8e3",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465834639797,
+			"name": "Post Text Data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"responses": [],
+			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"true\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"text\",\n\t\t\t\"mimeType\": \"text/plain\",\n\t\t\t\"content\": \"This is some test content\"\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test Text input type\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "41729d40-5d99-fc86-c3e5-0aa1e18f5b0a",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465866306008,
+			"name": "Post WFS Data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"responses": [],
+			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"true\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"wfs\",\n\t\t\t\"url\": \"http://geoserver.piazzageo.io/geoserver/wfs\",\n\t\t\t\"featureType\": \"topp:tasmania_roads\",\n\t\t\t\"version\": \"1.1.0\"\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test WFS\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
 		}
 	]
 }
