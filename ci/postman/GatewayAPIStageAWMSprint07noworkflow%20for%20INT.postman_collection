@@ -42,12 +42,15 @@
 		"28c37838-c4f7-8788-2ec0-8be330c3e98a",
 		"11f8b7b0-4f94-a63e-08d9-a1348026ff11",
 		"75db532e-3d95-5fa0-b44a-2ba1af10e4f2",
+		"dda8b5b5-312c-a728-a54e-8433aa564730",
 		"8235c053-bbd3-4022-fcef-e614d3ee09ec",
 		"8426d4f1-a1aa-3c9b-b1af-0d3355dd5779",
 		"9145f784-4edf-088b-90a5-113f7e87444c",
+		"bcc89318-9e13-74dd-6375-13929ebc2594",
 		"d019d839-744a-aa73-8e15-dded73e9f8e3",
 		"1353a5a5-e27a-7e93-59b3-4d7d16e32a5e",
 		"f651c12d-ee4c-fc7f-6196-21d38781edcd",
+		"1486375d-a4fe-ee85-94ca-4b4276535e7b",
 		"41729d40-5d99-fc86-c3e5-0aa1e18f5b0a",
 		"532abab1-b025-514b-290a-39a4f9d016e9",
 		"358dc0f0-0642-3094-b8b9-014f55482352"
@@ -1294,6 +1297,75 @@
 			"name": "Get WFS Ingest Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
+		},
+		{
+			"id": "dda8b5b5-312c-a728-a54e-8433aa564730",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465931945869,
+			"name": "Delete Shapefile data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"rawModeData": ""
+		},
+		{
+			"id": "bcc89318-9e13-74dd-6375-13929ebc2594",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465931945869,
+			"name": "Delete GeoJSON data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"rawModeData": ""
+		},
+		{
+			"id": "1486375d-a4fe-ee85-94ca-4b4276535e7b",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465931945869,
+			"name": "Delete Text data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"rawModeData": ""
 		}
 	]
 }
