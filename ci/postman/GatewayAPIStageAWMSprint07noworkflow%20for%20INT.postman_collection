@@ -198,10 +198,12 @@
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
-			"folder": null,
 			"id": "3542daaa-1b0e-7c7d-9ac8-69c3fc0d315b",
-			"name": "Download Data russell may4",
-			"dataMode": "params",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/file/{{dataId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
 			"data": [
 				{
 					"key": "body",
@@ -210,14 +212,7 @@
 					"enabled": true
 				}
 			],
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"method": "GET",
-			"pathVariables": {},
-			"url": "https://pz-gateway.int.geointservices.io/file/{{dataId}}",
-			"preRequestScript": "",
+			"dataMode": "params",
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -226,6 +221,9 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
+			"time": 1465923448096,
+			"name": "Download Data russell may4",
+			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
@@ -681,11 +679,11 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1465835740846,
+			"time": 1465842005079,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"name\": \"pz-svcs-prevgen_test\",\n  \"inputs\": [{\n    \"name\": \"BODY\",\n    \"minOccurs\": 1,\n    \"maxOccurs\": 1,\n    \"dataType\": {\n      \"type\": \"body\"\n    },\n    \"metadata\": null,\n    \"formats\": [{\n      \"mimeType\": \"application/json\",\n      \"encoding\": null,\n      \"schema\": null,\n      \"maximumMegabytes\": null,\n      \"dataType\": null\n    }]\n  }],\n  \"outputs\": [{\n    \"name\": \"RasterDataType\",\n    \"minOccurs\": 1,\n    \"maxOccurs\": 1,\n    \"dataType\": {\n      \"mimeType\": \"application/json\",\n      \"type\": \"raster\"\n    },\n    \"metadata\": {\n      \"about\": \"RasterDataType\",\n      \"href\": null,\n      \"role\": null,\n      \"title\": \"location information of raster info\"\n    },\n    \"formats\": [{\n      \"mimeType\": \"application/json\",\n      \"encoding\": null,\n      \"schema\": null,\n      \"maximumMegabytes\": null,\n      \"dataType\": null\n    }]\n  }],\n  \"resourceMetadata\": {\n    \"name\": \"pz-svcs-prevgen\",\n    \"description\": \"Service that takes payload containing S3 location and bounding box for some raster file, downloads, crops and uploads the crop back up to s3.\",\n    \"url\": \"https://pz-svcs-prevgen.stage.geointservices.io/crop\",\n    \"method\": \"POST\"\n  }\n}"
+			"rawModeData": "{\n  \"url\": \"http://pzsvc-hello.venicegeo.io/\",\n  \"contractUrl\": \"http://helloContract\",\n   \"method\" : \"GET\",\n  \"serviceId\": \"\",\n  \"resourceMetadata\": {\n      \"name\": \"pzsvc-hello service\",\n      \"description\": \"Hello World Example\"\n      \n  }\n}"
 		},
 		{
 			"folder": null,
