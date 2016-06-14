@@ -40,9 +40,13 @@
 		"898592e6-0f03-2331-e7f8-e0292bd408b7",
 		"68516b85-b61e-eede-aeb0-34a4787f8c95",
 		"28c37838-c4f7-8788-2ec0-8be330c3e98a",
+		"11f8b7b0-4f94-a63e-08d9-a1348026ff11",
 		"8235c053-bbd3-4022-fcef-e614d3ee09ec",
+		"8426d4f1-a1aa-3c9b-b1af-0d3355dd5779",
 		"d019d839-744a-aa73-8e15-dded73e9f8e3",
-		"41729d40-5d99-fc86-c3e5-0aa1e18f5b0a"
+		"1353a5a5-e27a-7e93-59b3-4d7d16e32a5e",
+		"41729d40-5d99-fc86-c3e5-0aa1e18f5b0a",
+		"532abab1-b025-514b-290a-39a4f9d016e9"
 	],
 	"folders": [],
 	"timestamp": 0,
@@ -1054,6 +1058,122 @@
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
 			"responses": [],
 			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"true\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"wfs\",\n\t\t\t\"url\": \"http://geoserver.piazzageo.io/geoserver/wfs\",\n\t\t\t\"featureType\": \"topp:tasmania_roads\",\n\t\t\t\"version\": \"1.1.0\"\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test WFS\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "11f8b7b0-4f94-a63e-08d9-a1348026ff11",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "body",
+					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\", data.result.dataId);\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465928799378,
+			"name": "Get Shapefile Job Status",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
+		},
+		{
+			"id": "8426d4f1-a1aa-3c9b-b1af-0d3355dd5779",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "body",
+					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\", data.result.dataId);\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465928799378,
+			"name": "Get GeoJSON Job Status",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
+		},
+		{
+			"id": "1353a5a5-e27a-7e93-59b3-4d7d16e32a5e",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "body",
+					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\", data.result.dataId);\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465928799378,
+			"name": "Get Text Ingest Job Status",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
+		},
+		{
+			"id": "532abab1-b025-514b-290a-39a4f9d016e9",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "body",
+					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\", data.result.dataId);\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1465928799378,
+			"name": "Get WFS Ingest Job Status",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		}
 	]
 }
