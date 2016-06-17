@@ -27,6 +27,7 @@
 		"fc0cfc7d-93a4-e84a-cfc5-aada193e8cb0",
 		"af6cdd51-b858-0494-7d78-05a66b59726e",
 		"62841062-880f-2041-aeb1-e3ab79c704f8",
+		"ab688269-ca08-963c-ba67-2295390d28c3",
 		"3542daaa-1b0e-7c7d-9ac8-69c3fc0d315b",
 		"318542f3-0cdc-200c-e98a-5c78197e2dd1",
 		"eb4150b6-cd44-103e-6df5-11c4f3117fbc",
@@ -221,8 +222,8 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1465923448096,
-			"name": "Download Data russell may4",
+			"time": 1466184520577,
+			"name": "Download Raster Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
@@ -409,7 +410,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "\n\nvar data = JSON.parse(responseBody);\n\n\nfor (var i = 0; i<10; i++)\n  {\n  if (data.data[i].dataType.type == \"geojson\") {\n    postman.setEnvironmentVariable(\"dataId\",data.data[i].dataId)\n    postman.setEnvironmentVariable(\"type\",data.data[i].dataType.type)\n    break;\n  \n  }\n  }\n\n\n\n\n\n\n\n",
+			"tests": "\n\n//var data = JSON.parse(responseBody);\n\n\n//for (var i = 0; i<10; i++)\n//  {\n//  if (data.data[i].dataType.type == \"raster\") {\n   // postman.setEnvironmentVariable(\"dataId\",data.data[i].dataId)\n   // postman.setEnvironmentVariable(\"type\",data.data[i].dataType.type)\n//    break;\n  \n//  }\n//  }\n\n\n\n\n\n\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -417,7 +418,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1465923895387,
+			"time": 1466184310199,
 			"name": "Get Data for download test",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -485,7 +486,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"type\",data.data[1].dataType.type)\npostman.setEnvironmentVariable(\"deploymenttype\",data.data[1].dataType.location.type)",
+			"tests": "var data = JSON.parse(responseBody);\n\n/postman.setEnvironmentVariable(\"type\",data.data[1].dataType.type)\npostman.setEnvironmentVariable(\"deploymenttype\",data.data[1].dataType.location.type)",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -493,7 +494,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1465924894693,
+			"time": 1465928726336,
 			"name": "Query Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -582,6 +583,35 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
+		},
+		{
+			"id": "ab688269-ca08-963c-ba67-2295390d28c3",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "body",
+					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n{\n    postman.setEnvironmentVariable(\"dataId\",data.result.dataId)\n  }",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466184513265,
+			"name": "Get dataId for download",
+			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
