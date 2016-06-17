@@ -34,7 +34,6 @@
 		"7c120b65-8a91-c0e2-6669-f0111b825113",
 		"334988c4-ba50-7674-8072-2634fa847b8c",
 		"4cf3263d-5b12-5deb-d384-4d85bee8dcc9",
-		"7d2d0625-2d94-2152-3140-68834bc4c6f3",
 		"8756fea7-1fe6-ab32-37d9-18190b12cc96",
 		"08b78ac8-0c3b-82a5-375c-3918879d04ae",
 		"9c03cc4e-2b5c-1c0e-b193-7980a93a4bf2",
@@ -469,35 +468,6 @@
 			},
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
 			"rawModeData": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"accs\"\r\n}"
-		},
-		{
-			"id": "7d2d0625-2d94-2152-3140-68834bc4c6f3",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\n\n/postman.setEnvironmentVariable(\"type\",data.data[1].dataType.type)\npostman.setEnvironmentVariable(\"deploymenttype\",data.data[1].dataType.location.type)",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "citester",
-				"password": "citester",
-				"saveToRequest": true
-			},
-			"time": 1465928726336,
-			"name": "Query Data",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
 			"folder": null,
