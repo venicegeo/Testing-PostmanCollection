@@ -51,9 +51,13 @@
 		"1353a5a5-e27a-7e93-59b3-4d7d16e32a5e",
 		"f651c12d-ee4c-fc7f-6196-21d38781edcd",
 		"1486375d-a4fe-ee85-94ca-4b4276535e7b",
-		"41729d40-5d99-fc86-c3e5-0aa1e18f5b0a",
-		"532abab1-b025-514b-290a-39a4f9d016e9",
-		"358dc0f0-0642-3094-b8b9-014f55482352"
+
+
+		"61b17e11-3679-efa8-a182-4e2d579175cd",
+		"bde43c09-7c75-5f81-f338-656b30bec0dd",
+		"d97650f8-7a5e-06af-6027-94b1f959a671",
+		"6686bd10-9c31-fdc7-bd15-27d9ab34e8e1"
+
 	],
 	"folders": [],
 	"timestamp": 0,
@@ -1042,7 +1046,7 @@
 			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"true\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"text\",\n\t\t\t\"mimeType\": \"text/plain\",\n\t\t\t\"content\": \"This is some test content\"\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test Text input type\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
 		},
 		{
-			"id": "41729d40-5d99-fc86-c3e5-0aa1e18f5b0a",
+			"id": "61b17e11-3679-efa8-a182-4e2d579175cd",
 			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.int.geointservices.io/data",
 			"preRequestScript": "",
@@ -1059,12 +1063,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1465866306008,
+			"time": 1466175367002,
 			"name": "Post WFS Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
 			"responses": [],
-			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"false\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"wfs\",\n\t\t\t\"url\": \"http://geoserver.piazzageo.io/geoserver/wfs\",\n\t\t\t\"featureType\": \"topp:tasmania_roads\",\n\t\t\t\"version\": \"1.1.0\"\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test WFS\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
+			"rawModeData": "{\n\t\"type\": \"ingest\",\n\t\"host\": \"false\",\n\t\"data\": {\n\t\t\"dataType\": {\n\t\t\t\"type\": \"wfs\",\n\t\t\t\"url\": \"http://cida.usgs.gov/nwc/geoserver/ows\",\n\t\t\t\"featureType\": \"BioData:SiteInfo\",\n\t\t\t\"version\": \"1.1.0\"\n\t\t},\n\t\t\"metadata\": {\n\t\t\t\"name\": \"My Test WFS\",\n\t\t\t\"description\": \"This is a test.\",\n\t\t\t\"classType\": \"unclassified\"\n\t\t}\n\t}\n}"
 		},
 		{
 			"id": "11f8b7b0-4f94-a63e-08d9-a1348026ff11",
@@ -1154,7 +1158,7 @@
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
-			"id": "532abab1-b025-514b-290a-39a4f9d016e9",
+			"id": "bde43c09-7c75-5f81-f338-656b30bec0dd",
 			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
 			"preRequestScript": "",
@@ -1270,7 +1274,7 @@
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
-			"id": "358dc0f0-0642-3094-b8b9-014f55482352",
+			"id": "d97650f8-7a5e-06af-6027-94b1f959a671",
 			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
 			"preRequestScript": "",
@@ -1285,7 +1289,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "//var data = JSON.parse(responseBody);\n//tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"tests": "var data = JSON.parse(responseBody);\ntests[\"Check URL\"] = data.data.dataType.url === \"http://cida.usgs.gov/nwc/geoserver/ows\";\ntests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1293,7 +1297,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1465931007322,
+			"time": 1466177128206,
 			"name": "Get WFS Ingest Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -1340,6 +1344,29 @@
 			},
 			"time": 1465931945869,
 			"name": "Delete GeoJSON data",
+			"description": "",
+			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+			"rawModeData": ""
+		},
+		{
+			"id": "6686bd10-9c31-fdc7-bd15-27d9ab34e8e1",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466171547749,
+			"name": "Delete WFS data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
 			"rawModeData": ""
