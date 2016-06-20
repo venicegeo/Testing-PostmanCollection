@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "pzsvc-exec_testing",
-		"_postman_id": "1f4e3249-3ef9-0ede-07d8-78b851784998",
+		"_postman_id": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -37,17 +37,26 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"Swir1 jobId\",data.jobId)"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('jobId')){\n    postman.setEnvironmentVariable(\"Swir1 jobId\",data.jobId);\n    tests[\"jobId available\"] = true;\n}\nelse {\n    tests[\"jobId available\"] = false;\n}"
 					}
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "citester",
+						"password": "citester",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
 				"url": "https://pz-gateway.{{domain}}/data/file",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic eWFycmluamU6ZHIuVjFyZzFuMWE=",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
 						"description": ""
 					}
 				],
@@ -79,17 +88,26 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"Coastal jobId\",data.jobId)"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('jobId')){\n    postman.setEnvironmentVariable(\"Coastal jobId\",data.jobId);\n    tests[\"jobId available\"] = true;\n}\nelse {\n    tests[\"jobId available\"] = false;\n}"
 					}
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "citester",
+						"password": "citester",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
 				"url": "https://pz-gateway.{{domain}}/data/file",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic eWFycmluamU6ZHIuVjFyZzFuMWE=",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
 						"description": ""
 					}
 				],
@@ -121,7 +139,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"Swir1 filename\",data.result.dataId)"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('result')){\n    postman.setEnvironmentVariable(\"Swir1 filename\",data.result.dataId);\n    tests[\"result available\"] = true;\n}\nelse {\n    tests[\"result available\"] = false;\n}"
 					}
 				}
 			],
@@ -159,7 +177,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"Coastal filename\",data.result.dataId)"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('result')){\n    postman.setEnvironmentVariable(\"Coastal filename\",data.result.dataId);\n    tests[\"result available\"] = true;\n}\nelse {\n    tests[\"result available\"] = false;\n}"
 					}
 				}
 			],
@@ -260,9 +278,8 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"type": "text",
-								"name": "Authorization",
-								"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI="
+								"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+								"description": ""
 							}
 						],
 						"body": {
