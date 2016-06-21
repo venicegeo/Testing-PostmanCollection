@@ -1,54 +1,34 @@
 {
-	"id": "71d2f68f-489f-dd22-429b-401c4c6fc691",
+	"id": "d4fab037-7f57-76aa-8375-789af81e708a",
 	"name": "POST_data_file",
 	"description": "",
 	"order": [
-		"c2677e60-63ee-ff12-101b-d1616396e80a",
-		"5a4cda0f-b6b1-5aa6-d263-fbe4cb1a3c04",
-		"2854b1bf-2a30-4f9e-af05-cca1bb0e2425",
-		"77563625-48ca-9ad2-d8b0-3cba82ad0a1a",
-		"12908cd6-80fc-c016-39a0-99bcaf0b85f5",
-		"1b6ee022-9934-0b89-a009-9a9b91180bce",
-		"b726ff4b-6197-1224-e630-3e9194037e66"
+		"98db8861-22bc-0725-4ec9-739246304d35",
+		"5c5db674-31d6-0e90-3d84-b4ddbc228f81",
+		"2d5c396e-97a7-362f-a83e-6ad319cad70a",
+		"839412da-3305-8c45-648a-20fb6c083f65",
+		"abc1a9c6-50a7-479b-7ea1-a24b03f9e79f",
+		"bbe362f8-64a2-a4bf-868c-d36b5751c47b",
+		"19d43aaf-d963-300b-6915-939babaf2c27",
+		"58cabb3a-b3f1-a5e8-f99b-aa03ea0f87bc"
 	],
 	"folders": [],
-	"owner": "300577",
-	"hasRequests": true,
+	"timestamp": 1466455343207,
+	"owner": "699425",
+	"remoteLink": "",
+	"public": false,
 	"requests": [
 		{
-			"id": "12908cd6-80fc-c016-39a0-99bcaf0b85f5",
-			"name": "Load No Data",
-			"description": "",
-			"collectionId": "71d2f68f-489f-dd22-429b-401c4c6fc691",
-			"method": "POST",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "citester",
-				"password": "citester",
-				"saveToRequest": true
-			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
-			"dataMode": "params",
-			"data": [
-				{
-					"key": "file",
-					"type": "file",
-					"enabled": true
-				}
-			],
-			"rawModeData": "",
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Parameter missing message\"] = data.message.has(\"parameter 'data' is not present\");\n}\nelse {\n    tests[\"found message\"] = false;\n}",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"responses": []
-		},
-		{
-			"id": "1b6ee022-9934-0b89-a009-9a9b91180bce",
-			"name": "Download File",
-			"description": "",
-			"collectionId": "71d2f68f-489f-dd22-429b-401c4c6fc691",
+			"id": "19d43aaf-d963-300b-6915-939babaf2c27",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/file/00000000-0000-0000-0000-000000000000",
+			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Error downloading message\"] = data.message.has(\"Error downloading file\");\n}\nelse {\n    tests[\"Error downloading message\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -56,42 +36,65 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nfileName: dummyName.TIF",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+			"time": 1466519974935,
+			"name": "Download No File",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
 			"responses": []
 		},
 		{
-			"id": "2854b1bf-2a30-4f9e-af05-cca1bb0e2425",
+			"id": "2d5c396e-97a7-362f-a83e-6ad319cad70a",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('jobId')) {\n    tests[\"Output job matches input job.\"] = postman.getEnvironmentVariable('jobId') === data.jobId;\n}\nelse {\n    tests[\"jobId field found.\"] = false;\n}\nif(data.hasOwnProperty('status')) {\n    tests[\"Job successful\"] = data.status === 'Success';\n    if (data.status === 'Running') {\n        tests[\"SUGGESTION: Try a longer timeout\"] = false;\n    }\n}\nelse {\n    tests[\"success field found.\"] = false;\n}\nif(data.hasOwnProperty('result')) {\n    postman.setEnvironmentVariable(\"dataId\",data.result.dataId);\n    tests[\"dataId available\"] = data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}\nelse {\n    tests[\"result field found.\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466516660423,
 			"name": "Get Job Info",
 			"description": "",
-			"collectionId": "71d2f68f-489f-dd22-429b-401c4c6fc691",
-			"method": "GET",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "58cabb3a-b3f1-a5e8-f99b-aa03ea0f87bc",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"data": null,
+			"dataMode": "params",
+			"name": "Delete File",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1466526739023,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
 				"username": "citester",
 				"password": "citester",
 				"saveToRequest": true
-			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('jobId')) {\n    tests[\"Output job matches input job.\"] = postman.getEnvironmentVariable('jobId') === data.jobId;\n}\nelse {\n    tests[\"jobId field found.\"] = false;\n}\nif(data.hasOwnProperty('status')) {\n    tests[\"Job successful\"] = data.status === 'Success';\n    if (data.status === 'Running') {\n        tests[\"SUGGESTION: Try a longer timeout\"] = false;\n    }\n}\nelse {\n    tests[\"success field found.\"] = false;\n}\nif(data.hasOwnProperty('result')) {\n    postman.setEnvironmentVariable(\"dataId\",data.result.dataId);\n    tests[\"dataId available\"] = data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}\nelse {\n    tests[\"result field found.\"] = false;\n}",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
-			"responses": []
+			}
 		},
 		{
-			"id": "5a4cda0f-b6b1-5aa6-d263-fbe4cb1a3c04",
+			"id": "5c5db674-31d6-0e90-3d84-b4ddbc228f81",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
-			"preRequestScript": "",
+			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
 			"data": [
@@ -117,27 +120,19 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1466523745504,
+			"time": 1466526665326,
 			"name": "Load File",
 			"description": "",
-			"collectionId": "71d2f68f-489f-dd22-429b-401c4c6fc691",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
 			"responses": []
 		},
 		{
-			"id": "77563625-48ca-9ad2-d8b0-3cba82ad0a1a",
-			"name": "Load No File",
-			"description": "",
-			"collectionId": "71d2f68f-489f-dd22-429b-401c4c6fc691",
+			"id": "839412da-3305-8c45-648a-20fb6c083f65",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "POST",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "citester",
-				"password": "citester",
-				"saveToRequest": true
-			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
-			"dataMode": "params",
 			"data": [
 				{
 					"key": "data",
@@ -146,18 +141,8 @@
 					"enabled": true
 				}
 			],
-			"rawModeData": "",
+			"dataMode": "params",
 			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Parameter missing message\"] = data.message.has(\"parameter 'file' is not present\");\n}\nelse {\n    tests[\"found message\"] = false;\n}",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"responses": []
-		},
-		{
-			"id": "b726ff4b-6197-1224-e630-3e9194037e66",
-			"name": "Download No File",
-			"description": "",
-			"collectionId": "71d2f68f-489f-dd22-429b-401c4c6fc691",
-			"method": "GET",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -165,21 +150,53 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Error downloading message\"] = data.message.has(\"Error downloading file\");\n}\nelse {\n    tests[\"Error downloading message\"] = false;\n}",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/file/00000000-0000-0000-0000-000000000000",
+			"time": 1466519049353,
+			"name": "Load No File",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
 			"responses": []
 		},
 		{
-			"id": "c2677e60-63ee-ff12-101b-d1616396e80a",
+			"id": "98db8861-22bc-0725-4ec9-739246304d35",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('dataId','');",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466516517664,
 			"name": "Hello, pz-gateway!",
 			"description": "",
-			"collectionId": "71d2f68f-489f-dd22-429b-401c4c6fc691",
-			"method": "GET",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "abc1a9c6-50a7-479b-7ea1-a24b03f9e79f",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "file",
+					"value": "cropped.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Parameter missing message\"] = data.message.has(\"parameter 'data' is not present\");\n}\nelse {\n    tests[\"found message\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -187,13 +204,34 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+			"time": 1466519162712,
+			"name": "Load No Data",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "bbe362f8-64a2-a4bf-868c-d36b5751c47b",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nfileName: dummyName.TIF\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
 			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('dataId','');",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466519612421,
+			"name": "Download File",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
 			"responses": []
 		}
 	]
