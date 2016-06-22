@@ -106,7 +106,7 @@
 				},
 				{
 					"key": "file",
-					"value": "cropped.tif",
+					"value": "../test-resources/cropped.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -190,7 +190,7 @@
 			"data": [
 				{
 					"key": "file",
-					"value": "cropped.tif",
+					"value": "../test-resources/cropped.tif",
 					"type": "file",
 					"enabled": true
 				}
