@@ -2,79 +2,59 @@ import multiprocessing
 import time
 import requests
 import sys
-import ctypes
-import psutil
 
 # Function to pass to new process.  Records elapsed time to the processes Array.  If a bad
 # status is returned, it is recorded in the status variable to be processed by the logger.
-def sendGetRequest(url, pArray, pIndex, pStatus, pLock):
+def sendGetRequest(url, startQueue, resultQueue):
+	startQueue.put(1)
 	r = requests.get(url)
-	if r.status_code == 200:
-		pArray[pIndex] = r.elapsed.total_seconds()
-	else:
-		pArray[pIndex] = -1
-		pLock.acquire() # Released in logger()
-		pStatus['fail'] = '%d --> %d: %s' % (pIndex, r.status_code, r.reason)
+	startQueue.get()
+	finishTime = time.time()
+	active = startQueue.qsize()
+	resultQueue.put((finishTime, r.status_code, r.reason, r.elapsed.total_seconds(), active)) # (time when complete, status code, reason for failure, request time, queue size)
 
 # Logs imformation about running processes.  Handles request errors as they happen.
-def logger(period, pArray, pStatus, pLock):
-	global statusLock
+def logger(num, startQueue, resultQueue):
 	startTime = time.time()
-	unfinished = 1
-	failed = 0
-	failed_printed = 0
-	while unfinished + failed - failed_printed > 0:
-		if pStatus['fail'] != False:
-			# Replace with logging function.
-			print(pStatus['fail'])
-			failed_printed += 1
-			pStatus['fail'] = False
-			pLock.release()
-		else:
-			unfinished = aCount(pArray,0)
-			failed = aCount(pArray, -1)
-			finished = len(pArray) - unfinished - failed
-			elapsed = time.time() - startTime
-			# Replace with logging function
-			print('%0.3f s: %d ToDo, %d Done, %d Fail' % (elapsed, unfinished, finished, failed))
-		time.sleep(period)
-	print(['%0.1f' % p for p in pArray])
+	results = []
+	complete = 0
+	next_percentage = 0
+	while complete < num:
+		results += [resultQueue.get()]
+		complete += 1
+		percentage = 100*complete/num
+		if percentage >= next_percentage:
+			print('%3.0f%%' % percentage)
+			next_percentage += 5
+	print(results)
 
 # Returns a list of processes that call sendGetRequest().
-def createProcesses(url, num, pArray, pStatus, pLock):
+def createProcesses(url, num, startQueue, resultQueue):
 	return [
 		multiprocessing.Process(
 			target = sendGetRequest,
-			args = (url, pArray, i, pStatus, pLock)
+			args = (url, startQueue, resultQueue)
 		) for i in range(0,num)
 	]
 
 # Start all processes in the supplied list.
 def startProcesses(processes):
 	for p in processes:
-		cpus = list(range(psutil.cpu_count()))
 		p.start()
-		psutil.Process(p.pid).cpu_affinity(cpus[1:]) # Don't run blasters on the logger's core.
 	print('All started!')
 
 # Starts the logging process.
-def startLogging(period, pArray, pStatus, pLock):
+def startLogging(num, startQueue, resultQueue):
 	pLogger = multiprocessing.Process(
 		target = logger,
-		args = (period, pArray, pStatus, pLock)
+		args = (num, startQueue, resultQueue)
 	)
 	pLogger.start()
-	psutil.Process(pLogger.pid).cpu_affinity([0]) # Run logger only on first core
 	return pLogger
 
-# returns (pArray, pStatus, pLock) to be shared between processes.
-def createSharedVars(num):
-	pArray = multiprocessing.Array('d', num)
-	m = multiprocessing.Manager()
-	pStatus = m.dict()
-	pLock = m.Lock()
-	pStatus['fail'] = False
-	return (pArray, pStatus, pLock)
+# Return a queue object to share information between the blasters and the logger.
+def createSharedQueues():
+	return (multiprocessing.Queue(), multiprocessing.Queue())
 
 # Return the command line argument after the specified tag.
 def getTagValue(tag):
@@ -85,11 +65,3 @@ def getTagValue(tag):
 				val = val[1:-1]
 			return val
 	else: return ''
-
-# Hacked counter for array.
-def aCount(array, val):
-	count = 0
-	for ele in array:
-		if ele == val:
-			count += 1
-	return count

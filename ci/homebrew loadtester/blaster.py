@@ -1,16 +1,24 @@
 # Sample call:
-# python blaster.py -url 'https://pzsvc-hello.test.geointservices.io/' -p 0.01 -n 50
+# python blaster.py -url 'http://www.google.com/' -p 0.01 -n 10
+#									^						 ^
+#									|						 |
+#   website to which to send requests	  					 |
+#								    number of requests to send
 
 from siteBlasting import *
 
 if __name__ == '__main__':
 
-	url = getTagValue('-url')			# -url 'http://www.google.com'
-	period = float(getTagValue('-p'))	# -p 0.01
+	# Get command line vairables
+	url = getTagValue('-url')			# -url 'https://pzsvc-hello.test.geointservices.io/'
 	num = int(getTagValue('-n'))		# -n 1000
 
-	(pArray, pStatus, pLock) = createSharedVars(num)
-	pRequests = createProcesses(url, num, pArray, pStatus, pLock)
-	l = startLogging(period, pArray, pStatus, pLock)
+	# Create the shared variables to use between the logger and the blaster processes.
+	(startQueue, resultQueue) = createSharedQueues()
+
+	pRequests = createProcesses(url, num, startQueue, resultQueue)
+	l = startLogging(num, startQueue, resultQueue)
 	startProcesses(pRequests)
+
+	# Hold here until all processes have completed.
 	l.join()
