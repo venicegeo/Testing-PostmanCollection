@@ -1,9 +1,9 @@
 # Sample call:
-# python blaster.py -url 'http://www.google.com/' -p 0.01 -n 10
-#									^						 ^
-#									|						 |
-#   website to which to send requests	  					 |
-#								    number of requests to send
+# python blaster.py -url 'http://www.google.com/' -n 10
+#									^				 ^
+#									|				 |
+#   website to which to send requests	  			 |
+#							number of requests to send
 
 from siteBlasting import *
 

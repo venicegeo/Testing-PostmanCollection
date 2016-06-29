@@ -1,0 +1,163 @@
+{
+	"id": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+	"name": "PZ_Usecase_by_BF_implementing_bf-handle",
+	"description": "",
+	"order": [
+		"98ac5428-769a-d5b4-9523-6d168eb52904",
+		"9ddf6b58-9703-bb11-3c8c-2ab8bba68b25",
+		"25c4d9fe-833b-33d7-a07b-f8322578076d",
+		"0953f0b4-f0c7-a2e2-3c63-c7c59b65c475",
+		"230a2d11-34f2-ee2d-7a30-f09120c1a34f",
+		"91e3475d-5b2a-f51c-217f-1d5ad9e0a378"
+	],
+	"folders": [],
+	"timestamp": 1467139962611,
+	"owner": "699425",
+	"remoteLink": "",
+	"public": false,
+	"published": false,
+	"requests": [
+		{
+			"id": "0953f0b4-f0c7-a2e2-3c63-c7c59b65c475",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/service?per_page=10&keyword=BF_Algo_NDWI",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    if (data.data[0].hasOwnProperty('resourceMetadata')) {\n        tests[\"data[0].resourceMetadata field present in output\"] = true;\n        if (data.data[0].resourceMetadata.hasOwnProperty('name')) {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = true;\n            postman.setEnvironmentVariable('Algorithm Name','\"' + data.data[0].resourceMetadata.name + '\"');\n        }\n        else {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data[0].resourceMetadata field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467144879945,
+			"name": "Find available shoreline algorithms",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "230a2d11-34f2-ee2d-7a30-f09120c1a34f",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "{{pzsvc-image-catalog url}}/discover?bbox=114,-34,116,-30&cloudCover=1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features)){\n        tests[\"images.features array field present in output\"] = true;\n        var formatted_JSON = '\"' + JSON.stringify(data.images.features[0]).replace(/\"/g, '\\\\\"') + '\"';\n        postman.setEnvironmentVariable('Selected Feature', formatted_JSON);\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467146377066,
+			"name": "Select feature from pzsvc-image-catalog",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "25c4d9fe-833b-33d7-a07b-f8322578076d",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/service?per_page=10&keyword=pzsvc-image-catalog",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    if (data.data[0].hasOwnProperty('url')) {\n        tests[\"data[0].url field present in output\"] = true;\n        postman.setEnvironmentVariable('pzsvc-image-catalog url',data.data[0].url);\n    }\n    else {\n        tests[\"data[0].url field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467142211827,
+			"name": "Find pzsvc-image-catalog url",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "91e3475d-5b2a-f51c-217f-1d5ad9e0a378",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/v2/job",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467144695458,
+			"name": "Request bf-handle job",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": [],
+			"rawModeData": "{\r\n  \"data\": {\r\n    \"dataInputs\": {\r\n      \"body\": {\r\n        \"content\": {\r\n            \"algoType\": {{Algorithm Name}},\r\n            \"svcURL\": {{pzsvc-ossim domain}},\r\n            \"pzAuthToken\": \"Basic ZZZZZ\",\r\n            \"pzAddr\": {{pz-gateway domain}},\r\n            \"dbAuthToken\": \"ZZZZ\",\r\n            \"bands\": [\"green\",\"swir1\"],\r\n            \"metaDataJSON\": {{Selected Feature}}\r\n        },\r\n        \"type\": \"body\",\r\n        \"mimeType\": \"application/json\"\r\n      }\r\n    },\r\n    \"dataOutput\": [\r\n      {\r\n        \"mimeType\": \"application/json\",\r\n        \"type\": \"text\"\r\n      }\r\n    ],\r\n    \"serviceId\": {{bf-handle serviceId}}\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
+		},
+		{
+			"id": "98ac5428-769a-d5b4-9523-6d168eb52904",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','\"https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute\"');\npostman.setEnvironmentVariable('pz-gateway domain','\"https://pz-gateway.' + postman.getEnvironmentVariable('domain') + '\"');\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('Selected Feature','');\n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467144795390,
+			"name": "Hello, pz-gateway!",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "9ddf6b58-9703-bb11-3c8c-2ab8bba68b25",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/service?per_page=10&keyword=bf-handle",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    if (data.data[0].hasOwnProperty('serviceId')) {\n        tests[\"data[0].serviceId field present in output\"] = true;\n        postman.setEnvironmentVariable('bf-handle serviceId','\"' + data.data[0].serviceId + '\"');\n    }\n    else {\n        tests[\"data[0].serviceId field present in output\"] = true;\n    }\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467145118069,
+			"name": "Find bf-handle serviceId",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		}
+	]
+}
