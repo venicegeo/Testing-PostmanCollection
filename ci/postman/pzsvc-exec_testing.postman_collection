@@ -1,0 +1,306 @@
+{
+	"id": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+	"name": "pzsvc-exec_testing",
+	"description": "",
+	"order": [
+		"5f0b2696-e252-2d83-48d1-a90212d2b84c",
+		"9a67c1e9-24b7-886a-b3e1-4f8896f4f371",
+		"10aec580-b3cc-ab2e-fc9a-d8e4951659be",
+		"9dfa87c3-9dce-24c9-bce6-d0b969dc0141",
+		"12db48b2-579f-0dd4-c887-eb1397f73a22",
+		"342ba8c3-cf55-e88b-539b-bb2d51c8416c",
+		"0edd665f-61e4-2222-848f-f9adbf0770db"
+	],
+	"folders": [],
+	"owner": "699425",
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "0edd665f-61e4-2222-848f-f9adbf0770db",
+			"name": "Validate Job Status",
+			"description": "",
+			"collectionId": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+			"method": "GET",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"Shoreline file created.\"] = data.data.dataType.location.fileName.has('shoreline.geojson');\ntests[\"Job was created from the ossim-cli shoreline command\"] = data.data.metadata.metadata.algoCmd.has('ossim-cli shoreline');",
+			"preRequestScript": "",
+			"url": "https://pz-gateway.{{domain}}/data/{{Shoreline JobId}}",
+			"responses": []
+		},
+		{
+			"id": "10aec580-b3cc-ab2e-fc9a-d8e4951659be",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"coastal.TIF\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "coastal.TIF",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('jobId')){\n    postman.setEnvironmentVariable(\"Coastal jobId\",data.jobId);\n    tests[\"jobId available\"] = true;\n}\nelse {\n    tests[\"jobId available\"] = false;\n}\n\npausecomp(10000);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466688271338,
+			"name": "Ingest Coastal",
+			"description": "",
+			"collectionId": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+			"responses": []
+		},
+		{
+			"id": "12db48b2-579f-0dd4-c887-eb1397f73a22",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{Coastal jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('result')){\n    postman.setEnvironmentVariable(\"Coastal filename\",data.result.dataId);\n    tests[\"result available\"] = true;\n}\nelse {\n    tests[\"result available\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466435844577,
+			"name": "Coastal filename",
+			"description": "",
+			"collectionId": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+			"responses": []
+		},
+		{
+			"id": "342ba8c3-cf55-e88b-539b-bb2d51c8416c",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pzsvc-ossim.{{domain}}/execute?",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "cmd",
+					"value": "shoreline --image {{Swir1 filename}}.TIF,{{Coastal filename}}.TIF --projection geo-scaled --threshold 0.5 --tolerance 0 shoreline.geojson",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "inFiles",
+					"value": "{{Swir1 filename}},{{Coastal filename}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "outGeoJson",
+					"value": "shoreline.geojson",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "authKey",
+					"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"Errors returned null\"] = data.Errors === null;\nif (data.hasOwnProperty('ProgReturn') && (typeof data.ProgReturn === 'string' || data.ProgReturn instanceof String)) {\n    tests[\"ProgReturn field present in output\"] = true;\n    tests[\"Wrote product image to <shoreline.tif>\"] = data.ProgReturn.has('Wrote product image to <shoreline.tif>');\n    tests[\"Wrote product image to <shoreline_mask.tif>\"] = data.ProgReturn.has('Wrote product image to <shoreline_mask.tif>');\n    tests[\"Wrote vector product to <shoreline.geojson>\"] = data.ProgReturn.has('Wrote vector product to <shoreline.geojson>');\n}\nelse{\n    tests[\"ProgReturn field present in output\"] = false;\n}\ntests[\"InFiles includes the Swir1 file\"] = data.InFiles[postman.getEnvironmentVariable('Swir1 filename')] === (postman.getEnvironmentVariable('Swir1 filename') + '.TIF');\ntests[\"InFiles includes the Coastal file\"] = data.InFiles[postman.getEnvironmentVariable('Coastal filename')] === (postman.getEnvironmentVariable('Coastal filename') + '.TIF');\nif (data.hasOwnProperty('OutFiles') && (typeof data.OutFiles === 'string' || data.OutFiles instanceof String)) {\n    tests[\"OutFiles field present in output\"] = true;\n    tests[\"GUID created for OutFiles\"] = data.OutFiles['shoreline.geojson'].match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}\nelse {\n    tests[\"OutFiles field present in output\"] = false;\n\n}\npostman.setEnvironmentVariable(\"Shoreline JobId\",data.OutFiles['shoreline.geojson']);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467055017611,
+			"name": "Barden Example",
+			"description": "",
+			"collectionId": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+			"responses": [
+				{
+					"request": {
+						"id": "f21c487f-53ea-4878-b837-fd955b57797f",
+						"method": "POST",
+						"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"dataMode": "urlencoded",
+						"data": [
+							{
+								"key": "cmd",
+								"value": "shoreline --image {{Swir1 filename}}.TIF,{{Coastal filename}}.TIF --projection geo-scaled --threshold 0.5 --tolerance 0 shoreline.geojson",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "inFiles",
+								"value": " {{Swir1 filename}},{{Coastal filename}}",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "outGeoJson",
+								"value": "shoreline.geojson",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "authKey",
+								"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+								"type": "text",
+								"enabled": true
+							}
+						],
+						"rawModeData": "",
+						"url": "https://pzsvc-ossim.int.geointservices.io/execute?"
+					},
+					"id": "a7216af0-2e0c-287c-8c6a-5f72c13e5e89",
+					"name": "execute shoreline",
+					"status": "OK",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": ""
+					},
+					"language": "html",
+					"previewType": "html",
+					"time": 174487,
+					"headers": [
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "1064",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Fri, 17 Jun 2016 18:38:16 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "X-Cf-Requestid",
+							"key": "X-Cf-Requestid",
+							"value": "d8df3cee-9be3-41b0-5e49-a4063984410e",
+							"description": "Custom header"
+						}
+					],
+					"cookies": [],
+					"text": "{\"InFiles\":{\" 0d535b7a-56dc-41f7-8797-7c27e55edb4e\":\"0d535b7a-56dc-41f7-8797-7c27e55edb4e.TIF\",\"8db5c995-6c72-4f33-8c9d-d654369a3685\":\"8db5c995-6c72-4f33-8c9d-d654369a3685.TIF\"},\"OutFiles\":{\"shoreline.geojson\":\"2779b415-32e8-4b31-84ad-b24bff808926\"},\"ProgReturn\":\"3%\\r3%\\r6%\\r6%\\r10%\\r10%\\r13%\\r13%\\r16%\\r16%\\r19%\\r19%\\r23%\\r23%\\r26%\\r26%\\r29%\\r29%\\r32%\\r32%\\r35%\\r35%\\r39%\\r39%\\r42%\\r42%\\r45%\\r45%\\r48%\\r48%\\r52%\\r52%\\r55%\\r55%\\r58%\\r58%\\r61%\\r61%\\r65%\\r65%\\r68%\\r68%\\r71%\\r71%\\r74%\\r74%\\r77%\\r77%\\r81%\\r81%\\r84%\\r84%\\r87%\\r87%\\r90%\\r90%\\r94%\\r94%\\r97%\\r97%\\r100%\\r\\n100%\\r\\nWrote product image to \\u003cshoreline.tif\\u003e\\n3%\\r3%\\r6%\\r6%\\r10%\\r10%\\r13%\\r13%\\r16%\\r16%\\r19%\\r19%\\r23%\\r23%\\r26%\\r26%\\r29%\\r29%\\r32%\\r32%\\r35%\\r35%\\r39%\\r39%\\r42%\\r42%\\r45%\\r45%\\r48%\\r48%\\r52%\\r52%\\r55%\\r55%\\r58%\\r58%\\r61%\\r61%\\r65%\\r65%\\r68%\\r68%\\r71%\\r71%\\r74%\\r74%\\r77%\\r77%\\r81%\\r81%\\r84%\\r84%\\r87%\\r87%\\r90%\\r90%\\r94%\\r94%\\r97%\\r97%\\r100%\\r\\n100%\\r\\nWrote product image to \\u003cshoreline_mask.tif\\u003e\\nWrote vector product to \\u003cshoreline.geojson\\u003e\\n\",\"Errors\":null}",
+					"rawDataType": "text",
+					"owner": "699425"
+				}
+			]
+		},
+		{
+			"id": "5f0b2696-e252-2d83-48d1-a90212d2b84c",
+			"name": "Hello Test",
+			"description": "",
+			"collectionId": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body matches string\"] = responseBody.has(\"Hello.\");",
+			"preRequestScript": "",
+			"url": "https://pzsvc-ossim.{{domain}}/",
+			"responses": []
+		},
+		{
+			"id": "9a67c1e9-24b7-886a-b3e1-4f8896f4f371",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"swir1.TIF\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "swir1.TIF",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('jobId')){\n    postman.setEnvironmentVariable(\"Swir1 jobId\",data.jobId);\n    tests[\"jobId available\"] = true;\n}\nelse {\n    tests[\"jobId available\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466687613053,
+			"name": "Ingest Swir1",
+			"description": "",
+			"collectionId": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+			"responses": []
+		},
+		{
+			"id": "9dfa87c3-9dce-24c9-bce6-d0b969dc0141",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{Swir1 jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('result')){\n    postman.setEnvironmentVariable(\"Swir1 filename\",data.result.dataId);\n    tests[\"result available\"] = true;\n}\nelse {\n    tests[\"result available\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466435830170,
+			"name": "Swir1 filename",
+			"description": "",
+			"collectionId": "15828732-eae2-97de-8cfd-0b9c2bdadfd0",
+			"responses": []
+		}
+	]
+}

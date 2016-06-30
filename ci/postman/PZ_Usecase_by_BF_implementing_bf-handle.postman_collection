@@ -8,7 +8,9 @@
 		"25c4d9fe-833b-33d7-a07b-f8322578076d",
 		"0953f0b4-f0c7-a2e2-3c63-c7c59b65c475",
 		"230a2d11-34f2-ee2d-7a30-f09120c1a34f",
-		"91e3475d-5b2a-f51c-217f-1d5ad9e0a378"
+		"91e3475d-5b2a-f51c-217f-1d5ad9e0a378",
+		"734027c6-7b89-4111-bc80-fd11e7b4c403",
+		"fc4b0bab-7c41-0173-0347-e8bca853dac4"
 	],
 	"folders": [],
 	"timestamp": 1467139962611,
@@ -27,7 +29,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    if (data.data[0].hasOwnProperty('resourceMetadata')) {\n        tests[\"data[0].resourceMetadata field present in output\"] = true;\n        if (data.data[0].resourceMetadata.hasOwnProperty('name')) {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = true;\n            postman.setEnvironmentVariable('Algorithm Name','\"' + data.data[0].resourceMetadata.name + '\"');\n        }\n        else {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data[0].resourceMetadata field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    if (data.data[0].hasOwnProperty('resourceMetadata')) {\n        tests[\"data[0].resourceMetadata field present in output\"] = true;\n        if (data.data[0].resourceMetadata.hasOwnProperty('name')) {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = true;\n            postman.setEnvironmentVariable('Algorithm Name',data.data[0].resourceMetadata.name);\n            // postman.setEnvironmentVariable('Algorithm Name','pzsvc-ossim');\n        }\n        else {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data[0].resourceMetadata field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -35,7 +37,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467144879945,
+			"time": 1467210065720,
 			"name": "Find available shoreline algorithms",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -50,7 +52,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features)){\n        tests[\"images.features array field present in output\"] = true;\n        var formatted_JSON = '\"' + JSON.stringify(data.images.features[0]).replace(/\"/g, '\\\\\"') + '\"';\n        postman.setEnvironmentVariable('Selected Feature', formatted_JSON);\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features)){\n        tests[\"images.features array field present in output\"] = true;\n        var formatted_JSON = JSON.stringify(data.images.features[0]).replace(/\"/g, '\\\\\"');\n        var content = '\"{\\\\\"algoType\\\\\": \\\\\"' + postman.getEnvironmentVariable('Algorithm Name') + '\\\\\",\\\\\"svcURL\\\\\": \\\\\"' + postman.getEnvironmentVariable('pzsvc-ossim domain') + '\\\\\",\\\\\"pzAuthToken\\\\\": \\\\\"Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\\\\\",\\\\\"pzAddr\\\\\": \\\\\"' + postman.getEnvironmentVariable('pz-gateway domain') + '\\\\\",\\\\\"dbAuthToken\\\\\": \\\\\"ZZZZ\\\\\",\\\\\"bands\\\\\": [\\\\\"green\\\\\",\\\\\"swir1\\\\\"],\\\\\"metaDataJSON\\\\\":' + formatted_JSON + '}\"';\n        postman.setEnvironmentVariable('Formatted Content String', content);\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -58,7 +60,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467146377066,
+			"time": 1467227045524,
 			"name": "Select feature from pzsvc-image-catalog",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -89,6 +91,30 @@
 			"responses": []
 		},
 		{
+			"id": "734027c6-7b89-4111-bc80-fd11e7b4c403",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job is running\"] = data.status === 'Running';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467209733116,
+			"name": "Check Job Status - Running",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
 			"id": "91e3475d-5b2a-f51c-217f-1d5ad9e0a378",
 			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "https://pz-gateway.{{domain}}/v2/job",
@@ -97,7 +123,7 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)",
+			"tests": "var data = JSON.parse(responseBody);\nfunction pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    postman.setEnvironmentVariable(\"jobId\",data.jobId);\n    pausecomp(500); // To make sure next step has at least \"Running\" Status.\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -105,12 +131,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467144695458,
+			"time": 1467211526614,
 			"name": "Request bf-handle job",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
 			"responses": [],
-			"rawModeData": "{\r\n  \"data\": {\r\n    \"dataInputs\": {\r\n      \"body\": {\r\n        \"content\": {\r\n            \"algoType\": {{Algorithm Name}},\r\n            \"svcURL\": {{pzsvc-ossim domain}},\r\n            \"pzAuthToken\": \"Basic ZZZZZ\",\r\n            \"pzAddr\": {{pz-gateway domain}},\r\n            \"dbAuthToken\": \"ZZZZ\",\r\n            \"bands\": [\"green\",\"swir1\"],\r\n            \"metaDataJSON\": {{Selected Feature}}\r\n        },\r\n        \"type\": \"body\",\r\n        \"mimeType\": \"application/json\"\r\n      }\r\n    },\r\n    \"dataOutput\": [\r\n      {\r\n        \"mimeType\": \"application/json\",\r\n        \"type\": \"text\"\r\n      }\r\n    ],\r\n    \"serviceId\": {{bf-handle serviceId}}\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
+			"rawModeData": "{\r\n  \"data\": {\r\n    \"dataInputs\": {\r\n      \"body\": {\r\n        \"content\": {{Formatted Content String}},\r\n        \"type\": \"body\",\r\n        \"mimeType\": \"application/json\"\r\n      }\r\n    },\r\n    \"dataOutput\": [\r\n      {\r\n        \"mimeType\": \"application/json\",\r\n        \"type\": \"text\"\r\n      }\r\n    ],\r\n    \"serviceId\": {{bf-handle serviceId}}\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
 			"id": "98ac5428-769a-d5b4-9523-6d168eb52904",
@@ -122,7 +148,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','\"https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute\"');\npostman.setEnvironmentVariable('pz-gateway domain','\"https://pz-gateway.' + postman.getEnvironmentVariable('domain') + '\"');\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('Selected Feature','');\n",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute');\npostman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.' + postman.getEnvironmentVariable('domain'));\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('Formatted Content String','');",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -130,7 +156,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467144795390,
+			"time": 1467209433623,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -153,11 +179,37 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467145118069,
+			"time": 1467207114643,
 			"name": "Find bf-handle serviceId",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
 			"responses": []
+		},
+		{
+			"id": "fc4b0bab-7c41-0173-0347-e8bca853dac4",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://bf-handle.{{domain}}/execute",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Request directly to BF-Handle",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1467290697190,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"rawModeData": "{\"algoType\": \"pzsvc-ossim\",\"svcURL\": \"https://pzsvc-ossim.int.geointservices.io/execute\",\"pzAuthToken\": \"Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\",\"pzAddr\": \"https://pz-gateway.int.geointservices.io\",\"dbAuthToken\": \"ZZZZ\",\"bands\": [\"green\",\"swir1\"],\"metaDataJSON\":{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[116.291633834468,-29.2560749564541],[118.18281244966,-29.6295768338272],[117.74623754451,-31.3563402949038],[115.821868461041,-30.9747143246823],[116.291633834468,-29.2560749564541]]]},\"properties\":{\"acquiredDate\":\"2016-06-08T02:04:45.167404+00:00\",\"bands\":{\"blue\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B2.TIF\",\"cirrus\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B9.TIF\",\"coastal\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B1.TIF\",\"green\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B3.TIF\",\"nir\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B5.TIF\",\"panchromatic\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B8.TIF\",\"red\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B4.TIF\",\"swir1\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B6.TIF\",\"swir2\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B7.TIF\",\"tirs1\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B10.TIF\",\"tirs2\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B11.TIF\"},\"cloudCover\":0.92,\"path\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/index.html\",\"resolution\":30,\"sensorName\":\"Landsat8\",\"thumb_large\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_thumb_large.jpg\",\"thumb_small\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_thumb_small.jpg\"},\"id\":\"landsat:LC81120812016160LGN00\",\"bbox\":[115.821868461041,-31.3563402949038,118.18281244966,-29.2560749564541]}}"
 		}
 	]
 }
