@@ -96,7 +96,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job is running\"] = data.status === 'Success';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobType') && typeof data.jobType === 'string') {\n    tests[\"jobType string field present in output\"] = true;\n    tests[\"Correct jobType\"] = data.jobType.has(/[eE]xecute.*[sS]ervice/);\n}\nelse {\n    tests[\"jobType string field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"Correct jobId used\"] = data.jobId === postman.getEnvironmentVariable('jobId');\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job is running\"] = data.status === 'Success';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobType') && typeof data.jobType === 'string') {\n    tests[\"jobType string field present in output\"] = true;\n    tests[\"Correct jobType\"] = data.jobType.match(/[eE]xecute.*[sS]ervice/);\n}\nelse {\n    tests[\"jobType string field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"Correct jobId used\"] = data.jobId === postman.getEnvironmentVariable('jobId');\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -104,7 +104,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467727561757,
+			"time": 1467732471366,
 			"name": "Check Job Status - Success",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
