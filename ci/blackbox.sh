@@ -19,7 +19,7 @@ echo $envfile
 
 [ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-cmd="newman -x -e $envfile -c"
+cmd="newman -e $envfile -c"
 
 latch=0
 
