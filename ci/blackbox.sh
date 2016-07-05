@@ -23,13 +23,16 @@ cmd="newman -s -e $envfile -c"
 
 latch=0
 
+set -e
+
 for f in $(ls -1 $base/postman/*postman_collection); do
 echo $f	
-  bash -c "$cmd $f"
-  resp="$?"
-  echo $resp
+  #$cmd $f || true
+  #resp="$?"
+  #echo $resp
   #send mail if return value of last command is not 0
-	if [ $resp -ne "0" ];then
+	# if [ $resp -ne "0" ];then
+	if [ ! $cmd $f ];then
 		latch=1
 		echo "$latch"
 	# 	mail -s "$SUBJ" $RCVR < /dev/null  
