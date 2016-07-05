@@ -36,7 +36,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    tests[\"Exactly 1 match\"] = data.pagination.count === 1;\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    if (data.data[0].hasOwnProperty('dataId')) {\n        tests[\"data[0].dataId field present in output\"] = true;\n        tests[\"Same dataId returned\"] = data.data[0].dataId === postman.getEnvironmentVariable('dataId');\n    }\n    else {\n        tests[\"data[0].dataId field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('perPage') && typeof data.pagination.perPage === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    tests[\"Exactly 1 match\"] = data.pagination.count === 1;\n}\nelse {\n    tests[\"pagination field (and count/perPage sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    if (data.data[0].hasOwnProperty('dataId')) {\n        tests[\"data[0].dataId field present in output\"] = true;\n        tests[\"Same dataId returned\"] = data.data[0].dataId === postman.getEnvironmentVariable('dataId');\n    }\n    else {\n        tests[\"data[0].dataId field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -44,7 +44,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467223349829,
+			"time": 1467721533073,
 			"name": "Find Ingested Text by query",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -108,7 +108,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    tests[\"No matches\"] = data.pagination.count === 0;\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    tests[\"data is empty\"] = data.data.length === 0;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('perPage') && typeof data.pagination.perPage === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    tests[\"No matches\"] = data.pagination.count === 0;\n}\nelse {\n    tests[\"pagination field (and count/perPage sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    tests[\"data is empty\"] = data.data.length === 0;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -116,7 +116,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467226749929,
+			"time": 1467721519064,
 			"name": "Cannot find Deleted Data by Query",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
