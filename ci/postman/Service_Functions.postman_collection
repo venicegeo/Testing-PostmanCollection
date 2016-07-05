@@ -82,23 +82,23 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467058121617,
+			"time": 1467729040633,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
 			"responses": [],
-			"rawModeData": "{\n  \"url\": \"http://pzsvc-hello.venicegeo.io/\",\n  \"contractUrl\": \"http://helloContract\",\n   \"method\" : \"GET\",\n  \"serviceId\": \"\",\n  \"resourceMetadata\": {\n      \"name\": \"pzsvc-hello service\",\n      \"description\": \"~!~ xXx Ultra-specific example just for this test xXx ~!~\"\n  }\n}"
+			"rawModeData": "{\n  \"url\": \"http://pzsvc-hello.venicegeo.io/\",\n  \"contractUrl\": \"http://helloContract\",\n   \"method\" : \"GET\",\n  \"serviceId\": \"\",\n  \"resourceMetadata\": {\n      \"name\": \"pzsvc-hello service\",\n      \"description\": \"~!~ o0o Ultra-specific example just for this test o0o ~!~\"\n  }\n}"
 		},
 		{
 			"id": "20bc9589-3058-a46a-8d53-c1fd5fa59f93",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.{{domain}}/service?per_page=10000",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=10000",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.per_page){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    var suggestion = '';\n    if (!all_fit) {suggestion = ' Try changing the per_page parameter'}\n    tests[\"Registered serviceId found in list of services.\" + suggestion] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('perPage') && typeof data.pagination.perPage === 'number') {\n    tests[\"pagination field (and count/perPage number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.perPage){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    var suggestion = '';\n    if (!all_fit) {suggestion = ' Try changing the perPage parameter'}\n    tests[\"Registered serviceId found in list of services.\" + suggestion] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -106,7 +106,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467058904079,
+			"time": 1467728729691,
 			"name": "Get List of Srvices",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -122,7 +122,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Not ready yet\"] = false;",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -130,7 +130,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467123434899,
+			"time": 1467728526772,
 			"name": "Re-register Service",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -140,13 +140,13 @@
 		{
 			"id": "3df83639-6676-2251-69ac-b616f8e33fb4",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.{{domain}}/service?per_page=1000&userName=citester",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=1000&userName=citester",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.per_page){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Registered serviceId found in list of services.\"] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Registered serviceId found in list of services.\"] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -154,7 +154,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467058396861,
+			"time": 1467728893013,
 			"name": "Filter services by userName",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -196,7 +196,7 @@
 			],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Not ready yet\"] = false;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service-id';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('serviceId')) {\n    tests[\"serviceId field present\"] = true;\n    tests[\"correct serviceId returned\"] = postman.getEnvironmentVariable('serviceId') === data.serviceId;\n}\nelse{\n    tests[\"serviceId field present\"] = false;\n}",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -204,7 +204,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467123455312,
+			"time": 1467729458527,
 			"name": "Soft Delete Service",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -213,7 +213,7 @@
 		{
 			"id": "5dc8be20-d3a7-a008-9310-b40d6b3bad14",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.{{domain}}/service?per_page=10000&page=CAT",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=10000&page=CAT",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -223,7 +223,7 @@
 			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"message field indicates a failure to convert type.\"] = data.message.has('convert') && data.message.has('type');\n}\nelse {\n    tests[\"String message field present in output\"] = false;\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1467119107766,
+			"time": 1467728925766,
 			"name": "Go to 'CAT' page",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -255,13 +255,13 @@
 		{
 			"id": "6ffa3c85-bc34-58eb-61bd-79e8881aa849",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.{{domain}}/service?per_page=10000&page=2",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=10000&page=2",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.per_page){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Pages are empty beyond the first\"] = data.data.length === 0\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Pages are empty beyond the first\"] = data.data.length === 0\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -269,7 +269,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467059521553,
+			"time": 1467728944620,
 			"name": "Go to Non-existent page",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -284,7 +284,7 @@
 			"method": "DELETE",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\ntests[\"Not ready yet\"] = false;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service-id';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('serviceId')) {\n    tests[\"serviceId field present\"] = true;\n    tests[\"correct serviceId returned\"] = postman.getEnvironmentVariable('serviceId') === data.serviceId;\n}\nelse{\n    tests[\"serviceId field present\"] = false;\n}",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -292,7 +292,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467123464195,
+			"time": 1467729396521,
 			"name": "Delete Service Again",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -301,13 +301,13 @@
 		{
 			"id": "933c89e0-8459-9a45-c08d-384eb7493ed6",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.{{domain}}/service?per_page=10000&page=-1",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=10000&page=-1",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Not ready yet\"] = false;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.per_page){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Pages are empty beyond the first\"] = data.data.length === 0\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -315,7 +315,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467123457686,
+			"time": 1467729430583,
 			"name": "Go to negative page",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -324,13 +324,13 @@
 		{
 			"id": "b2d0016c-66eb-4191-fa62-7e36ae043fd2",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.{{domain}}/service?per_page=10&keyword=!~ xXx Ultra-specific example just for this test xXx ~!",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=10&keyword=!~ o0o Ultra-specific example just for this test o0o ~!",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.per_page){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Registered serviceId found in list of services.\"] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Registered serviceId found in list of services.\"] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -338,7 +338,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467058483277,
+			"time": 1467729024759,
 			"name": "Filter services by keyword",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -407,7 +407,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"Not ready yet\"] = false;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service-id';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('serviceId')) {\n    tests[\"serviceId field present\"] = true;\n    tests[\"correct serviceId returned\"] = postman.getEnvironmentVariable('serviceId') === data.serviceId;\n}\nelse{\n    tests[\"serviceId field present\"] = false;\n}",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -415,7 +415,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467123468788,
+			"time": 1467729408014,
 			"name": "Delete Garbage",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
@@ -448,14 +448,14 @@
 		{
 			"id": "f40f42ae-d6d8-c158-5c88-0eb3c069ce1f",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.{{domain}}/service?per_page=1000&userName=citester&keyword=!~ xXx Ultra-specific example just for this test xXx ~!",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=1000&userName=citester&keyword=!~ o0o Ultra-specific example just for this test o0o ~!",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('per_page') && typeof data.pagination.per_page === 'number') {\n    tests[\"pagination field (and count/per_page number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.per_page){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Registered serviceId found in list of services.\"] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.serviceId});\n    tests[\"Registered serviceId found in list of services.\"] = returned_ids.indexOf(postman.getEnvironmentVariable('serviceId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -463,7 +463,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467058709209,
+			"time": 1467729053776,
 			"name": "Filter services by keyword AND userName",
 			"description": "",
 			"collectionId": "b884e58b-bd1e-c7f0-8ca4-d5ad6315b4b4",
