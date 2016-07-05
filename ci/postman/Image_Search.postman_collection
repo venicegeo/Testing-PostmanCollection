@@ -271,7 +271,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"Message states that a discovery request must contain a bounding box\"] = (responseBody.has(\"contain\") && responseBody.has(/[bB]ounding [bB]ox/));",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"Message states that a discovery request must contain a bounding box\"] = (responseBody.has(\"contain\") && responseBody.match(/[bB]ounding [bB]ox/));",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -279,7 +279,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467378207963,
+			"time": 1467734070021,
 			"name": "Image Search w/o BB",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
