@@ -19,7 +19,7 @@ echo $envfile
 
 [ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-cmd="newman -e $envfile -c"
+cmd="newman -e $envfile -c -x"
 
 for f in $(ls -1 $base/postman/*postman_collection); do
 echo $f	
