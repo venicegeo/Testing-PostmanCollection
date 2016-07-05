@@ -25,8 +25,7 @@ latch=0
 
 for f in $(ls -1 $base/postman/*postman_collection); do
 echo $f	
-  $cmd $f
-  resp="$?"
+  ($cmd $f); resp="$?"
   echo $resp
   #send mail if return value of last command is not 0
 	if [ $resp -ne "0" ];then
