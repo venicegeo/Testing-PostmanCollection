@@ -27,12 +27,17 @@ for f in $(ls -1 $base/postman/*postman_collection); do
 echo $f	
   $cmd $f
   resp="$?"
+  echo $resp
   #send mail if return value of last command is not 0
 	if [ $resp -ne "0" ];then
 		latch=1
+		echo "$latch"
 	# 	mail -s "$SUBJ" $RCVR < /dev/null  
 	fi
 done
+
+echo "OUT OF LOOP"
+echo "$latch"
 
 exit $latch
    #awm	
