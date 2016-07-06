@@ -35,7 +35,7 @@ done
 echo "OUT OF LOOP"
 echo "$latch"
 
-if ["$latch" -eq "1"]; then
+if [ "$latch" -eq "1" ]; then
 	mail -s "$SUBJ" $RCVR < /dev/null
 	echo "mail sent!"
 fi
