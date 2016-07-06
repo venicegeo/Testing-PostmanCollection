@@ -34,7 +34,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job is cancelled\"] = data.status === 'Cancelled';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobType')) {\n    tests[\"jobType field present in output\"] = true;\n    tests[\"Correct jobType\"] = data.jobType === 'execute-service';\n}\nelse {\n    tests[\"jobType field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"Correct jobId used\"] = data.jobId === postman.getEnvironmentVariable('jobId');\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -42,7 +42,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467298187238,
+			"time": 1467728267963,
 			"name": "Check Job Status - Cancelled",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
@@ -96,7 +96,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job is running\"] = data.status === 'Running';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobType')) {\n    tests[\"jobType field present in output\"] = true;\n    tests[\"Correct jobType\"] = data.jobType === 'execute-service';\n}\nelse {\n    tests[\"jobType field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"Correct jobId used\"] = data.jobId === postman.getEnvironmentVariable('jobId');\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job is running\"] = data.status === 'Success';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobType') && typeof data.jobType === 'string') {\n    tests[\"jobType string field present in output\"] = true;\n    tests[\"Correct jobType\"] = data.jobType.match(/[eE]xecute.*[sS]ervice/);\n}\nelse {\n    tests[\"jobType string field present in output\"] = false;\n}\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"Correct jobId used\"] = data.jobId === postman.getEnvironmentVariable('jobId');\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -104,8 +104,8 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467297902708,
-			"name": "Check Job Status - Running",
+			"time": 1467732471366,
+			"name": "Check Job Status - Success",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
 			"responses": []
@@ -120,7 +120,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Not ready\"] = false;",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -128,7 +128,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467297893648,
+			"time": 1467727621266,
 			"name": "Rerun Job",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
@@ -152,7 +152,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467312623495,
+			"time": 1467725735577,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
@@ -220,7 +220,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"Not Ready.  Pending bug fix.\"] = false;",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -228,7 +228,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467310292074,
+			"time": 1467728109777,
 			"name": "Cancel Fake Job",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
@@ -268,7 +268,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var data = JSON.parse(responseBody);\nfunction pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\nif (data.hasOwnProperty('jobId') && typeof data.jobId === 'string') {\n    tests[\"jobId string field present in output\"] = true;\n    tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.jobId);\n    pausecomp(0);\n}\nelse {\n    tests[\"jobId string field present in output\"] = false;\n}\npostman.setEnvironmentVariable('serviceId',postman.getEnvironmentVariable('serviceId').replace(/\"/g,'')); // Remove quotes from serviceId for later tests.",
+			"tests": "var data = JSON.parse(responseBody);\nfunction pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\nif (data.hasOwnProperty('jobId') && typeof data.jobId === 'string') {\n    tests[\"jobId string field present in output\"] = true;\n    tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.jobId);\n    pausecomp(1000);\n}\nelse {\n    tests[\"jobId string field present in output\"] = false;\n}\npostman.setEnvironmentVariable('serviceId',postman.getEnvironmentVariable('serviceId').replace(/\"/g,'')); // Remove quotes from serviceId for later tests.",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -276,12 +276,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467312617605,
+			"time": 1467727548257,
 			"name": "Create Job",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
 			"responses": [],
-			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutputs\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": {{serviceId}}\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
+			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": {{serviceId}}\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
 			"id": "d4e3c996-5af5-edb2-12e3-6a16ae7c5c0e",
@@ -293,7 +293,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"Mot ready.  Pending Bug Fix\"] = false;\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"Correct jobId used\"] = data.jobId === 'FakeJob';\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}\nif (data.hasOwnProperty('message')) {\n    tests[\"message field present in output\"] = true;\n    tests[\"'Job Not Found' message\"] = data.message === 'Job Not Found.';\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -301,7 +301,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467310000025,
+			"time": 1467728104858,
 			"name": "Check Job Status - Fake Job",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
