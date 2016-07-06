@@ -6,17 +6,21 @@
 		"98db8861-22bc-0725-4ec9-739246304d35",
 		"5c5db674-31d6-0e90-3d84-b4ddbc228f81",
 		"2d5c396e-97a7-362f-a83e-6ad319cad70a",
-		"839412da-3305-8c45-648a-20fb6c083f65",
-		"abc1a9c6-50a7-479b-7ea1-a24b03f9e79f",
 		"bbe362f8-64a2-a4bf-868c-d36b5751c47b",
 		"19d43aaf-d963-300b-6915-939babaf2c27",
-		"58cabb3a-b3f1-a5e8-f99b-aa03ea0f87bc"
+		"58cabb3a-b3f1-a5e8-f99b-aa03ea0f87bc",
+		"c78581ff-d0f7-30c3-8402-ae44cc54200e",
+		"abc1a9c6-50a7-479b-7ea1-a24b03f9e79f",
+		"839412da-3305-8c45-648a-20fb6c083f65",
+		"ebea03f6-7e99-c422-2b8b-f979c49a78c9",
+		"db6733c8-89a5-f2c8-a691-b3734cd07d19"
 	],
 	"folders": [],
 	"timestamp": 1466455343207,
 	"owner": "699425",
 	"remoteLink": "",
 	"public": false,
+	"published": false,
 	"requests": [
 		{
 			"id": "19d43aaf-d963-300b-6915-939babaf2c27",
@@ -100,7 +104,7 @@
 			"data": [
 				{
 					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
 					"type": "text",
 					"enabled": true
 				},
@@ -120,7 +124,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1466526665326,
+			"time": 1467816137244,
 			"name": "Load File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -190,7 +194,7 @@
 			"data": [
 				{
 					"key": "file",
-					"value": "../test-resources/cropped.tif",
+					"value": "cropped.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -230,6 +234,98 @@
 			},
 			"time": 1466519612421,
 			"name": "Download File",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "c78581ff-d0f7-30c3-8402-ae44cc54200e",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "cropped.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1467815891929,
+			"name": "Load File w/o Auth",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "db6733c8-89a5-f2c8-a691-b3734cd07d19",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "cropped.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467819434629,
+			"name": "Load File w/ Wrong Type",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "ebea03f6-7e99-c422-2b8b-f979c49a78c9",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nfileName: dummyName.TIF\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467819428966,
+			"name": "Download File after Delete",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
 			"responses": []
