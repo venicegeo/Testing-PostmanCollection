@@ -110,7 +110,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../test-resources/cropped.tif",
+					"value": "../test-resources/0-blackbox/somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
