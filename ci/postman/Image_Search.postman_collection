@@ -8,6 +8,7 @@
 		"9224eab5-ec4f-3ba5-54c3-551c744ffa25",
 		"5cca6db2-e69d-cf24-5a9c-d0dd6b1c8fa5",
 		"ec6f1837-99ca-cb4b-c998-f5a3e2d2242b",
+		"844217df-6695-66ee-9cfc-e46b990628f7",
 		"2e0a2c92-30d6-a054-1f42-59b97f911c70",
 		"35fbe291-3284-a941-df66-b94473dce848",
 		"b20e5580-2317-2939-23a0-6658a5c6f46e",
@@ -33,7 +34,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"Message mentions bad value in bounding box.\"] = responseBody.match(/[Bb]ox/);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -41,7 +42,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467732825384,
+			"time": 1467809264610,
 			"name": "Image Search w/ String BB",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
@@ -81,7 +82,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-image-catalog url', '');\npostman.setEnvironmentVariable('initial BB', '100,-60,140,-10');\npostman.setEnvironmentVariable('cloudCover', 4);\npostman.setEnvironmentVariable('acquiredDate', '2016-06-20T00:00:01Z');\npostman.setEnvironmentVariable('bands', 'swir1,coastal');\npostman.setEnvironmentVariable('count', 500);\npostman.setEnvironmentVariable('count_test', 42);\npostman.setEnvironmentVariable('randomCC', Math.random() * 10 + 5); // This tries to make \"Image Search Pagination 1\" a new search that doesn't reuse an old search.",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-image-catalog url', '');\npostman.setEnvironmentVariable('initial BB', '100,-60,140,-10');\npostman.setEnvironmentVariable('cloudCover', 4);\npostman.setEnvironmentVariable('acquiredDate', '2016-06-20T00:00:01Z');\npostman.setEnvironmentVariable('maxAcquiredDate', '2016-06-30T00:00:01Z');\npostman.setEnvironmentVariable('bands', 'swir1,coastal');\npostman.setEnvironmentVariable('count', 500);\npostman.setEnvironmentVariable('count_test', 42);\npostman.setEnvironmentVariable('randomCC', Math.random() * 10 + 5); // This tries to make \"Image Search Pagination 1\" a new search that doesn't reuse an old search.",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -89,7 +90,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467401430571,
+			"time": 1467810794871,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
@@ -98,14 +99,14 @@
 		{
 			"id": "35fbe291-3284-a941-df66-b94473dce848",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "{{pzsvc-image-catalog url}}/discover?bbox={{initial BB}}&bands={{bands}}&cloudCover={{cloudCover}}&acquiredDate={{acquiredDate}}&count={{count}}",
+			"url": "{{pzsvc-image-catalog url}}/discover?bbox={{initial BB}}&bands={{bands}}&cloudCover={{cloudCover}}&acquiredDate={{acquiredDate}}&count={{count}}&maxAcquiredDate={{maxAcquiredDate}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "function inBox(coord, BB) {\n    var minLat = Number(BB[0]);\n    var minLon = Number(BB[1]);\n    var maxLat = Number(BB[2]);\n    var maxLon = Number(BB[3]);\n    return (coord[0] >= minLat && coord[0] <= maxLat && coord[1] >= minLon && coord[1] <= maxLon);\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        var BB = postman.getEnvironmentVariable('initial BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.geometry field present in output\"] = true;\n                if (data.images.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.images.features[i].geometry.coordinates)) {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = true;\n                }\n                else {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('properties')) {\n                tests[\"images.features.properties field present in output\"] = true;\n                if (data.images.features[i].properties.hasOwnProperty('acquiredDate')) {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = true;\n                    var search_date = Date.parse(postman.getEnvironmentVariable('acquiredDate'));\n                    var image_date = Date.parse(data.images.features[i].properties.acquiredDate);\n                    tests[\"Images were acquired after the specified date\"] = image_date >= search_date;\n                }\n                else {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('cloudCover') && !isNaN(data.images.features[i].properties.cloudCover)) {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = true;\n                    tests[\"CloudCover is less than or equal to the queried value\"] = data.images.features[i].properties.cloudCover <= postman.getEnvironmentVariable('cloudCover');\n                }\n                else {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('bands')) {\n                    tests[\"images.features.properties.bands field present in output\"] = true;\n                    var bands = postman.getEnvironmentVariable('bands').split(',');\n                    for (var j in bands) {\n                        tests[\"requested band '\" + bands[j] + \"' found in all images.\"] = data.images.features[i].properties.bands.hasOwnProperty(bands[j]);\n                    }\n                }\n                else {\n                    tests[\"images.features.properties.bands field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.properties field present in output\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"tests": "function inBox(coord, BB) {\n    var minLat = Number(BB[0]);\n    var minLon = Number(BB[1]);\n    var maxLat = Number(BB[2]);\n    var maxLon = Number(BB[3]);\n    return (coord[0] >= minLat && coord[0] <= maxLat && coord[1] >= minLon && coord[1] <= maxLon);\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        var BB = postman.getEnvironmentVariable('initial BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.geometry field present in output\"] = true;\n                if (data.images.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.images.features[i].geometry.coordinates)) {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = true;\n                }\n                else {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('properties')) {\n                tests[\"images.features.properties field present in output\"] = true;\n                if (data.images.features[i].properties.hasOwnProperty('acquiredDate')) {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = true;\n                    var min_search_date = Date.parse(postman.getEnvironmentVariable('acquiredDate'));\n                    var max_search_date = Date.parse(postman.getEnvironmentVariable('maxAcquiredDate'));\n                    var image_date = Date.parse(data.images.features[i].properties.acquiredDate);\n                    tests[\"Images were within the specified date\"] = image_date >= min_search_date && image_date <= max_search_date;\n                }\n                else {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('cloudCover') && !isNaN(data.images.features[i].properties.cloudCover)) {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = true;\n                    tests[\"CloudCover is less than or equal to the queried value\"] = data.images.features[i].properties.cloudCover <= postman.getEnvironmentVariable('cloudCover');\n                }\n                else {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('bands')) {\n                    tests[\"images.features.properties.bands field present in output\"] = true;\n                    var bands = postman.getEnvironmentVariable('bands').split(',');\n                    for (var j in bands) {\n                        tests[\"requested band '\" + bands[j] + \"' found in all images.\"] = data.images.features[i].properties.bands.hasOwnProperty(bands[j]);\n                    }\n                }\n                else {\n                    tests[\"images.features.properties.bands field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.properties field present in output\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -113,7 +114,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467733573311,
+			"time": 1467810942915,
 			"name": "w/ All Params",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
@@ -192,6 +193,30 @@
 			}
 		},
 		{
+			"id": "844217df-6695-66ee-9cfc-e46b990628f7",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "{{pzsvc-image-catalog url}}/discover?bbox={{initial BB}}&maxAcquiredDate={{maxAcquiredDate}}&count={{count}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('properties')) {\n                tests[\"images.features.properties field present in output\"] = true;\n                if (data.images.features[i].properties.hasOwnProperty('acquiredDate')) {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = true;\n                    var search_date = Date.parse(postman.getEnvironmentVariable('maxAcquiredDate'));\n                    var image_date = Date.parse(data.images.features[i].properties.acquiredDate);\n                    tests[\"Images were acquired after the specified date\"] = image_date <= search_date;\n                }\n                else {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.properties field present in output\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467810722050,
+			"name": "w/ maxAcquiredDate",
+			"description": "",
+			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
+			"responses": []
+		},
+		{
 			"id": "9224eab5-ec4f-3ba5-54c3-551c744ffa25",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
 			"url": "{{pzsvc-image-catalog url}}/discover?bbox={{initial BB}}&count={{count}}",
@@ -224,7 +249,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"Message mentions order of values in bounding box.\"] = responseBody.match(/[Oo]rder/) && responseBody.match(/[Bb]ox/);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -232,7 +257,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467732818507,
+			"time": 1467809176918,
 			"name": "Image Search w/ Bad BB",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
