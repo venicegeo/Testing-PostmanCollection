@@ -27,7 +27,7 @@ set -e
 
 for f in $(ls -1 $base/postman/*postman_collection); do
 	echo $f
-	$cmd $f || {latch=1; True}
+	$cmd $f || {latch=1; true}
 	echo $latch
   #$cmd $f || true
   #resp="$?"
