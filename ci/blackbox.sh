@@ -26,17 +26,19 @@ latch=0
 set -e
 
 for f in $(ls -1 $base/postman/*postman_collection); do
-echo $f	
+	echo $f
+	$cmd $f || {latch=1; True}
+	echo $latch
   #$cmd $f || true
   #resp="$?"
   #echo $resp
   #send mail if return value of last command is not 0
 	# if [ $resp -ne "0" ];then
-	if [ ! $cmd $f ];then
-		latch=1
-		echo "$latch"
-	# 	mail -s "$SUBJ" $RCVR < /dev/null  
-	fi
+	# if [ ! $cmd $f ];then
+	# 	latch=1
+	# 	echo "$latch"
+	# # 	mail -s "$SUBJ" $RCVR < /dev/null  
+	# fi
 done
 
 echo "OUT OF LOOP"
