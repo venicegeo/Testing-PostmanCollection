@@ -28,12 +28,17 @@ set -e
 for f in $(ls -1 $base/postman/*postman_collection); do
 	echo $f
 	#Try the command first.  If it returns an error, latch & e-mail.
-	$cmd $f || latch=1; mail -s "$SUBJ" $RCVR < /dev/null; echo "mail sent!"
+	$cmd $f || latch=1
 	echo $latch
 done
 
 echo "OUT OF LOOP"
 echo "$latch"
+
+if [$latch -eq 1]; then
+	mail -s "$SUBJ" $RCVR < /dev/null
+	echo "mail sent!"
+fi
 
 #Return an overall error if any collections failed.
 exit $latch
