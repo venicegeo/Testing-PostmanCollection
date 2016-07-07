@@ -15,7 +15,10 @@
 		"6a913981-987d-792e-1088-a7308a9624b9",
 		"e24c4a1b-f3ce-a755-bf37-506f8efe11ef",
 		"98e4a008-0331-81a3-bcf1-b393c2b6586f",
-		"23bad0ae-40e6-37c9-b744-0d94dfaf1cfd"
+		"23bad0ae-40e6-37c9-b744-0d94dfaf1cfd",
+		"442b1505-e6eb-b67a-62c4-8ec9ae429156",
+		"9ad710c6-5b34-f961-1a02-3ad0d79e2cf8",
+		"514a794e-2f8e-6d6a-0f95-8780e0d3a8da"
 	],
 	"folders": [],
 	"timestamp": 1467321289055,
@@ -82,7 +85,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-image-catalog url', '');\npostman.setEnvironmentVariable('initial BB', '100,-60,140,-10');\npostman.setEnvironmentVariable('cloudCover', 4);\npostman.setEnvironmentVariable('acquiredDate', '2016-06-20T00:00:01Z');\npostman.setEnvironmentVariable('maxAcquiredDate', '2016-06-30T00:00:01Z');\npostman.setEnvironmentVariable('bands', 'swir1,coastal');\npostman.setEnvironmentVariable('count', 500);\npostman.setEnvironmentVariable('count_test', 42);\npostman.setEnvironmentVariable('randomCC', Math.random() * 10 + 5); // This tries to make \"Image Search Pagination 1\" a new search that doesn't reuse an old search.",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-image-catalog url', '');\npostman.setEnvironmentVariable('initial BB', '-150,-60,-90,-10');\npostman.setEnvironmentVariable('cloudCover', 25);\npostman.setEnvironmentVariable('acquiredDate', '2016-06-01T00:00:01Z');\npostman.setEnvironmentVariable('maxAcquiredDate', '2016-06-30T00:00:01Z');\npostman.setEnvironmentVariable('bands', 'swir1,coastal');\npostman.setEnvironmentVariable('count', 900);\npostman.setEnvironmentVariable('count_test', 42);\npostman.setEnvironmentVariable('randomCC', Math.random() * 10 + 5); // This tries to make \"Image Search Pagination 1\" a new search that doesn't reuse an old search.\npostman.setEnvironmentVariable('part1 count', '');\npostman.setEnvironmentVariable('pos dateline BB', '178,-80,180,80');\npostman.setEnvironmentVariable('neg dateline BB', '-180,-80,-178,80');",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -90,7 +93,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467810794871,
+			"time": 1467921304340,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
@@ -106,7 +109,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "function inBox(coord, BB) {\n    var minLat = Number(BB[0]);\n    var minLon = Number(BB[1]);\n    var maxLat = Number(BB[2]);\n    var maxLon = Number(BB[3]);\n    return (coord[0] >= minLat && coord[0] <= maxLat && coord[1] >= minLon && coord[1] <= maxLon);\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        var BB = postman.getEnvironmentVariable('initial BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.geometry field present in output\"] = true;\n                if (data.images.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.images.features[i].geometry.coordinates)) {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = true;\n                }\n                else {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('properties')) {\n                tests[\"images.features.properties field present in output\"] = true;\n                if (data.images.features[i].properties.hasOwnProperty('acquiredDate')) {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = true;\n                    var min_search_date = Date.parse(postman.getEnvironmentVariable('acquiredDate'));\n                    var max_search_date = Date.parse(postman.getEnvironmentVariable('maxAcquiredDate'));\n                    var image_date = Date.parse(data.images.features[i].properties.acquiredDate);\n                    tests[\"Images were within the specified date\"] = image_date >= min_search_date && image_date <= max_search_date;\n                }\n                else {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('cloudCover') && !isNaN(data.images.features[i].properties.cloudCover)) {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = true;\n                    tests[\"CloudCover is less than or equal to the queried value\"] = data.images.features[i].properties.cloudCover <= postman.getEnvironmentVariable('cloudCover');\n                }\n                else {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('bands')) {\n                    tests[\"images.features.properties.bands field present in output\"] = true;\n                    var bands = postman.getEnvironmentVariable('bands').split(',');\n                    for (var j in bands) {\n                        tests[\"requested band '\" + bands[j] + \"' found in all images.\"] = data.images.features[i].properties.bands.hasOwnProperty(bands[j]);\n                    }\n                }\n                else {\n                    tests[\"images.features.properties.bands field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.properties field present in output\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"tests": "function checkIntersection(imgBB, srcBB) {\n    var latIntersect = (imgBB[0] >= srcBB[0] && imgBB[0] <= srcBB[2]) || (srcBB[0] >= imgBB[0] && srcBB[0] <= imgBB[2]);\n    var lonIntersect = (imgBB[1] >= srcBB[1] && imgBB[1] <= srcBB[3]) || (srcBB[1] >= imgBB[1] && srcBB[1] <= imgBB[3]);\n    return latIntersect && lonIntersect;\n}\n\nfunction adjBBs(imgBB, srcBB) {\n    if (imgBB[0] > imgBB[2]) {\n        imgBB[2] += 360;\n        if (srcBB[0] < 0) {\n            srcBB[0] += 360;\n        }\n        if (srcBB[2] < 0) {\n            srcBB[2] += 360;\n        }\n    }\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output and is not empty\"] = true;\n        var origBB = postman.getEnvironmentVariable('initial BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.bbox field present in output and is an Array\"] = true;\n                var imgBB = data.images.features[i].bbox;\n                var srcBB = origBB.map(Number);\n                adjBBs(imgBB, srcBB);\n                if (checkIntersection(imgBB, srcBB)) {\n                    tests[\"All images intersect the specified BB\"] = true;\n                }\n                else {\n                    tests[\"All images intersect the specified BB ///// Bad Timestamp: \" + data.images.features[i].properties.acquiredDate] = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('properties')) {\n                tests[\"images.features.properties field present in output\"] = true;\n                if (data.images.features[i].properties.hasOwnProperty('acquiredDate')) {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = true;\n                    var min_search_date = Date.parse(postman.getEnvironmentVariable('acquiredDate'));\n                    var max_search_date = Date.parse(postman.getEnvironmentVariable('maxAcquiredDate'));\n                    var image_date = Date.parse(data.images.features[i].properties.acquiredDate);\n                    tests[\"Images were within the specified date\"] = image_date >= min_search_date && image_date <= max_search_date;\n                }\n                else {\n                    tests[\"images.features.properties.acquiredDate field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('cloudCover') && !isNaN(data.images.features[i].properties.cloudCover)) {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = true;\n                    tests[\"CloudCover is less than or equal to the queried value\"] = data.images.features[i].properties.cloudCover <= postman.getEnvironmentVariable('cloudCover');\n                }\n                else {\n                    tests[\"images.features.properties.cloudCover numeric field present in output\"] = false;\n                }\n                if (data.images.features[i].properties.hasOwnProperty('bands')) {\n                    tests[\"images.features.properties.bands field present in output\"] = true;\n                    var bands = postman.getEnvironmentVariable('bands').split(',');\n                    for (var j in bands) {\n                        tests[\"requested band '\" + bands[j] + \"' found in all images.\"] = data.images.features[i].properties.bands.hasOwnProperty(bands[j]);\n                    }\n                }\n                else {\n                    tests[\"images.features.properties.bands field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.properties field present in output\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output and is not empty\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -114,8 +117,55 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467810942915,
+			"time": 1467918958257,
 			"name": "w/ All Params",
+			"description": "",
+			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
+			"responses": []
+		},
+		{
+			"id": "442b1505-e6eb-b67a-62c4-8ec9ae429156",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "{{pzsvc-image-catalog url}}/discover?bbox={{initial BB}}&count={{count}}&acquiredDate=2016-01-31T15:04:05",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"Problem with 'acquiredDate'\"] = responseBody.has('acquiredDate');",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467814728189,
+			"name": "Image Search w/ bad AcquiredDate",
+			"description": "",
+			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
+			"responses": []
+		},
+		{
+			"id": "514a794e-2f8e-6d6a-0f95-8780e0d3a8da",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "{{pzsvc-image-catalog url}}/discover?bbox={{neg dateline BB}}&count={{count}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "function checkIntersection(imgBB, srcBB) {\n    var latIntersect = (imgBB[0] >= srcBB[0] && imgBB[0] <= srcBB[2]) || (srcBB[0] >= imgBB[0] && srcBB[0] <= imgBB[2]);\n    var lonIntersect = (imgBB[1] >= srcBB[1] && imgBB[1] <= srcBB[3]) || (srcBB[1] >= imgBB[1] && srcBB[1] <= imgBB[3]);\n    return latIntersect && lonIntersect;\n}\n\nfunction adjBBs(imgBB, srcBB) {\n    if (imgBB[0] > imgBB[2]) {\n        imgBB[2] += 360;\n        if (srcBB[0] < 0) {\n            srcBB[0] += 360;\n        }\n        if (srcBB[2] < 0) {\n            srcBB[2] += 360;\n        }\n    }\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"A MultiPolygon image was found.\"] = responseBody.has('MultiPolygon');\n\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        var origBB = postman.getEnvironmentVariable('neg dateline BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.geometry field present in output\"] = true;\n                if (data.images.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.images.features[i].geometry.coordinates)) {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = true;\n                }\n                else {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('bbox') && Array.isArray(data.images.features[i].bbox)) {\n                tests[\"images.features.bbox field present in output and is an Array\"] = true;\n                var imgBB = data.images.features[i].bbox;\n                var srcBB = origBB.map(Number);\n                adjBBs(imgBB, srcBB);\n                if (checkIntersection(imgBB, srcBB)) {\n                    tests[\"All images intersect the specified BB\"] = true;\n                }\n                else {\n                    tests[\"All images intersect the specified BB ///// Bad Timestamp: \" + data.images.features[i].properties.acquiredDate] = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"images.features.bbox field present in output and is an Array\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467921360405,
+			"name": "Image Search - Negative dateline",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
 			"responses": []
@@ -225,7 +275,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "function inBox(coord, BB) {\n    var minLat = Number(BB[0]);\n    var minLon = Number(BB[1]);\n    var maxLat = Number(BB[2]);\n    var maxLon = Number(BB[3]);\n    return (coord[0] >= minLat && coord[0] <= maxLat && coord[1] >= minLon && coord[1] <= maxLon);\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        var BB = postman.getEnvironmentVariable('initial BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.geometry field present in output\"] = true;\n                if (data.images.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.images.features[i].geometry.coordinates)) {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = true;\n                }\n                else {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('bbox') && Array.isArray(data.images.features[i].bbox)) {\n                tests[\"images.features.bbox field present in output and is an Array\"] = true;\n                var imgBB = data.images.features[i].bbox;\n                // Check that at least one corder of the image's BB falls within the search BB.\n                if (inBox([imgBB[0], imgBB[1]], BB) || inBox([imgBB[0], imgBB[3]], BB) || inBox([imgBB[2], imgBB[1]], BB) || inBox([imgBB[2], imgBB[3]], BB)) {\n                    tests[\"All images intersect the specified BB\"] = true;\n                }\n                else {\n                    tests[\"All images intersect the specified BB: \" + data.images.features[i].properties.acquiredDate] = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"images.features.bbox field present in output and is an Array\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"tests": "function checkIntersection(imgBB, srcBB) {\n    var latIntersect = (imgBB[0] >= srcBB[0] && imgBB[0] <= srcBB[2]) || (srcBB[0] >= imgBB[0] && srcBB[0] <= imgBB[2]);\n    var lonIntersect = (imgBB[1] >= srcBB[1] && imgBB[1] <= srcBB[3]) || (srcBB[1] >= imgBB[1] && srcBB[1] <= imgBB[3]);\n    return latIntersect && lonIntersect;\n}\n\nfunction adjBBs(imgBB, srcBB) {\n    if (imgBB[0] > imgBB[2]) {\n        imgBB[2] += 360;\n        if (srcBB[0] < 0) {\n            srcBB[0] += 360;\n        }\n        if (srcBB[2] < 0) {\n            srcBB[2] += 360;\n        }\n    }\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        var origBB = postman.getEnvironmentVariable('initial BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.geometry field present in output\"] = true;\n                if (data.images.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.images.features[i].geometry.coordinates)) {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = true;\n                }\n                else {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('bbox') && Array.isArray(data.images.features[i].bbox)) {\n                tests[\"images.features.bbox field present in output and is an Array\"] = true;\n                var imgBB = data.images.features[i].bbox;\n                var srcBB = origBB.map(Number);\n                adjBBs(imgBB, srcBB);\n                if (checkIntersection(imgBB, srcBB)) {\n                    tests[\"All images intersect the specified BB\"] = true;\n                }\n                else {\n                    tests[\"All images intersect the specified BB ///// Bad Timestamp: \" + data.images.features[i].properties.acquiredDate] = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"images.features.bbox field present in output and is an Array\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -233,7 +283,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467733533944,
+			"time": 1467919328362,
 			"name": "Image Search",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
@@ -259,6 +309,29 @@
 			},
 			"time": 1467809176918,
 			"name": "Image Search w/ Bad BB",
+			"description": "",
+			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
+			"responses": []
+		},
+		{
+			"id": "9ad710c6-5b34-f961-1a02-3ad0d79e2cf8",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "{{pzsvc-image-catalog url}}/discover?bbox={{pos dateline BB}}&count={{count}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "function checkIntersection(imgBB, srcBB) {\n    var latIntersect = (imgBB[0] >= srcBB[0] && imgBB[0] <= srcBB[2]) || (srcBB[0] >= imgBB[0] && srcBB[0] <= imgBB[2]);\n    var lonIntersect = (imgBB[1] >= srcBB[1] && imgBB[1] <= srcBB[3]) || (srcBB[1] >= imgBB[1] && srcBB[1] <= imgBB[3]);\n    return latIntersect && lonIntersect;\n}\n\nfunction adjBBs(imgBB, srcBB) {\n    if (imgBB[0] > imgBB[2]) {\n        imgBB[2] += 360;\n        if (srcBB[0] < 0) {\n            srcBB[0] += 360;\n        }\n        if (srcBB[2] < 0) {\n            srcBB[2] += 360;\n        }\n    }\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"A MultiPolygon image was found.\"] = responseBody.has('MultiPolygon');\n\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features) && data.images.features.length > 0){\n        tests[\"images.features array field present in output\"] = true;\n        var origBB = postman.getEnvironmentVariable('pos dateline BB').split(',');\n        for (i = 0; i < data.images.features.length; i++) {\n            if (data.images.features[i].hasOwnProperty('geometry')) {\n                tests[\"images.features.geometry field present in output\"] = true;\n                if (data.images.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.images.features[i].geometry.coordinates)) {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = true;\n                }\n                else {\n                    tests[\"images.features.geometry.coordiantes field present in output and is an Array\"] = false;\n                }\n            }\n            else {\n                tests[\"images.features.geometry field present in output\"] = false;\n            }\n            if (data.images.features[i].hasOwnProperty('bbox') && Array.isArray(data.images.features[i].bbox)) {\n                tests[\"images.features.bbox field present in output and is an Array\"] = true;\n                var imgBB = data.images.features[i].bbox;\n                var srcBB = origBB.map(Number);\n                adjBBs(imgBB, srcBB);\n                if (checkIntersection(imgBB, srcBB)) {\n                    tests[\"All images intersect the specified BB\"] = true;\n                }\n                else {\n                    tests[\"All images intersect the specified BB ///// Bad Timestamp: \" + data.images.features[i].properties.acquiredDate] = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"images.features.bbox field present in output and is an Array\"] = false;\n            }\n        }\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467921289648,
+			"name": "Image Search - Positive dateline",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
 			"responses": []
