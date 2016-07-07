@@ -10,7 +10,10 @@
 		"230a2d11-34f2-ee2d-7a30-f09120c1a34f",
 		"91e3475d-5b2a-f51c-217f-1d5ad9e0a378",
 		"734027c6-7b89-4111-bc80-fd11e7b4c403",
-		"fc4b0bab-7c41-0173-0347-e8bca853dac4"
+		"4972e73b-d3c7-9e6f-e70d-72d805704836",
+		"e448acf5-78c1-92f5-f5bc-369f73bacea9",
+		"d08e38d6-174a-9f72-0f1c-7cc95fdf506f",
+		"bb45e443-6ac6-033d-1fe9-3765648fe057"
 	],
 	"folders": [],
 	"timestamp": 1467139962611,
@@ -29,7 +32,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    if (data.data[0].hasOwnProperty('resourceMetadata')) {\n        tests[\"data[0].resourceMetadata field present in output\"] = true;\n        if (data.data[0].resourceMetadata.hasOwnProperty('name')) {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = true;\n            postman.setEnvironmentVariable('Algorithm Name',data.data[0].resourceMetadata.name);\n            // postman.setEnvironmentVariable('Algorithm Name','pzsvc-ossim');\n        }\n        else {\n            tests[\"data[0].resourceMetadata.name field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data[0].resourceMetadata field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    if (data.data[0].hasOwnProperty('resourceMetadata')) {\n        tests[\"data[0].resourceMetadata field present in output\"] = true;\n        if (data.data[0].resourceMetadata.hasOwnProperty('metadata')) {\n            tests[\"data[0].resourceMetadata.metadata field present in output\"] = true;\n            if (data.data[0].resourceMetadata.metadata.hasOwnProperty('Interface')) {\n                tests[\"data[0].resourceMetadata.metadata.Interface field present in output\"] = true;\n                postman.setEnvironmentVariable('Algorithm Name',data.data[0].resourceMetadata.metadata.Interface);\n            }\n            else {\n                tests[\"data[0].resourceMetadata.metadata.Interface field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data[0].resourceMetadata.metadata field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data[0].resourceMetadata field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -37,7 +40,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467210065720,
+			"time": 1467902219427,
 			"name": "Find available shoreline algorithms",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -46,13 +49,13 @@
 		{
 			"id": "230a2d11-34f2-ee2d-7a30-f09120c1a34f",
 			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "{{pzsvc-image-catalog url}}/discover?bbox=114,-34,116,-30&cloudCover=1",
+			"url": "{{pzsvc-image-catalog url}}/discover?bbox=116,-33,117,-29&cloudCover=1",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features)){\n        tests[\"images.features array field present in output\"] = true;\n        var formatted_JSON = JSON.stringify(data.images.features[0]).replace(/\"/g, '\\\\\"');\n        var content = '\"{\\\\\"algoType\\\\\": \\\\\"' + postman.getEnvironmentVariable('Algorithm Name') + '\\\\\",\\\\\"svcURL\\\\\": \\\\\"' + postman.getEnvironmentVariable('pzsvc-ossim domain') + '\\\\\",\\\\\"pzAuthToken\\\\\": \\\\\"Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\\\\\",\\\\\"pzAddr\\\\\": \\\\\"' + postman.getEnvironmentVariable('pz-gateway domain') + '\\\\\",\\\\\"dbAuthToken\\\\\": \\\\\"ZZZZ\\\\\",\\\\\"bands\\\\\": [\\\\\"green\\\\\",\\\\\"swir1\\\\\"],\\\\\"metaDataJSON\\\\\":' + formatted_JSON + '}\"';\n        postman.setEnvironmentVariable('Formatted Content String', content);\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features)){\n        tests[\"images.features array field present in output\"] = true;\n        var formatted_JSON = JSON.stringify(data.images.features[0]).replace(/\"/g, '\\\\\"');\n        var content = '\"{\\\\\"algoType\\\\\": \\\\\"' + postman.getEnvironmentVariable('Algorithm Name') + '\\\\\",\\\\\"svcURL\\\\\": \\\\\"' + postman.getEnvironmentVariable('pzsvc-ossim domain') + '\\\\\",\\\\\"pzAuthToken\\\\\": \\\\\"Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\\\\\",\\\\\"pzAddr\\\\\": \\\\\"' + postman.getEnvironmentVariable('pz-gateway domain') + '\\\\\",\\\\\"dbAuthToken\\\\\": \\\\\"ZZZZ\\\\\",\\\\\"bands\\\\\": [\\\\\"coastal\\\\\",\\\\\"swir1\\\\\"],\\\\\"metaDataJSON\\\\\":' + formatted_JSON + '}\"';\n        postman.setEnvironmentVariable('Formatted Content String', content);\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -60,7 +63,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467227045524,
+			"time": 1467902843439,
 			"name": "Select feature from pzsvc-image-catalog",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -86,6 +89,30 @@
 			},
 			"time": 1467142211827,
 			"name": "Find pzsvc-image-catalog url",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "4972e73b-d3c7-9e6f-e70d-72d805704836",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    if (data.status === 'Running') {\n        if (postman.getEnvironmentVariable('retry_loop') < 120) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Hold_till_done');\n            pausecomp(5000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n        }\n    }\n    else {\n        tests[\"Job finished in time\"] = true;\n    }\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467911881150,
+			"name": "Hold_till_done",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
 			"responses": []
@@ -148,7 +175,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute');\npostman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.' + postman.getEnvironmentVariable('domain'));\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('Formatted Content String','');",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute');\npostman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.' + postman.getEnvironmentVariable('domain'));\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('Formatted Content String','');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('shoreDataID', '');\npostman.setEnvironmentVariable('retry_loop', 0);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -156,7 +183,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467209433623,
+			"time": 1467911263400,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -186,22 +213,16 @@
 			"responses": []
 		},
 		{
-			"id": "fc4b0bab-7c41-0173-0347-e8bca853dac4",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://bf-handle.{{domain}}/execute",
-			"pathVariables": {},
+			"id": "bb45e443-6ac6-033d-1fe9-3765648fe057",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nfileName: dummyName.TIF\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{shoreDataID}}",
 			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
-			"data": [],
-			"dataMode": "raw",
-			"name": "Request directly to BF-Handle",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1467290697190,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
 			"version": 2,
-			"responses": [],
-			"tests": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nif (data.hasOwnProperty('features') && Array.isArray(data.features) && data.features.length > 0) {\n    tests[\"features array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.features.length; i++) {\n        if (data.features[i].hasOwnProperty('geometry')) {\n            tests[\"features[].geomeetry field present in output\"] = true;\n            if (data.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.features[i].geometry.coordinates)) {\n                tests[\"features[].geomeetry.coordinates array field present in output\"] = true;\n                tests[\"Coordinates are present\"] = data.features.length > 0;\n            }\n            else {\n                tests[\"features[].geomeetry.coordinates array field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"features[].geomeetry field present in output\"] = false;\n        }\n    }\n}\nelse {\n    tests[\"features array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -209,7 +230,59 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"rawModeData": "{\"algoType\": \"pzsvc-ossim\",\"svcURL\": \"https://pzsvc-ossim.int.geointservices.io/execute\",\"pzAuthToken\": \"Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\",\"pzAddr\": \"https://pz-gateway.int.geointservices.io\",\"dbAuthToken\": \"ZZZZ\",\"bands\": [\"green\",\"swir1\"],\"metaDataJSON\":{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[116.291633834468,-29.2560749564541],[118.18281244966,-29.6295768338272],[117.74623754451,-31.3563402949038],[115.821868461041,-30.9747143246823],[116.291633834468,-29.2560749564541]]]},\"properties\":{\"acquiredDate\":\"2016-06-08T02:04:45.167404+00:00\",\"bands\":{\"blue\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B2.TIF\",\"cirrus\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B9.TIF\",\"coastal\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B1.TIF\",\"green\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B3.TIF\",\"nir\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B5.TIF\",\"panchromatic\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B8.TIF\",\"red\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B4.TIF\",\"swir1\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B6.TIF\",\"swir2\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B7.TIF\",\"tirs1\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B10.TIF\",\"tirs2\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_B11.TIF\"},\"cloudCover\":0.92,\"path\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/index.html\",\"resolution\":30,\"sensorName\":\"Landsat8\",\"thumb_large\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_thumb_large.jpg\",\"thumb_small\":\"http://landsat-pds.s3.amazonaws.com/L8/112/081/LC81120812016160LGN00/LC81120812016160LGN00_thumb_small.jpg\"},\"id\":\"landsat:LC81120812016160LGN00\",\"bbox\":[115.821868461041,-31.3563402949038,118.18281244966,-29.2560749564541]}}"
+			"time": 1467909037570,
+			"name": "Get Shoreline",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "d08e38d6-174a-9f72-0f1c-7cc95fdf506f",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nfileName: dummyName.TIF\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nif (data.hasOwnProperty('shoreDataID') && typeof data.shoreDataID === 'string') {\n    tests[\"shoreDataID string field present in output\"] = true;\n    tests[\"GUID created for shoreDataID\"] = data.shoreDataID.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable('shoreDataID', data.shoreDataID);\n}\nelse {\n    tests[\"shoreDataID string field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467905691069,
+			"name": "Find Shoreline",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "e448acf5-78c1-92f5-f5bc-369f73bacea9",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job is running\"] = data.status === 'Success';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}\nif (data.hasOwnProperty('result')) {\n    tests[\"result field present in output\"] = true;\n    if (data.result.hasOwnProperty('dataId') && typeof data.result.dataId === 'string') {\n        tests[\"result.dataId string field present in output\"] = true;\n        tests[\"GUID created for dataId\"] = data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('dataId', data.result.dataId);\n    }\n    else {\n        tests[\"result.dataId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"result field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1467900217780,
+			"name": "Check Job Status - Success",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
 		}
 	]
 }
