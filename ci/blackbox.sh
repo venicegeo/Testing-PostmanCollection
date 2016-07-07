@@ -19,16 +19,27 @@ echo $envfile
 
 [ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-cmd="newman -e $envfile -c"
+cmd="newman -x -e $envfile -c"
+
+latch=0
+
+set -e
 
 for f in $(ls -1 $base/postman/*postman_collection); do
-echo $f	
-  $cmd $f
-  #send mail if return value of last command is not 0
-	if [ "$?" -ne "0" ];then
-		mail -s "$SUBJ" $RCVR < /dev/null  
-	fi
+	echo $f
+	#Try the command first.  If it returns an error, latch & e-mail.
+	$cmd $f || latch=1
+	echo $latch
 done
+
+echo "OUT OF LOOP"
+echo "$latch"
+
+if [ "$latch" -eq "1" ]; then
+	mail -s "$SUBJ" $RCVR < /dev/null
+	echo "mail sent!"
+fi
+
+#Return an overall error if any collections failed.
+exit $latch
    #awm	
-
-
