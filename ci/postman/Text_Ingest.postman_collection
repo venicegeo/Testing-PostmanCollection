@@ -182,7 +182,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.jobId);\n    pausecomp(1000);\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}\npostman.setEnvironmentVariable('text description',postman.getEnvironmentVariable('text description').replace(/\"/g,'')); // Remove quotes from serviceId for later tests.",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.jobId);\n    pausecomp(5000);\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}\npostman.setEnvironmentVariable('text description',postman.getEnvironmentVariable('text description').replace(/\"/g,'')); // Remove quotes from serviceId for later tests.",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -190,7 +190,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467736466193,
+			"time": 1467903660164,
 			"name": "Ingest Text Data",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
