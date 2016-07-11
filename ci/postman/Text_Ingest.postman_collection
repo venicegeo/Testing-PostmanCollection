@@ -182,7 +182,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('jobId')) {\n    tests[\"jobId field present in output\"] = true;\n    tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.jobId);\n    pausecomp(5000);\n}\nelse {\n    tests[\"jobId field present in output\"] = false;\n}\npostman.setEnvironmentVariable('text description',postman.getEnvironmentVariable('text description').replace(/\"/g,'')); // Remove quotes from serviceId for later tests.",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n        pausecomp(5000);\n    }\n    else {\n        tests[\"data.jobId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\n// if (data.hasOwnProperty('jobId')) {\n//     tests[\"jobId field present in output\"] = true;\n//     tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n//     postman.setEnvironmentVariable(\"jobId\",data.jobId);\n//     pausecomp(5000);\n// }\n// else {\n//     tests[\"jobId field present in output\"] = false;\n// }\npostman.setEnvironmentVariable('text description',postman.getEnvironmentVariable('text description').replace(/\"/g,'')); // Remove quotes from serviceId for later tests.",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -190,7 +190,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467903660164,
+			"time": 1468241874410,
 			"name": "Ingest Text Data",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -230,7 +230,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('status')) {\n    tests[\"status field present in output\"] = true;\n    tests[\"Job Successful\"] = data.status === 'Success';\n}\nelse {\n    tests[\"status field present in output\"] = false;\n}\nif (data.hasOwnProperty('result')) {\n    tests[\"result field present in output\"] = true;\n    if (data.result.hasOwnProperty('dataId')) {\n        tests[\"result.dataId field present in output\"] = true;\n        tests[\"GUID created for dataId\"] = data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"dataId\",data.result.dataId);\n    }\n    else {\n        tests[\"result.dataId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"result field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        tests[\"Job Successful\"] = data.data.status === 'Success';\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('result')) {\n        tests[\"data.result field present in output\"] = true;\n        if (data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n            tests[\"data.result.dataId string field present in output\"] = true;\n            tests[\"GUID created for dataId\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n        }\n        else {\n            tests[\"data.result.dataId string field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.result field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -238,7 +238,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467220081896,
+			"time": 1468242204762,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -253,7 +253,7 @@
 			"method": "DELETE",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'success';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message field present in output\"] = true;\n    tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'success';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"Correct dataId used\"] = data.data.message.has(postman.getEnvironmentVariable('dataId'));\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\n// if (data.hasOwnProperty('message') && typeof data.message === 'string') {\n//     tests[\"message field present in output\"] = true;\n//     tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n// }\n// else {\n//     tests[\"message field present in output\"] = false;\n// }",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -261,7 +261,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467735797529,
+			"time": 1468242533580,
 			"name": "Delete Ingested Text",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",

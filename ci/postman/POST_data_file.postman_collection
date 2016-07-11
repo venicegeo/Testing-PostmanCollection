@@ -55,7 +55,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('jobId')) {\n    tests[\"Output job matches input job.\"] = postman.getEnvironmentVariable('jobId') === data.jobId;\n}\nelse {\n    tests[\"jobId field found.\"] = false;\n}\nif(data.hasOwnProperty('status')) {\n    tests[\"Job successful\"] = data.status === 'Success';\n    if (data.status === 'Running') {\n        tests[\"SUGGESTION: Try a longer timeout\"] = false;\n    }\n}\nelse {\n    tests[\"success field found.\"] = false;\n}\nif(data.hasOwnProperty('result')) {\n    tests[\"result field present\"] = true;\n    if(data.result.hasOwnProperty('dataId') && typeof data.result.dataId === 'string') {\n        tests[\"result.dataId string field present\"] = true;\n        postman.setEnvironmentVariable(\"dataId\",data.result.dataId);\n        tests[\"result.dataId GUID created\"] = data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    }\n    else {\n        tests[\"result.dataId string field present\"] = false;\n    }\n}\nelse {\n    tests[\"result field present\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if(data.data.hasOwnProperty('jobId')) {\n        tests[\"Output job matches input job.\"] = postman.getEnvironmentVariable('jobId') === data.data.jobId;\n    }\n    else {\n        tests[\"data.jobId field found.\"] = false;\n    }\n    if(data.data.hasOwnProperty('status')) {\n        tests[\"Job successful\"] = data.data.status === 'Success';\n        if (data.data.status === 'Running') {\n            tests[\"SUGGESTION: Try a longer timeout\"] = false;\n        }\n    }\n    else {\n        tests[\"data.success field found.\"] = false;\n    }\n    if(data.data.hasOwnProperty('result')) {\n        tests[\"data.result field present\"] = true;\n        if(data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n            tests[\"data.result.dataId string field present\"] = true;\n            postman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n            tests[\"data.result.dataId GUID created\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        }\n        else {\n            tests[\"data.result.dataId string field present\"] = false;\n        }\n    }\n    else {\n        tests[\"data.result field present\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -63,7 +63,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467823075085,
+			"time": 1468243951765,
 			"name": "Get Job Info",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -116,7 +116,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nfunction pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\n\nif(data.hasOwnProperty('jobId') && typeof data.jobId === 'string'){\n    postman.setEnvironmentVariable(\"jobId\",data.jobId);\n    tests[\"jobId string field available\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    pausecomp(2000);\n}\nelse {\n    tests[\"jobId string field available\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n        pausecomp(5000);\n    }\n    else {\n        tests[\"data.jobId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\n// if (data.hasOwnProperty('jobId')) {\n//     tests[\"jobId field present in output\"] = true;\n//     tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n//     postman.setEnvironmentVariable(\"jobId\",data.jobId);\n//     pausecomp(5000);\n// }\n// else {\n//     tests[\"jobId field present in output\"] = false;\n// }",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -124,7 +124,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467822725933,
+			"time": 1468243328276,
 			"name": "Load File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
