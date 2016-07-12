@@ -22,8 +22,6 @@
 		"cccd353f-e955-741d-9add-a32508166e42",
 		"fc0cfc7d-93a4-e84a-cfc5-aada193e8cb0",
 		"af6cdd51-b858-0494-7d78-05a66b59726e",
-		"62841062-880f-2041-aeb1-e3ab79c704f8",
-		"ab688269-ca08-963c-ba67-2295390d28c3",
 		"3542daaa-1b0e-7c7d-9ac8-69c3fc0d315b",
 		"318542f3-0cdc-200c-e98a-5c78197e2dd1",
 		"eb4150b6-cd44-103e-6df5-11c4f3117fbc",
@@ -34,8 +32,7 @@
 		"08b78ac8-0c3b-82a5-375c-3918879d04ae",
 		"9c03cc4e-2b5c-1c0e-b193-7980a93a4bf2",
 		"898592e6-0f03-2331-e7f8-e0292bd408b7",
-		"68516b85-b61e-eede-aeb0-34a4787f8c95",
-		"3ebf3370-2b36-a129-6917-5faaa94a572e"
+		"68516b85-b61e-eede-aeb0-34a4787f8c95"
 	],
 	"folders": [],
 	"timestamp": 0,
@@ -201,44 +198,15 @@
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
-			"id": "3ebf3370-2b36-a129-6917-5faaa94a572e",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n{\n    postman.setEnvironmentVariable(\"dataId\",data.result.dataId)\n  }",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "citester",
-				"password": "citester",
-				"saveToRequest": true
-			},
-			"time": 1466184513265,
-			"name": "Get dataId for download copy",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
 			"id": "43076a6d-7bec-daa6-8588-d3153585e80c",
 			"headers": "Content-Type: application/json\nsize: 30\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/v2/job",
+			"url": "https://pz-gateway.int.geointservices.io/job",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -246,7 +214,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467899145079,
+			"time": 1468349775293,
 			"name": "Execute Job",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -367,35 +335,6 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
-			"id": "62841062-880f-2041-aeb1-e3ab79c704f8",
-			"headers": "count-type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data/",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "\n\n//var data = JSON.parse(responseBody);\n\n\n//for (var i = 0; i<10; i++)\n//  {\n//  if (data.data[i].dataType.type == \"raster\") {\n   // postman.setEnvironmentVariable(\"dataId\",data.data[i].dataId)\n   // postman.setEnvironmentVariable(\"type\",data.data[i].dataType.type)\n//    break;\n  \n//  }\n//  }\n\n\n\n\n\n\n\n",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "citester",
-				"password": "citester",
-				"saveToRequest": true
-			},
-			"time": 1466184310199,
-			"name": "Get Data for download test",
-			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
@@ -532,35 +471,6 @@
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
 		},
 		{
-			"id": "ab688269-ca08-963c-ba67-2295390d28c3",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n{\n    postman.setEnvironmentVariable(\"dataId\",data.result.dataId)\n  }",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "citester",
-				"password": "citester",
-				"saveToRequest": true
-			},
-			"time": 1466184513265,
-			"name": "Get dataId for download",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
 			"folder": null,
 			"id": "ad819cef-ff34-0e13-a7db-99f49f5ffa43",
 			"name": "Ingest External Raster",
@@ -641,7 +551,7 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.serviceId)",
+			"tests": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -649,7 +559,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1465842005079,
+			"time": 1468349168058,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -658,7 +568,7 @@
 		{
 			"id": "d536da55-5ba9-deed-cf47-9130638ceaa1",
 			"headers": "Content-Type: application/json\nsize: 30\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/v2/job",
+			"url": "https://pz-gateway.int.geointservices.io/job",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -672,7 +582,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1467899249234,
+			"time": 1468349098593,
 			"name": "Execute Job error status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
