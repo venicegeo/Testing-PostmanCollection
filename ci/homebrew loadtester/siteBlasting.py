@@ -10,12 +10,8 @@ import json
 # Function to pass to new process.  Records elapsed time to the processes Array.  If a bad
 # status is returned, it is recorded in the status variable to be processed by the logger.
 def sendRequest(url, startQueue, resultQueue, headers, method, dataJson, files = None):
-	print("data:::::" + str(dataJson))
-	print("headers:::::" + str(headers))
-	print(files)
 	if files:
 		files = {'file': (files, open(files, 'rb'))}
-	print(files['file'])
 	try:
 		r = requests.request(method, url, headers = headers, files = files, data = dataJson)
 	except Exception as e:
