@@ -9,9 +9,15 @@ import json
 
 # Function to pass to new process.  Records elapsed time to the processes Array.  If a bad
 # status is returned, it is recorded in the status variable to be processed by the logger.
-def sendRequest(url, startQueue, resultQueue, headers, method, dataJson, files):
+def sendRequest(url, startQueue, resultQueue, headers, method, dataJson, files = None):
+	print("data:::::" + str(dataJson))
+	print("headers:::::" + str(headers))
+	print(files)
+	if files:
+		files = {'file': (files, open(files, 'rb'))}
+	print(files['file'])
 	try:
-		r = requests.request(method, url, headers = headers, files = {'file': (files, open(files, 'rb'))}, data = dataJson)
+		r = requests.request(method, url, headers = headers, files = files, data = dataJson)
 	except Exception as e:
 		startQueue.get()
 		finishTime = time.time()
@@ -47,27 +53,29 @@ def logger(num, startQueue, resultQueue):
 	print('Log Written!')
 
 # Logs information about the running processes.  Will add processes if not enough are running.
-def controller(url, total_num, simul_num, filename, startQueue, resultQueue, headers = False, method = False, data = False, sendFile = False):
+def controller(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, kwargs):
 	headerJson = {}
 	dataJson = {}
+	headers = kwargs.get('headers')
 	if headers:
 		with open(headers) as data_file:    
 			headerJson = json.load(data_file)
+	data = kwargs.get('data')
 	if data:
-		with open(data) as data_file:    
+		with open(data) as data_file:
 			dataJson = json.load(data_file)
 	startTime = time.time()
 	results = []
 	complete = 0
 	next_percentage = 0
-	processes = createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, dataJson, sendFile)
+	processes = createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, dataJson, files = kwargs.get('sendFile'))
 	startProcesses(processes)
 	while complete < total_num:
 		active = startQueue.qsize()
 		started = len(processes)
 		if (active < simul_num) & (started < total_num):
 			newToAdd = min(simul_num - active, total_num - started)
-			processes += createProcesses(url, newToAdd, startQueue, resultQueue, headerJson, method, dataJson, sendFile)
+			processes += createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, dataJson, files = kwargs.get('sendFile'))
 			startProcesses(processes[started:])
 		results += [resultQueue.get()]
 		complete += 1
@@ -78,7 +86,7 @@ def controller(url, total_num, simul_num, filename, startQueue, resultQueue, hea
 	newResults = [('Time Completed', 'Status Code', 'Status Message', 'Response Time', 'Active Requests')]
 	for result in results:
 		newResults += [(result[0] - startTime, result[1], result[2], result[3], result[4])]
-	with open(filename, 'w') as test_file:
+	with open(save_filename, 'w') as test_file:
 		file_writer = csv.writer(test_file, lineterminator = '\n')
 		for line in newResults:
 			file_writer.writerow(line)
@@ -114,10 +122,10 @@ def startLogging(num, startQueue, resultQueue):
 
 
 # Starts the loggin and controller process.
-def startController(*args):
+def startController(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, **kwargs):
 	pController = multiprocessing.Process(
 		target = controller,
-		args = args
+		args = (url, method, total_num, simul_num, startQueue, resultQueue, save_filename, kwargs)
 	)
 	pController.start()
 	psutil.Process(pController.pid).cpu_affinity([0])

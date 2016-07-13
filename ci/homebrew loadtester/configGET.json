@@ -1,0 +1,7 @@
+{
+	"url": "https://pzsvc-hello.test.geointservices.io",
+	"method": "GET",
+	"total_num": 10,
+	"simul_num": 7,
+	"save_filename": "testhello.csv"
+}
