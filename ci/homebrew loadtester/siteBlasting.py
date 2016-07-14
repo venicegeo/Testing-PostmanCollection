@@ -59,19 +59,22 @@ def controller(url, method, total_num, simul_num, startQueue, resultQueue, save_
 	data = kwargs.get('data')
 	if data:
 		with open(data) as data_file:
-			dataJson = json.load(data_file)
+			if kwargs.get('dataType') == 'string':
+				data = data_file.read()
+			else:
+				data = json.load(data_file)
 	startTime = time.time()
 	results = []
 	complete = 0
 	next_percentage = 0
-	processes = createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, dataJson, files = kwargs.get('sendFile'))
+	processes = createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, data, files = kwargs.get('sendFile'))
 	startProcesses(processes)
 	while complete < total_num:
 		active = startQueue.qsize()
 		started = len(processes)
 		if (active < simul_num) & (started < total_num):
 			newToAdd = min(simul_num - active, total_num - started)
-			processes += createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, dataJson, files = kwargs.get('sendFile'))
+			processes += createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, data, files = kwargs.get('sendFile'))
 			startProcesses(processes[started:])
 		results += [resultQueue.get()]
 		complete += 1

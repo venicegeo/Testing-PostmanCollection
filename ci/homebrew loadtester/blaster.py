@@ -22,6 +22,7 @@ if __name__ == '__main__':
 		headers = config.get('headers')
 		method = config.get('method')
 		data = config.get('data')
+		dataType = config.get('dataType')
 		sendFile = config.get('sendFile')
 	else:
 		url = getTagValue('-url')				# -url 'https://pz-ingest.test.geointservices.io/data/file'
@@ -40,7 +41,7 @@ if __name__ == '__main__':
 	# l = startLogging(num, startQueue, resultQueue)
 	# startProcesses(pRequests)
 
-	c = startController(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, headers = headers, data = data, sendFile = sendFile)
+	c = startController(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, headers = headers, data = data, dataType = dataType, sendFile = sendFile)
 
 	# Hold here until all processes have completed.
 	c.join()

@@ -1,0 +1,10 @@
+{
+	"url": "http://pzsvc-hello.test.geointservices.io/",
+	"contractUrl": "http://helloContract",
+	"method" : "GET",
+	"serviceId": "",
+	"resourceMetadata": {
+		"name": "pzsvc-hello service",
+		"description": "just load testing :)"
+	}
+}
