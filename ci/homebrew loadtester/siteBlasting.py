@@ -74,7 +74,7 @@ def controller(url, method, total_num, simul_num, startQueue, resultQueue, save_
 		started = len(processes)
 		if (active < simul_num) & (started < total_num):
 			newToAdd = min(simul_num - active, total_num - started)
-			processes += createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, data, files = kwargs.get('sendFile'))
+			processes += createProcesses(url, newToAdd, startQueue, resultQueue, headerJson, method, data, files = kwargs.get('sendFile'))
 			startProcesses(processes[started:])
 		results += [resultQueue.get()]
 		complete += 1
