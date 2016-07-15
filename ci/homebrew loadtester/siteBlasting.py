@@ -23,7 +23,7 @@ def sendRequest(url, startQueue, resultQueue, headers, method, dataJson, files =
 		startQueue.get()
 		finishTime = time.time()
 		active = startQueue.qsize()
-		resultQueue.put((finishTime, r.status_code, r.reason + r.text, r.elapsed.total_seconds(), active)) # (time when complete, status code, reason for failure, request time, queue size)
+		resultQueue.put((finishTime, r.status_code, r.reason + r.text[:250], r.elapsed.total_seconds(), active)) # (time when complete, status code, reason for failure, request time, queue size)
 
 # Logs imformation about running processes.  Handles request errors as they happen.
 def logger(num, startQueue, resultQueue):
@@ -63,6 +63,7 @@ def controller(url, method, total_num, simul_num, startQueue, resultQueue, save_
 				data = data_file.read()
 			else:
 				data = json.load(data_file)
+	newResults = [('Time Completed', 'Status Code', 'Status Message', 'Response Time', 'Active Requests')]
 	startTime = time.time()
 	results = []
 	complete = 0
@@ -80,16 +81,16 @@ def controller(url, method, total_num, simul_num, startQueue, resultQueue, save_
 		complete += 1
 		percentage = 100*complete/total_num
 		if percentage >= next_percentage:
-			print('%3.0f%%' % percentage)
-			next_percentage += 5
-	newResults = [('Time Completed', 'Status Code', 'Status Message', 'Response Time', 'Active Requests')]
-	for result in results:
-		newResults += [(result[0] - startTime, result[1], result[2], result[3], result[4])]
-	with open(save_filename, 'w') as test_file:
-		file_writer = csv.writer(test_file, lineterminator = '\n')
-		for line in newResults:
-			file_writer.writerow(line)
-	print('Log Written!')
+			next_percentage += 1		
+			for result in results:
+				newResults += [(result[0] - startTime, result[1], result[2], result[3], result[4])]
+			with open('results\\' + save_filename, 'a') as test_file:
+				file_writer = csv.writer(test_file, lineterminator = '\n')
+				for line in newResults:
+					file_writer.writerow(line)
+			print('%3.0f%% Complete ... Log Written.' % percentage)
+			results = []
+			newResults = []
 
 # Returns a list of processes that call sendGetRequest().
 def createProcesses(url, num, startQueue, resultQueue, headers, method, dataJson, files):
