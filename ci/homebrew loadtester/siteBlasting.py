@@ -9,11 +9,11 @@ import json
 
 # Function to pass to new process.  Records elapsed time to the processes Array.  If a bad
 # status is returned, it is recorded in the status variable to be processed by the logger.
-def sendRequest(url, startQueue, resultQueue, headers, method, dataJson, files = None):
+def sendRequest(url, startQueue, resultQueue, headers, method, payload, files = None):
 	if files:
 		files = {'file': (files, open(files, 'rb'))}
 	try:
-		r = requests.request(method, url, headers = headers, files = files, data = dataJson)
+		r = requests.request(method, url, headers = headers, files = files, data = payload)
 	except Exception as e:
 		startQueue.get()
 		finishTime = time.time()
@@ -52,30 +52,21 @@ def logger(num, startQueue, resultQueue):
 def controller(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, kwargs):
 	headerJson = {}
 	dataJson = {}
-	headers = kwargs.get('headers')
-	if headers:
-		with open(headers) as data_file:    
-			headerJson = json.load(data_file)
-	data = kwargs.get('data')
-	if data:
-		with open(data) as data_file:
-			if kwargs.get('dataType') == 'string':
-				data = data_file.read()
-			else:
-				data = json.load(data_file)
+	headers = getData(kwargs.get('headers'))
+	payload = getData(kwargs.get('payload'))
 	newResults = [('Time Completed', 'Status Code', 'Status Message', 'Response Time', 'Active Requests')]
 	startTime = time.time()
 	results = []
 	complete = 0
 	next_percentage = 0
-	processes = createProcesses(url, simul_num, startQueue, resultQueue, headerJson, method, data, files = kwargs.get('sendFile'))
+	processes = createProcesses(url, simul_num, startQueue, resultQueue, headers, method, payload, files = kwargs.get('sendFile'))
 	startProcesses(processes)
 	while complete < total_num:
 		active = startQueue.qsize()
 		started = len(processes)
 		if (active < simul_num) & (started < total_num):
 			newToAdd = min(simul_num - active, total_num - started)
-			processes += createProcesses(url, newToAdd, startQueue, resultQueue, headerJson, method, data, files = kwargs.get('sendFile'))
+			processes += createProcesses(url, newToAdd, startQueue, resultQueue, headers, method, payload, files = kwargs.get('sendFile'))
 			startProcesses(processes[started:])
 		results += [resultQueue.get()]
 		complete += 1
@@ -93,13 +84,13 @@ def controller(url, method, total_num, simul_num, startQueue, resultQueue, save_
 			newResults = []
 
 # Returns a list of processes that call sendGetRequest().
-def createProcesses(url, num, startQueue, resultQueue, headers, method, dataJson, files):
+def createProcesses(url, num, startQueue, resultQueue, headers, method, payload, files):
 	for i in range(num):
 		startQueue.put(1)
 	return [
 		multiprocessing.Process(
 			target = sendRequest,
-			args = (url, startQueue, resultQueue, headers, method, dataJson, files)
+			args = (url, startQueue, resultQueue, headers, method, payload, files)
 		) for i in range(0,num)
 	]
 
@@ -145,3 +136,23 @@ def getTagValue(tag):
 				val = val[1:-1]
 			return val
 	else: return ''
+
+# Return data based on data type.  Expects {'dataType': '?', 'data': '?'} format.
+def getData(inputData):
+	if inputData == None:
+		return None
+	dataType = inputData['dataType']
+	if dataType in {'string', 'json', 'number'}:
+		return inputData['data']
+	elif dataType == 'stringified json':
+		return json.dumps(inputData['data'])
+	elif dataType == 'data-wrapped json':
+		dataWrapped = {}
+		dataWrapped['data'] = json.dumps(inputData['data'])
+		return dataWrapped
+	elif dataType == 'json file':
+		with open(inputData['data']) as data_file:    
+			return json.load(data_file)
+	elif dataType == 'file':
+		with open(inputData['data']) as data_file:    
+			return data_file.read()

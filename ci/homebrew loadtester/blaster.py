@@ -21,17 +21,17 @@ if __name__ == '__main__':
 		save_filename = config.get('save_filename')
 		headers = config.get('headers')
 		method = config.get('method')
-		data = config.get('data')
+		payload = config.get('payload')
 		dataType = config.get('dataType')
 		sendFile = config.get('sendFile')
 	else:
-		url = getTagValue('-url')				# -url 'https://pz-ingest.test.geointservices.io/data/file'
+		url = getTagValue('-url')				# -url 'https://pz-ingest.test.geointservices.io/payload/file'
 		total_num = int(getTagValue('-n'))		# -n 1000
 		simul_num = int(getTagValue('-p'))		# -p 7
 		save_filename = getTagValue('-fn')			# -fn google1000
 		headers = getTagValue('-h')				# -h authHeader.json
 		method = getTagValue('-m')				# -m GET
-		data = getTagValue('-d')				# -d postFile.json
+		payload = getTagValue('-d')				# -d postFile.json
 		sendFile = getTagValue('-sf')			# -sf somecat.tif
 
 	# Create the shared variables to use between the logger and the blaster processes.
@@ -41,7 +41,7 @@ if __name__ == '__main__':
 	# l = startLogging(num, startQueue, resultQueue)
 	# startProcesses(pRequests)
 
-	c = startController(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, headers = headers, data = data, dataType = dataType, sendFile = sendFile)
+	c = startController(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, headers = headers, payload = payload, dataType = dataType, sendFile = sendFile)
 
 	# Hold here until all processes have completed.
 	c.join()
