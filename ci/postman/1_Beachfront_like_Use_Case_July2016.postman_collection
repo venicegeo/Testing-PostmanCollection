@@ -52,11 +52,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587822933,
+			"time": 1468848584078,
 			"name": "Execute Job error null dataOutput",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -75,11 +75,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587970470,
+			"time": 1468848650152,
 			"name": "Update Service error null method data",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -98,11 +98,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587771803,
+			"time": 1468848455504,
 			"name": "Register Service error missing contract url field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -121,11 +121,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468506427112,
+			"time": 1468848613400,
 			"name": "Update Service error status",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -144,11 +144,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468506459063,
+			"time": 1468848666514,
 			"name": "Unregister Service Error Status",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -167,11 +167,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587764728,
+			"time": 1468848449784,
 			"name": "Register Service missing method field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -190,11 +190,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587944587,
+			"time": 1468848633784,
 			"name": "Update Service error missing contractURL field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -213,11 +213,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587803817,
+			"time": 1468848571582,
 			"name": "Execute Job error null serivceId",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -236,11 +236,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587786950,
+			"time": 1468848559975,
 			"name": "Execute Job MIssing dataInput Field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -259,11 +259,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468506471269,
+			"time": 1468848672858,
 			"name": "Unregister Service",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -282,11 +282,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587935045,
+			"time": 1468848628560,
 			"name": "Update Service null URL data",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -305,11 +305,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587814063,
+			"time": 1468848576606,
 			"name": "Execute Job error missing dataOutput field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -328,11 +328,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587737030,
+			"time": 1468848431015,
 			"name": "Register Service error null url",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -351,11 +351,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587756151,
+			"time": 1468848444120,
 			"name": "Register Service error null method",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -374,11 +374,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587717806,
+			"time": 1468848424703,
 			"name": "Register Service error empty contractURL field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -397,11 +397,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468506444968,
+			"time": 1468848660802,
 			"name": "Post raster Data",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -420,11 +420,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587962185,
+			"time": 1468848644097,
 			"name": "Update Service error method field missing",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -443,11 +443,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587779471,
+			"time": 1468848461577,
 			"name": "Execute Job",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -466,11 +466,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587856382,
+			"time": 1468848601071,
 			"name": "Get Service",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee"
@@ -488,11 +488,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587830765,
+			"time": 1468848589823,
 			"name": "Abort Job",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee"
@@ -510,11 +510,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587794915,
+			"time": 1468848566350,
 			"name": "Execute Job Error Missing serviceID Field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -533,11 +533,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587748476,
+			"time": 1468848438624,
 			"name": "Register Service error missing URL field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -556,11 +556,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587923031,
+			"time": 1468848623251,
 			"name": "Update Service error missing URL field",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -579,11 +579,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587954429,
+			"time": 1468848638894,
 			"name": "Update Service error null contract URL data",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -602,18 +602,18 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587851011,
+			"time": 1468848595263,
 			"name": "Repeat Job",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee"
 		},
 		{
 			"id": "c8f05e8f-63a3-15c6-d94a-93f79012fd28",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic ZjhhOGJjMDktZjY1YS00M2QwLTgzOGEtOGYwZGQxODFmODUzOmNpdGVzdGVy\n",
 			"url": "https://pz-gateway.int.geointservices.io/service",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -624,15 +624,15 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587625087,
+			"time": 1468851855827,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
-			"rawModeData": "{\n \"serviceId\" : \"0bcc6896-642e-4a30-a01e-6bd0467b57ba\",\n \"url\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"contractUrl\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"method\" : \"GET\",\n \"resourceMetadata\" : {\n   \"name\" : \"Patrick and Marge Test\",\n   \"description\" : \"Hello world test\",\n   \"classType\" : \"U\"\n }\n}"
+			"rawModeData": "{\n\n \"url\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"contractUrl\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"method\" : \"GET\",\n \"resourceMetadata\" : {\n   \"name\" : \"Patrick and Marge Test\",\n   \"description\" : \"Hello world test\",\n   \"classType\" : \"U\"\n }\n}"
 		},
 		{
 			"id": "d9341841-85dc-7d49-7bf0-390df25ad87a",
@@ -647,11 +647,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468587863296,
+			"time": 1468848607639,
 			"name": "Update Service",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee",
@@ -670,11 +670,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "569cb1b0-be05-439a-9bfc-785d130b7fdf",
+				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1468506438009,
+			"time": 1468848655617,
 			"name": "Get Service error status",
 			"description": "",
 			"collectionId": "b141b316-e63a-2e56-91e9-7c222ff8edee"
