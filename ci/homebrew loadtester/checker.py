@@ -49,11 +49,15 @@ def writeResults(collectedResults, filename):
 def writeStats(collectedResults, filename):
 	with open(filename, 'w') as outFile:
 		writer = csv.writer(outFile, lineterminator = '\n')
-		writer.writerow(['Test Name', 'Status Code', 'Median Time (s)', 'Average Time (s)', 'Standard Deviation (s)'])
+		writer.writerow(['Test Name', 'Status Code', 'Count', 'Median Time (s)', 'Average Time (s)', 'Standard Deviation (s)'])
 		for test, result in collectedResults.items():
 			for code, times in result[0].items():
-				stats = [statistics.median(times), statistics.mean(times), statistics.stdev(times)]
-				newline = [test, code] + stats
+				count = len(times)
+				if count > 1:
+					stDev = statistics.stdev(times)
+				else:
+					stDev = 'NA'
+				newline = [test, code, count, statistics.median(times), statistics.mean(times), stDev]
 				writer.writerow(newline)
 
 
