@@ -2,23 +2,31 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from siteBlasting import *
 import json
 import multiprocessing
+import queue
 
 # Class factory to add Queue
-def createHandlerWithQueue(configQueue):
+def createHandlerWithQueue(configQueue, configLockout):
 
 	class S(BaseHTTPRequestHandler):
 
 		def __init__(self, *args, **kwargs):
 			super(S, self).__init__(*args, **kwargs)
 
-		def _set_headers(self):
-			self.send_response(200)
-			self.send_header('Content-type', 'text/html')
-			self.end_headers()
-
 		def do_GET(self):
-			self._set_headers()
-			self.wfile.write("<html><body><h1>hi!</h1></body></html>")
+			rsp = resp()
+			rsp['pending'] = []
+			try:
+				with NoBlock(configLockout) as locked:
+					if locked:
+						rsp['pending'] = cloneQueue(configQueue)
+			except Exception as e:
+				rsp.appendCode(500, 'Encountered an error putting queue into a list.', e)
+			else:
+				rsp.appendCode(200)
+			self.send_response(rsp['code'])
+			self.send_header('Content-type', 'application/json')
+			self.end_headers()
+			self.wfile.write(json.dumps(rsp).encode('utf8'))
 
 		def do_HEAD(self):
 			self._set_headers()
@@ -39,7 +47,6 @@ def createHandlerWithQueue(configQueue):
 				else:
 					rsp.appendCode(200)
 					rsp['message'] = 'Added configuration to load testing queue.'
-			print(rsp['code'])
 			self.send_response(rsp['code'])
 			self.send_header('Content-type', 'application/json')
 			self.end_headers()
@@ -70,10 +77,6 @@ class resp(dict):
 		else:
 			self.appendMessage('Could not add code, %s: %s (%s)' % (code, errMsg, e))
 
-
-
-
-
 def runLoadTest(config):
 	url = config.get('url')
 	total_num = config.get('total_num')
@@ -92,20 +95,49 @@ def runLoadTest(config):
 def run(server_class = HTTPServer, port = 80):
 	server_address = ('', port)
 	configQueue = multiprocessing.Queue()
+	configLockout = multiprocessing.RLock()
 	pBlaster = multiprocessing.Process(
 		target = blaster,
-		args = (configQueue,)
+		args = (configQueue, configLockout)
 	)
 	pBlaster.start()
-	httpd = server_class(server_address, createHandlerWithQueue(configQueue))
+	httpd = server_class(server_address, createHandlerWithQueue(configQueue, configLockout))
 	print('Starting httpd...')
 	httpd.serve_forever()
 
-def blaster(configQueue):
+# calls "runLoadTest" with the next configuration in the queue.  Blocks 
+def blaster(configQueue, configLockout):
 	while True:
-		config = configQueue.get()
+		with configLockout:
+			config = configQueue.get()
 		if config.get('end'): break
 		runLoadTest(config)
+
+# Puts all items from a queue into a list.  The queue is emptied/refilled during this process.
+# It is reccomended to wrap this function in a lock.
+def cloneQueue(configQueue):
+	qList = []
+	while True:
+		try:
+			qList += [configQueue.get(block = False)]
+		except queue.Empty:
+			break
+	for item in qList:
+		configQueue.put(item)
+	return qList
+
+# Class wrapping a lock to allow use in a with statement.
+class NoBlock():
+	def __init__(self, lock):
+		self.lock = lock
+
+	def __enter__(self):
+		self.isLocked = self.lock.acquire(block = False)
+		return self.isLocked
+
+	def __exit__(self, exception_type, exception_value, traceback):
+		if self.isLocked:
+			self.lock.release()
 
 if __name__ == "__main__":
 	from sys import argv

@@ -5,6 +5,7 @@ import statistics
 
 # Returns a (talliedResults, totalTime) tuple for the results file.
 def tallyResults(resultsFilename):
+	print('working on %s...' % resultsFilename)
 	talliedResults = collections.defaultdict(list)
 	times = []
 	with open(resultsFilename) as results:
