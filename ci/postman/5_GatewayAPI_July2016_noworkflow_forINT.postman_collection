@@ -19,12 +19,12 @@
 		"cccd353f-e955-741d-9add-a32508166e42",
 		"fc0cfc7d-93a4-e84a-cfc5-aada193e8cb0",
 		"af6cdd51-b858-0494-7d78-05a66b59726e",
+		"8756fea7-1fe6-ab32-37d9-18190b12cc96",
 		"3542daaa-1b0e-7c7d-9ac8-69c3fc0d315b",
 		"318542f3-0cdc-200c-e98a-5c78197e2dd1",
 		"eb4150b6-cd44-103e-6df5-11c4f3117fbc",
 		"7c120b65-8a91-c0e2-6669-f0111b825113",
 		"4cf3263d-5b12-5deb-d384-4d85bee8dcc9",
-		"8756fea7-1fe6-ab32-37d9-18190b12cc96",
 		"08b78ac8-0c3b-82a5-375c-3918879d04ae",
 		"9c03cc4e-2b5c-1c0e-b193-7980a93a4bf2",
 		"898592e6-0f03-2331-e7f8-e0292bd408b7",
@@ -57,11 +57,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860238663,
+			"time": 1468951754687,
 			"name": "Get Job Status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -79,11 +79,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860163402,
+			"time": 1468951676682,
 			"name": "Ingest External Raster Host Error Status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -102,11 +102,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860141514,
+			"time": 1468951652288,
 			"name": "Search Query all",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -125,11 +125,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860208838,
+			"time": 1468951728876,
 			"name": "Create Deployment",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -137,7 +137,7 @@
 		},
 		{
 			"id": "3542daaa-1b0e-7c7d-9ac8-69c3fc0d315b",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==\n",
 			"url": "https://pz-gateway.int.geointservices.io/file/{{dataId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -155,11 +155,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860203589,
+			"time": 1468952938844,
 			"name": "Download Raster Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -177,11 +177,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860110537,
+			"time": 1468951619320,
 			"name": "Execute Job",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -200,11 +200,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860182500,
+			"time": 1468951698297,
 			"name": "Post raster Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -223,11 +223,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860131561,
+			"time": 1468951638542,
 			"name": "Repeat Job",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -245,11 +245,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860227023,
+			"time": 1468951744405,
 			"name": "Unregister Service",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -268,11 +268,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860168411,
+			"time": 1468951682914,
 			"name": "Ingest External Raster dataType.Type Error Status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -291,11 +291,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860261368,
+			"time": 1468951776332,
 			"name": "Register Service check for old format",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -314,11 +314,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860221412,
+			"time": 1468951739295,
 			"name": "Create Deployment Error Status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -326,8 +326,8 @@
 		},
 		{
 			"id": "8756fea7-1fe6-ab32-37d9-18190b12cc96",
-			"headers": "count-type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
+			"headers": "count-type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==\n",
+			"url": "https://pz-gateway.int.geointservices.io/data/",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -340,15 +340,15 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "\n\n\n\n",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data[0].dataId)\n\n\n\n\n\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860233262,
+			"time": 1468967156618,
 			"name": "Get Data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -366,11 +366,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860249871,
+			"time": 1468951770786,
 			"name": "Delete data",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -396,11 +396,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860244175,
+			"time": 1468951761453,
 			"name": "Get Job Status Error status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -418,11 +418,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860157899,
+			"time": 1468951670182,
 			"name": "Ingest External Raster",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -441,11 +441,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860197933,
+			"time": 1468951718149,
 			"name": "Post Raster Data datatype.type error status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -464,11 +464,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860187812,
+			"time": 1468951704876,
 			"name": "Post Raster Data Type Error Status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -487,11 +487,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860116264,
+			"time": 1468951625870,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -510,11 +510,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860176862,
+			"time": 1468951688070,
 			"name": "Ingest External Raster Type Error Status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -533,11 +533,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860124969,
+			"time": 1468951633205,
 			"name": "Abort Job",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -555,11 +555,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860136866,
+			"time": 1468951647243,
 			"name": "Query Services",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
@@ -577,11 +577,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860216702,
+			"time": 1468951733736,
 			"name": "Get Deployment",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -600,11 +600,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860152194,
+			"time": 1468951663583,
 			"name": "Search Query error status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -623,11 +623,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860193133,
+			"time": 1468951712856,
 			"name": "Post Raster Data Host Error Status",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
@@ -646,11 +646,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "f8a8bc09-f65a-43d0-838a-8f0dd181f853",
-				"password": "citester",
+				"username": "{{apikey}}",
+				"password": "test4life",
 				"saveToRequest": true
 			},
-			"time": 1468860147178,
+			"time": 1468951657251,
 			"name": "Search Query",
 			"description": "",
 			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
