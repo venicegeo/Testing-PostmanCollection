@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)"
+						"exec": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikey\",\"13395994-3858-4315-8bc1-2927dfe4d483\")\n"
 					}
 				}
 			],
@@ -22,7 +22,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikey}}",
+						"username": "13395994-3858-4315-8bc1-2927dfe4d483",
 						"password": "test4life",
 						"saveHelperData": true,
 						"showPassword": false
