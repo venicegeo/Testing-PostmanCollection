@@ -1,660 +1,1412 @@
 {
-	"id": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-	"name": "GatewayAPI_July2016_noworkflow_forINT",
-	"description": "\n\ntriggers, events, and alerts are all null - not all settings tested",
-	"order": [
-		"cd0d0233-431f-262e-0728-5aba661088fb",
-		"43076a6d-7bec-daa6-8588-d3153585e80c",
-		"e36f2d54-c5e0-5945-5429-2f981adf95e3",
-		"47c83899-0d6d-359c-bbf2-fa5d504bed2f",
-		"e5d3bcc2-f268-cdaa-5bb6-4d20831d2087",
-		"2da6a607-0e91-7a22-4b84-ae069de4c487",
-		"fc3785b3-44dc-5abb-8828-a867e50ce54c",
-		"eb6c32fc-a4d3-16a0-8d42-a6c745bc3902",
-		"ad819cef-ff34-0e13-a7db-99f49f5ffa43",
-		"0bac4395-ea68-f4ce-9769-e0213a6e66f1",
-		"532dbbd7-64ce-016d-2c5a-644dc38b0a8b",
-		"d84a3567-4aec-29eb-5231-c0f0fac08efa",
-		"45b52e21-11f0-f72b-46c1-df0c9925f71f",
-		"cccd353f-e955-741d-9add-a32508166e42",
-		"fc0cfc7d-93a4-e84a-cfc5-aada193e8cb0",
-		"af6cdd51-b858-0494-7d78-05a66b59726e",
-		"8756fea7-1fe6-ab32-37d9-18190b12cc96",
-		"3542daaa-1b0e-7c7d-9ac8-69c3fc0d315b",
-		"318542f3-0cdc-200c-e98a-5c78197e2dd1",
-		"eb4150b6-cd44-103e-6df5-11c4f3117fbc",
-		"7c120b65-8a91-c0e2-6669-f0111b825113",
-		"4cf3263d-5b12-5deb-d384-4d85bee8dcc9",
-		"08b78ac8-0c3b-82a5-375c-3918879d04ae",
-		"9c03cc4e-2b5c-1c0e-b193-7980a93a4bf2",
-		"898592e6-0f03-2331-e7f8-e0292bd408b7",
-		"68516b85-b61e-eede-aeb0-34a4787f8c95"
-	],
-	"folders": [],
-	"timestamp": 0,
-	"owner": "300577",
-	"remoteLink": "",
-	"public": false,
-	"published": false,
-	"requests": [
+	"variables": [],
+	"info": {
+		"name": "GatewayAPI_July2016_noworkflow_forINT",
+		"_postman_id": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+		"description": "\n\ntriggers, events, and alerts are all null - not all settings tested",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "08b78ac8-0c3b-82a5-375c-3918879d04ae",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951754687,
-			"name": "Get Job Status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
-			"id": "0bac4395-ea68-f4ce-9769-e0213a6e66f1",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Exception\"] = responseBody.has(\"Exception\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951676682,
-			"name": "Ingest External Raster Host Error Status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"fa\\e\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
-		},
-		{
-			"id": "2da6a607-0e91-7a22-4b84-ae069de4c487",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data/query",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951652288,
-			"name": "Search Query all",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n\n    \"query\": {\n      \"matchAll\": {\n        \n      }\n    }\n  }\n"
-		},
-		{
-			"id": "318542f3-0cdc-200c-e98a-5c78197e2dd1",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/deployment",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951728876,
-			"name": "Create Deployment",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}"
-		},
-		{
-			"id": "3542daaa-1b0e-7c7d-9ac8-69c3fc0d315b",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==\n",
-			"url": "https://pz-gateway.int.geointservices.io/file/{{dataId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468952938844,
-			"name": "Download Raster Data",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
-			"id": "43076a6d-7bec-daa6-8588-d3153585e80c",
-			"headers": "Content-Type: application/json\nsize: 30\nkey: stamp\norder: true\nAuthorization: Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy\n",
-			"url": "https://pz-gateway.int.geointservices.io/job",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951619320,
-			"name": "Execute Job",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n\"type\":\"execute-service\",\n\"data\":{\n\"serviceId\":  \"{{serviceId}}\",\n   \"dataInputs\": {},\n\"dataOutput\": [ {  \"mimeType\":\"application/json\", \"type\":\"text\"}]\n}\n}"
-		},
-		{
-			"id": "45b52e21-11f0-f72b-46c1-df0c9925f71f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951698297,
-			"name": "Post raster Data",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
-		},
-		{
-			"id": "47c83899-0d6d-359c-bbf2-fa5d504bed2f",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\n",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951638542,
-			"name": "Repeat Job",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
-			"id": "4cf3263d-5b12-5deb-d384-4d85bee8dcc9",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/service/{{serviceId}}",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951744405,
-			"name": "Unregister Service",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": ""
-		},
-		{
-			"id": "532dbbd7-64ce-016d-2c5a-644dc38b0a8b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Exception\"] = responseBody.has(\"Exception\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951682914,
-			"name": "Ingest External Raster dataType.Type Error Status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raer\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
-		},
-		{
-			"id": "68516b85-b61e-eede-aeb0-34a4787f8c95",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic ZjhhOGJjMDktZjY1YS00M2QwLTgzOGEtOGYwZGQxODFmODUzOmNpdGVzdGVy\n",
-			"url": "https://pz-gateway.int.geointservices.io/service",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.serviceId)",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951776332,
-			"name": "Register Service check for old format",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"name\": \"pz-svcs-prevgen_test\",\n  \"inputs\": [{\n    \"name\": \"BODY\",\n    \"minOccurs\": 1,\n    \"maxOccurs\": 1,\n    \"dataType\": {\n      \"type\": \"body\"\n    },\n    \"metadata\": null,\n    \"formats\": [{\n      \"mimeType\": \"application/json\",\n      \"encoding\": null,\n      \"schema\": null,\n      \"maximumMegabytes\": null,\n      \"dataType\": null\n    }]\n  }],\n  \"outputs\": [{\n    \"name\": \"RasterDataType\",\n    \"minOccurs\": 1,\n    \"maxOccurs\": 1,\n    \"dataType\": {\n      \"mimeType\": \"application/json\",\n      \"type\": \"raster\"\n    },\n    \"metadata\": {\n      \"about\": \"RasterDataType\",\n      \"href\": null,\n      \"role\": null,\n      \"title\": \"location information of raster info\"\n    },\n    \"formats\": [{\n      \"mimeType\": \"application/json\",\n      \"encoding\": null,\n      \"schema\": null,\n      \"maximumMegabytes\": null,\n      \"dataType\": null\n    }]\n  }],\n  \"resourceMetadata\": {\n    \"name\": \"pz-svcs-prevgen\",\n    \"description\": \"Service that takes payload containing S3 location and bounding box for some raster file, downloads, crops and uploads the crop back up to s3.\",\n    \"url\": \"https://pz-svcs-prevgen.stage.geointservices.io/crop\",\n    \"method\": \"POST\"\n  }\n}"
-		},
-		{
-			"id": "7c120b65-8a91-c0e2-6669-f0111b825113",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/deployment",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"error\"] = responseBody.has(\"error\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951739295,
-			"name": "Create Deployment Error Status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"accs\"\r\n}"
-		},
-		{
-			"id": "8756fea7-1fe6-ab32-37d9-18190b12cc96",
-			"headers": "count-type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==\n",
-			"url": "https://pz-gateway.int.geointservices.io/data/",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data[0].dataId)\n\n\n\n\n\n",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468967156618,
-			"name": "Get Data",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
-			"id": "898592e6-0f03-2331-e7f8-e0292bd408b7",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951770786,
-			"name": "Delete data",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": ""
-		},
-		{
-			"id": "9c03cc4e-2b5c-1c0e-b193-7980a93a4bf2",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/job/*&#@",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [
-				{
-					"key": "body",
-					"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"error\"] = responseBody.has(\"error\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951761453,
-			"name": "Get Job Status Error status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
-		},
-		{
-			"id": "ad819cef-ff34-0e13-a7db-99f49f5ffa43",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951670182,
-			"name": "Ingest External Raster",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
-		},
-		{
-			"id": "af6cdd51-b858-0494-7d78-05a66b59726e",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Exception\"] = responseBody.has(\"Exception\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951718149,
-			"name": "Post Raster Data datatype.type error status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"ster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
-		},
-		{
-			"id": "cccd353f-e955-741d-9add-a32508166e42",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Exception\"] = responseBody.has(\"Exception\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951704876,
-			"name": "Post Raster Data Type Error Status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingt\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
-		},
-		{
-			"id": "cd0d0233-431f-262e-0728-5aba661088fb",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/service",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951625870,
 			"name": "Register Service",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n \"serviceId\" : \"0bcc6896-642e-4a30-a01e-6bd0467b57ba\",\n \"url\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"contractUrl\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"method\" : \"GET\",\n \"resourceMetadata\" : {\n   \"name\" : \"Patrick and Marge Test\",\n   \"description\" : \"Hello world test\",\n   \"classType\" : \"U\"\n }\n}"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikey\",\"13395994-3858-4315-8bc1-2927dfe4d483\")"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "13395994-3858-4315-8bc1-2927dfe4d483",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/service",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic OnRlc3Q0bGlmZQ==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"serviceId\" : \"0bcc6896-642e-4a30-a01e-6bd0467b57ba\",\n \"url\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"contractUrl\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"method\" : \"GET\",\n \"resourceMetadata\" : {\n   \"name\" : \"Patrick and Marge Test\",\n   \"description\" : \"Hello world test\",\n   \"classType\" : \"U\"\n }\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "d84a3567-4aec-29eb-5231-c0f0fac08efa",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Exception\"] = responseBody.has(\"Exception\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
+			"name": "Execute Job",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/job",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"type\":\"execute-service\",\n\"data\":{\n\"serviceId\":  \"{{serviceId}}\",\n   \"dataInputs\": {},\n\"dataOutput\": [ {  \"mimeType\":\"application/json\", \"type\":\"text\"}]\n}\n}"
+				},
+				"description": ""
 			},
-			"time": 1468951688070,
-			"name": "Ingest External Raster Type Error Status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingt\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+			"response": []
 		},
 		{
-			"id": "e36f2d54-c5e0-5945-5429-2f981adf95e3",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951633205,
 			"name": "Abort Job",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "e5d3bcc2-f268-cdaa-5bb6-4d20831d2087",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/service",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
+			"name": "Repeat Job",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
 			},
-			"time": 1468951647243,
+			"response": []
+		},
+		{
 			"name": "Query Services",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/service",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "eb4150b6-cd44-103e-6df5-11c4f3117fbc",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/deployment",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
+			"name": "Search Query all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data/query",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"query\": {\n      \"matchAll\": {\n        \n      }\n    }\n  }\n"
+				},
+				"description": ""
 			},
-			"time": 1468951733736,
-			"name": "Get Deployment",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}"
+			"response": []
 		},
 		{
-			"id": "eb6c32fc-a4d3-16a0-8d42-a6c745bc3902",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data/query",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"error\"] = responseBody.has(\"error\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951663583,
-			"name": "Search Query error status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"sech-query\",\n  \"data\": {\n    \"query\": {\n      \"match\": {\n        \"_all\": \"kitten\"\n      }\n    }\n  }\n}"
-		},
-		{
-			"id": "fc0cfc7d-93a4-e84a-cfc5-aada193e8cb0",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Exception\"] = responseBody.has(\"Exception\");",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951712856,
-			"name": "Post Raster Data Host Error Status",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"fal\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
-		},
-		{
-			"id": "fc3785b3-44dc-5abb-8828-a867e50ce54c",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
-			"url": "https://pz-gateway.int.geointservices.io/data/query",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"time": 1468951657251,
 			"name": "Search Query",
-			"description": "",
-			"collectionId": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
-			"rawModeData": "{\n\n    \"query\": {\n      \"match\": {\n        \"_all\": \"kitten\"\n      \n    }\n  }\n}"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data/query",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"query\": {\n      \"match\": {\n        \"_all\": \"kitten\"\n      \n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search Query error status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"error\"] = responseBody.has(\"error\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data/query",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"sech-query\",\n  \"data\": {\n    \"query\": {\n      \"match\": {\n        \"_all\": \"kitten\"\n      }\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ingest External Raster",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ingest External Raster Host Error Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Exception\"] = responseBody.has(\"Exception\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"fa\\e\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ingest External Raster dataType.Type Error Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Exception\"] = responseBody.has(\"Exception\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raer\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ingest External Raster Type Error Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Exception\"] = responseBody.has(\"Exception\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingt\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post raster Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Raster Data Type Error Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Exception\"] = responseBody.has(\"Exception\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingt\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Raster Data Host Error Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Exception\"] = responseBody.has(\"Exception\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"fal\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Raster Data datatype.type error status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Exception\"] = responseBody.has(\"Exception\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"ster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data[0].dataId)\n\n\n\n\n\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "count-type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "body",
+							"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Download Raster Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/file/{{dataId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "body",
+							"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Deployment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/deployment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Deployment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/deployment",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Deployment Error Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"error\"] = responseBody.has(\"error\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/deployment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"accs\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Unregister Service",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/service/{{serviceId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "body",
+							"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Status Error status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"error\"] = responseBody.has(\"error\");"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/job/*&#@",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "body",
+							"value": "{   \"userName\": \"my-api-key-38n987\", \"dataId\": \"627d2f0b-6c8f-441a-93e1-5a96953ee4a4\"  }",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/data/{{dataId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register Service check for old format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.serviceId)"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/service",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic ZjhhOGJjMDktZjY1YS00M2QwLTgzOGEtOGYwZGQxODFmODUzOmNpdGVzdGVy",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"pz-svcs-prevgen_test\",\n  \"inputs\": [{\n    \"name\": \"BODY\",\n    \"minOccurs\": 1,\n    \"maxOccurs\": 1,\n    \"dataType\": {\n      \"type\": \"body\"\n    },\n    \"metadata\": null,\n    \"formats\": [{\n      \"mimeType\": \"application/json\",\n      \"encoding\": null,\n      \"schema\": null,\n      \"maximumMegabytes\": null,\n      \"dataType\": null\n    }]\n  }],\n  \"outputs\": [{\n    \"name\": \"RasterDataType\",\n    \"minOccurs\": 1,\n    \"maxOccurs\": 1,\n    \"dataType\": {\n      \"mimeType\": \"application/json\",\n      \"type\": \"raster\"\n    },\n    \"metadata\": {\n      \"about\": \"RasterDataType\",\n      \"href\": null,\n      \"role\": null,\n      \"title\": \"location information of raster info\"\n    },\n    \"formats\": [{\n      \"mimeType\": \"application/json\",\n      \"encoding\": null,\n      \"schema\": null,\n      \"maximumMegabytes\": null,\n      \"dataType\": null\n    }]\n  }],\n  \"resourceMetadata\": {\n    \"name\": \"pz-svcs-prevgen\",\n    \"description\": \"Service that takes payload containing S3 location and bounding box for some raster file, downloads, crops and uploads the crop back up to s3.\",\n    \"url\": \"https://pz-svcs-prevgen.stage.geointservices.io/crop\",\n    \"method\": \"POST\"\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
