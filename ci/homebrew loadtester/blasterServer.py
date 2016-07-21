@@ -9,9 +9,7 @@ def createHandlerWithQueue(configQueue, configLockout):
 
 	class S(BaseHTTPRequestHandler):
 
-		def __init__(self, *args, **kwargs):
-			super(S, self).__init__(*args, **kwargs)
-
+		# Return a list of pending load tests.
 		def do_GET(self):
 			rsp = resp()
 			rsp['pending'] = []
@@ -28,9 +26,7 @@ def createHandlerWithQueue(configQueue, configLockout):
 			self.end_headers()
 			self.wfile.write(json.dumps(rsp).encode('utf8'))
 
-		def do_HEAD(self):
-			self._set_headers()
-		
+		# Add a load test config to the queue.
 		def do_POST(self):
 			rsp = resp()
 			try:
@@ -61,14 +57,18 @@ def createHandlerWithQueue(configQueue, configLockout):
 
 	return S
 
+# Subclassing dict to add standard formatting to error messages.
 class resp(dict):
 
+	# Create a new error field, or append to the old one.
 	def appendMessage(self, error):
 		if self.get('error') == None:
 			self['error'] = error
 		else:
 			self['error'] += '\r\n' + error
 
+	# Add error information.  If there was already an error, append the code and
+	# message to the previous error's message.
 	def appendCode(self, code, errMsg = None, e = None):
 		if self.get('code') == None:
 			self['code'] = code
@@ -77,6 +77,8 @@ class resp(dict):
 		else:
 			self.appendMessage('Could not add code, %s: %s (%s)' % (code, errMsg, e))
 
+# Take the configuration dict to start the load test.  Blocks until complete.
+# See siteBlasting.py for how the load tester works.
 def runLoadTest(config):
 	url = config.get('url')
 	total_num = config.get('total_num')
@@ -91,22 +93,24 @@ def runLoadTest(config):
 	(startQueue, resultQueue) = createSharedQueues()
 	c = startController(url, method, total_num, simul_num, startQueue, resultQueue, save_filename, headers = headers, payload = payload, dataType = dataType, sendFile = sendFile)
 	c.join()
-	
+
+# Start the server and the load test runner.
 def run(server_class = HTTPServer, port = 80):
 	server_address = ('', port)
 	configQueue = multiprocessing.Queue()
 	configLockout = multiprocessing.RLock()
-	pBlaster = multiprocessing.Process(
-		target = blaster,
+	pRunner = multiprocessing.Process(
+		target = runner,
 		args = (configQueue, configLockout)
 	)
-	pBlaster.start()
+	pRunner.start()
 	httpd = server_class(server_address, createHandlerWithQueue(configQueue, configLockout))
 	print('Starting httpd...')
 	httpd.serve_forever()
 
-# calls "runLoadTest" with the next configuration in the queue.  Blocks 
-def blaster(configQueue, configLockout):
+# calls "runLoadTest" with the next configuration in the queue.  Blocks when it waits for a released lock
+# (the queue is being copied) or if there are no configs in the queue.
+def runner(configQueue, configLockout):
 	while True:
 		with configLockout:
 			config = configQueue.get()
