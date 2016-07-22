@@ -178,19 +178,15 @@
 			"rawModeData": "{\n    \"url\": \"http://pzsvc-hello.int.geointservices.io/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"serviceId\": \"\",\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"~!~ xXx Ultra-specific example just for this test xXx ~!~\"\n    }\n}"
 		},
 		{
-			"folder": null,
 			"id": "22ea8e8e-5b7f-e274-9b5b-367ec451da44",
-			"name": "Create Job w/ Unregistered Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "",
 			"headers": "Content-Type: application/json\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}\npostman.setEnvironmentVariable('retry', true);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -198,6 +194,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1469202377303,
+			"name": "Create Job w/ Unregistered Service",
+			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
 			"rawModeData": "{\r\n    \"data\": {\r\n        \"dataInputs\": {},\r\n        \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n        \"serviceId\": {{serviceId}}\r\n    },\r\n    \"type\": \"execute-service\"\r\n}"
 		},

@@ -109,7 +109,7 @@
 				},
 				{
 					"key": "file",
-					"value": "somecat.tif",
+					"value": "../0-blackbox/test-resources/somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
