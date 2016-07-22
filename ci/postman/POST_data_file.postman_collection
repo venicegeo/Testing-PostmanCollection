@@ -193,7 +193,7 @@
 			"data": [
 				{
 					"key": "file",
-					"value": "cropped.tif",
+					"value": "../0-blackbox/test-resources/somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -247,13 +247,13 @@
 			"data": [
 				{
 					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "file",
-					"value": "cropped.tif",
+					"value": "../0-blackbox/test-resources/somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -278,13 +278,13 @@
 			"data": [
 				{
 					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "file",
-					"value": "cropped.tif",
+					"value": "../0-blackbox/test-resources/somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
