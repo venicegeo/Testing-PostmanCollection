@@ -24,7 +24,7 @@
 	"requests": [
 		{
 			"id": "19d43aaf-d963-300b-6915-939babaf2c27",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/file/00000000-0000-0000-0000-000000000000",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -32,15 +32,15 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Error downloading message\"] = data.message.has(\"Error downloading file\");\n}\nelse {\n    tests[\"Error downloading message\"] = false;\n}",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message') && typeof data.message === 'string'){\n    tests[\"message string field present in output\"] = true;\n    tests[\"not found message\"] = data.message.match(/[Nn]ot [Ff]ound/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1466519974935,
+			"time": 1469121829280,
 			"name": "Download No File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -48,7 +48,7 @@
 		},
 		{
 			"id": "2d5c396e-97a7-362f-a83e-6ad319cad70a",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -59,11 +59,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1468243951765,
+			"time": 1469121837620,
 			"name": "Get Job Info",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -71,32 +71,31 @@
 		},
 		{
 			"id": "58cabb3a-b3f1-a5e8-f99b-aa03ea0f87bc",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
-			"pathVariables": {},
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "DELETE",
-			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
 			"data": null,
 			"dataMode": "params",
-			"name": "Delete File",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1466526739023,
 			"version": 2,
-			"responses": [],
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
-			}
+			},
+			"time": 1469121876798,
+			"name": "Delete File",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
 		},
 		{
 			"id": "5c5db674-31d6-0e90-3d84-b4ddbc228f81",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -110,7 +109,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -120,11 +119,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1468243328276,
+			"time": 1469121599345,
 			"name": "Load File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -132,7 +131,7 @@
 		},
 		{
 			"id": "839412da-3305-8c45-648a-20fb6c083f65",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -150,11 +149,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1466519049353,
+			"time": 1469121919476,
 			"name": "Load No File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -186,7 +185,7 @@
 		},
 		{
 			"id": "abc1a9c6-50a7-479b-7ea1-a24b03f9e79f",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -194,7 +193,7 @@
 			"data": [
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "cropped.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -204,11 +203,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1466519162712,
+			"time": 1469121905937,
 			"name": "Load No Data",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -216,7 +215,7 @@
 		},
 		{
 			"id": "bbe362f8-64a2-a4bf-868c-d36b5751c47b",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nfileName: dummyName.TIF\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nfileName: dummyName.TIF\n",
 			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -228,11 +227,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1466519612421,
+			"time": 1469121832886,
 			"name": "Download File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -254,7 +253,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "cropped.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -271,7 +270,7 @@
 		},
 		{
 			"id": "db6733c8-89a5-f2c8-a691-b3734cd07d19",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -279,28 +278,28 @@
 			"data": [
 				{
 					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "cropped.tif",
 					"type": "file",
 					"enabled": true
 				}
 			],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
+			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"error type\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'type' error.\"] = data.message.match('[tT]ype');\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467819434629,
+			"time": 1469122289503,
 			"name": "Load File w/ Wrong Type",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -308,7 +307,7 @@
 		},
 		{
 			"id": "ebea03f6-7e99-c422-2b8b-f979c49a78c9",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nfileName: dummyName.TIF\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nfileName: dummyName.TIF\n",
 			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -316,15 +315,15 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message field present in output\"] = true;\n    tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n    tests[\"'not found' error.\"] = data.message.has('not found');\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467819428966,
+			"time": 1469122000238,
 			"name": "Download File after Delete",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",

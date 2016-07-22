@@ -28,7 +28,7 @@
 	"requests": [
 		{
 			"id": "3d3372a5-da42-9163-7109-d64c21c5b8f6",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data?keyword={{text description}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -40,11 +40,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467736167257,
+			"time": 1469121146413,
 			"name": "Find Ingested Text by query",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -52,7 +52,7 @@
 		},
 		{
 			"id": "44b87b21-edb6-d059-27e1-861402fda200",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -64,11 +64,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467226617783,
+			"time": 1469121333515,
 			"name": "Ingest w/o Specifying Data Type Id",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -77,22 +77,22 @@
 		},
 		{
 			"id": "565e511d-e299-cd64-961b-e846d3150f62",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message field present in output\"] = true;\n    tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n    tests[\"'not found' error.\"] = data.message.has('not found');\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message field present in output\"] = true;\n    tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n    tests[\"'not found' error.\"] = data.message.has('not found');\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467224569144,
+			"time": 1469121276002,
 			"name": "Cannot Read from Deleted Data",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -100,7 +100,7 @@
 		},
 		{
 			"id": "6669b03d-d865-571e-f93e-7bb5d0d20f41",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data?keyword=STRING2SEARCH_BY",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -112,11 +112,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467721519064,
+			"time": 1469121239833,
 			"name": "Cannot find Deleted Data by Query",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -149,7 +149,7 @@
 		},
 		{
 			"id": "6d78ceea-6ea4-6206-0dec-958db3e658b5",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -161,11 +161,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467226609053,
+			"time": 1469121328157,
 			"name": "Ingest Array as Text",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -174,7 +174,7 @@
 		},
 		{
 			"id": "8070a12b-0b18-890d-e82e-95d56ed97192",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ZjhhOGJjMDktZjY1YS00M2QwLTgzOGEtOGYwZGQxODFmODUzOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -186,11 +186,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1468241874410,
+			"time": 1468851523830,
 			"name": "Ingest Text Data",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -199,7 +199,7 @@
 		},
 		{
 			"id": "9b57371b-4af0-553d-a132-d97db0735ace",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -210,11 +210,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467221393153,
+			"time": 1469121155613,
 			"name": "Read Ingested Text",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -222,7 +222,7 @@
 		},
 		{
 			"id": "b457c9e7-3353-6de8-cff0-cc3cdee70d3a",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -234,11 +234,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1468242204762,
+			"time": 1469121107715,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -246,7 +246,7 @@
 		},
 		{
 			"id": "b77533fb-e578-63a9-a5dc-685198dfc7af",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -257,11 +257,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1468242533580,
+			"time": 1469121180887,
 			"name": "Delete Ingested Text",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -269,7 +269,7 @@
 		},
 		{
 			"id": "b7aacfb7-6890-e681-ba08-913d0a071ccf",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -281,11 +281,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467736539233,
+			"time": 1469121158509,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -314,22 +314,22 @@
 		},
 		{
 			"id": "ec3fcc58-e227-51dc-0ac9-b43496e36a15",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message field present in output\"] = true;\n    tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n    tests[\"'not found' error.\"] = data.message.has('not found');\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message field present in output\"] = true;\n    tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n    tests[\"'not found' error.\"] = data.message.has('not found');\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467223591025,
+			"time": 1469121214198,
 			"name": "Cannot Delete Again",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -337,7 +337,7 @@
 		},
 		{
 			"id": "ef482c50-3971-7a2d-20ae-da171efc2587",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -349,11 +349,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467226605983,
+			"time": 1469121330500,
 			"name": "Ingest Object as Text",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -362,7 +362,7 @@
 		},
 		{
 			"id": "fce9e11c-9c33-188a-9624-11789fab866f",
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -374,11 +374,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "citester",
-				"password": "citester",
+				"username": "{{API Key}}",
+				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1467225288041,
+			"time": 1469121336216,
 			"name": "Ingest w/o Content type",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
