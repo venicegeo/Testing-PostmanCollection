@@ -1,0 +1,326 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PreviewGenerator_July2016",
+		"_postman_id": "79e90431-c869-1077-a232-4132c9c16611",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Service",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikeystage\",\"bf905b82-4c1b-4d8a-bb0f-dc42428ba956\")"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "bf905b82-4c1b-4d8a-bb0f-dc42428ba956",
+						"password": "citester",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.stage.geointservices.io/service",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2OmNpdGVzdGVy",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n\n \"url\" : \"https://pz-svcs-prevgen.stage.geointservices.io/crop\",\n \"contractUrl\" : \"https://pz-svcs-prevgen.stage.geointservices.io/crop\",\n \"method\" : \"POST\",\n \"resourceMetadata\" : {\n   \"name\" : \"pz-svcs-prevgen crop raster test\",\n   \"description\" : \"pz-svcs-prevgen is an awesome sample crop image external service.\",\n   \"classType\" : \"U\"\n }\n}"
+				},
+				"description": "Register Service"
+			},
+			"response": []
+		},
+		{
+			"name": "Execute Service",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikeystage}}",
+						"password": "citester",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.stage.geointservices.io/job",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2OmNpdGVzdGVy",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId}}\",\n        \"dataInputs\" : {      \n           \n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"application/json\",          \n            \"type\" : \"text\"\n        }]\n    }\n}\n\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get job Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikeystage}}",
+						"password": "citester",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.stage.geointservices.io/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2OmNpdGVzdGVy",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\n    \\\"source\\\": {\\n        \\\"domain\\\": \\\"s3.amazonaws.com\\\",\\n        \\\"bucketName\\\": \\\"pz-svcs-prevgen\\\",\\n        \\\"fileName\\\": \\\"NASA-GDEM-10km-colorized.tif\\\"\\n    },\\n    \\\"function\\\": \\\"crop\\\",\\n    \\\"bounds\\\": {\\n        \\\"minx\\\": -140.00,\\n        \\\"miny\\\": 10.00,\\n        \\\"maxx\\\": -60.00,\\n        \\\"maxy\\\": 70.00\\n    }\\n}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}\n\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikeystage}}",
+						"password": "citester",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.stage.geointservices.io/data/{{dataId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2OmNpdGVzdGVy",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\n    \\\"source\\\": {\\n        \\\"domain\\\": \\\"s3.amazonaws.com\\\",\\n        \\\"bucketName\\\": \\\"pz-svcs-prevgen\\\",\\n        \\\"fileName\\\": \\\"NASA-GDEM-10km-colorized.tif\\\"\\n    },\\n    \\\"function\\\": \\\"crop\\\",\\n    \\\"bounds\\\": {\\n        \\\"minx\\\": -140.00,\\n        \\\"miny\\\": 10.00,\\n        \\\"maxx\\\": -60.00,\\n        \\\"maxy\\\": 70.00\\n    }\\n}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}\n\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Service Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikeystage}}",
+						"password": "citester",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.stage.geointservices.io/service/{{serviceId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2OmNpdGVzdGVy",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\n    \\\"source\\\": {\\n        \\\"domain\\\": \\\"s3.amazonaws.com\\\",\\n        \\\"bucketName\\\": \\\"pz-svcs-prevgen\\\",\\n        \\\"fileName\\\": \\\"NASA-GDEM-10km-colorized.tif\\\"\\n    },\\n    \\\"function\\\": \\\"crop\\\",\\n    \\\"bounds\\\": {\\n        \\\"minx\\\": -140.00,\\n        \\\"miny\\\": 10.00,\\n        \\\"maxx\\\": -60.00,\\n        \\\"maxy\\\": 70.00\\n    }\\n}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}\n\n"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
