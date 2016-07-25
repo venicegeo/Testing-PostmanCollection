@@ -1,8 +1,8 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Workflow_AWM_INT",
-		"_postman_id": "84cb8789-08e1-2e51-081c-15237ef101ff",
+		"name": "Workflow_AWM_Stage_JULY2016",
+		"_postman_id": "04a38df9-205a-0d8c-2e68-9d8709a8bc8e",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "{\n    var data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId)\n    postman.setEnvironmentVariable(\"apikey\",\"13395994-3858-4315-8bc1-2927dfe4d483\")\n\n  }"
+						"exec": "{\n    var data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId)\n    postman.setEnvironmentVariable(\"apikeystage\",\"bf905b82-4c1b-4d8a-bb0f-dc42428ba956\")\n\n  }"
 					}
 				}
 			],
@@ -22,13 +22,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "13395994-3858-4315-8bc1-2927dfe4d483",
+						"username": "bf905b82-4c1b-4d8a-bb0f-dc42428ba956",
 						"password": "jtkirkncc-17o1G",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/eventType",
+				"url": "https://pz-gateway.stage.geointservices.io/eventType",
 				"method": "POST",
 				"header": [
 					{
@@ -85,13 +85,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikey}}",
+						"username": "{{apikeystage}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/eventType/{{eventtype_id}}",
+				"url": "https://pz-gateway.stage.geointservices.io/eventType/{{eventtype_id}}",
 				"method": "GET",
 				"header": [
 					{
@@ -148,7 +148,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikey}}",
+						"username": "{{apikeystage}}",
 						"password": "f?A5rutAD5uzuT",
 						"saveHelperData": true,
 						"showPassword": false
@@ -211,13 +211,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikey}}",
+						"username": "{{apikeystage}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/event",
+				"url": "https://pz-gateway.stage.geointservices.io/event",
 				"method": "POST",
 				"header": [
 					{
@@ -274,13 +274,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikey}}",
+						"username": "{{apikeystage}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/event",
+				"url": "https://pz-gateway.stage.geointservices.io/event",
 				"method": "POST",
 				"header": [
 					{
@@ -328,13 +328,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikey}}",
+						"username": "{{apikeystage}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/event",
+				"url": "https://pz-gateway.stage.geointservices.io/event",
 				"method": "POST",
 				"header": [
 					{
@@ -391,18 +391,18 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikey}}",
+						"username": "{{apikeystage}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/event?{{eventId}}",
+				"url": "https://pz-gateway.stage.geointservices.io/event?{{eventId}}",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOmNpdGVzdGVy",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2OmNpdGVzdGVy",
 						"description": ""
 					},
 					{
