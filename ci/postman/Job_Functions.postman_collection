@@ -22,7 +22,6 @@
 	"folders": [],
 	"timestamp": 1467292846156,
 	"owner": "699425",
-	"remoteLink": "",
 	"public": false,
 	"published": false,
 	"requests": [
@@ -154,19 +153,15 @@
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5"
 		},
 		{
-			"folder": null,
 			"id": "1d4a8b48-4ffe-70be-f439-6c55acd68006",
-			"name": "Register Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service-id';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('serviceId') && typeof data.data.serviceId === 'string') {\n        tests[\"data.serviceId string field present in output.\"] = true;\n        tests[\"GUID created for serviceId\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"serviceId\",'\"' + data.data.serviceId + '\"');\n    }\n    else{\n        tests[\"data.serviceId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service-id';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('serviceId') && typeof data.data.serviceId === 'string') {\n        tests[\"data.serviceId string field present in output.\"] = true;\n        tests[\"GUID created for serviceId\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"serviceId\",'\"' + data.data.serviceId + '\"');\n    }\n    else{\n        tests[\"data.serviceId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -174,6 +169,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1469476880923,
+			"name": "Register Service",
+			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
 			"rawModeData": "{\n    \"url\": \"http://pzsvc-hello.int.geointservices.io/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"serviceId\": \"\",\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"~!~ xXx Ultra-specific example just for this test xXx ~!~\"\n    }\n}"
 		},
@@ -186,7 +184,7 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}\npostman.setEnvironmentVariable('retry', true);",
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}\npostman.setEnvironmentVariable('retry', true);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -194,7 +192,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469202377303,
+			"time": 1469476913688,
 			"name": "Create Job w/ Unregistered Service",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
@@ -254,7 +252,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}\npostman.setEnvironmentVariable('serviceId',postman.getEnvironmentVariable('serviceId').replace(/\"/g, ''));\npostman.setEnvironmentVariable('retry', true);",
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}\npostman.setEnvironmentVariable('serviceId',postman.getEnvironmentVariable('serviceId').replace(/\"/g, ''));\npostman.setEnvironmentVariable('retry', true);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -262,7 +260,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469193103800,
+			"time": 1469476901419,
 			"name": "Create Job Again",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
@@ -316,19 +314,15 @@
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5"
 		},
 		{
-			"folder": null,
 			"id": "cb455f02-2c18-8c8c-06ae-588dbca74ac5",
-			"name": "Create Job",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -336,6 +330,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1469476891623,
+			"name": "Create Job",
+			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": {{serviceId}}\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
