@@ -34,7 +34,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Cancelled') {\n            if (postman.getEnvironmentVariable('retry')) {\n                postman.setEnvironmentVariable('retry', false);\n                postman.setNextRequest('Validate Job Stays Cancelled');\n                pausecomp(5000);\n                tests[\"Retrying ...\"] = true;\n            }\n            else {\n                tests[\"Job Stayed Cancelled for 5 seconds\"] = true;\n            }\n        }\n        else {\n            tests[\"SHOULD FAIL HERE: After 5 seconds, status should not be \" + data.data.status] = true;\n            tests['~~~~~ Not Yet Implemented. ~~~~~'] = true;\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobType') && typeof data.data.jobType === 'string') {\n        tests[\"data.jobType string field present in output\"] = true;\n        tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n    }\n    else {\n        tests[\"data.jobType string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Cancelled') {\n            if (postman.getEnvironmentVariable('retry')) {\n                postman.setEnvironmentVariable('retry', false);\n                postman.setNextRequest('Validate Job Stays Cancelled');\n                pausecomp(5000);\n                tests[\"Retrying ...\"] = true;\n            }\n            else {\n                tests[\"Job Stayed Cancelled for 5 seconds\"] = true;\n            }\n        }\n        else {\n            tests[\"After 5 seconds, status should not be \" + data.data.status + \". (Bug #5265)\"] = false;\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobType') && typeof data.data.jobType === 'string') {\n        tests[\"data.jobType string field present in output\"] = true;\n        tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n    }\n    else {\n        tests[\"data.jobType string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -42,7 +42,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469200238351,
+			"time": 1469539664561,
 			"name": "Validate Job Stays Cancelled",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5"
@@ -108,7 +108,7 @@
 		},
 		{
 			"id": "10fe4789-db77-e8d5-2596-ec6325e13694",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -123,7 +123,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469199123340,
+			"time": 1469539338938,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5"
@@ -154,7 +154,7 @@
 		},
 		{
 			"id": "1d4a8b48-4ffe-70be-f439-6c55acd68006",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -169,7 +169,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469476880923,
+			"time": 1469539336447,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
@@ -268,20 +268,15 @@
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": {{serviceId}}\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
-			"folder": null,
 			"id": "b27acc9e-292e-471c-c656-d7baafab0323",
-			"name": "Cannot Cancel Completed Job",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "",
 			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
-			"method": "DELETE",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
-			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"Correct jobId used\"] = data.message.has(postman.getEnvironmentVariable('jobId'));\n    tests[\"'not running' message\"] = data.message.match(/[Nn]o.*[Rr]unning/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'success';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"'no longer running' message\"] = data.data.message.match(/[Nn]o.*[Rr]unning/);\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -289,6 +284,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1469539331882,
+			"name": "Cannot Cancel Completed Job",
+			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5"
 		},
 		{
@@ -315,7 +313,7 @@
 		},
 		{
 			"id": "cb455f02-2c18-8c8c-06ae-588dbca74ac5",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -330,7 +328,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469476891623,
+			"time": 1469539338146,
 			"name": "Create Job",
 			"description": "",
 			"collectionId": "46c9555e-a327-a6de-3bdc-b6b221db15f5",
