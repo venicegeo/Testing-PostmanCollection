@@ -1464,7 +1464,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;"
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.jobId)\n\n\n"
 					}
 				}
 			],
