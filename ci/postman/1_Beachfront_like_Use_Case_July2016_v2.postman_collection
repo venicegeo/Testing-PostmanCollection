@@ -942,7 +942,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 201;"
 					}
 				}
 			],
@@ -986,7 +986,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic ZjhhOGJjMDktZjY1YS00M2QwLTgzOGEtOGYwZGQxODFmODUzOmNpdGVzdGVy",
+						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
