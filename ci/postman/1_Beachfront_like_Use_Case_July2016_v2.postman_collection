@@ -942,7 +942,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 201;"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
 					}
 				}
 			],
