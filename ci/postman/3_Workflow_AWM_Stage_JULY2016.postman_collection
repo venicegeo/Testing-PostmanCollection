@@ -465,7 +465,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOmp0a2lya25jYy0xN28xRw==",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Omp0a2lya25jYy0xN28xRw==",
 						"description": ""
 					},
 					{
@@ -496,7 +496,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"High Severity\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"98fc25e8-bd97-4444-a972-c06aa0f0edf1\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        { \"match\": {\"severity\": 5} },\n                        { \"match\": {\"code\": \"PHONE\"} }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"createdBy\": \"test\",\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"a2898bcb-2646-4ffd-9da7-2308cb7e77d7\"\n            }\n        }\n    }\n}"
+					"raw": "{\n    \"name\": \"High Severity\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"98fc25e8-bd97-4444-a972-c06aa0f0edf1\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        { \"match\": {\"severity\": 5} },\n                        { \"match\": {\"code\": \"PHONE\"} }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"createdBy\": \"test\",\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"a2898bcb-2646-4ffd-9da7-2308cb7e77d7\"\n            }\n        }\n    }\n}"
 				},
 				"description": ""
 			},
