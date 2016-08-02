@@ -13,6 +13,8 @@
 		"e448acf5-78c1-92f5-f5bc-369f73bacea9",
 		"d08e38d6-174a-9f72-0f1c-7cc95fdf506f",
 		"bb45e443-6ac6-033d-1fe9-3765648fe057",
+		"5c0214fa-e81d-a0a9-45d1-577ebd5eabfd",
+		"2fed9fff-3249-538c-23e4-c721e9917c4f",
 		"387c3552-487b-cba3-58b4-e765e4e02d5f",
 		"25e0b7cb-804e-0ea8-eaa7-4f86849b8af5",
 		"524cd80d-1cdc-ff1b-4d16-877899c3ed76",
@@ -26,7 +28,7 @@
 	"requests": [
 		{
 			"id": "0953f0b4-f0c7-a2e2-3c63-c7c59b65c475",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?per_page=10&keyword=BF_Algo_NDWI",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -42,7 +44,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469547946968,
+			"time": 1470070855138,
 			"name": "Find available shoreline algorithms",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -57,10 +59,10 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features)){\n        tests[\"images.features array field present in output\"] = true;\n        var formatted_JSON = JSON.stringify(data.images.features[0]).replace(/\"/g, '\\\\\"');\n        var content = '\"{\\\\\"algoType\\\\\": \\\\\"' + postman.getEnvironmentVariable('Algorithm Name') + '\\\\\",\\\\\"svcURL\\\\\": \\\\\"' + postman.getEnvironmentVariable('pzsvc-ossim domain') + '\\\\\",\\\\\"pzAuthToken\\\\\": \\\\\"Basic ' + (postman.getEnvironmentVariable('API Key') + ':').encodeBase64() + '\\\\\",\\\\\"pzAddr\\\\\": \\\\\"' + postman.getEnvironmentVariable('pz-gateway domain') + '\\\\\",\\\\\"dbAuthToken\\\\\": \\\\\"ZZZZ\\\\\",\\\\\"bands\\\\\": [\\\\\"coastal\\\\\",\\\\\"swir1\\\\\"],\\\\\"metaDataJSON\\\\\":' + formatted_JSON + '}\"';\n        postman.setEnvironmentVariable('Formatted Content String', content);\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('images')) {\n    tests[\"images field present in output\"] = true;\n    if (data.images.hasOwnProperty('features') && Array.isArray(data.images.features)){\n        tests[\"images.features array field present in output\"] = true;\n        var formatted_JSON = JSON.stringify(data.images.features[0]).replace(/\"/g, '\\\\\"');\n        var content = '\"{\\\\\"algoType\\\\\": \\\\\"' + postman.getEnvironmentVariable('Algorithm Name') + '\\\\\",\\\\\"svcURL\\\\\": \\\\\"' + postman.getEnvironmentVariable('pzsvc-ossim domain') + '\\\\\",\\\\\"pzAuthToken\\\\\": ' + postman.getEnvironmentVariable('pz auth') + ',\\\\\"pzAddr\\\\\": \\\\\"' + postman.getEnvironmentVariable('pz-gateway domain') + '\\\\\",\\\\\"dbAuthToken\\\\\": \\\\\"ZZZZ\\\\\",\\\\\"bands\\\\\": [\\\\\"coastal\\\\\",\\\\\"swir1\\\\\"],\\\\\"metaDataJSON\\\\\":' + formatted_JSON + '}\"';\n        postman.setEnvironmentVariable('Formatted Content String', content);\n    }\n    else {\n        tests[\"images.features array field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"images field present in output\"] = false;\n}\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1469549103335,
+			"time": 1469825119667,
 			"name": "Select feature from pzsvc-image-catalog",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -68,7 +70,7 @@
 		},
 		{
 			"id": "25c4d9fe-833b-33d7-a07b-f8322578076d",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=10&keyword=pzsvc-image-catalog",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -84,7 +86,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469547945285,
+			"time": 1470070854722,
 			"name": "Find pzsvc-image-catalog url",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -92,7 +94,7 @@
 		},
 		{
 			"id": "25e0b7cb-804e-0ea8-eaa7-4f86849b8af5",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -108,8 +110,32 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469642150219,
+			"time": 1470070860435,
 			"name": "Get deploymentId",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "2fed9fff-3249-538c-23e4-c721e9917c4f",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('HACK - Get dataId of Dummy Data');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if (data.data.status === 'Success') {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n            if(data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present\"] = true;\n                if(data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n                    tests[\"data.result.dataId string field present\"] = true;\n                    postman.setEnvironmentVariable(\"shoreDataID\",data.data.result.dataId);\n                    tests[\"data.result.dataId GUID created\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                }\n                else {\n                    tests[\"data.result.dataId string field present\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status + \".\"] = false;\n            tests[\"Output: \" + responseBody] = false;\n            postman.setNextRequest('');\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470085295227,
+			"name": "HACK - Get dataId of Dummy Data",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
 			"responses": []
@@ -141,7 +167,7 @@
 		},
 		{
 			"id": "4972e73b-d3c7-9e6f-e70d-72d805704836",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -157,7 +183,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469642006163,
+			"time": 1470070855939,
 			"name": "Hold_till_done",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -185,7 +211,7 @@
 		},
 		{
 			"id": "524cd80d-1cdc-ff1b-4d16-877899c3ed76",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -201,15 +227,52 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469643995639,
+			"time": 1470085291470,
 			"name": "Fetch Deployment",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
 			"responses": []
 		},
 		{
+			"id": "5c0214fa-e81d-a0a9-45d1-577ebd5eabfd",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"geojson\" }, \"metadata\": { \"name\": \"Test.geojson\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "../0-blackbox/test-resources/Test.geojson",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else {\n        tests[\"data.jobId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n    tests[\"Output: \" + responseBody] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470085301245,
+			"name": "HACK - Ingest Dummy Data",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
 			"id": "91e3475d-5b2a-f51c-217f-1d5ad9e0a378",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -224,7 +287,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469547469321,
+			"time": 1470070855507,
 			"name": "Request bf-handle job",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -241,7 +304,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute');\npostman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.' + postman.getEnvironmentVariable('domain'));\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('Formatted Content String','');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('shoreDataID', '');\npostman.setEnvironmentVariable('retry_loop', 0);",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute');\nif (postman.getEnvironmentVariable('environment') === 'int') {\n    postman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.stage.geointservices.io');  //pz-exec on int points to pz on stage.\n    postman.setEnvironmentVariable('pz auth', '\\\\\"Basic ' + (postman.getEnvironmentVariable('Stage API Key') + ':').encodeBase64() + '\\\\\"');\n}\nelse {\n    postman.setEnvironmentVariable('Stage API Key', postman.getEnvironmentVariable('API Key'));  // Don't use different key for \"Get Shoreline\" step.\n    postman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.' + postman.getEnvironmentVariable('domain'));\n    postman.setEnvironmentVariable('pz auth', '\\\\\"Basic ' + (postman.getEnvironmentVariable('API Key') + ':').encodeBase64() + '\\\\\"');\n}\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('Formatted Content String','');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('shoreDataID', '');\npostman.setEnvironmentVariable('deploymentId', '');\npostman.setEnvironmentVariable('capabilitiesUrl', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -249,7 +312,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1469545265759,
+			"time": 1470085957190,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -257,7 +320,7 @@
 		},
 		{
 			"id": "9ddf6b58-9703-bb11-3c8c-2ab8bba68b25",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=10&keyword=bf-handle",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -272,7 +335,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469547933997,
+			"time": 1470084870601,
 			"name": "Find bf-handle serviceId",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -281,22 +344,22 @@
 		{
 			"id": "bb45e443-6ac6-033d-1fe9-3765648fe057",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nfileName: dummyName.TIF\n",
-			"url": "https://pz-gateway.{{domain}}/file/{{shoreDataID}}",
+			"url": "{{pz-gateway domain}}/file/{{shoreDataID}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nif (data.hasOwnProperty('features') && Array.isArray(data.features) && data.features.length > 0) {\n    tests[\"features array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.features.length; i++) {\n        if (data.features[i].hasOwnProperty('geometry')) {\n            tests[\"features[].geometry field present in output\"] = true;\n            if (data.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.features[i].geometry.coordinates)) {\n                tests[\"features[].geometry.coordinates array field present in output\"] = true;\n                tests[\"Coordinates are present\"] = data.features.length > 0;\n            }\n            else {\n                tests[\"features[].geometry.coordinates array field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"features[].geometry field present in output\"] = false;\n        }\n    }\n}\nelse {\n    tests[\"features array field present in output and is not empty\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (postman.getEnvironmentVariable('environment') != 'int') {\n    postman.setNextRequest('Deploy Shoreline Data');\n}\n\nif (data.hasOwnProperty('features') && Array.isArray(data.features) && data.features.length > 0) {\n    tests[\"features array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.features.length; i++) {\n        if (data.features[i].hasOwnProperty('geometry')) {\n            tests[\"features[].geometry field present in output\"] = true;\n            if (data.features[i].geometry.hasOwnProperty('coordinates') && Array.isArray(data.features[i].geometry.coordinates)) {\n                tests[\"features[].geometry.coordinates array field present in output\"] = true;\n                tests[\"Coordinates are present\"] = data.features.length > 0;\n            }\n            else {\n                tests[\"features[].geometry.coordinates array field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"features[].geometry field present in output\"] = false;\n        }\n    }\n}\nelse {\n    tests[\"features array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "{{API Key}}",
+				"username": "{{Stage API Key}}",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469548644352,
+			"time": 1470085246337,
 			"name": "Get Shoreline",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -304,7 +367,7 @@
 		},
 		{
 			"id": "d08e38d6-174a-9f72-0f1c-7cc95fdf506f",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nfileName: dummyName.TIF\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nfileName: dummyName.TIF\n",
 			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -320,7 +383,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469548646329,
+			"time": 1470074142603,
 			"name": "Find Shoreline",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -328,7 +391,7 @@
 		},
 		{
 			"id": "e448acf5-78c1-92f5-f5bc-369f73bacea9",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -344,7 +407,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469548550199,
+			"time": 1470070856362,
 			"name": "Check Job Status - Success",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
