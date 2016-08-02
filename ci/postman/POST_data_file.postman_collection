@@ -37,7 +37,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message') && typeof data.message === 'string'){\n    tests[\"message string field present in output\"] = true;\n    tests[\"not found message\"] = data.message.match(/[Nn]ot [Ff]ound/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\ntry {\n    var data = JSON.parse(responseBody);\n    if(data.hasOwnProperty('message') && typeof data.message === 'string'){\n        tests[\"message string field present in output\"] = true;\n        tests[\"not found message\"] = data.message.match(/[Nn]ot [Ff]ound/);\n    }\n    else {\n        tests[\"message string field present in output\"] = false;\n    }\n}\ncatch (e) {\n    tests[\"JSON missing from error output (Bug #5596)\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -45,7 +45,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121829280,
+			"time": 1470144390049,
 			"name": "Download No File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -330,7 +330,7 @@
 		},
 		{
 			"id": "bbe362f8-64a2-a4bf-868c-d36b5751c47b",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -346,7 +346,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469728576875,
+			"time": 1470143688692,
 			"name": "Download File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -492,7 +492,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"Deletion Successful\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message field present in output\"] = true;\n    tests[\"Correct dataId used\"] = data.message.has(postman.getEnvironmentVariable('dataId'));\n    tests[\"'not found' error.\"] = data.message.has('not found');\n}\nelse {\n    tests[\"message field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\ntry {\n    var data = JSON.parse(responseBody);\n    if(data.hasOwnProperty('message') && typeof data.message === 'string'){\n        tests[\"message string field present in output\"] = true;\n        tests[\"not found message\"] = data.message.match(/[Nn]ot [Ff]ound/);\n    }\n    else {\n        tests[\"message string field present in output\"] = false;\n    }\n}\ncatch (e) {\n    tests[\"JSON missing from error output (Bug #5596)\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -500,7 +500,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469728598021,
+			"time": 1470144401525,
 			"name": "Download File after Delete",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",

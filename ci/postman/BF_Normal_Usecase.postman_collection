@@ -175,7 +175,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < 120) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Hold_till_done');\n                pausecomp(5000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < 120) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Hold_till_done');\n                pausecomp(5000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n                postman.setEnvironmentVariable('retry_loop', 0);\n            }\n        }\n        else {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -183,7 +183,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470070855939,
+			"time": 1470140989690,
 			"name": "Hold_till_done",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -304,7 +304,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute');\nif (postman.getEnvironmentVariable('environment') === 'int') {\n    postman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.stage.geointservices.io');  //pz-exec on int points to pz on stage.\n    postman.setEnvironmentVariable('pz auth', '\\\\\"Basic ' + (postman.getEnvironmentVariable('Stage API Key') + ':').encodeBase64() + '\\\\\"');\n}\nelse {\n    postman.setEnvironmentVariable('Stage API Key', postman.getEnvironmentVariable('API Key'));  // Don't use different key for \"Get Shoreline\" step.\n    postman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.' + postman.getEnvironmentVariable('domain'));\n    postman.setEnvironmentVariable('pz auth', '\\\\\"Basic ' + (postman.getEnvironmentVariable('API Key') + ':').encodeBase64() + '\\\\\"');\n}\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('Formatted Content String','');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('shoreDataID', '');\npostman.setEnvironmentVariable('deploymentId', '');\npostman.setEnvironmentVariable('capabilitiesUrl', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('pzsvc-ossim domain','https://pzsvc-ossim.' + postman.getEnvironmentVariable('domain') + '/execute');\nif (postman.getEnvironmentVariable('environment') === 'int') {\n    postman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.stage.geointservices.io');  //pz-exec on int points to pz on stage.\n    postman.setEnvironmentVariable('pz auth', '\\\\\"Basic ' + (postman.getEnvironmentVariable('Stage API Key') + ':').encodeBase64() + '\\\\\"');\n}\nelse {\n    postman.setEnvironmentVariable('Stage API Key', postman.getEnvironmentVariable('API Key'));  // Don't use different key for \"Get Shoreline\" step.\n    postman.setEnvironmentVariable('pz-gateway domain','https://pz-gateway.' + postman.getEnvironmentVariable('domain'));\n    postman.setEnvironmentVariable('pz auth', '\\\\\"Basic ' + (postman.getEnvironmentVariable('API Key') + ':').encodeBase64() + '\\\\\"');\n}\npostman.setEnvironmentVariable('bf-handle serviceId','');\npostman.setEnvironmentVariable('pzsvc-image-catalog url','');\npostman.setEnvironmentVariable('Algorithm Name','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('Formatted Content String','');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('shoreDataID', '');\npostman.setEnvironmentVariable('deploymentId', '');\npostman.setEnvironmentVariable('capabilitiesUrl', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.getEnvironmentVariable('max_retries', 10);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -312,7 +312,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1470085957190,
+			"time": 1470140939326,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
