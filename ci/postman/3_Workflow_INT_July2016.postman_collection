@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "{\n    var data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId)\n    postman.setEnvironmentVariable(\"apikey\",\"13395994-3858-4315-8bc1-2927dfe4d483\")\n\n  }"
+						"exec": "{\n    var data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId)\n    postman.setEnvironmentVariable(\"apikey\",\"bd84f04c-def0-4645-bbfb-52f0d63cef4e\")\n\n  }"
 					}
 				}
 			],
@@ -22,7 +22,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "13395994-3858-4315-8bc1-2927dfe4d483",
+						"username": "bd84f04c-def0-4645-bbfb-52f0d63cef4e",
 						"password": "jtkirkncc-17o1G",
 						"saveHelperData": true,
 						"showPassword": false
