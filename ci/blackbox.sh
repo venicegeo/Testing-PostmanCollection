@@ -13,7 +13,7 @@ popd > /dev/null
 [ -z "$space" ] && space=int
 
 bigLatch=0
-spaces="int stage"
+spaces="int stage prod"
 for space in $spaces; do
 	echo $space
 	envfile=$base/environments/$space.postman_environment
