@@ -517,7 +517,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "{{apikeystage}}",
+						"username": "{{apikeyprod}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
