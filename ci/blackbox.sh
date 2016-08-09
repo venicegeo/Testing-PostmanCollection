@@ -33,7 +33,7 @@ for space in $spaces; do
 	for f in $(ls -1 $base/postman/*postman_collection); do
 		echo $f
 		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || (latch=1 && BODY="${BODY}\n${f}")
+		$cmd $f || latch=1 && BODY="${BODY}\n${f}"
 		echo $latch
 	done
 
