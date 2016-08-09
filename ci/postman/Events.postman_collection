@@ -7,13 +7,16 @@
 		"01ddea84-ced1-fdba-57e5-b253be3e612a",
 		"eb41c7c3-4453-8272-3374-5743f489cf4b",
 		"a88aa139-def6-dfeb-492f-0b346505d41d",
-		"0e675907-9063-ffd4-b26c-4d9520b27704",
-		"0af6953d-22e4-b1e4-1d72-a59472118713",
-		"a62977d9-4934-3a5b-f1ad-fe568fbd400c",
 		"c59cbc28-938a-b5e7-10e5-7db9376c6225",
 		"464f34c7-5d05-df9c-593b-4a8cbecf92d9",
 		"81243eae-c90a-df7a-7b2e-0d29c60efd44",
 		"33ce7c58-72bb-6139-05f3-ea11850e54e8",
+		"0e675907-9063-ffd4-b26c-4d9520b27704",
+		"0af6953d-22e4-b1e4-1d72-a59472118713",
+		"a62977d9-4934-3a5b-f1ad-fe568fbd400c",
+		"9147ebc3-5384-c7d9-28aa-f6a04cb89bf1",
+		"8610f095-6c10-1ae2-f95b-b2c022d3053b",
+		"91c0d368-5d23-284b-84e9-63777a9f6c5a",
 		"d275af5b-64d2-1723-2b1e-8f0cbf294e61",
 		"4fcb500b-8048-383f-918b-dfd24bb3398f",
 		"8110d52c-ba19-9e17-e74b-5cb37f64d92e",
@@ -53,7 +56,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470318091806,
+			"time": 1470670832324,
 			"name": "Create EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -62,7 +65,7 @@
 		},
 		{
 			"id": "0af6953d-22e4-b1e4-1d72-a59472118713",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -77,7 +80,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470333340072,
+			"time": 1470665969260,
 			"name": "Get Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -86,7 +89,7 @@
 		},
 		{
 			"id": "0e675907-9063-ffd4-b26c-4d9520b27704",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -101,12 +104,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470334266234,
+			"time": 1470667636963,
 			"name": "Create Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\n    \"data\": {\t\n      \"mapping\": {\n\t\t\"dataId\": \"testId\",\n\t\t\"dataType\": \"raster\",\n\t\t\"epsg\": \"3\",\n\t\t\"minX\": \"1.0\",\n\t\t\"minY\": \"1.0\",\n\t\t\"maxX\": \"10.0\",\n\t\t\"maxY\": \"10.0\",\n\t\t\"hosted\": true\n      }\n  },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
+			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"raster\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
 		},
 		{
 			"id": "137070a9-a7f6-513b-8d0d-48e0ca9a1681",
@@ -161,14 +164,14 @@
 		{
 			"id": "33ce7c58-72bb-6139-05f3-ea11850e54e8",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/trigger?perPage=1000&order=desc&sortBy=createdOn",
+			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId')) {\n            tests[\"data[].triggerId field present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].triggerId field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"triggerId found\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId')) {\n            tests[\"data[].triggerId field present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].triggerId field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"triggerId found (Bug # 5714)\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -176,7 +179,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470339958435,
+			"time": 1470665976636,
 			"name": "Query Triggers",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -234,7 +237,7 @@
 		},
 		{
 			"id": "464f34c7-5d05-df9c-593b-4a8cbecf92d9",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -242,7 +245,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('triggerId') && typeof data.data.triggerId === 'string') {\n        tests[\"data.triggerId string field present in output\"] = true;\n        tests[\"triggerId GUID created\"] = data.data.triggerId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('triggerId', data.data.triggerId);\n    }\n    else {\n        tests[\"data.triggerId string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('condition')) {\n        tests[\"data.condition field present in output\"] = true;\n        if (data.data.condition.hasOwnProperty('eventTypeIds') && Array.isArray(data.data.condition.eventTypeIds) && data.data.condition.eventTypeIds.length === 1) {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = true;\n            tests[\"Correct eventTypeId used\"] = data.data.condition.eventTypeIds[0] === postman.getEnvironmentVariable('eventTypeId');\n        }\n        else {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = false;\n        }\n    }\n    if (data.data.hasOwnProperty('job')) {\n        tests[\"data.job field present in output\"] = true;\n        if (data.data.job.hasOwnProperty('jobType')) {\n            tests[\"data.job.jobType field present in output\"] = true;\n            if (data.data.job.jobType.hasOwnProperty('data')) {\n                tests[\"data.job.jobType.data field present in output\"] = true;\n                if (data.data.job.jobType.data.hasOwnProperty('serviceId')) {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = true;\n                    tests[\"Correct serviceId used\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n                }\n                else {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"data.job.jobType.data field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data.job.jobType field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.job field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('triggerId') && typeof data.data.triggerId === 'string') {\n        tests[\"data.triggerId string field present in output\"] = true;\n        tests[\"triggerId GUID created\"] = data.data.triggerId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('triggerId', data.data.triggerId);\n    }\n    else {\n        tests[\"data.triggerId string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('condition')) {\n        tests[\"data.condition field present in output\"] = true;\n        if (data.data.condition.hasOwnProperty('eventTypeIds') && Array.isArray(data.data.condition.eventTypeIds) && data.data.condition.eventTypeIds.length === 1) {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = true;\n            tests[\"Correct eventTypeId used\"] = data.data.condition.eventTypeIds[0] === postman.getEnvironmentVariable('eventTypeId');\n        }\n        else {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = false;\n        }\n    }\n    if (data.data.hasOwnProperty('job')) {\n        tests[\"data.job field present in output\"] = true;\n        if (data.data.job.hasOwnProperty('jobType')) {\n            tests[\"data.job.jobType field present in output\"] = true;\n            if (data.data.job.jobType.hasOwnProperty('data')) {\n                tests[\"data.job.jobType.data field present in output\"] = true;\n                if (data.data.job.jobType.data.hasOwnProperty('serviceId')) {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = true;\n                    tests[\"Correct serviceId used\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n                }\n                else {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = false;\n                }\n                if (data.data.job.jobType.data.hasOwnProperty('dataInputs')) {\n                    tests[\"data.job.jobType.data.dataInputs field present in output\"] = true;\n                    if (data.data.job.jobType.data.dataInputs.hasOwnProperty('test')) {\n                        tests[\"data.job.jobType.data.dataInputs.test field present in output\"] = true;\n                        if (data.data.job.jobType.data.dataInputs.test.hasOwnProperty('type')) {\n                            tests[\"data.job.jobType.data.dataInputs.test.type field present in output\"] = true;\n                            tests[\"Input type matches original value (Bug #5779)\"] = data.data.job.jobType.data.dataInputs.test.type === \"body\";\n                        }\n                        else {\n                            tests[\"data.job.jobType.data.dataInputs.test.type field present in output\"] = false;\n                        }\n                    }\n                    else {\n                        tests[\"data.job.jobType.data.dataInputs.test field present in output\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.job.jobType.data.dataInputs field present in output\"] = false;\n                }\n                if (data.data.job.jobType.data.hasOwnProperty('dataOutput') && Array.isArray(data.data.job.jobType.data.dataOutput) && data.data.job.jobType.data.dataOutput.length === 1) {\n                    tests[\"data.job.jobType.data.dataOutput array field present in output and has one element\"] = true;\n                    if (data.data.job.jobType.data.dataOutput[0].hasOwnProperty('type')) {\n                        tests[\"data.job.jobType.data.dataOutput[0].type field present in output\"] = true;\n                        tests[\"Output type matches original value (Bug #5779)\"] = data.data.job.jobType.data.dataOutput.type === \"text\";\n                    }\n                    else {\n                        tests[\"data.job.jobType.data.dataOutput[0].type field present in output\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.job.jobType.data.dataOutput array field present in output and has one element\"] = false;\n                }\n            }\n            else {\n                tests[\"data.job.jobType.data field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data.job.jobType field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.job field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -250,12 +253,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470339159250,
+			"time": 1470670839419,
 			"name": "Create Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"{{eventTypeId}}\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"{{serviceId}}\"\n            }\n        }\n    }\n}"
+			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"{{eventTypeId}}\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"{{serviceId}}\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
 		},
 		{
 			"id": "4fcb500b-8048-383f-918b-dfd24bb3398f",
@@ -324,7 +327,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470335403348,
+			"time": 1470772245201,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -382,7 +385,7 @@
 		},
 		{
 			"id": "81243eae-c90a-df7a-7b2e-0d29c60efd44",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -397,12 +400,36 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470339441039,
+			"time": 1470665973132,
 			"name": "Get Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+		},
+		{
+			"id": "8610f095-6c10-1ae2-f95b-b2c022d3053b",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/alert/{{alertId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Aa]lert/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('eventId')) {\n        tests[\"data.eventId field present in output\"] = true;\n        tests[\"Correct eventId returned\"] = data.data.eventId === postman.getEnvironmentVariable('eventId');\n    }\n    else {\n        tests[\"data.eventId field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('alertId')) {\n        tests[\"data.alertId field present in output\"] = true;\n        tests[\"Correct alertId returned\"] = data.data.alertId === postman.getEnvironmentVariable('alertId');\n    }\n    else {\n        tests[\"data.alertId field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('triggerId')) {\n        tests[\"data.triggerId field present in output\"] = true;\n        tests[\"Correct triggerId returned\"] = data.data.triggerId === postman.getEnvironmentVariable('triggerId');\n    }\n    else {\n        tests[\"data.triggerId field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId returned\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470670830652,
+			"name": "Get Alert",
+			"description": "",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"responses": []
 		},
 		{
 			"id": "8bf1f418-8393-254d-a1bf-f75e18aea39e",
@@ -429,16 +456,40 @@
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
-			"id": "a62977d9-4934-3a5b-f1ad-fe568fbd400c",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/event?perPage=1000&order=desc&sortBy=createdOn",
-			"preRequestScript": null,
+			"id": "9147ebc3-5384-c7d9-28aa-f6a04cb89bf1",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
 			"pathVariables": {},
+			"preRequestScript": null,
 			"method": "GET",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"data": null,
 			"dataMode": "params",
+			"name": "Find Alert",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1470668318228,
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].eventId field present in output\"] = true;\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventId field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"eventId found\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId') && data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (data.data[i].hasOwnProperty('alertId') && typeof data.data[i].alertId === 'string') {\n                    tests[\"data[].alertId string field present in output\"] = true;\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                else {\n                    tests[\"data[].alertId string field present in output\"] = false;\n                }\n                if (data.data[i].hasOwnProperty('jobId') && typeof data.data[i].jobId === 'string') {\n                    tests[\"data[].jobId string field present in output\"] = true;\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId', data.data[i].jobId);\n                }\n                else {\n                    tests[\"data[].jobId string field present in output\"] = false;\n                }\n            }\n        }\n        else {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"triggerId found (Bug # 5714)\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			}
+		},
+		{
+			"id": "91c0d368-5d23-284b-84e9-63777a9f6c5a",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Check Job Status');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if(data.data.status === 'Success') {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n            if (data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present in output\"] = true;\n                if (data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n                    tests[\"data.result.dataId string field present in output\"] = true;\n                    tests[\"GUID created for dataId\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n                }\n                else {\n                    tests[\"data.result.dataId string field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobType') && typeof data.data.jobType === 'string') {\n        tests[\"data.jobType string field present in output\"] = true;\n        tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n    }\n    else {\n        tests[\"data.jobType string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -446,7 +497,31 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470333554645,
+			"time": 1470670833596,
+			"name": "Check Job Status",
+			"description": "",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"responses": []
+		},
+		{
+			"id": "a62977d9-4934-3a5b-f1ad-fe568fbd400c",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/event?perPage=1000&order=desc&sortBy=createdOn",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].eventId field present in output\"] = true;\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventId field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"eventId found (Bug # 5714)\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470665970589,
 			"name": "Query Events",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -455,14 +530,14 @@
 		{
 			"id": "a88aa139-def6-dfeb-492f-0b346505d41d",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/eventType?perPage=1000",
+			"url": "https://pz-gateway.{{domain}}/eventType?perPage=1000&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventTypeId')) {\n            tests[\"data[].eventTypeId field present in output\"] = true;\n            if (data.data[i].eventTypeId === postman.getEnvironmentVariable('eventTypeId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventTypeId field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"eventTypeId found\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventTypeId')) {\n            tests[\"data[].eventTypeId field present in output\"] = true;\n            if (data.data[i].eventTypeId === postman.getEnvironmentVariable('eventTypeId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventTypeId field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"eventTypeId found (Bug # 5714)\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -470,7 +545,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470321849445,
+			"time": 1470773792502,
 			"name": "Query EventTypes",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -552,7 +627,7 @@
 		},
 		{
 			"id": "c59cbc28-938a-b5e7-10e5-7db9376c6225",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -567,7 +642,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470338919968,
+			"time": 1470670836204,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -608,7 +683,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('triggerId') && typeof data.data.triggerId === 'string') {\n        tests[\"data.triggerId string field present in output\"] = true;\n        tests[\"triggerId GUID created\"] = data.data.triggerId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('triggerId', data.data.triggerId);\n    }\n    else {\n        tests[\"data.triggerId string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('condition')) {\n        tests[\"data.condition field present in output\"] = true;\n        if (data.data.condition.hasOwnProperty('eventTypeIds') && Array.isArray(data.data.condition.eventTypeIds) && data.data.condition.eventTypeIds.length === 1) {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = true;\n            tests[\"Correct eventTypeId used\"] = data.data.condition.eventTypeIds[0] === postman.getEnvironmentVariable('eventTypeId');\n        }\n        else {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = false;\n        }\n    }\n    if (data.data.hasOwnProperty('job')) {\n        tests[\"data.job field present in output\"] = true;\n        if (data.data.job.hasOwnProperty('jobType')) {\n            tests[\"data.job.jobType field present in output\"] = true;\n            if (data.data.job.jobType.hasOwnProperty('data')) {\n                tests[\"data.job.jobType.data field present in output\"] = true;\n                if (data.data.job.jobType.data.hasOwnProperty('serviceId')) {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = true;\n                    tests[\"Correct serviceId used\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n                }\n                else {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"data.job.jobType.data field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data.job.jobType field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.job field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "tests[\"not yet implemented (Task #5374)\"] = false",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -616,7 +691,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470341627510,
+			"time": 1470773970096,
 			"name": "Disable Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -665,7 +740,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470320952652,
+			"time": 1470772246937,
 			"name": "Get EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",

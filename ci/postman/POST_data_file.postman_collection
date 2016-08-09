@@ -173,7 +173,7 @@
 		},
 		{
 			"id": "6065ccdc-837c-9c70-9c7b-9c20f7c47d93",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -202,7 +202,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469802297894,
+			"time": 1470773536283,
 			"name": "Load File w/o type",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -264,7 +264,7 @@
 		},
 		{
 			"id": "abc1a9c6-50a7-479b-7ea1-a24b03f9e79f",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -272,7 +272,7 @@
 			"data": [
 				{
 					"key": "file",
-					"value": "cropped.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -286,7 +286,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121905937,
+			"time": 1470773209229,
 			"name": "Load No Data",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -354,45 +354,7 @@
 		},
 		{
 			"id": "bd893d24-93e8-1fd8-f8b6-ad8df61d01f4",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"pathVariables": {},
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
-			"data": [
-				{
-					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "file",
-					"value": "cropped.tif",
-					"type": "file",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"name": "Load File w/o class",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1469651642543,
-			"version": 2,
-			"responses": [],
-			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"error type\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'type' error.\"] = data.message.match('[tT]ype');\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			}
-		},
-		{
-			"id": "c78581ff-d0f7-30c3-8402-ae44cc54200e",
-			"headers": "",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -400,44 +362,13 @@
 			"data": [
 				{
 					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "file",
-					"value": "cropped.tif",
-					"type": "file",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1467815891929,
-			"name": "Load File w/o Auth",
-			"description": "",
-			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
-			"responses": []
-		},
-		{
-			"id": "db6733c8-89a5-f2c8-a691-b3734cd07d19",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": [
-				{
-					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "file",
-					"value": "cropped.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -452,7 +383,75 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469122289503,
+			"time": 1470773507146,
+			"name": "Load File w/o class",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "c78581ff-d0f7-30c3-8402-ae44cc54200e",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470773632990,
+			"name": "Load File w/o Auth",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "db6733c8-89a5-f2c8-a691-b3734cd07d19",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"error type\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'type' error.\"] = data.message.match('[tT]ype');\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470773617104,
 			"name": "Load File w/ Wrong Type",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
