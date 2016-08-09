@@ -249,7 +249,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/Test.geojson",
+					"value": "Test.geojson",
 					"type": "file",
 					"enabled": true
 				}

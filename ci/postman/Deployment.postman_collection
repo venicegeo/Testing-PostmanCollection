@@ -160,7 +160,7 @@
 		},
 		{
 			"id": "0815ce73-e4f0-b884-b5e1-bd2aa440ef02",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -174,7 +174,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -188,7 +188,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469634606410,
+			"time": 1469724694186,
 			"name": "Load File",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -408,7 +408,7 @@
 		},
 		{
 			"id": "2a46dfc3-96f4-d2d4-7ecd-077d048147ce",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -424,7 +424,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469633957947,
+			"time": 1469802303211,
 			"name": "Check Deployment Status",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -514,7 +514,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var data = JSON.parse(responseBody);\ntests[\"Status code is 200\"] = responseCode.code === 200;\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"type is 'success'\"] = data.type === 'success';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"Deletion message\"] = data.data.message.match(/[Dd]elet/) && data.data.message.match(/[Gg]roup/);\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\nif (postman.getEnvironmentVariable('environment') === 'stage') {\n    tests[\"!!! Skipping the requests that add deployment to group !!!\"] = true;\n    postman.setNextRequest('Deploy Data in Deleted Group');\n}",
+			"tests": "var data = JSON.parse(responseBody);\ntests[\"Status code is 200\"] = responseCode.code === 200;\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"type is 'success'\"] = data.type === 'success';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"Deletion message\"] = data.data.message.match(/[Dd]elet/) && data.data.message.match(/[Gg]roup/);\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -522,7 +522,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469717443418,
+			"time": 1470772236499,
 			"name": "Delete Group",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -580,7 +580,7 @@
 			"method": "POST",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('deploymentGroupId') && typeof data.data.deploymentGroupId === 'string') {\n        tests[\"data.deploymentGroupId string field present in output\"] = true;\n        tests[\"GUID created for deploymentGroupId\"] = data.data.deploymentGroupId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"deploymentGroupId\",data.data.deploymentGroupId);\n    }\n    else {\n        tests[\"data.deploymentGroupId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\nif (postman.getEnvironmentVariable('environment') === 'stage') {\n    tests[\"!!! Skipping the requests that add deployment to group !!!\"] = true;\n    postman.setNextRequest('Delete Group');\n}",
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('deploymentGroupId') && typeof data.data.deploymentGroupId === 'string') {\n        tests[\"data.deploymentGroupId string field present in output\"] = true;\n        tests[\"GUID created for deploymentGroupId\"] = data.data.deploymentGroupId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"deploymentGroupId\",data.data.deploymentGroupId);\n    }\n    else {\n        tests[\"data.deploymentGroupId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -588,7 +588,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469717388714,
+			"time": 1470772217849,
 			"name": "Create Group",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -773,7 +773,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/TestShape.zip",
+					"value": "TestShape.zip",
 					"type": "file",
 					"enabled": true
 				}
@@ -868,7 +868,7 @@
 		},
 		{
 			"id": "98ce7455-40aa-ece5-6ace-9dc43e5fda33",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/deployment",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -884,7 +884,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469633951353,
+			"time": 1469802302661,
 			"name": "Deploy Data",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -1166,7 +1166,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/Test.geojson",
+					"value": "Test.geojson",
 					"type": "file",
 					"enabled": true
 				}
