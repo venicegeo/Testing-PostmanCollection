@@ -224,7 +224,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Parameter missing message\"] = data.message.has(\"parameter 'file' is not present\");\n}\nelse {\n    tests[\"found message\"] = false;\n}",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"Parameter missing message\"] = data.message.match(/file/) && data.message.match(/[Nn]o/);\n}\nelse {\n    tests[\"found message\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -232,7 +232,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121919476,
+			"time": 1470775688508,
 			"name": "Load No File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
