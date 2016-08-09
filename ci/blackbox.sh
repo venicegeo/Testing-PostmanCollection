@@ -27,11 +27,13 @@ for space in $spaces; do
 	latch=0
 
 	set -e
+	
+	BODY="Failing Collections:"
 
 	for f in $(ls -1 $base/postman/*postman_collection); do
 		echo $f
 		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || latch=1
+		$cmd $f || (latch=1 && BODY="${BODY}\n${f}")
 		echo $latch
 	done
 
@@ -41,7 +43,7 @@ for space in $spaces; do
 	SUBJ="Failure in $space environment!"
 
 	if [ "$latch" -eq "1" ]; then
-		mail -s "$SUBJ" $RCVR < /dev/null
+		echo $BODY | mail -s "$SUBJ" $RCVR < /dev/null
 		echo "mail sent!"
 		bigLatch=1
 	fi
