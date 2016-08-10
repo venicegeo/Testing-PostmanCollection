@@ -54,7 +54,7 @@
 		{
 			"id": "1da061f9-24ad-3bc6-2f60-474a8b122e04",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/data/me?perPage=1000&order=desc&sortBy=createdOn",
+			"url": "https://pz-gateway.{{domain}}/data/me?perPage=1000&order=desc&sortBy=metadata.createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -69,7 +69,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470832547677,
+			"time": 1470855195650,
 			"name": "Query My Data",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -77,7 +77,7 @@
 		},
 		{
 			"id": "2d5c396e-97a7-362f-a83e-6ad319cad70a",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -92,7 +92,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470317877278,
+			"time": 1470855202676,
 			"name": "Get Job Info",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -125,7 +125,7 @@
 		},
 		{
 			"id": "53e866fc-5107-7039-5949-bd50c6d3f940",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -141,7 +141,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470317878830,
+			"time": 1470855203269,
 			"name": "Get Metadata",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -294,7 +294,7 @@
 		},
 		{
 			"id": "b7c8c2d1-9edf-c35c-ecfb-953cc6fe4223",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -322,7 +322,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470317879526,
+			"time": 1470855201931,
 			"name": "Load File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -459,7 +459,7 @@
 		},
 		{
 			"id": "e281a753-2c1a-d023-d2f1-b6dad4909406",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data?keyword=somecat.tif&perPage=1000",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -475,7 +475,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470315320563,
+			"time": 1470855203907,
 			"name": "Query Data",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
