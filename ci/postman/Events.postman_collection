@@ -17,13 +17,15 @@
 		"9147ebc3-5384-c7d9-28aa-f6a04cb89bf1",
 		"8610f095-6c10-1ae2-f95b-b2c022d3053b",
 		"91c0d368-5d23-284b-84e9-63777a9f6c5a",
-		"d275af5b-64d2-1723-2b1e-8f0cbf294e61",
-		"4fcb500b-8048-383f-918b-dfd24bb3398f",
-		"8110d52c-ba19-9e17-e74b-5cb37f64d92e",
-		"56cbc872-0ed7-23fb-547f-5827456e822f",
+		"aaf7a477-98cb-5d6b-a185-63f049e24a56",
 		"b5478bc1-7b0b-0cc5-40d3-b03914b2de55",
 		"e09eff1c-8ce2-f8e4-337f-cef28374d705",
 		"a8e82b0f-b6e5-a52c-f7f9-c96e74cf1656",
+		"089ce165-a6f2-dfbb-4e11-4fea994cf17d",
+		"1876b7c6-8014-6eef-b6de-b9d1323bf3dc",
+		"4fcb500b-8048-383f-918b-dfd24bb3398f",
+		"8110d52c-ba19-9e17-e74b-5cb37f64d92e",
+		"56cbc872-0ed7-23fb-547f-5827456e822f",
 		"137070a9-a7f6-513b-8d0d-48e0ca9a1681",
 		"26e63c8f-1312-e4df-579d-8bb4b2890209",
 		"8bf1f418-8393-254d-a1bf-f75e18aea39e",
@@ -56,40 +58,16 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470670832324,
+			"time": 1470846741165,
 			"name": "Create EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"int\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
-			"id": "0af6953d-22e4-b1e4-1d72-a59472118713",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('eventId')) {\n        tests[\"data.eventId field present in output\"] = true;\n        tests[\"Correct eventId returned\"] = data.data.eventId === postman.getEnvironmentVariable('eventId');\n    }\n    else {\n        tests[\"data.eventId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1470665969260,
-			"name": "Get Event",
-			"description": "",
-			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
-			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
-		},
-		{
-			"id": "0e675907-9063-ffd4-b26c-4d9520b27704",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"id": "089ce165-a6f2-dfbb-4e11-4fea994cf17d",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -104,7 +82,55 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470667636963,
+			"time": 1470841349193,
+			"name": "Create Non-triggering Event",
+			"description": "",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"responses": [],
+			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"graster\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
+		},
+		{
+			"id": "0af6953d-22e4-b1e4-1d72-a59472118713",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('eventId')) {\n        tests[\"data.eventId field present in output\"] = true;\n        tests[\"Correct eventId returned\"] = data.data.eventId === postman.getEnvironmentVariable('eventId');\n    }\n    else {\n        tests[\"data.eventId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470840250855,
+			"name": "Get Event",
+			"description": "",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+		},
+		{
+			"id": "0e675907-9063-ffd4-b26c-4d9520b27704",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/event",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('eventId') && typeof data.data.eventId === 'string') {\n        tests[\"data.eventId string field present in output\"] = true;\n        tests[\"eventId GUID created\"] = data.data.eventId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('eventId', data.data.eventId);\n    }\n    else {\n        tests[\"data.eventId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470840249919,
 			"name": "Create Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -137,6 +163,31 @@
 			"rawModeData": "{\n    \"eventTypeId\": \"{{eventTypeId}}\"\n}"
 		},
 		{
+			"id": "1876b7c6-8014-6eef-b6de-b9d1323bf3dc",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"data": null,
+			"dataMode": "params",
+			"name": "Confirm No Alert Created",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1470841087312,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId') && data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (data.data[i].hasOwnProperty('alertId') && typeof data.data[i].alertId === 'string') {\n                    tests[\"data[].alertId string field present in output\"] = true;\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                else {\n                    tests[\"data[].alertId string field present in output\"] = false;\n                }\n                if (data.data[i].hasOwnProperty('jobId') && typeof data.data[i].jobId === 'string') {\n                    tests[\"data[].jobId string field present in output\"] = true;\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId', data.data[i].jobId);\n                }\n                else {\n                    tests[\"data[].jobId string field present in output\"] = false;\n                }\n            }\n        }\n        else {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"Non-triggering event not found.\"] = !found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			}
+		},
+		{
 			"id": "26e63c8f-1312-e4df-579d-8bb4b2890209",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/event",
@@ -164,7 +215,7 @@
 		{
 			"id": "33ce7c58-72bb-6139-05f3-ea11850e54e8",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
+			"url": "https://pz-gateway.{{domain}}/trigger?perPage=1000&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -179,7 +230,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470665976636,
+			"time": 1470840022965,
 			"name": "Query Triggers",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -237,7 +288,7 @@
 		},
 		{
 			"id": "464f34c7-5d05-df9c-593b-4a8cbecf92d9",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -245,7 +296,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('triggerId') && typeof data.data.triggerId === 'string') {\n        tests[\"data.triggerId string field present in output\"] = true;\n        tests[\"triggerId GUID created\"] = data.data.triggerId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('triggerId', data.data.triggerId);\n    }\n    else {\n        tests[\"data.triggerId string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('condition')) {\n        tests[\"data.condition field present in output\"] = true;\n        if (data.data.condition.hasOwnProperty('eventTypeIds') && Array.isArray(data.data.condition.eventTypeIds) && data.data.condition.eventTypeIds.length === 1) {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = true;\n            tests[\"Correct eventTypeId used\"] = data.data.condition.eventTypeIds[0] === postman.getEnvironmentVariable('eventTypeId');\n        }\n        else {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = false;\n        }\n    }\n    if (data.data.hasOwnProperty('job')) {\n        tests[\"data.job field present in output\"] = true;\n        if (data.data.job.hasOwnProperty('jobType')) {\n            tests[\"data.job.jobType field present in output\"] = true;\n            if (data.data.job.jobType.hasOwnProperty('data')) {\n                tests[\"data.job.jobType.data field present in output\"] = true;\n                if (data.data.job.jobType.data.hasOwnProperty('serviceId')) {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = true;\n                    tests[\"Correct serviceId used\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n                }\n                else {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = false;\n                }\n                if (data.data.job.jobType.data.hasOwnProperty('dataInputs')) {\n                    tests[\"data.job.jobType.data.dataInputs field present in output\"] = true;\n                    if (data.data.job.jobType.data.dataInputs.hasOwnProperty('test')) {\n                        tests[\"data.job.jobType.data.dataInputs.test field present in output\"] = true;\n                        if (data.data.job.jobType.data.dataInputs.test.hasOwnProperty('type')) {\n                            tests[\"data.job.jobType.data.dataInputs.test.type field present in output\"] = true;\n                            tests[\"Input type matches original value (Bug #5779)\"] = data.data.job.jobType.data.dataInputs.test.type === \"body\";\n                        }\n                        else {\n                            tests[\"data.job.jobType.data.dataInputs.test.type field present in output\"] = false;\n                        }\n                    }\n                    else {\n                        tests[\"data.job.jobType.data.dataInputs.test field present in output\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.job.jobType.data.dataInputs field present in output\"] = false;\n                }\n                if (data.data.job.jobType.data.hasOwnProperty('dataOutput') && Array.isArray(data.data.job.jobType.data.dataOutput) && data.data.job.jobType.data.dataOutput.length === 1) {\n                    tests[\"data.job.jobType.data.dataOutput array field present in output and has one element\"] = true;\n                    if (data.data.job.jobType.data.dataOutput[0].hasOwnProperty('type')) {\n                        tests[\"data.job.jobType.data.dataOutput[0].type field present in output\"] = true;\n                        tests[\"Output type matches original value (Bug #5779)\"] = data.data.job.jobType.data.dataOutput.type === \"text\";\n                    }\n                    else {\n                        tests[\"data.job.jobType.data.dataOutput[0].type field present in output\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.job.jobType.data.dataOutput array field present in output and has one element\"] = false;\n                }\n            }\n            else {\n                tests[\"data.job.jobType.data field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data.job.jobType field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.job field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('triggerId') && typeof data.data.triggerId === 'string') {\n        tests[\"data.triggerId string field present in output\"] = true;\n        tests[\"triggerId GUID created\"] = data.data.triggerId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('triggerId', data.data.triggerId);\n    }\n    else {\n        tests[\"data.triggerId string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('condition')) {\n        tests[\"data.condition field present in output\"] = true;\n        if (data.data.condition.hasOwnProperty('eventTypeIds') && Array.isArray(data.data.condition.eventTypeIds) && data.data.condition.eventTypeIds.length === 1) {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = true;\n            tests[\"Correct eventTypeId used\"] = data.data.condition.eventTypeIds[0] === postman.getEnvironmentVariable('eventTypeId');\n        }\n        else {\n            tests[\"data.condition.eventTypeIds field present in output and contains one element\"] = false;\n        }\n    }\n    if (data.data.hasOwnProperty('job')) {\n        tests[\"data.job field present in output\"] = true;\n        if (data.data.job.hasOwnProperty('jobType')) {\n            tests[\"data.job.jobType field present in output\"] = true;\n            if (data.data.job.jobType.hasOwnProperty('data')) {\n                tests[\"data.job.jobType.data field present in output\"] = true;\n                if (data.data.job.jobType.data.hasOwnProperty('serviceId')) {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = true;\n                    tests[\"Correct serviceId used\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n                }\n                else {\n                    tests[\"data.job.jobType.data.serviceId field present in output\"] = false;\n                }\n                if (data.data.job.jobType.data.hasOwnProperty('dataInputs')) {\n                    tests[\"data.job.jobType.data.dataInputs field present in output\"] = true;\n                    if (data.data.job.jobType.data.dataInputs.hasOwnProperty('test')) {\n                        tests[\"data.job.jobType.data.dataInputs.test field present in output\"] = true;\n                        if (data.data.job.jobType.data.dataInputs.test.hasOwnProperty('type')) {\n                            tests[\"data.job.jobType.data.dataInputs.test.type field present in output\"] = true;\n                            tests[\"Input type matches original value (Bug #5779)\"] = data.data.job.jobType.data.dataInputs.test.type === \"body\";\n                        }\n                        else {\n                            tests[\"data.job.jobType.data.dataInputs.test.type field present in output\"] = false;\n                        }\n                    }\n                    else {\n                        tests[\"data.job.jobType.data.dataInputs.test field present in output\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.job.jobType.data.dataInputs field present in output\"] = false;\n                }\n                if (data.data.job.jobType.data.hasOwnProperty('dataOutput') && Array.isArray(data.data.job.jobType.data.dataOutput) && data.data.job.jobType.data.dataOutput.length === 1) {\n                    tests[\"data.job.jobType.data.dataOutput array field present in output and has one element\"] = true;\n                    if (data.data.job.jobType.data.dataOutput[0].hasOwnProperty('type')) {\n                        tests[\"data.job.jobType.data.dataOutput[0].type field present in output\"] = true;\n                        tests[\"Output type matches original value (Bug #5779)\"] = data.data.job.jobType.data.dataOutput[0].type === \"text\";\n                    }\n                    else {\n                        tests[\"data.job.jobType.data.dataOutput[0].type field present in output\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.job.jobType.data.dataOutput array field present in output and has one element\"] = false;\n                }\n            }\n            else {\n                tests[\"data.job.jobType.data field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data.job.jobType field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.job field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -253,7 +304,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470670839419,
+			"time": 1470836475461,
 			"name": "Create Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -376,16 +427,16 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470342194717,
+			"time": 1470841473303,
 			"name": "Delete Trigger Again",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": ""
 		},
 		{
 			"id": "81243eae-c90a-df7a-7b2e-0d29c60efd44",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -400,7 +451,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470665973132,
+			"time": 1470840248319,
 			"name": "Get Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -409,7 +460,7 @@
 		},
 		{
 			"id": "8610f095-6c10-1ae2-f95b-b2c022d3053b",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/alert/{{alertId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -425,7 +476,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470670830652,
+			"time": 1470840252837,
 			"name": "Get Alert",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -448,41 +499,40 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470335434521,
+			"time": 1470841478300,
 			"name": "Delete EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": ""
 		},
 		{
 			"id": "9147ebc3-5384-c7d9-28aa-f6a04cb89bf1",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
-			"pathVariables": {},
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"data": null,
 			"dataMode": "params",
-			"name": "Find Alert",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1470668318228,
 			"version": 2,
-			"responses": [],
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId') && data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (data.data[i].hasOwnProperty('alertId') && typeof data.data[i].alertId === 'string') {\n                    tests[\"data[].alertId string field present in output\"] = true;\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                else {\n                    tests[\"data[].alertId string field present in output\"] = false;\n                }\n                if (data.data[i].hasOwnProperty('jobId') && typeof data.data[i].jobId === 'string') {\n                    tests[\"data[].jobId string field present in output\"] = true;\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId', data.data[i].jobId);\n                }\n                else {\n                    tests[\"data[].jobId string field present in output\"] = false;\n                }\n            }\n        }\n        else {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"triggerId found (Bug # 5714)\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId') && data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (data.data[i].hasOwnProperty('alertId') && typeof data.data[i].alertId === 'string') {\n                    tests[\"data[].alertId string field present in output\"] = true;\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                else {\n                    tests[\"data[].alertId string field present in output\"] = false;\n                }\n                if (data.data[i].hasOwnProperty('jobId') && typeof data.data[i].jobId === 'string') {\n                    tests[\"data[].jobId string field present in output\"] = true;\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId', data.data[i].jobId);\n                }\n                else {\n                    tests[\"data[].jobId string field present in output\"] = false;\n                }\n            }\n        }\n        else {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"alert found\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
 				"username": "{{API Key}}",
 				"password": "",
 				"saveToRequest": true
-			}
+			},
+			"time": 1470841216832,
+			"name": "Find Alert",
+			"description": "",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"responses": []
 		},
 		{
 			"id": "91c0d368-5d23-284b-84e9-63777a9f6c5a",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -497,7 +547,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470670833596,
+			"time": 1470840253430,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -505,7 +555,7 @@
 		},
 		{
 			"id": "a62977d9-4934-3a5b-f1ad-fe568fbd400c",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/event?perPage=1000&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -521,7 +571,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470665970589,
+			"time": 1470840251631,
 			"name": "Query Events",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -577,6 +627,29 @@
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
+			"id": "aaf7a477-98cb-5d6b-a185-63f049e24a56",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('dataId')) {\n        tests[\"data.dataId field present in output\"] = true;\n        tests[\"Same dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId');\n    }\n    else {\n        tests[\"data.dataId field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('dataType')) {\n        tests[\"data.dataType field present in output\"] = true;\n        if (data.data.dataType.hasOwnProperty('content') && typeof data.data.dataType.content === 'string') {\n            tests[\"data.dataType.content field present in output\"] = true;\n            tests[\"Hello service was called.\"] = data.data.dataType.content.match(/[Hh](ello|i)/);\n        }\n        else {\n            tests[\"data.dataType.content field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.dataType field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470840301786,
+			"name": "Verify Data",
+			"description": "",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"responses": []
+		},
+		{
 			"id": "b5478bc1-7b0b-0cc5-40d3-b03914b2de55",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
@@ -593,12 +666,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470335361066,
+			"time": 1470841491160,
 			"name": "Delete Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": ""
 		},
 		{
 			"id": "ba188498-f88c-ef19-7200-0ba6c3bb74d5",
@@ -618,16 +691,16 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470324266164,
+			"time": 1470841481990,
 			"name": "Delete EventType Again",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": ""
 		},
 		{
 			"id": "c59cbc28-938a-b5e7-10e5-7db9376c6225",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -642,7 +715,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470670836204,
+			"time": 1470840246927,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -674,31 +747,6 @@
 			"rawModeData": "{\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
-			"id": "d275af5b-64d2-1723-2b1e-8f0cbf294e61",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": "tests[\"not yet implemented (Task #5374)\"] = false",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1470773970096,
-			"name": "Disable Trigger",
-			"description": "",
-			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
-			"responses": [],
-			"rawModeData": "{\n    \"enabled\": false\n}"
-		},
-		{
 			"id": "e09eff1c-8ce2-f8e4-337f-cef28374d705",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/event/garbage",
@@ -716,12 +764,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470335432960,
+			"time": 1470841487368,
 			"name": "Delete Event Again",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": ""
 		},
 		{
 			"id": "eb41c7c3-4453-8272-3374-5743f489cf4b",
