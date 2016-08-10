@@ -58,12 +58,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470846741165,
+			"time": 1470853055336,
 			"name": "Create EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"int\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
 			"id": "089ce165-a6f2-dfbb-4e11-4fea994cf17d",
@@ -130,7 +130,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470840249919,
+			"time": 1470853059879,
 			"name": "Create Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -304,7 +304,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470836475461,
+			"time": 1470853057120,
 			"name": "Create Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -370,7 +370,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('eventTypeId', '');",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('eventTypeId', '');\npostman.setEnvironmentVariable('serviceId', '');\npostman.setEnvironmentVariable('triggerId', '');\npostman.setEnvironmentVariable('eventId', '');\npostman.setEnvironmentVariable('alertId', '');\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -378,7 +378,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470772245201,
+			"time": 1470853283481,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -524,7 +524,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470841216832,
+			"time": 1470853058543,
 			"name": "Find Alert",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -715,7 +715,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470840246927,
+			"time": 1470853056440,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
