@@ -220,7 +220,7 @@
 		},
 		{
 			"id": "0ec2b2c8-e0a7-33ef-9625-66eda5834411",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/deployment",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -228,7 +228,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'Missing Type' message\"] = data.message.match(/[Mm]issing [Pp]roperty/) && data.message.match(/[Tt]ype/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}\nif (postman.getEnvironmentVariable('environment') === 'stage') {\n    tests[\"!!! Skipping some bad request tests on stage !!!\"] = true;\n    postman.setNextRequest('Deploy Data Bad deploymentType');\n}",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'Missing Type' message\"] = data.message.match(/[Mm]issing [Pp]roperty/) && data.message.match(/[Tt]ype/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -236,7 +236,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469718031519,
+			"time": 1470943310754,
 			"name": "Deploy Data No Type",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
