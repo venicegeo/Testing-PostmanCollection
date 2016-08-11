@@ -18,7 +18,9 @@
 		"387c3552-487b-cba3-58b4-e765e4e02d5f",
 		"25e0b7cb-804e-0ea8-eaa7-4f86849b8af5",
 		"524cd80d-1cdc-ff1b-4d16-877899c3ed76",
-		"4cf42b4d-b6a1-29f2-9136-5f2a2befb8f1"
+		"4cf42b4d-b6a1-29f2-9136-5f2a2befb8f1",
+		"87e16e19-7091-fc7b-eeea-a570bac0c754",
+		"ddd7f2cf-0aa1-4bd3-ca33-e941311e1ca7"
 	],
 	"folders": [],
 	"timestamp": 1467139962611,
@@ -36,7 +38,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    if (data.data[0].hasOwnProperty('resourceMetadata')) {\n        tests[\"data[0].resourceMetadata field present in output\"] = true;\n        if (data.data[0].resourceMetadata.hasOwnProperty('metadata')) {\n            tests[\"data[0].resourceMetadata.metadata field present in output\"] = true;\n            if (data.data[0].resourceMetadata.metadata.hasOwnProperty('Interface')) {\n                tests[\"data[0].resourceMetadata.metadata.Interface field present in output\"] = true;\n                postman.setEnvironmentVariable('Algorithm Name',data.data[0].resourceMetadata.metadata.Interface);\n            }\n            else {\n                tests[\"data[0].resourceMetadata.metadata.Interface field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data[0].resourceMetadata.metadata field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data[0].resourceMetadata field present in output\"] = false;\n    }\n}\nelse{\n    tests[\"data array field present in outputand is not empty\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\"JSON Returned (Bug #5855)\"] = true;\n    if (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n        tests[\"data array field present in output and is not empty\"] = true;\n        if (data.data[0].hasOwnProperty('resourceMetadata')) {\n            tests[\"data[0].resourceMetadata field present in output\"] = true;\n            if (data.data[0].resourceMetadata.hasOwnProperty('metadata')) {\n                tests[\"data[0].resourceMetadata.metadata field present in output\"] = true;\n                if (data.data[0].resourceMetadata.metadata.hasOwnProperty('Interface')) {\n                    tests[\"data[0].resourceMetadata.metadata.Interface field present in output\"] = true;\n                    postman.setEnvironmentVariable('Algorithm Name',data.data[0].resourceMetadata.metadata.Interface);\n                }\n                else {\n                    tests[\"data[0].resourceMetadata.metadata.Interface field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"data[0].resourceMetadata.metadata field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"data[0].resourceMetadata field present in output\"] = false;\n        }\n    }\n    else{\n        tests[\"data array field present in outputand is not empty\"] = false;\n    }\n}\ncatch (e) {\n    tests[\"JSON Returned (Bug #5855)\"] = false;\n    postman.setNextRequest('HACK - Ingest Dummy Data');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -44,7 +46,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470143686227,
+			"time": 1470922930249,
 			"name": "Find available shoreline algorithms",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -102,7 +104,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Get deploymentId');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if (data.data.status === 'Success') {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n            if(data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present\"] = true;\n                if (data.data.result.hasOwnProperty('deployment')) {\n                    tests[\"data.result.deployment field present\"] = true;\n                    if (data.data.result.deployment.hasOwnProperty('deploymentId') && typeof data.data.result.deployment.deploymentId === 'string') {\n                        tests[\"data.result.deployment.deploymentId string field present\"] = true;\n                        postman.setEnvironmentVariable(\"deploymentId\", data.data.result.deployment.deploymentId);\n                        tests[\"data.result.dataId GUID created\"] = data.data.result.deployment.deploymentId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    }\n                    else {\n                        tests[\"data.result.deployment.deploymentId string field present\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.result.deployemnt field present\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status] = false;\n        }\n    }\n    else {\n        tests[\"status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Get deploymentId');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n                postman.setEnvironmentVariable('retry_loop',0);\n            }\n        }\n        else if (data.data.status === 'Success') {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n            if(data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present\"] = true;\n                if (data.data.result.hasOwnProperty('deployment')) {\n                    tests[\"data.result.deployment field present\"] = true;\n                    if (data.data.result.deployment.hasOwnProperty('deploymentId') && typeof data.data.result.deployment.deploymentId === 'string') {\n                        tests[\"data.result.deployment.deploymentId string field present\"] = true;\n                        postman.setEnvironmentVariable(\"deploymentId\", data.data.result.deployment.deploymentId);\n                        tests[\"data.result.dataId GUID created\"] = data.data.result.deployment.deploymentId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    }\n                    else {\n                        tests[\"data.result.deployment.deploymentId string field present\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.result.deployemnt field present\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status] = false;\n        }\n    }\n    else {\n        tests[\"status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -110,7 +112,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470070860435,
+			"time": 1470920669715,
 			"name": "Get deploymentId",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -271,6 +273,31 @@
 			"responses": []
 		},
 		{
+			"id": "87e16e19-7091-fc7b-eeea-a570bac0c754",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/job",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470922673584,
+			"name": "Request Garbage bf-handle Job",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": [],
+			"rawModeData": "{\r\n  \"data\": {\r\n    \"dataInputs\": {\r\n      \"body\": {\r\n        \"content\": \"{\\\"Garbage\\\": \\\"Garbage\\\"}\",\r\n        \"type\": \"body\",\r\n        \"mimeType\": \"application/json\"\r\n      }\r\n    },\r\n    \"dataOutput\": [\r\n      {\r\n        \"mimeType\": \"application/json\",\r\n        \"type\": \"text\"\r\n      }\r\n    ],\r\n    \"serviceId\": \"{{bf-handle serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
+		},
+		{
 			"id": "91e3475d-5b2a-f51c-217f-1d5ad9e0a378",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
@@ -320,7 +347,7 @@
 		},
 		{
 			"id": "9ddf6b58-9703-bb11-3c8c-2ab8bba68b25",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=10&keyword=bf-handle",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -335,7 +362,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470143684812,
+			"time": 1470920762371,
 			"name": "Find bf-handle serviceId",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
@@ -385,6 +412,29 @@
 			},
 			"time": 1470074142603,
 			"name": "Find Shoreline",
+			"description": "",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"responses": []
+		},
+		{
+			"id": "ddd7f2cf-0aa1-4bd3-ca33-e941311e1ca7",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Get dataId');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if (data.data.status === 'Error') {\n            tests[\"Job had error\"] = true;\n            if(data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present\"] = true;\n                if(data.data.result.hasOwnProperty('message') && typeof data.data.result.message === 'string') {\n                    tests[\"data.result.message string field present\"] = true;\n                    tests[\"Missing fields error message (Bug #4731)\"] = data.data.result.message.match(/[Ee]rror/) && data.data.result.message.match(/metaData(URL|JSON)]/);\n                }\n                else {\n                    tests[\"data.result.message string field present\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status + \".\"] = false;\n            tests[\"Output: \" + responseBody] = false;\n            postman.setNextRequest('');\n        }\n    }\n    else {\n        tests[\"status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470922676578,
+			"name": "Validate Failed Status",
 			"description": "",
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
 			"responses": []

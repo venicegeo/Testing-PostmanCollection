@@ -481,7 +481,7 @@
 		},
 		{
 			"id": "30d65cde-be21-a9a3-9495-0d1e91dadedc",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/deployment",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -497,7 +497,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469461709354,
+			"time": 1470840242047,
 			"name": "Try Text - Deploy",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -668,7 +668,7 @@
 		},
 		{
 			"id": "5f3cb42e-f468-68ea-8601-0a39eced75f4",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -684,7 +684,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469540626293,
+			"time": 1470840243015,
 			"name": "Try Text - Deployment Status",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -692,7 +692,7 @@
 		},
 		{
 			"id": "683eecc9-a6a9-ec49-6175-f0f727079dcb",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -708,7 +708,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469719409689,
+			"time": 1470840241255,
 			"name": "Try Text - Get dataId",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -1018,7 +1018,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "if (postman.getEnvironmentVariable('environment') === 'stage') {\n    tests[\"!!! Skipping some bad request tests on stage !!!\"] = true;\n    postman.setNextRequest('Deploy Data No Type');\n}\nelse {\n    tests[\"Status code is 400\"] = responseCode.code === 400;\n    var data = JSON.parse(responseBody);\n    if (data.hasOwnProperty('errors') && Array.isArray(data.errors) && data.errors.length > 0) {\n        tests[\"errors array field present in output\"] = true;\n        if (data.errors[0].hasOwnProperty('field')) {\n            tests[\"errors[0].field field present in output\"] = true;\n            tests[\"dataId field specified\"] = data.errors[0].field === 'dataId';\n        }\n        else {\n            tests[\"data.errors[0].field field present in output\"] = false;\n        }\n        if (data.errors[0].hasOwnProperty('code')) {\n            tests[\"errors[0].code field present in output\"] = true;\n            tests[\"NotNull code specified\"] = data.errors[0].code === 'NotNull';\n        }\n        else {\n            tests[\"data.errors[0].code field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"errors array field present in output\"] = false;\n    }\n}",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('errors') && Array.isArray(data.errors) && data.errors.length > 0) {\n    tests[\"errors array field present in output\"] = true;\n    if (data.errors[0].hasOwnProperty('field')) {\n        tests[\"errors[0].field field present in output\"] = true;\n        tests[\"dataId field specified\"] = data.errors[0].field === 'dataId';\n    }\n    else {\n        tests[\"data.errors[0].field field present in output\"] = false;\n    }\n    if (data.errors[0].hasOwnProperty('code')) {\n        tests[\"errors[0].code field present in output\"] = true;\n        tests[\"NotNull code specified\"] = data.errors[0].code === 'NotNull';\n    }\n    else {\n        tests[\"data.errors[0].code field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"errors array field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1026,7 +1026,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469717882877,
+			"time": 1470833101276,
 			"name": "Deploy Data No dataId",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -1083,7 +1083,7 @@
 		},
 		{
 			"id": "dedcee63-083d-da6d-4eb6-9b0c36be9d9e",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1099,7 +1099,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469467778459,
+			"time": 1470840240312,
 			"name": "Try Text - Ingest",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
