@@ -43,7 +43,7 @@
 	"requests": [
 		{
 			"id": "01ddea84-ced1-fdba-57e5-b253be3e612a",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/eventType",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -58,7 +58,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470853055336,
+			"time": 1470930452221,
 			"name": "Create EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -115,7 +115,7 @@
 		},
 		{
 			"id": "0e675907-9063-ffd4-b26c-4d9520b27704",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -130,7 +130,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470853059879,
+			"time": 1470930454925,
 			"name": "Create Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -288,7 +288,7 @@
 		},
 		{
 			"id": "464f34c7-5d05-df9c-593b-4a8cbecf92d9",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -304,7 +304,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470853057120,
+			"time": 1470930454308,
 			"name": "Create Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -362,7 +362,7 @@
 		},
 		{
 			"id": "7d6d312c-d75e-b130-cacf-4c07bf1a461d",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -378,7 +378,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470853283481,
+			"time": 1470930451420,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -508,7 +508,7 @@
 		},
 		{
 			"id": "9147ebc3-5384-c7d9-28aa-f6a04cb89bf1",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -516,7 +516,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId') && data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (data.data[i].hasOwnProperty('alertId') && typeof data.data[i].alertId === 'string') {\n                    tests[\"data[].alertId string field present in output\"] = true;\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                else {\n                    tests[\"data[].alertId string field present in output\"] = false;\n                }\n                if (data.data[i].hasOwnProperty('jobId') && typeof data.data[i].jobId === 'string') {\n                    tests[\"data[].jobId string field present in output\"] = true;\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId', data.data[i].jobId);\n                }\n                else {\n                    tests[\"data[].jobId string field present in output\"] = false;\n                }\n            }\n        }\n        else {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"alert found\"] = found;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId') && data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (data.data[i].hasOwnProperty('alertId') && typeof data.data[i].alertId === 'string') {\n                    tests[\"data[].alertId string field present in output\"] = true;\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                else {\n                    tests[\"data[].alertId string field present in output\"] = false;\n                }\n                if (data.data[i].hasOwnProperty('jobId') && typeof data.data[i].jobId === 'string') {\n                    tests[\"data[].jobId string field present in output\"] = true;\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId', data.data[i].jobId);\n                }\n                else {\n                    tests[\"data[].jobId string field present in output\"] = false;\n                }\n            }\n        }\n        else {\n            tests[\"data[].triggerId & data[].eventId fields present in output\"] = false;\n            break;\n        }\n    }\n    if (found) {\n        tests[\"alert found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Find Alert');\n            pausecomp(1000);\n        }\n        else {\n            tests[\"alert found\"] = false;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -524,7 +524,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470853058543,
+			"time": 1470930662240,
 			"name": "Find Alert",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -541,17 +541,15 @@
 			"dataMode": "params",
 			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200 (Task #5525)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Check Job Status');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if(data.data.status === 'Success') {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n            if (data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present in output\"] = true;\n                if (data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n                    tests[\"data.result.dataId string field present in output\"] = true;\n                    tests[\"GUID created for dataId\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n                }\n                else {\n                    tests[\"data.result.dataId string field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobType') && typeof data.data.jobType === 'string') {\n        tests[\"data.jobType string field present in output\"] = true;\n        tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n    }\n    else {\n        tests[\"data.jobType string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n    postman.setNextRequest('Delete Event');\n}\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
+			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
 			"time": 1470855304858,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
-			"responses": []
+			"responses": [],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"folder": null
 		},
 		{
 			"id": "a62977d9-4934-3a5b-f1ad-fe568fbd400c",
@@ -700,7 +698,7 @@
 		},
 		{
 			"id": "c59cbc28-938a-b5e7-10e5-7db9376c6225",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -715,7 +713,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470853056440,
+			"time": 1470930453668,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -773,7 +771,7 @@
 		},
 		{
 			"id": "eb41c7c3-4453-8272-3374-5743f489cf4b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -788,7 +786,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470772246937,
+			"time": 1470930452931,
 			"name": "Get EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
