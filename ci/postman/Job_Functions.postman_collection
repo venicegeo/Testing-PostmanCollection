@@ -105,7 +105,7 @@
 		},
 		{
 			"id": "3c4f04b2-819e-4133-c066-29fe3f93de21",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -120,7 +120,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469809402606,
+			"time": 1470940060134,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f"
@@ -272,7 +272,7 @@
 		},
 		{
 			"id": "617357b7-24c0-6aa4-7a4e-c3477238986f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -287,7 +287,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469804181618,
+			"time": 1470940059502,
 			"name": "Create Job",
 			"description": "",
 			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f",
@@ -443,7 +443,7 @@
 		},
 		{
 			"id": "c8aa66d9-2400-de0a-9b2b-dd918baac425",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -458,7 +458,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469804258428,
+			"time": 1470940058390,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f",
@@ -560,7 +560,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Cancelled') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Validate Job Stays Cancelled');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job stayed cancelled (Bug # 5265)\"] = true;\n                postman.setEnvironmentVariable('retry_loop',0);\n            }\n        }\n        else if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Validate Job Stays Cancelled');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else {\n            tests[\"After 5 seconds, status should not be \" + data.data.status + \". (Bug #5265)\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobType') && typeof data.data.jobType === 'string') {\n        tests[\"data.jobType string field present in output\"] = true;\n        tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n    }\n    else {\n        tests[\"data.jobType string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        tests[\"Current status is \" + data.data.status] = true;\n        if (data.data.status === 'Cancelled') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Validate Job Stays Cancelled');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job stayed cancelled (Bug # 5265 / 5931)\"] = true;\n                postman.setEnvironmentVariable('retry_loop',0);\n            }\n        }\n        else if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Validate Job Stays Cancelled');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else {\n            tests[\"After 5 seconds, status should not be \" + data.data.status + \". (Bug #5265)\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobType') && typeof data.data.jobType === 'string') {\n        tests[\"data.jobType string field present in output\"] = true;\n        tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n    }\n    else {\n        tests[\"data.jobType string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -568,7 +568,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470929134939,
+			"time": 1471016484910,
 			"name": "Validate Job Stays Cancelled",
 			"description": "",
 			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f"
