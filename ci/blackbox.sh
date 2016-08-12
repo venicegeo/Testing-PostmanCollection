@@ -22,7 +22,7 @@ echo $spaces
 if [ "$spaces" == "test" ]; then
 	echo "test case"
 	spaces="int stage prod"
-else if [ -z "$spaces" ]; then
+elif [ -z "$spaces" ]; then
 	echo "null case"
 	spaces="prod"
 fi
