@@ -222,7 +222,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId')) {\n            tests[\"data[].triggerId field present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].triggerId field present in output\"] = false;\n            break;\n        }\n    }\n    if (found) {\n        tests[\"triggerId found\"] = true;\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setNextRequest('Query Triggers');\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            pausecomp(1000);\n        }\n        else {\n            tests[\"triggerId found\"] = false;\n        }\n    }\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('triggerId')) {\n            tests[\"data[].triggerId field present in output\"] = true;\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].triggerId field present in output\"] = false;\n            break;\n        }\n    }\n    if (found) {\n        tests[\"triggerId found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setNextRequest('Query Triggers');\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            pausecomp(1000);\n        }\n        else {\n            tests[\"triggerId found\"] = false;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -230,7 +230,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471031525329,
+			"time": 1471032421998,
 			"name": "Query Triggers",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -370,7 +370,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('eventTypeId', '');\npostman.setEnvironmentVariable('serviceId', '');\npostman.setEnvironmentVariable('triggerId', '');\npostman.setEnvironmentVariable('eventId', '');\npostman.setEnvironmentVariable('alertId', '');\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('eventTypeId', '');\npostman.setEnvironmentVariable('serviceId', '');\npostman.setEnvironmentVariable('triggerId', '');\npostman.setEnvironmentVariable('eventId', '');\npostman.setEnvironmentVariable('alertId', '');\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 5);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -378,7 +378,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470930451420,
+			"time": 1471032480808,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -563,7 +563,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].eventId field present in output\"] = true;\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventId field present in output\"] = false;\n            break;\n        }\n    }\n        if (found) {\n        tests[\"eventId found\"] = true;\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setNextRequest('Query Events');\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            pausecomp(1000);\n        }\n        else {\n            tests[\"eventId found\"] = false;\n        }\n    }\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventId')) {\n            tests[\"data[].eventId field present in output\"] = true;\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventId field present in output\"] = false;\n            break;\n        }\n    }\n    if (found) {\n        tests[\"eventId found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setNextRequest('Query Events');\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            pausecomp(1000);\n        }\n        else {\n            tests[\"eventId found\"] = false;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -571,7 +571,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471031554914,
+			"time": 1471032413771,
 			"name": "Query Events",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -587,7 +587,7 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventTypeId')) {\n            tests[\"data[].eventTypeId field present in output\"] = true;\n            if (data.data[i].eventTypeId === postman.getEnvironmentVariable('eventTypeId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventTypeId field present in output\"] = false;\n            break;\n        }\n    }\n    if (found) {\n        tests[\"eventTypeId found\"] = true;\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setNextRequest('Query EventTypes');\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            pausecomp(1000);\n        }\n        else {\n            tests[\"eventTypeId found\"] = false;\n        }\n    }\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('eventTypeId')) {\n            tests[\"data[].eventTypeId field present in output\"] = true;\n            if (data.data[i].eventTypeId === postman.getEnvironmentVariable('eventTypeId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].eventTypeId field present in output\"] = false;\n            break;\n        }\n    }\n    if (found) {\n        tests[\"eventTypeId found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setNextRequest('Query EventTypes');\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            pausecomp(1000);\n        }\n        else {\n            tests[\"eventTypeId found\"] = false;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -595,7 +595,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471031489197,
+			"time": 1471032429362,
 			"name": "Query EventTypes",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
