@@ -14,7 +14,14 @@ popd > /dev/null
 [ -z "$space" ] && space=int
 
 bigLatch=0
-spaces="int stage prod"
+
+spaces=${target_domain%.*.*}
+if [ "$spaces" = "test"]; then
+	spaces="int stage prod"
+else if ["$spaces" = ""]; then
+	spaces="prod"
+fi
+	
 for space in $spaces; do
 	echo $space
 	envfile=$base/environments/$space.postman_environment
@@ -38,15 +45,11 @@ for space in $spaces; do
 		$cmd $f || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
 		echo $latch
 	done
-
-	echo "OUT OF LOOP"
-	echo "$latch"
-
+	
 	SUBJ="Failure in $space environment!"
 
 	if [ "$latch" -eq "1" ]; then
 		echo -e "${BODY}" | mail -s "$SUBJ" $RCVR
-		#echo "${BODY}" | mail -s "$SUBJ" $RCVR < /dev/null
 		echo "mail sent!"
 		bigLatch=1
 	fi
