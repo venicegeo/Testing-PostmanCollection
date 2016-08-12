@@ -19,9 +19,9 @@ echo $target_domain
 
 spaces="${target_domain%.*.*}"
 echo $spaces
-if [ "$spaces" = "test"]; then
+if [ "$spaces" = "test" ]; then
 	spaces="int stage prod"
-else if ["$spaces" = ""]; then
+else if [ "$spaces" = "" ]; then
 	spaces="prod"
 fi
 	
