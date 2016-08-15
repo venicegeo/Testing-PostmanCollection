@@ -542,7 +542,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('serviceId')) {\n        tests[\"data.serviceId field present in output\"] = true;\n        tests[\"correct serviceId returned\"] = postman.getEnvironmentVariable('serviceId') === data.data.serviceId;\n    }\n    else {\n        tests[\"data.serviceId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('serviceId')) {\n        tests[\"data.serviceId field present in output\"] = true;\n        tests[\"correct serviceId returned\"] = postman.getEnvironmentVariable('serviceId') === data.data.serviceId;\n    }\n    else {\n        tests[\"data.serviceId field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('resourceMetadata')) {\n        tests[\"data.resourceMetadata field present in output\"] = true;\n        if (data.data.resourceMetadata.hasOwnProperty('createdOn')) {\n            tests[\"data.resourceMetadata.createdOn field present in output\"] = true;\n            tests[\"Date was created (Bug #5912)\"] = data.data.resourceMetadata.createdOn !== null && data.data.resourceMetadata.createdOn !== '';\n        }\n        else {\n            tests[\"data.resourceMetadata.createdOn field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.resourceMetadata field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -550,7 +550,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470946757328,
+			"time": 1471287474290,
 			"name": "Get Service Info",
 			"description": "",
 			"collectionId": "d12f13de-e864-c1f8-10af-cc7a702f37d9",
@@ -581,7 +581,7 @@
 		},
 		{
 			"id": "f5a8a87a-fe04-83c9-cba6-49fdb7c37cd9",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}?softDelete=true",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -589,7 +589,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests['~~~~~ Not Yet Implemented. ~~~~~'] = true",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'success';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && (typeof data.data.message === 'string' || data.data.serviceId instanceof String)) {\n        tests[\"data.message present in output\"] = true;\n        tests[\"Deleted message\"] = data.data.message.match(/[Dd]elet/);\n    }\n    else{\n        tests[\"data.message field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -597,7 +597,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471007658235,
+			"time": 1471282426185,
 			"name": "Soft Delete Service",
 			"description": "",
 			"collectionId": "d12f13de-e864-c1f8-10af-cc7a702f37d9",
