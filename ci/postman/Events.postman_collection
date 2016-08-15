@@ -603,15 +603,15 @@
 		},
 		{
 			"id": "a8e82b0f-b6e5-a52c-f7f9-c96e74cf1656",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/event/garbage",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"Failure message (Bug #5700)\"] = data.message.match(/[Nn]ot/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 404 (Bug #5699) / (Bug #5977)\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"Failure message (Bug #5700)\"] = data.message.match(/[Nn]ot/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -619,7 +619,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470335433785,
+			"time": 1471267388978,
 			"name": "Get Deleted Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -749,14 +749,14 @@
 		{
 			"id": "e09eff1c-8ce2-f8e4-337f-cef28374d705",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/event/garbage",
+			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 404 (Bug #5699)\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"Failure message\"] = data.message.match(/[Nn]ot/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 404 (Bug #5699) / (Bug #5977)\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"Failure message\"] = data.message.match(/[Nn]ot/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -764,7 +764,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470841487368,
+			"time": 1471267376715,
 			"name": "Delete Event Again",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
