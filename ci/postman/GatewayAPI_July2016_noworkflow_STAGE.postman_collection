@@ -782,7 +782,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data[0].dataId)\n\n\n\n\n\n"
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data[0].dataId)\npostman.setEnvironmentVariable(\"deploymenttyep\",\"geoserver\")\n\n\n\n\n"
 					}
 				}
 			],
@@ -826,7 +826,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
+						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2OnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
