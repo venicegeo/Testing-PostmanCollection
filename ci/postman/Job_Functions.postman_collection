@@ -135,7 +135,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}\npostman.setEnvironmentVariable('retry', true);\npostman.setNextRequest('Validate Job Stays Cancelled');",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}\npostman.setEnvironmentVariable('retry', true);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -143,7 +143,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471448099959,
+			"time": 1471448489807,
 			"name": "Create Job Again",
 			"description": "",
 			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f",
