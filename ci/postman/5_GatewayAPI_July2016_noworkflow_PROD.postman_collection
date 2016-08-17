@@ -249,7 +249,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 201;"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
 					}
 				}
 			],
@@ -312,7 +312,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 201;"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
 					}
 				}
 			],
@@ -356,7 +356,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"value": "Basic YmIwYmU1MzYtZTFlNi00YWRkLThmOTQtN2QyYTM3NWYxMmY5OnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
