@@ -190,7 +190,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('serviceId')) {\n        tests[\"data.serviceId field present in output\"] = true;\n        tests[\"correct serviceId returned\"] = postman.getEnvironmentVariable('serviceId') === data.data.serviceId;\n    }\n    else {\n        tests[\"data.serviceId field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('resourceMetadata')) {\n        tests[\"data.resourceMetadata field present in output\"] = true;\n        if (data.data.resourceMetadata.hasOwnProperty('availability') && typeof data.data.resourceMetadata.availability === 'string') {\n            tests[\"data.resourceMetadata.availability field present in output\"] = true;\n            tests[\"Confirm Soft Delete\"] = data.data.resourceMetadata.availability.match(/off/i);\n        }\n        else {\n            tests[\"data.resourceMetadata.availability field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.resourceMetadata field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('type')) {\n    tests[\"type field present.\"] = true;\n    tests[\"Correct returned type\"] = data.type === 'service';\n}\nelse {\n    tests[\"type field present.\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('serviceId')) {\n        tests[\"data.serviceId field present in output\"] = true;\n        tests[\"correct serviceId returned\"] = postman.getEnvironmentVariable('serviceId') === data.data.serviceId;\n    }\n    else {\n        tests[\"data.serviceId field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('resourceMetadata')) {\n        tests[\"data.resourceMetadata field present in output\"] = true;\n        if (data.data.resourceMetadata.hasOwnProperty('availability') && typeof data.data.resourceMetadata.availability === 'string') {\n            tests[\"data.resourceMetadata.availability field present in output\"] = true;\n            tests[\"Confirm Soft Delete (Bug #5925)\"] = data.data.resourceMetadata.availability.match(/off/i);\n        }\n        else {\n            tests[\"data.resourceMetadata.availability field present in output\"] = false;\n        }\n    }\n    else {\n        tests[\"data.resourceMetadata field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -198,7 +198,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471439452635,
+			"time": 1471445875806,
 			"name": "Confirm Soft Delete",
 			"description": "",
 			"collectionId": "d12f13de-e864-c1f8-10af-cc7a702f37d9",
