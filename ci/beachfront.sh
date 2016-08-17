@@ -45,7 +45,7 @@ for space in $spaces; do
 	
 	BODY="Failing Collections:"
 
-	for f in $(ls -1 $base/postman/*postman_collection); do
+	for f in $(ls -1 $base/postman/bf/*postman_collection); do
 		echo $f
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.

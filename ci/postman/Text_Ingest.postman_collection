@@ -30,19 +30,13 @@
 		{
 			"id": "380bc56f-d791-6000-575c-2afa27914662",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/data/me?perPage=1000",
-			"pathVariables": {},
+			"url": "https://pz-gateway.{{domain}}/data/me?perPage=1000&order=desc&sortBy=metadata.createdOn",
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
 			"data": null,
 			"dataMode": "params",
-			"name": "Query My Data",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1469729170095,
 			"version": 2,
-			"responses": [],
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar all_by_me = true;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('dataId')) {\n            tests[\"data[].dataId field present in output\"] = true;\n            if (data.data[i].dataId === postman.getEnvironmentVariable('dataId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].dataId field present in output\"] = false;\n            break;\n        }\n        if (data.data[i].hasOwnProperty('metadata')) {\n            tests[\"data[].metadata field present in output\"] = true;\n            if (data.data[i].metadata.hasOwnProperty('createdBy')) {\n                tests[\"data[].metadata.createdBy field present in output\"] = true;\n                if (data.data[i].metadata.createdBy != 'citester') {\n                    all_by_me = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"data[].metadata.createdBy field present in output\"] = false;\n                break;\n            }\n        }\n        else {\n            tests[\"data[].metadata field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"dataId found\"] = found;\n    tests[\"All results created by me\"] = all_by_me;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -50,11 +44,16 @@
 				"username": "{{API Key}}",
 				"password": "",
 				"saveToRequest": true
-			}
+			},
+			"time": 1470931961863,
+			"name": "Query My Data",
+			"description": "",
+			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
+			"responses": []
 		},
 		{
 			"id": "3d3372a5-da42-9163-7109-d64c21c5b8f6",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data?keyword={{text description}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -70,7 +69,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121146413,
+			"time": 1470258423746,
 			"name": "Find Ingested Text by query",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -200,7 +199,7 @@
 		},
 		{
 			"id": "8070a12b-0b18-890d-e82e-95d56ed97192",
-			"headers": "Authorization: Basic ZjhhOGJjMDktZjY1YS00M2QwLTgzOGEtOGYwZGQxODFmODUzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -216,7 +215,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469476945417,
+			"time": 1470056230661,
 			"name": "Ingest Text Data",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -225,7 +224,7 @@
 		},
 		{
 			"id": "904a5a07-8629-b4ba-a57d-143b58e7eb87",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -233,7 +232,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 (Patrick fix)\"] = responseCode.code === 200;\nvar found = false;\nvar all_match = true;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('dataId')) {\n            tests[\"data[].dataId field present in output\"] = true;\n            if (data.data[i].dataId === postman.getEnvironmentVariable('dataId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].dataId field present in output\"] = false;\n            break;\n        }\n        if (data.data[i].hasOwnProperty('dataType')) {\n            tests[\"data[].dataType field present in output\"] = true;\n            if (data.data[i].dataType.hasOwnProperty('content')) {\n                tests[\"data[].dataType.content field present in output\"] = true;\n                if (data.data[i].dataType.content != 'The string goes here!') {\n                    all_match = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"data[].dataType.content field present in output\"] = false;\n                break;\n            }\n        }\n        else {\n            tests[\"data[].metadata field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"dataId found (Bug #5508)\"] = found;\n    tests[\"All results have {'name': 'somecat.tif'}.\"] = all_match;\n}\nelse {\n    tests[\"data array field present in output and is not empty (Bug #5508)\"] = false;\n}",
+			"tests": "tests[\"Status code is 200 (Patrick fix)\"] = responseCode.code === 200;\nvar found = false;\nvar all_match = true;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('dataId')) {\n            tests[\"data[].dataId field present in output\"] = true;\n            if (data.data[i].dataId === postman.getEnvironmentVariable('dataId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].dataId field present in output\"] = false;\n            break;\n        }\n        if (data.data[i].hasOwnProperty('dataType')) {\n            tests[\"data[].dataType field present in output\"] = true;\n            if (data.data[i].dataType.hasOwnProperty('content')) {\n                tests[\"data[].dataType.content field present in output\"] = true;\n                if (data.data[i].dataType.content != 'The string goes here!') {\n                    all_match = false;\n                }\n            }\n            else {\n                tests[\"data[].dataType.content field present in output\"] = false;\n                break;\n            }\n        }\n        else {\n            tests[\"data[].metadata field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"dataId found (Bug #5508)\"] = found;\n    tests[\"All results have {'content': 'The string goes here!'}.\"] = all_match;\n}\nelse {\n    tests[\"data array field present in output and is not empty (Bug #5508)\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -241,7 +240,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469803705887,
+			"time": 1470860076076,
 			"name": "Complex Query",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -250,7 +249,7 @@
 		},
 		{
 			"id": "9b57371b-4af0-553d-a132-d97db0735ace",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -265,7 +264,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121155613,
+			"time": 1470918993141,
 			"name": "Read Ingested Text",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -273,7 +272,7 @@
 		},
 		{
 			"id": "b457c9e7-3353-6de8-cff0-cc3cdee70d3a",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -289,7 +288,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121107715,
+			"time": 1470056231163,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
@@ -320,7 +319,7 @@
 		},
 		{
 			"id": "b7aacfb7-6890-e681-ba08-913d0a071ccf",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -336,7 +335,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121158509,
+			"time": 1470056230188,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",

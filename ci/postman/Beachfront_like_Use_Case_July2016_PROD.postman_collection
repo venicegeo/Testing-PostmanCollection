@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikeyprod\",\"13395994-3858-4315-8bc1-2927dfe4d483\")\n"
+						"exec": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikeyprod\",\"bb0be536-e1e6-4add-8f94-7d2a375f12f9\")\n"
 					}
 				}
 			],
@@ -22,13 +22,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "13395994-3858-4315-8bc1-2927dfe4d483",
-						"password": "test4life",
+						"username": "bb0be536-e1e6-4add-8f94-7d2a375f12f9",
+						"password": "",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service",
+				"url": "https://pz-gateway.geointservices.io/service",
 				"method": "POST",
 				"header": [
 					{
@@ -58,7 +58,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
+						"value": "Basic YmIwYmU1MzYtZTFlNi00YWRkLThmOTQtN2QyYTM3NWYxMmY5Og==",
 						"description": ""
 					}
 				],
@@ -91,7 +91,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service",
+				"url": "https://pz-gateway.geointservices.io/service",
 				"method": "POST",
 				"header": [
 					{
@@ -154,7 +154,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service",
+				"url": "https://pz-gateway.geointservices.io/service",
 				"method": "POST",
 				"header": [
 					{
@@ -184,7 +184,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy",
+						"value": "Basic NzJjYzQxM2YtYThlYS00ZDA4LTkxZGEtYzgyMTA4NTdlNTFhOnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
@@ -217,7 +217,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service",
+				"url": "https://pz-gateway.geointservices.io/service",
 				"method": "POST",
 				"header": [
 					{
@@ -247,7 +247,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy",
+						"value": "Basic NzJjYzQxM2YtYThlYS00ZDA4LTkxZGEtYzgyMTA4NTdlNTFhOnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
@@ -280,7 +280,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service",
+				"url": "https://pz-gateway.geointservices.io/service",
 				"method": "POST",
 				"header": [
 					{
@@ -310,7 +310,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy",
+						"value": "Basic NzJjYzQxM2YtYThlYS00ZDA4LTkxZGEtYzgyMTA4NTdlNTFhOnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
@@ -343,7 +343,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service",
+				"url": "https://pz-gateway.geointservices.io/service",
 				"method": "POST",
 				"header": [
 					{
@@ -406,7 +406,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service",
+				"url": "https://pz-gateway.geointservices.io/service",
 				"method": "POST",
 				"header": [
 					{
@@ -469,7 +469,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job",
+				"url": "https://pz-gateway.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -494,7 +494,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy",
+						"value": "Basic YmIwYmU1MzYtZTFlNi00YWRkLThmOTQtN2QyYTM3NWYxMmY5OnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
@@ -527,7 +527,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job",
+				"url": "https://pz-gateway.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -585,7 +585,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job",
+				"url": "https://pz-gateway.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -643,7 +643,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job",
+				"url": "https://pz-gateway.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -701,7 +701,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job",
+				"url": "https://pz-gateway.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -759,7 +759,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job",
+				"url": "https://pz-gateway.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -817,7 +817,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job/{{jobId}}",
+				"url": "https://pz-gateway.geointservices.io/job/{{jobId}}",
 				"method": "DELETE",
 				"header": [
 					{
@@ -880,7 +880,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/job/{{jobId}}",
+				"url": "https://pz-gateway.geointservices.io/job/{{jobId}}",
 				"method": "POST",
 				"header": [
 					{
@@ -918,12 +918,12 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic NTY5Y2IxYjAtYmUwNS00MzlhLTliZmMtNzg1ZDEzMGI3ZmRmOmNpdGVzdGVy",
+						"value": "Basic YmIwYmU1MzYtZTFlNi00YWRkLThmOTQtN2QyYTM3NWYxMmY5OnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
@@ -956,7 +956,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -1019,7 +1019,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/&*(*&",
+				"url": "https://pz-gateway.geointservices.io/service/&*(*&",
 				"method": "PUT",
 				"header": [
 					{
@@ -1062,7 +1062,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -1125,7 +1125,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -1188,7 +1188,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -1251,7 +1251,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -1314,7 +1314,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -1377,7 +1377,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "PUT",
 				"header": [
 					{
@@ -1440,7 +1440,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/~",
+				"url": "https://pz-gateway.geointservices.io/service/~",
 				"method": "GET",
 				"header": [
 					{
@@ -1478,7 +1478,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/data",
+				"url": "https://pz-gateway.geointservices.io/data",
 				"method": "POST",
 				"header": [
 					{
@@ -1512,7 +1512,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/*()_",
+				"url": "https://pz-gateway.geointservices.io/service/*()_",
 				"method": "DELETE",
 				"header": [
 					{
@@ -1555,7 +1555,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.prod.geointservices.io/service/{{serviceId}}",
+				"url": "https://pz-gateway.geointservices.io/service/{{serviceId}}",
 				"method": "DELETE",
 				"header": [
 					{

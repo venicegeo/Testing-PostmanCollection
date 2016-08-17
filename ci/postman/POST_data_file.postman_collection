@@ -54,7 +54,7 @@
 		{
 			"id": "1da061f9-24ad-3bc6-2f60-474a8b122e04",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/data/me?perPage=1000",
+			"url": "https://pz-gateway.{{domain}}/data/me?perPage=1000&order=desc&sortBy=metadata.createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -69,7 +69,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469728588182,
+			"time": 1470855195650,
 			"name": "Query My Data",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -77,7 +77,7 @@
 		},
 		{
 			"id": "2d5c396e-97a7-362f-a83e-6ad319cad70a",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -92,7 +92,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469802304444,
+			"time": 1470855202676,
 			"name": "Get Job Info",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -100,7 +100,7 @@
 		},
 		{
 			"id": "5199efab-9efa-27c0-6355-4ccc7cfbc7b1",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -116,7 +116,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469803533505,
+			"time": 1470258415461,
 			"name": "Complex Query",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -125,7 +125,7 @@
 		},
 		{
 			"id": "53e866fc-5107-7039-5949-bd50c6d3f940",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -141,7 +141,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469802304859,
+			"time": 1470855203269,
 			"name": "Get Metadata",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -173,7 +173,7 @@
 		},
 		{
 			"id": "6065ccdc-837c-9c70-9c7b-9c20f7c47d93",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -187,7 +187,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -202,7 +202,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469802297894,
+			"time": 1470773536283,
 			"name": "Load File w/o type",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -224,7 +224,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Parameter missing message\"] = data.message.has(\"parameter 'file' is not present\");\n}\nelse {\n    tests[\"found message\"] = false;\n}",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"Parameter missing message\"] = data.message.match(/file/) && data.message.match(/[Nn]o/);\n}\nelse {\n    tests[\"found message\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -232,7 +232,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121919476,
+			"time": 1470775688508,
 			"name": "Load No File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -264,7 +264,7 @@
 		},
 		{
 			"id": "abc1a9c6-50a7-479b-7ea1-a24b03f9e79f",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -272,13 +272,13 @@
 			"data": [
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
 			],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif(data.hasOwnProperty('message')){\n    tests[\"Parameter missing message\"] = data.message.has(\"parameter 'data' is not present\");\n}\nelse {\n    tests[\"found message\"] = false;\n}",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"Parameter missing message\"] = data.message.match(/data/) && data.message.match(/[Nn]o/);\n}\nelse {\n    tests[\"found message\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -286,7 +286,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469121905937,
+			"time": 1470831841823,
 			"name": "Load No Data",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -294,7 +294,7 @@
 		},
 		{
 			"id": "b7c8c2d1-9edf-c35c-ecfb-953cc6fe4223",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -308,7 +308,7 @@
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -322,7 +322,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469802304051,
+			"time": 1470855201931,
 			"name": "Load File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -330,7 +330,7 @@
 		},
 		{
 			"id": "bbe362f8-64a2-a4bf-868c-d36b5751c47b",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -346,7 +346,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470143688692,
+			"time": 1470317878046,
 			"name": "Download File",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -354,45 +354,7 @@
 		},
 		{
 			"id": "bd893d24-93e8-1fd8-f8b6-ad8df61d01f4",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"pathVariables": {},
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
-			"data": [
-				{
-					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
-					"type": "file",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"name": "Load File w/o class",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1469651642543,
-			"version": 2,
-			"responses": [],
-			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"error type\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'type' error.\"] = data.message.match('[tT]ype');\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			}
-		},
-		{
-			"id": "c78581ff-d0f7-30c3-8402-ae44cc54200e",
-			"headers": "",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -400,44 +362,13 @@
 			"data": [
 				{
 					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
-					"type": "file",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1467815891929,
-			"name": "Load File w/o Auth",
-			"description": "",
-			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
-			"responses": []
-		},
-		{
-			"id": "db6733c8-89a5-f2c8-a691-b3734cd07d19",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": [
-				{
-					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"cropped.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "file",
-					"value": "../0-blackbox/test-resources/somecat.tif",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -452,7 +383,75 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469122289503,
+			"time": 1470773507146,
+			"name": "Load File w/o class",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "c78581ff-d0f7-30c3-8402-ae44cc54200e",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470773632990,
+			"name": "Load File w/o Auth",
+			"description": "",
+			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
+			"responses": []
+		},
+		{
+			"id": "db6733c8-89a5-f2c8-a691-b3734cd07d19",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"error type\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'type' error.\"] = data.message.match('[tT]ype');\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470773617104,
 			"name": "Load File w/ Wrong Type",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
@@ -461,7 +460,7 @@
 		{
 			"id": "e281a753-2c1a-d023-d2f1-b6dad4909406",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/data?keyword=A BF TIFF file.&perPage=1000",
+			"url": "https://pz-gateway.{{domain}}/data?keyword=somecat.tif&perPage=1000",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -476,7 +475,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1469728569426,
+			"time": 1470855203907,
 			"name": "Query Data",
 			"description": "",
 			"collectionId": "d4fab037-7f57-76aa-8375-789af81e708a",
