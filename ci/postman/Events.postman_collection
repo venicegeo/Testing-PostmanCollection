@@ -31,6 +31,7 @@
 		"8bf1f418-8393-254d-a1bf-f75e18aea39e",
 		"ba188498-f88c-ef19-7200-0ba6c3bb74d5",
 		"7e28d17a-7e4d-9522-ef31-beb93029b746",
+		"3f34763c-64c1-be00-6643-74594516cff5",
 		"3fa97ecf-18b4-7191-8609-11c8105eb742",
 		"cd980ac1-6954-333a-4218-55b91d574056",
 		"33d8ab32-fad2-a760-6a02-e552bd958a04"
@@ -260,6 +261,31 @@
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\"\r\n}\t"
+		},
+		{
+			"id": "3f34763c-64c1-be00-6643-74594516cff5",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/trigger",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 400 (Bug #5994)\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"EventType does not exist message\"] = data.message.match(/[Nn]ot/) && data.message.match(/[Ee]vent\\s?[Tt]ype/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1471548111899,
+			"name": "Create Trigger - Deleted eventTypeId",
+			"description": "",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"responses": [],
+			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"{{eventTypeId}}\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"data.dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"{{serviceId}}\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
 		},
 		{
 			"id": "3fa97ecf-18b4-7191-8609-11c8105eb742",
