@@ -658,7 +658,7 @@
 			"method": "DELETE",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"Correct eventId deleted\"] = data.data.message.match(postman.getEnvironmentVariable('eventId'));\n        tests[\"Successful deletion message\"] = data.data.message.match(/[Ss]uccess/) && data.data.message.match(/[Dd]elet/);\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\npostman.setNextRequest('Create Non-triggering Event');",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"Correct eventId deleted\"] = data.data.message.match(postman.getEnvironmentVariable('eventId'));\n        tests[\"Successful deletion message\"] = data.data.message.match(/[Ss]uccess/) && data.data.message.match(/[Dd]elet/);\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -666,7 +666,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471464816968,
+			"time": 1471524015444,
 			"name": "Delete Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
