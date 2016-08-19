@@ -19,9 +19,8 @@ echo $PCF_SPACE
 if [ "$PCF_SPACE" == "test" ]; then
 	echo "test case"
 	spaces="int stage prod"
-elif [ -z "$PCF_SPACE" ]; then
-	echo "null case"
-	spaces="prod"
+else
+	spaces=$PCF_SPACE
 fi
 
 for space in $spaces; do
