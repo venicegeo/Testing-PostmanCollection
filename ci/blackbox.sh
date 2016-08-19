@@ -39,11 +39,21 @@ for space in $spaces; do
 	
 	BODY="Failing Collections:"
 
-	for f in $(ls -1 $base/postman/*postman_collection); do
+	#Run all generic tests.
+	for f in $(ls -1 $base/postman/pz-all/*postman_collection); do
 		echo $f
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
 		$cmd $f || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		echo $latch
+	done
+
+	#Run all specific environment tests.
+	for f in $(ls -1 $base/postman/pz-$space/*postman_collection); do
+		echo $f
+		filename=$(basename $f)
+		#Try the command first.  If it returns an error, latch & e-mail.
+		$cmd $f || { latch=1; BODY="${BODY}\n$space:${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
 		echo $latch
 	done
 	
