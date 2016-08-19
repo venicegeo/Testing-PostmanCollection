@@ -45,7 +45,7 @@
 		{
 			"id": "01ddea84-ced1-fdba-57e5-b253be3e612a",
 			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/eventType",
+			"url": "https://pz-workflow.{{domain}}/eventType",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -59,12 +59,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470930452221,
+			"time": 1471625491784,
 			"name": "Create EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\",\r\n    \"sampleNest\": {\r\n        \"someParam\": \"string\"\r\n    }\r\n  }\r\n}  "
 		},
 		{
 			"id": "089ce165-a6f2-dfbb-4e11-4fea994cf17d",
@@ -83,12 +83,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470841349193,
+			"time": 1471625711998,
 			"name": "Create Non-triggering Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"graster\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
+			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"graster\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true,\n        \"sampleNest\": {\n            \"someParam\": \"someValue\"\n        }\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
 		},
 		{
 			"id": "0af6953d-22e4-b1e4-1d72-a59472118713",
@@ -116,7 +116,7 @@
 		},
 		{
 			"id": "0e675907-9063-ffd4-b26c-4d9520b27704",
-			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -131,12 +131,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470930454925,
+			"time": 1471625634954,
 			"name": "Create Event",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"raster\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
+			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"raster\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true,\n        \"sampleNest\": {\n            \"someParam\": \"someValue\"\n        }\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
 		},
 		{
 			"id": "137070a9-a7f6-513b-8d0d-48e0ca9a1681",
