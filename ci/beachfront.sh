@@ -1,8 +1,7 @@
 #!/bin/bash -ex
 echo start
 #mail settings
-#RCVR="abcmauck@gmail.com,jamesyarrington88@gmail.com"
-RCVR="jamesyarrington88@gmail.com"
+RCVR="abcmauck@gmail.com,jamesyarrington88@gmail.com"
 SUBJ= $BUILDURL
 
 #awm
@@ -15,14 +14,12 @@ popd > /dev/null
 
 bigLatch=0
 
-echo $target_domain
+echo $PCF_SPACE
 
-spaces="${target_domain%.*.*}"
-echo $spaces
-if [ "$spaces" == "test" ]; then
+if [ "$PCF_SPACE" == "test" ]; then
 	echo "test case"
 	spaces="int stage prod"
-elif [ -z "$spaces" ]; then
+elif [ -z "$PCF_SPACE" ]; then
 	echo "null case"
 	spaces="prod"
 fi
@@ -53,7 +50,7 @@ for space in $spaces; do
 		echo $latch
 	done
 	
-	SUBJ="Failure in $space environment!"
+	SUBJ="Beachfront failure in $space environment!"
 
 	if [ "$latch" -eq "1" ]; then
 		echo -e "${BODY}" | mail -s "$SUBJ" $RCVR
