@@ -91,6 +91,7 @@ def controller(activeQueues, resultQueues, configs):
 		else:
 			steps += [(1, 1)]
 	# Continue until the target number of requests been reached.
+	lastActionTime = time.time()
 	while True:
 		for i, config in enumerate(configs):
 			active = activeQueues[i].qsize()
@@ -107,6 +108,7 @@ def controller(activeQueues, resultQueues, configs):
 			except queue.Empty:
 				continue
 			else:
+				lastActionTime = time.time()
 				# Count the process.
 				eachCompleted[i] += 1
 				percentages = 100*eachCompleted[i]/totals[i]
@@ -125,6 +127,7 @@ def controller(activeQueues, resultQueues, configs):
 				results[i] = []
 				newResults[i] = []
 		if all([completed >= total for (completed, total) in zip(eachCompleted, totals)]): break
+		if int(time.time() - lastActionTime) >= 300: break
 
 # Returns a list of processes that call sendGetRequest().
 def createProcesses(activeQueue, resultQueue, config):
