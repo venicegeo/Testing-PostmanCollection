@@ -73,6 +73,8 @@ def createHandlerWithQueue(configQueue, configLockout, suiteLockout, sharedDict)
 		def postConfigs(self):
 			rsp = resp()
 			config = self.getJSON(rsp)
+			if config.get('type') == 'parallel':
+				config = self.parallelConfigs
 			if config:
 				try:
 					configQueue.put(config)
@@ -81,6 +83,8 @@ def createHandlerWithQueue(configQueue, configLockout, suiteLockout, sharedDict)
 				else:
 					rsp['message'] = 'Added configuration to load testing queue.'
 					rsp.appendCode(200)
+			else:
+				rsp.appendCode(400, 'Nothing is in the parallel queue.')
 			self.sendJSONResponse(rsp)
 
 		# Add a suite of load test config to the queue.
@@ -193,8 +197,7 @@ class resp(collections.OrderedDict):
 # Take the configuration dict to start the load test.  Blocks until complete.
 # See siteBlasting.py for how the load tester works.
 def runLoadTest(config):
-	(activeQueue, resultQueue) = createSharedQueues()
-	c = startController(activeQueue, resultQueue, config)
+	c = startController(config)
 	c.join()
 
 # Start the server and the load test runner.
@@ -222,7 +225,6 @@ def runner(configQueue, configLockout, sharedDict):
 	while True:
 		with configLockout:
 			sharedDict['current'] = config = configQueue.get()
-		if config.get('end'): break
 		runLoadTest(config)
 		sharedDict['current'] = None
 
