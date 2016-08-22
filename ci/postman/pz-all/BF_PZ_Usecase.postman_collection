@@ -4,6 +4,7 @@
 	"description": "",
 	"order": [
 		"bebf9526-2bb7-e500-9e90-d20acc9e07a2",
+		"d6d197e2-394d-a879-18c4-9f639f8bc4c9",
 		"86dd399a-a552-5fca-3035-3b8e1aaf6c29",
 		"a1f90746-c9aa-5b6e-41b2-590460256458",
 		"9c6e6e66-1aad-6b17-1410-623f68d95dfa",
@@ -281,6 +282,24 @@
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n    \"dataType\": {\r\n        \"content\": \"{{bf-handle Result}}\",\r\n        \"type\": \"text\"\r\n    }\r\n  },\r\n  \"host\": false,\r\n  \"type\": \"ingest\"\r\n}"
+		},
+		{
+			"id": "d6d197e2-394d-a879-18c4-9f639f8bc4c9",
+			"headers": "Access-Control-Request-Headers: authorization\nAccess-Control-Request-Method: GET\n",
+			"url": "https://pz-gateway.{{domain}}/key",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "OPTIONS",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var header = postman.getResponseHeader(\"Access-Control-Allow-Headers\");\nif (typeof header === 'string') {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = true;\n    tests[\"'authorization' header is allowed\"] = header.match(/authorization/i);\n}\nelse {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = false;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1471899588196,
+			"name": "Get Key Options",
+			"description": "",
+			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
+			"responses": []
 		},
 		{
 			"id": "e8a01848-2a79-76f9-632c-982ee578da20",

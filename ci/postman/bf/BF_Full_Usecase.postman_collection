@@ -4,6 +4,7 @@
 	"description": "",
 	"order": [
 		"98ac5428-769a-d5b4-9523-6d168eb52904",
+		"40eacb11-c887-eaeb-525f-122cb1ec8db6",
 		"9ddf6b58-9703-bb11-3c8c-2ab8bba68b25",
 		"25c4d9fe-833b-33d7-a07b-f8322578076d",
 		"0953f0b4-f0c7-a2e2-3c63-c7c59b65c475",
@@ -164,6 +165,26 @@
 			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
 			"responses": [],
 			"rawModeData": "{\r\n  \"dataId\": \"{{shoreDataID}}\",\r\n  \"deploymentType\": \"geoserver\",\r\n  \"type\": \"access\"\r\n}"
+		},
+		{
+			"id": "40eacb11-c887-eaeb-525f-122cb1ec8db6",
+			"headers": "Access-Control-Request-Headers: authorization\nAccess-Control-Request-Method: GET\n",
+			"url": "https://pz-gateway.{{domain}}/key",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "OPTIONS",
+			"collectionId": "19c29664-35ed-6796-7b0b-13b9bd9e8c4b",
+			"data": null,
+			"dataMode": "params",
+			"name": "Get Key Options",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1471899611960,
+			"version": 2,
+			"responses": [],
+			"tests": "var header = postman.getResponseHeader(\"Access-Control-Allow-Headers\");\nif (typeof header === 'string') {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = true;\n    tests[\"'authorization' header is allowed\"] = header.match(/authorization/i);\n}\nelse {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = false;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {}
 		},
 		{
 			"id": "4972e73b-d3c7-9e6f-e70d-72d805704836",
