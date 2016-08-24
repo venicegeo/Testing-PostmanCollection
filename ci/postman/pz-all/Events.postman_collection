@@ -910,7 +910,7 @@
 		{
 			"id": "ba188498-f88c-ef19-7200-0ba6c3bb74d5",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/eventType/foo",
+			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
@@ -925,7 +925,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1472053581994,
+			"time": 1472060936512,
 			"name": "Delete EventType Again",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
