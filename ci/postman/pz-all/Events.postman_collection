@@ -52,14 +52,14 @@
 	"requests": [
 		{
 			"id": "01ddea84-ced1-fdba-57e5-b253be3e612a",
-			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
-			"url": "https://pz-workflow.{{domain}}/eventType",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/eventType",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Tt]ype/) && data.type.match(/[Ee]vent/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('eventTypeId') && typeof data.data.eventTypeId === 'string') {\n        tests[\"data.eventTypeId string field present in output\"] = true;\n        tests[\"eventTypeId GUID created\"] = data.data.eventTypeId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('eventTypeId', data.data.eventTypeId);\n    }\n    else {\n        tests[\"data.eventTypeId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 201 (Bug #6162)\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Correct Type\"] = data.type.match(/[Tt]ype/) && data.type.match(/[Ee]vent/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('eventTypeId') && typeof data.data.eventTypeId === 'string') {\n        tests[\"data.eventTypeId string field present in output\"] = true;\n        tests[\"eventTypeId GUID created\"] = data.data.eventTypeId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable('eventTypeId', data.data.eventTypeId);\n    }\n    else {\n        tests[\"data.eventTypeId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -67,7 +67,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471625491784,
+			"time": 1472047110166,
 			"name": "Create EventType",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
@@ -411,12 +411,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471537908976,
+			"time": 1471967633935,
 			"name": "Create Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"{{eventTypeId}}\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"data.dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"{{serviceId}}\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
+			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"{{eventTypeId}}\", \"d884de4c-100d-4e41-af67-a1ea947a4613\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"data.dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"{{serviceId}}\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
 		},
 		{
 			"id": "4fcb500b-8048-383f-918b-dfd24bb3398f",
