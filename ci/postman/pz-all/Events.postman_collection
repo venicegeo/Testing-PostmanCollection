@@ -23,6 +23,7 @@
 		"a8e82b0f-b6e5-a52c-f7f9-c96e74cf1656",
 		"089ce165-a6f2-dfbb-4e11-4fea994cf17d",
 		"1876b7c6-8014-6eef-b6de-b9d1323bf3dc",
+		"41649a4c-d2b1-0b99-af51-aa7277137664",
 		"4fcb500b-8048-383f-918b-dfd24bb3398f",
 		"8110d52c-ba19-9e17-e74b-5cb37f64d92e",
 		"56cbc872-0ed7-23fb-547f-5827456e822f",
@@ -394,6 +395,32 @@
 			"rawModeData": "{\n    \"data\": {\t\n      \"mapping\": {\n\t\t\"dataId\": \"testId\",\n\t\t\"dataType\": \"raster\",\n\t\t\"epsg\": \"3\",\n\t\t\"minX\": \"1.0\",\n\t\t\"minY\": \"1.0\",\n\t\t\"maxX\": \"10.0\",\n\t\t\"maxY\": \"10.0\",\n\t\t\"hosted\": true\n      }\n  },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
 		},
 		{
+			"id": "41649a4c-d2b1-0b99-af51-aa7277137664",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "DELETE",
+			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Delete Non-triggering Event",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1472052673970,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type') && typeof data.type === 'string') {\n    tests[\"type string field present in output\"] = true;\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\nelse {\n    tests[\"type string field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"Correct eventId deleted\"] = data.data.message.match(postman.getEnvironmentVariable('eventId'));\n        tests[\"Successful deletion message\"] = data.data.message.match(/[Ss]uccess/) && data.data.message.match(/[Dd]elet/);\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"rawModeData": ""
+		},
+		{
 			"id": "464f34c7-5d05-df9c-593b-4a8cbecf92d9",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
@@ -411,12 +438,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471967633935,
+			"time": 1472051593222,
 			"name": "Create Trigger",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
 			"responses": [],
-			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"{{eventTypeId}}\", \"d884de4c-100d-4e41-af67-a1ea947a4613\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"data.dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"{{serviceId}}\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
+			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"condition\": {\n        \"eventTypeIds\": [\"{{eventTypeId}}\"],\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"data.dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"{{serviceId}}\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
 		},
 		{
 			"id": "4fcb500b-8048-383f-918b-dfd24bb3398f",
@@ -883,14 +910,14 @@
 		{
 			"id": "ba188498-f88c-ef19-7200-0ba6c3bb74d5",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
+			"url": "https://pz-gateway.{{domain}}/eventType/foo",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 404 (Bug #5699)\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"Failure message\"] = data.message.match(/[Nn]ot/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"tests": "tests[\"Status code is 404 (Bug #5699 or #6444)\"] = responseCode.code === 404;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"Failure message\"] = data.message.match(/[Nn]ot/);\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -898,7 +925,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470841481990,
+			"time": 1472053581994,
 			"name": "Delete EventType Again",
 			"description": "",
 			"collectionId": "3f6d0eb7-d459-c1f7-4b6f-acfcf9f02aeb",
