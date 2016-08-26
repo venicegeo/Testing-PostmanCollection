@@ -225,14 +225,14 @@
 		{
 			"id": "904a5a07-8629-b4ba-a57d-143b58e7eb87",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/data/query",
+			"url": "https://pz-gateway.{{domain}}/data/query?order=desc",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 (Bug #6440)\"] = responseCode.code === 200;\nvar found = false;\nvar all_match = true;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('dataId')) {\n            tests[\"data[].dataId field present in output\"] = true;\n            if (data.data[i].dataId === postman.getEnvironmentVariable('dataId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].dataId field present in output\"] = false;\n            break;\n        }\n        if (data.data[i].hasOwnProperty('dataType')) {\n            tests[\"data[].dataType field present in output\"] = true;\n            if (data.data[i].dataType.hasOwnProperty('content')) {\n                tests[\"data[].dataType.content field present in output\"] = true;\n                if (data.data[i].dataType.content != 'The string goes here!') {\n                    all_match = false;\n                }\n            }\n            else {\n                tests[\"data[].dataType.content field present in output\"] = false;\n                break;\n            }\n        }\n        else {\n            tests[\"data[].metadata field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"dataId found (Bug #5508)\"] = found;\n    tests[\"All results have {'content': 'The string goes here!'}.\"] = all_match;\n}\nelse {\n    tests[\"data array field present in output and is not empty (Bug #5508)\"] = false;\n}",
+			"tests": "tests[\"Status code is 200 (Bug #6440)\"] = responseCode.code === 200;\nvar found = false;\nvar all_match = true;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('dataId')) {\n            tests[\"data[].dataId field present in output\"] = true;\n            if (data.data[i].dataId === postman.getEnvironmentVariable('dataId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].dataId field present in output\"] = false;\n            break;\n        }\n        if (data.data[i].hasOwnProperty('dataType')) {\n            tests[\"data[].dataType field present in output\"] = true;\n            if (data.data[i].dataType.hasOwnProperty('content') && typeof data.data[i].dataType.content === 'string') {\n                tests[\"data[].dataType.content string field present in output\"] = true;\n                if (!data.data[i].dataType.content.match(/string/i)) {\n                    all_match = false;\n                }\n            }\n            else {\n                tests[\"data[].dataType.content string field present in output\"] = false;\n                break;\n            }\n        }\n        else {\n            tests[\"data[].metadata field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"dataId found (Bug #5508)\"] = found;\n    tests[\"All results have {'content': 'The string goes here!'}.\"] = all_match;\n}\nelse {\n    tests[\"data array field present in output and is not empty (Bug #5508)\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -240,12 +240,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1472050732365,
+			"time": 1472243199687,
 			"name": "Complex Query",
 			"description": "",
 			"collectionId": "e0368d73-036f-a8b0-640b-6038e22c98dd",
 			"responses": [],
-			"rawModeData": "{\n    \"query\": {\n        \"match\": {\n            \"dataResource.dataType.content\": \"The string goes here!\"\n        }\n    }\n}"
+			"rawModeData": "{\n    \"query\": {\n        \"match\": {\n            \"dataResource.dataType.content\": \"string\"\n        }\n    }\n}"
 		},
 		{
 			"id": "9b57371b-4af0-553d-a132-d97db0735ace",
