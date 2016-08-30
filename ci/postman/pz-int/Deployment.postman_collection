@@ -18,9 +18,14 @@
 		"175cc1b9-f375-8348-7f85-8f5d6d207dc0",
 		"45bfa5fb-063e-6132-d9e9-569a0c6aeb3e",
 		"bf3182da-e918-3574-450d-e77949c24565",
+		"db951d23-def9-ed96-838e-70ce5990ca24",
+		"e8e801d0-08a0-6a19-17e2-ce9b6f35ae90",
+		"c152ebe2-c415-a49f-f736-4239198662fd",
+		"ce436a2b-1d0b-0493-53a9-d972e7cdc6b6",
 		"7da068bf-4b05-ed46-c63d-048f7be297ea",
 		"354dd608-0fc4-e739-d868-5e874e3328de",
 		"05d9f547-2132-8fb4-0e44-c936edb73832",
+		"753300c6-5a83-d10a-630a-7a485a2f7949",
 		"035ee88e-eed9-8908-193b-93b510160bae",
 		"2ebd8405-6f09-7c31-f679-a8c71c978cd2",
 		"df46f131-1672-11ac-74ae-7bca39ad8bfd",
@@ -34,6 +39,7 @@
 		"1090455a-e341-13f8-e80d-3a6d58c7a6f8",
 		"00542be9-04d0-c1e5-e6d5-286806f0fd35",
 		"52c68564-8a83-78a7-1ad1-7f549690689c",
+		"2a7737f4-8d5b-64af-1604-edfd28eb8479",
 		"dedcee63-083d-da6d-4eb6-9b0c36be9d9e",
 		"683eecc9-a6a9-ec49-6175-f0f727079dcb",
 		"30d65cde-be21-a9a3-9495-0d1e91dadedc",
@@ -431,6 +437,30 @@
 			"responses": []
 		},
 		{
+			"id": "2a7737f4-8d5b-64af-1604-edfd28eb8479",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId2}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1472049178338,
+			"name": "Delete Second File",
+			"description": "",
+			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
+			"responses": []
+		},
+		{
 			"id": "2ce9a4f6-d19e-bded-4da0-5bccac20ad43",
 			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
@@ -724,10 +754,10 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\ntests[\"Status code is 200\"] = responseCode.code === 200;\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 5);\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('deploymentId', '');\npostman.setEnvironmentVariable('capabilitiesUrl', '');\npostman.setEnvironmentVariable('deploymentGroupId', '');",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\ntests[\"Status code is 200\"] = responseCode.code === 200;\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 5);\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('deploymentId', '');\npostman.setEnvironmentVariable('dataId2', '');\npostman.setEnvironmentVariable('deploymentId2', '');\npostman.setEnvironmentVariable('capabilitiesUrl', '');\npostman.setEnvironmentVariable('deploymentGroupId', '');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1469564166760,
+			"time": 1472050208265,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
@@ -789,6 +819,30 @@
 			},
 			"time": 1469566346219,
 			"name": "Try Shape - Ingest copy",
+			"description": "",
+			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
+			"responses": []
+		},
+		{
+			"id": "753300c6-5a83-d10a-630a-7a485a2f7949",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId2}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\ntests[\"Status code is 200\"] = responseCode.code === 200;\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"type is 'success'\"] = data.type === 'success';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('message') && typeof data.data.message === 'string') {\n        tests[\"data.message string field present in output\"] = true;\n        tests[\"Deletion message\"] = data.data.message.match(/[Dd]elet/) && !data.data.message.match(/[Gg]roup/);\n    }\n    else {\n        tests[\"data.message string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n    tests[\"Output: \" + responseBody] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1472050211914,
+			"name": "Second File - Delete Deployment in Group",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
 			"responses": []
@@ -1009,6 +1063,31 @@
 			"helperAttributes": {}
 		},
 		{
+			"id": "c152ebe2-c415-a49f-f736-4239198662fd",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/deployment",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else {\n        tests[\"data.jobId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n    tests[\"Output: \" + responseBody] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1472049006028,
+			"name": "Second file - Deploy Data in Group",
+			"description": "",
+			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
+			"responses": [],
+			"rawModeData": "{\r\n  \"dataId\": \"{{dataId2}}\",\r\n  \"deploymentGroupId\": \"{{deploymentGroupId}}\",\r\n  \"deploymentType\": \"geoserver\",\r\n  \"type\": \"access\"\r\n}"
+		},
+		{
 			"id": "c975d999-19d5-d9bc-9d02-c92ee62c2f81",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/deployment",
@@ -1032,6 +1111,30 @@
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
 			"responses": [],
 			"rawModeData": "{\r\n    \"deploymentType\": \"geoserver\",\r\n    \"type\": \"access\"\r\n}"
+		},
+		{
+			"id": "ce436a2b-1d0b-0493-53a9-d972e7cdc6b6",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Second File - Check Deployment (in Group) Status');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if (data.data.status === 'Success') {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n            if(data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present\"] = true;\n                if (data.data.result.hasOwnProperty('deployment')) {\n                    tests[\"data.result.deployment field present\"] = true;\n                    if (data.data.result.deployment.hasOwnProperty('deploymentId') && typeof data.data.result.deployment.deploymentId === 'string') {\n                        tests[\"data.result.deployment.deploymentId string field present\"] = true;\n                        postman.setEnvironmentVariable(\"deploymentId2\", data.data.result.deployment.deploymentId);\n                        tests[\"data.result.dataId GUID created\"] = data.data.result.deployment.deploymentId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    }\n                    else {\n                        tests[\"data.result.deployment.deploymentId string field present\"] = false;\n                    }\n                    if (data.data.result.deployment.hasOwnProperty('capabilitiesUrl')) {\n                        tests[\"data.result.deployment.capabilitiesUrl field present\"] = true;\n                        postman.setEnvironmentVariable(\"capabilitiesUrl\", data.data.result.deployment.capabilitiesUrl);\n                    }\n                    else {\n                        tests[\"data.result.deployment.capabilitiesUrl field present\"] = false;\n                    }\n                }\n                else {\n                    tests[\"data.result.deployemnt field present\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status + \". (Bug #6306)\"] = false;\n            tests[\"Output: \" + responseBody] = false;\n        }\n    }\n    else {\n        tests[\"status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1472049119168,
+			"name": "Second File - Check Deployment (in Group) Status",
+			"description": "",
+			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
+			"responses": []
 		},
 		{
 			"id": "d01de421-66af-96f0-6007-ada28bebfb33",
@@ -1077,6 +1180,42 @@
 			},
 			"time": 1469544318780,
 			"name": "Check Deployment (w/ bad dataId) Status",
+			"description": "",
+			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
+			"responses": []
+		},
+		{
+			"id": "db951d23-def9-ed96-838e-70ce5990ca24",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else {\n        tests[\"data.jobId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n    tests[\"Output: \" + responseBody] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1472048540584,
+			"name": "Second File - Load",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
 			"responses": []
@@ -1182,6 +1321,30 @@
 			},
 			"time": 1469624632745,
 			"name": "Try Geojson - Ingest",
+			"description": "",
+			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
+			"responses": []
+		},
+		{
+			"id": "e8e801d0-08a0-6a19-17e2-ce9b6f35ae90",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Second File - Get dataId');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if (data.data.status === 'Success') {\n            tests[\"Job finished in time\"] = true;\n            if(data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present\"] = true;\n                if(data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n                    tests[\"data.result.dataId string field present\"] = true;\n                    postman.setEnvironmentVariable(\"dataId2\",data.data.result.dataId);\n                    tests[\"data.result.dataId GUID created\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                }\n                else {\n                    tests[\"data.result.dataId string field present\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status + \".\"] = false;\n            tests[\"Output: \" + responseBody] = false;\n            postman.setNextRequest('');\n        }\n    }\n    else {\n        tests[\"status field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1472048932221,
+			"name": "Second File - Get dataId",
 			"description": "",
 			"collectionId": "2dd5f07c-2591-8bf4-4976-022da79446af",
 			"responses": []

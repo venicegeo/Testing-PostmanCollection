@@ -1,0 +1,483 @@
+{
+	"id": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+	"name": "POST_data_file---No_Query",
+	"description": "",
+	"order": [
+		"ac9cde72-3e96-fbd6-dfba-a41c68166463",
+		"ea97d04c-7edc-84a7-7979-2d86ad81f41f",
+		"a874f50a-e85a-13a8-cf1e-9c002a15ec82",
+		"d9c1f4e3-c0d5-331e-fd5a-f129b2f81005",
+		"82214ed4-02dd-6900-9a4d-e2f2c52c3523",
+		"af15b724-7871-14f6-9928-1c3e62fc1046",
+		"ca941263-cac1-17a9-77e5-4e7790069ac6",
+		"5e170614-43ff-b516-59b1-42c30cac04f1",
+		"84c402f6-e251-953c-d007-5d560645b277",
+		"361bd690-71ea-bca8-a544-ff4f24ea36a5",
+		"18baa4b3-1e1b-dfb1-3cfc-480e1ed42b83",
+		"e9aff61b-e518-e85f-b586-b66f850b7a9b",
+		"50de8959-eb25-e480-6474-b8bc967d9ac8",
+		"a5c9f775-7674-8574-bcfd-3af14f1bb457",
+		"35e9f12a-d460-3ce0-c6d7-27bd7706abb7",
+		"14e44d90-019b-8655-178b-02807c1bb479"
+	],
+	"folders": [],
+	"timestamp": 1472483890904,
+	"owner": "699425",
+	"public": false,
+	"published": false,
+	"requests": [
+		{
+			"id": "14e44d90-019b-8655-178b-02807c1bb479",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"error type\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'type' error.\"] = data.message.match('[tT]ype');\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470773507146,
+			"name": "Load File w/o class",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "18baa4b3-1e1b-dfb1-3cfc-480e1ed42b83",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"Parameter missing message\"] = data.message.match(/data/) && data.message.match(/[Nn]o/);\n}\nelse {\n    tests[\"found message\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470831841823,
+			"name": "Load No Data",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "35e9f12a-d460-3ce0-c6d7-27bd7706abb7",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{\"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1472484105535,
+			"name": "Load File w/o type",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "361bd690-71ea-bca8-a544-ff4f24ea36a5",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1470773632990,
+			"name": "Load File w/o Auth",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "50de8959-eb25-e480-6474-b8bc967d9ac8",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\ntry {\n    var data = JSON.parse(responseBody);\n    if(data.hasOwnProperty('message') && typeof data.message === 'string'){\n        tests[\"message string field present in output\"] = true;\n        tests[\"not found message\"] = data.message.match(/[Nn]ot [Ff]ound/);\n    }\n    else {\n        tests[\"message string field present in output\"] = false;\n    }\n}\ncatch (e) {\n    tests[\"JSON missing from error output (Bug #5596)\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470144401525,
+			"name": "Download File after Delete",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "5e170614-43ff-b516-59b1-42c30cac04f1",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1469121876798,
+			"name": "Delete File",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "82214ed4-02dd-6900-9a4d-e2f2c52c3523",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if(data.data.hasOwnProperty('metadata')) {\n        tests[\"data.metadata field present\"] = true;\n        if(data.data.metadata.hasOwnProperty('description')) {\n            tests[\"data.metadata.description field present\"] = true;\n            tests[\"Metadata has original description\"] = data.data.metadata.description === \"A BF TIFF file.\";\n        }\n        else {\n            tests[\"data.metadata.description field present\"] = false;\n        }\n    }\n    else {\n        tests[\"data.metadata field present\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470855203269,
+			"name": "Get Metadata",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "84c402f6-e251-953c-d007-5d560645b277",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/file/00000000-0000-0000-0000-000000000000",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\ntry {\n    var data = JSON.parse(responseBody);\n    if(data.hasOwnProperty('message') && typeof data.message === 'string'){\n        tests[\"message string field present in output\"] = true;\n        tests[\"not found message\"] = data.message.match(/[Nn]ot [Ff]ound/);\n    }\n    else {\n        tests[\"message string field present in output\"] = false;\n    }\n}\ncatch (e) {\n    tests[\"JSON missing from error output (Bug #5596)\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470144390049,
+			"name": "Download No File",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "a5c9f775-7674-8574-bcfd-3af14f1bb457",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"text\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('type')) {\n    tests[\"type field present in output\"] = true;\n    tests[\"error type\"] = data.type === 'error';\n}\nelse {\n    tests[\"type field present in output\"] = false;\n}\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"message string field present in output\"] = true;\n    tests[\"'type' error.\"] = data.message.match('[tT]ype');\n}\nelse {\n    tests[\"message string field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470773617104,
+			"name": "Load File w/ Wrong Type",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "a874f50a-e85a-13a8-cf1e-9c002a15ec82",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if(data.data.hasOwnProperty('jobId')) {\n        tests[\"Output job matches input job.\"] = postman.getEnvironmentVariable('jobId') === data.data.jobId;\n    }\n    else {\n        tests[\"data.jobId field found.\"] = false;\n    }\n    if(data.data.hasOwnProperty('status')) {\n        tests[\"Job successful\"] = data.data.status === 'Success';\n        if (data.data.status === 'Running') {\n            tests[\"SUGGESTION: Try a longer timeout\"] = false;\n        }\n    }\n    else {\n        tests[\"data.success field found.\"] = false;\n    }\n    if(data.data.hasOwnProperty('result')) {\n        tests[\"data.result field present\"] = true;\n        if(data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n            tests[\"data.result.dataId string field present\"] = true;\n            postman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n            tests[\"data.result.dataId GUID created\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        }\n        else {\n            tests[\"data.result.dataId string field present\"] = false;\n        }\n    }\n    else {\n        tests[\"data.result field present\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470940061373,
+			"name": "Get Job Info",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "ac9cde72-3e96-fbd6-dfba-a41c68166463",
+			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\n",
+			"url": "https://pz-gateway.{{domain}}/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('dataId','');",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "citester",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1466516517664,
+			"name": "Hello, pz-gateway!",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "af15b724-7871-14f6-9928-1c3e62fc1046",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data?keyword=somecat.tif&perPage=1000",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar all_match = true;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('dataId')) {\n            tests[\"data[].dataId field present in output\"] = true;\n            if (data.data[i].dataId === postman.getEnvironmentVariable('dataId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].dataId field present in output\"] = false;\n            break;\n        }\n        if (!JSON.stringify(data.data[i]).match(/A BF TIFF file./i)) {\n            all_match = false;\n            break;\n        }\n    }\n    tests[\"dataId found\"] = found;\n    tests[\"All results contain keyword\"] = all_match;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470855203907,
+			"name": "Query Data",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "ca941263-cac1-17a9-77e5-4e7790069ac6",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/me?perPage=1000&order=desc&sortBy=metadata.createdOn",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar found = false;\nvar all_by_me = true;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].hasOwnProperty('dataId')) {\n            tests[\"data[].dataId field present in output\"] = true;\n            if (data.data[i].dataId === postman.getEnvironmentVariable('dataId')) {\n                found = true;\n            }\n        }\n        else {\n            tests[\"data[].dataId field present in output\"] = false;\n            break;\n        }\n        if (data.data[i].hasOwnProperty('metadata')) {\n            tests[\"data[].metadata field present in output\"] = true;\n            if (data.data[i].metadata.hasOwnProperty('createdBy')) {\n                tests[\"data[].metadata.createdBy field present in output\"] = true;\n                if (data.data[i].metadata.createdBy != 'citester') {\n                    all_by_me = false;\n                    break;\n                }\n            }\n            else {\n                tests[\"data[].metadata.createdBy field present in output\"] = false;\n                break;\n            }\n        }\n        else {\n            tests[\"data[].metadata field present in output\"] = false;\n            break;\n        }\n    }\n    tests[\"dataId found\"] = found;\n    tests[\"All results created by me\"] = all_by_me;\n}\nelse {\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470855195650,
+			"name": "Query My Data",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "d9c1f4e3-c0d5-331e-fd5a-f129b2f81005",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470317878046,
+			"name": "Download File",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "e9aff61b-e518-e85f-b586-b66f850b7a9b",
+			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"Dummy.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('message') && typeof data.message === 'string') {\n    tests[\"Parameter missing message\"] = data.message.match(/file/) && data.message.match(/[Nn]o/);\n}\nelse {\n    tests[\"found message\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1470775688508,
+			"name": "Load No File",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		},
+		{
+			"id": "ea97d04c-7edc-84a7-7979-2d86ad81f41f",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"somecat.tif\", \"description\": \"A BF TIFF file.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "somecat.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200 or 201\"] = responseCode.code === 200 || responseCode.code === 201;  // Fix once stage returns 201 on POSTs.\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n        pausecomp(5000);\n    }\n    else {\n        tests[\"data.jobId string field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\n// if (data.hasOwnProperty('jobId')) {\n//     tests[\"jobId field present in output\"] = true;\n//     tests[\"GUID created for jobId\"] = data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n//     postman.setEnvironmentVariable(\"jobId\",data.jobId);\n//     pausecomp(5000);\n// }\n// else {\n//     tests[\"jobId field present in output\"] = false;\n// }",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1471620197553,
+			"name": "Load A File",
+			"description": "",
+			"collectionId": "b6fb559d-b396-ca71-fd83-81badd8dd14d",
+			"responses": []
+		}
+	]
+}

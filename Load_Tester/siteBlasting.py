@@ -20,6 +20,7 @@ import csv
 import psutil
 import json
 import queue
+import collections
 
 # Function to pass to new process.  Records elapsed time to the processes Array.  If a bad
 # status is returned, it is recorded in the status variable to be processed by the logger.
@@ -55,71 +56,78 @@ def sendRequest(activeQueue, resultQueue, config):
 		resultQueue.put((finishTime, status_code, status_text, response_time, active))
 
 # Logs information about the running processes.  Will add processes if not enough are running.
-def controller(activeQueue, resultQueue, config):
+def controller(activeQueues, resultQueues, configs):
 	# Create first row of output csv, if "step" is "None" (a single test) or 0 (first test of a suite).
-	if config.get('step'):
-		newResults = []
-	else:
-		newResults = [('Time Completed', 'Step', 'Total Steps', 'Status Code', 'Status Message', 'Response Time', 'Active Requests')]
-	if config.get('total_steps'):
-		steps = (config['step'] + 1, config['total_steps'])
-	else:
-		steps = (1, 1)
 	# Initialize variables.
 	headerJson = {}
 	dataJson = {}
 
-	results = []
 	complete = 0
-	next_percentage = 0
 	startTime = time.time()
-	# Get variables from "config".
-	simul_num = config.get('simul_num')
-	total_num = config.get('total_num')
-	save_filename = config.get('save_filename')
-	payload = config.get('payload')
-	headers = config.get('headers')
-	# Alter "config" to pass to non-controller processes.
-	config['payload'] = getData(payload)
-	config['headers'] = getData(headers)
-	config['num'] = simul_num
-	# Create/start the loadtest processes.
-	processes = createProcesses(activeQueue, resultQueue, config)
-	startProcesses(processes)
-	# Continue until the target number of requests been reached.
-	while complete < total_num:
-		active = activeQueue.qsize()
-		started = len(processes)
-		if (active < simul_num) & (started < total_num):
-			# If there are less active processes than the specified simul_num (and total_num has not yet been reached),
-			# add/start more processes to reach either simul_num or total_num.
-			config['num'] = min(simul_num - active, total_num - started)
-			processes += createProcesses(activeQueue, resultQueue, config)
-			startProcesses(processes[started:])
-		try:
-			# Wait here until a process has received a response.
-			results += [resultQueue.get(timeout = 300)]
-		except queue.Empty:
-			# If no response received in 5 minutes, end the test.
-			break
+	processes = []
+	newResults = []
+	steps = []
+	totals = [config.get('total_num') for config in configs]
+	simuls = [config.get('simul_num') for config in configs]
+	eachCompleted = [0 for i in configs]
+	next_percentage = [0 for i in configs]
+	results = [[] for i in configs]
+	processes = [[] for i in configs]
+	for i, config in enumerate(configs):
+		# Alter "config" to pass to non-controller processes.
+		config['payload'] = getData(config.get('payload'))
+		config['headers'] = getData(config.get('headers'))
+		config['num'] = config.get('simul_num')
+		# Create/start the loadtest processes.
+		processes[i] += createProcesses(activeQueues[i], resultQueues[i], config)
+		startProcesses(processes[i])
+		# Create first row of output csv, if "step" is "None" (a single test) or 0 (first test of a suite).
+		if config.get('step'):
+			newResults += [[]]
 		else:
-			# Count the process.
-			complete += 1
-			percentage = 100*complete/total_num
-		if percentage >= next_percentage:
-			# Log every 1%.
-			next_percentage += 1
-			# Make the first column elapsed time.
-			for result in results:
-				newResults += [(result[0] - startTime,) + steps + result[1:]]
-			# Append results to csv.
-			with open('results\\' + save_filename, 'a') as test_file:
-				file_writer = csv.writer(test_file, lineterminator = '\n')
-				for line in newResults:
-					file_writer.writerow(line)
-			print('%3.0f%% Complete ... Log Written.' % percentage)
-			results = []
-			newResults = []
+			newResults += [[('Time Completed', 'Step', 'Total Steps', 'Status Code', 'Status Message', 'Response Time', 'Active Requests')]]
+		if config.get('total_steps'):
+			steps += [(config['step'] + 1, config['total_steps'])]
+		else:
+			steps += [(1, 1)]
+	# Continue until the target number of requests been reached.
+	lastActionTime = time.time()
+	while True:
+		for i, config in enumerate(configs):
+			active = activeQueues[i].qsize()
+			started = len(processes[i])
+			if (active < simuls[i]) & (started < totals[i]):
+				# If there are less active processes than the specified simul_num (and total_num has not yet been reached),
+				# add/start more processes to reach either simul_num or total_num.
+				config['num'] = min(simuls[i] - active, totals[i] - started)
+				processes[i] += createProcesses(activeQueues[i], resultQueues[i], config)
+				startProcesses(processes[i][started:])
+			try:
+				# Wait here until a process has received a response.
+				results[i] += [resultQueues[i].get(block = False)]
+			except queue.Empty:
+				continue
+			else:
+				lastActionTime = time.time()
+				# Count the process.
+				eachCompleted[i] += 1
+				percentages = 100*eachCompleted[i]/totals[i]
+			if percentages >= next_percentage[i]:
+				# Log every 1%.
+				next_percentage[i] += 1
+				# Make the first column elapsed time.
+				for result in results[i]:
+					newResults[i] += [(result[0] - startTime,) + steps[i] + result[1:]]
+				# Append results to csv.
+				with open('results\\' + config['save_filename'], 'a') as test_file:
+					file_writer = csv.writer(test_file, lineterminator = '\n')
+					for line in newResults[i]:
+						file_writer.writerow(line)
+				print('%3.0f%% Complete ... Log Written.' % percentages)
+				results[i] = []
+				newResults[i] = []
+		if all([completed >= total for (completed, total) in zip(eachCompleted, totals)]): break
+		if int(time.time() - lastActionTime) >= 300: break
 
 # Returns a list of processes that call sendGetRequest().
 def createProcesses(activeQueue, resultQueue, config):
@@ -144,10 +152,13 @@ def startProcesses(processes):
 		psutil.Process(p.pid).cpu_affinity(cpus[1:])
 
 # Starts the loggin and controller process.
-def startController(activeQueue, resultQueue, config):
+def startController(configs):
+	configs = makeList(configs)
+	activeQueues = [multiprocessing.Queue() for i in configs]
+	resultQueues = [multiprocessing.Queue() for i in configs]
 	pController = multiprocessing.Process(
 		target = controller,
-		args = (activeQueue, resultQueue, config)
+		args = (activeQueues, resultQueues, configs)
 	)
 	pController.start()
 	# CPU 0 is reserved for the controller.
@@ -189,3 +200,10 @@ def getData(inputData):
 			return data_file.read()
 	else:
 		raise TypeError('Type %s is not an option.' % dataType)
+
+# Function to treat a config as a list of 1 config.
+def makeList(x):
+	if isinstance(x, list):
+		return x
+	else:
+		return [x]

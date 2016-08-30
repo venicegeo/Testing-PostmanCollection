@@ -72,13 +72,10 @@ def createHandlerWithQueue(configQueue, configLockout, suiteLockout, sharedDict)
 		# Add a load test config to the queue.
 		def postConfigs(self):
 			rsp = resp()
-			try:
-				config = self.getJSON()
-			except json.decoder.JSONDecodeError as e:
-				rsp.appendCode(400, 'Unable to resolve request body as a JSON object.', e)
-			except Exception as e:
-				rsp.appendCode(500, 'Encountered an error reading JSON.', e)
-			else:
+			config = self.getJSON(rsp)
+			if config.get('type') == 'parallel':
+				config = self.parallelConfigs
+			if config:
 				try:
 					configQueue.put(config)
 				except Exception as e:
@@ -86,18 +83,15 @@ def createHandlerWithQueue(configQueue, configLockout, suiteLockout, sharedDict)
 				else:
 					rsp['message'] = 'Added configuration to load testing queue.'
 					rsp.appendCode(200)
+			else:
+				rsp.appendCode(400, 'Nothing is in the parallel queue.')
 			self.sendJSONResponse(rsp)
 
 		# Add a suite of load test config to the queue.
 		def postSuite(self):
 			rsp = resp()
-			try:
-				configs = self.getJSON()
-			except json.decoder.JSONDecodeError as e:
-				rsp.appendCode(400, 'Unable to resolve request body as a JSON object.', e)
-			except Exception as e:
-				rsp.appendCode(500, 'Encountered an error reading JSON.', e)
-			else:
+			config = self.getJSON(rsp)
+			if config:
 				with suiteLockout:
 					# Make sure that multiple suite requests overlap.  The purpose of a suite is that the provided tests are run in order.
 					for (i, config) in enumerate(configs):
@@ -117,21 +111,58 @@ def createHandlerWithQueue(configQueue, configLockout, suiteLockout, sharedDict)
 						rsp.appendCode(200)
 			self.sendJSONResponse(rsp)
 
+		# Add a config to the list of requests to run in Parallel
+		def postParallel(self):
+			rsp = resp()
+			config = self.getJSON(rsp)
+			if config:
+				try:
+					self.parallelConfigs += [config]
+				except Exception as e:
+					rsp.appendCode(500, 'Encountered an error adding config to parallel list.', e)
+				else:
+					rsp['message'] = 'Added suite to load testing queue.'
+					rsp.appendCode(200)
+			self.sendJSONResponse(rsp)
+
+		# Return the list of requests to be run in parallel.
+		def getParallel(self):
+			rsp = resp()
+			try:
+				rsp['parallel'] = self.parallelConfigs
+			except Exception as e:
+				rsp.appendCode(500, 'Encountered an error cloning queue into a list.', e)
+			else:
+				rsp.appendCode(200)
+			self.sendJSONResponse(rsp)
+
+		parallelConfigs = []
+
 		getSwitch = {
 			'/': hello,
-			'/configs': getConfigs
+			'/configs': getConfigs,
+			'/parallel': getParallel
 		}
 		postSwitch = {
 			'/configs': postConfigs,
-			'/suite': postSuite
+			'/suite': postSuite,
+			'/parallel': postParallel
 		}
 
-		# Returns the JSON from the request.
-		def getJSON(self):
-			length = int(self.headers['content-length'])
-			rdata = self.rfile.read(length).decode('utf-8')
-			data = json.loads(rdata)
-			return data
+		# Returns the JSON from the request, and alters the response as necessary
+		def getJSON(self, rsp):
+			try:
+				length = int(self.headers['content-length'])
+				rdata = self.rfile.read(length).decode('utf-8')
+				data = json.loads(rdata)
+				return data
+			except json.decoder.JSONDecodeError as e:
+				rsp.appendCode(400, 'Unable to resolve request body as a JSON object.', e)
+				return False
+			except Exception as e:
+				rsp.appendCode(500, 'Encountered an error reading JSON.', e)
+				return False
+				
 
 		# Calls the methods needed to send a json response.  expects 'code' to be in rsp.
 		def sendJSONResponse(self, rsp):
@@ -166,8 +197,7 @@ class resp(collections.OrderedDict):
 # Take the configuration dict to start the load test.  Blocks until complete.
 # See siteBlasting.py for how the load tester works.
 def runLoadTest(config):
-	(activeQueue, resultQueue) = createSharedQueues()
-	c = startController(activeQueue, resultQueue, config)
+	c = startController(config)
 	c.join()
 
 # Start the server and the load test runner.
@@ -195,7 +225,6 @@ def runner(configQueue, configLockout, sharedDict):
 	while True:
 		with configLockout:
 			sharedDict['current'] = config = configQueue.get()
-		if config.get('end'): break
 		runLoadTest(config)
 		sharedDict['current'] = None
 
