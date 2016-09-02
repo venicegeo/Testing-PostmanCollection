@@ -5,6 +5,7 @@
 	"order": [
 		"bebf9526-2bb7-e500-9e90-d20acc9e07a2",
 		"d6d197e2-394d-a879-18c4-9f639f8bc4c9",
+		"1893f07d-f550-7a8e-ad0b-9181d010fdfc",
 		"86dd399a-a552-5fca-3035-3b8e1aaf6c29",
 		"a1f90746-c9aa-5b6e-41b2-590460256458",
 		"9c6e6e66-1aad-6b17-1410-623f68d95dfa",
@@ -25,6 +26,25 @@
 	"public": false,
 	"published": false,
 	"requests": [
+		{
+			"id": "1893f07d-f550-7a8e-ad0b-9181d010fdfc",
+			"headers": "Access-Control-Request-Headers: authorization\nAccess-Control-Request-Method: GET\n",
+			"url": "https://pz-gateway.{{domain}}/key",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "OPTIONS",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var header = postman.getResponseHeader(\"Access-Control-Allow-Headers\");\nif (typeof header === 'string') {\n    tests[\"'Access-Control-Allow-Headers' is present (Bug #6218)\"] = true;\n    tests[\"'authorization' header is allowed\"] = header.match(/authorization/i);\n    tests[\"'content-type' header is allowed\"] =header.match(/content-type/i);\n}\nelse {\n    tests[\"'Access-Control-Allow-Headers' is present (Bug #6218)\"] = false;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1472830468665,
+			"name": "Get Job Options",
+			"description": "",
+			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
+			"responses": []
+		},
 		{
 			"id": "29c5b85d-6eb9-85f2-8307-136079b5790a",
 			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
