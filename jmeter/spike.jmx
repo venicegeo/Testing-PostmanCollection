@@ -42,6 +42,31 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="timestamp" elementType="Argument">
+            <stringProp name="Argument.name">timestamp</stringProp>
+            <stringProp name="Argument.value">${__time(yyyy-MM-dd_HH.mm.ss)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1472757932000</longProp>
+        <longProp name="ThreadGroup.end_time">1472757932000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </SetupThreadGroup>
+      <hashTree/>
       <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
@@ -56,6 +81,35 @@
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
       </ConfigTestElement>
       <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Spike" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <longProp name="ThreadGroup.start_time">1471965398000</longProp>
+        <longProp name="ThreadGroup.end_time">1471965398000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">import org.apache.commons.io.FileUtils;
+List files =  FileUtils.listFiles(new File(&quot;C:\\Users\\jyarrington\\Documents\\spike&quot;), new String[]{&quot;csv&quot;}, true);
+log.info(&quot;I know this script is running...&quot;);
+for (File file : files) {
+  file.delete();
+  log.info(&quot;Tried to delete &quot; + file.getName());
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /event" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -428,7 +482,7 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Post-Spike" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Post-Spike" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -503,82 +557,7 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Spike" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${Spike Repeat}</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${Spike Threads}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
-        <longProp name="ThreadGroup.start_time">1471965398000</longProp>
-        <longProp name="ThreadGroup.end_time">1471965398000</longProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-      </ThreadGroup>
-      <hashTree>
-        <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Logger (CSV)" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>true</encoding>
-              <assertions>false</assertions>
-              <subresults>false</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <url>true</url>
-              <fileName>true</fileName>
-              <hostname>true</hostname>
-              <threadCounts>true</threadCounts>
-              <sampleCount>true</sampleCount>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename">C:\Users\jyarrington\Documents\data_spike.csv</stringProp>
-        </ResultCollector>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/data" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding">application/json</stringProp>
-          <stringProp name="HTTPSampler.path">/data</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pre-Spike" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pre-Spike" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1272,98 +1251,6 @@
           <stringProp name="LoopController.loops">${Pre-Spike Repeat}</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${Pre-Spike Threads}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
-        <longProp name="ThreadGroup.start_time">1471965398000</longProp>
-        <longProp name="ThreadGroup.end_time">1471965398000</longProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-      </ThreadGroup>
-      <hashTree>
-        <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Logger (CSV)" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>true</encoding>
-              <assertions>false</assertions>
-              <subresults>false</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <url>true</url>
-              <fileName>true</fileName>
-              <hostname>true</hostname>
-              <threadCounts>true</threadCounts>
-              <sampleCount>true</sampleCount>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename">C:\Users\jyarrington\Documents\datafile_spike.csv</stringProp>
-        </ResultCollector>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/data/file" enabled="true">
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\jyarrington\Code\src\github.com\venicegeo\pztest-integration\somecat.tif" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\jyarrington\Code\src\github.com\venicegeo\pztest-integration\somecat.tif</stringProp>
-                <stringProp name="File.paramname">file</stringProp>
-                <stringProp name="File.mimetype">image/tiff</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="data" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{ &quot;type&quot;: &quot;ingest&quot;, &quot;host&quot;: &quot;true&quot;, &quot;data&quot; : { &quot;dataType&quot;: { &quot;type&quot;: &quot;raster&quot; }, &quot;metadata&quot;: { &quot;name&quot;: &quot;somecat.tif&quot;, &quot;description&quot;: &quot;A BF TIFF file.&quot;, &quot;classType&quot;: { &quot;classification&quot;: &quot;unclassified&quot; } } } }</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">data</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/data/file</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Spike" enabled="false">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${Spike Repeat}</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${Spike Threads}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1471965398000</longProp>
         <longProp name="ThreadGroup.end_time">1471965398000</longProp>
@@ -1615,6 +1502,336 @@
         <boolProp name="useGroupName">true</boolProp>
       </ResultCollector>
       <hashTree/>
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="true">
+        <collectionProp name="ultimatethreadgroupdata">
+          <collectionProp name="902677243">
+            <stringProp name="49586">200</stringProp>
+            <stringProp name="1634">35</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="1585649163">
+            <stringProp name="50">2</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48625">100</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+        </collectionProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+      </kg.apc.jmeter.threads.UltimateThreadGroup>
+      <hashTree>
+        <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="Normal 500 Peak" enabled="true">
+          <collectionProp name="load_profile">
+            <collectionProp name="140440566">
+              <stringProp name="49">1</stringProp>
+              <stringProp name="49">1</stringProp>
+              <stringProp name="1631">32</stringProp>
+            </collectionProp>
+            <collectionProp name="84534531">
+              <stringProp name="49">1</stringProp>
+              <stringProp name="50">2</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="85318924">
+              <stringProp name="50">2</stringProp>
+              <stringProp name="51">3</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="85358976">
+              <stringProp name="51">3</stringProp>
+              <stringProp name="54">6</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="1818318155">
+              <stringProp name="54">6</stringProp>
+              <stringProp name="1567">10</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-297884807">
+              <stringProp name="1567">10</stringProp>
+              <stringProp name="1575">18</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-295989312">
+              <stringProp name="1575">18</stringProp>
+              <stringProp name="1607">29</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-269220192">
+              <stringProp name="1607">29</stringProp>
+              <stringProp name="1665">45</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-261630090">
+              <stringProp name="1665">45</stringProp>
+              <stringProp name="1730">68</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-229807722">
+              <stringProp name="1730">68</stringProp>
+              <stringProp name="1824">99</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-708974278">
+              <stringProp name="1824">99</stringProp>
+              <stringProp name="48749">140</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="585653349">
+              <stringProp name="48749">140</stringProp>
+              <stringProp name="48881">188</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="656923465">
+              <stringProp name="48881">188</stringProp>
+              <stringProp name="49714">244</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-1870037912">
+              <stringProp name="49714">244</stringProp>
+              <stringProp name="50551">304</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-101833210">
+              <stringProp name="50551">304</stringProp>
+              <stringProp name="50737">364</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-3278692">
+              <stringProp name="50737">364</stringProp>
+              <stringProp name="51547">418</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="990823542">
+              <stringProp name="51547">418</stringProp>
+              <stringProp name="51696">462</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="1031684642">
+              <stringProp name="51696">462</stringProp>
+              <stringProp name="51788">491</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="1095726798">
+              <stringProp name="51788">491</stringProp>
+              <stringProp name="52469">500</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="2020165398">
+              <stringProp name="52469">500</stringProp>
+              <stringProp name="51788">491</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="1063840322">
+              <stringProp name="51788">491</stringProp>
+              <stringProp name="51696">462</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="1029329262">
+              <stringProp name="51696">462</stringProp>
+              <stringProp name="51547">418</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="957513608">
+              <stringProp name="51547">418</stringProp>
+              <stringProp name="50737">364</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-37451170">
+              <stringProp name="50737">364</stringProp>
+              <stringProp name="50551">304</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-853685572">
+              <stringProp name="50551">304</stringProp>
+              <stringProp name="49714">244</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="1642374715">
+              <stringProp name="49714">244</stringProp>
+              <stringProp name="48881">188</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="622835679">
+              <stringProp name="48881">188</stringProp>
+              <stringProp name="48749">140</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="1096881066">
+              <stringProp name="48749">140</stringProp>
+              <stringProp name="1824">99</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-197581362">
+              <stringProp name="1824">99</stringProp>
+              <stringProp name="1730">68</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-231873810">
+              <stringProp name="1730">68</stringProp>
+              <stringProp name="1665">45</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-262834812">
+              <stringProp name="1665">45</stringProp>
+              <stringProp name="1607">29</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-270289692">
+              <stringProp name="1607">29</stringProp>
+              <stringProp name="1575">18</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-296879477">
+              <stringProp name="1575">18</stringProp>
+              <stringProp name="1567">10</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="-2030767943">
+              <stringProp name="1567">10</stringProp>
+              <stringProp name="54">6</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="85464996">
+              <stringProp name="54">6</stringProp>
+              <stringProp name="51">3</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="85354264">
+              <stringProp name="51">3</stringProp>
+              <stringProp name="50">2</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="85292481">
+              <stringProp name="50">2</stringProp>
+              <stringProp name="49">1</stringProp>
+              <stringProp name="49">1</stringProp>
+            </collectionProp>
+            <collectionProp name="140440566">
+              <stringProp name="49">1</stringProp>
+              <stringProp name="49">1</stringProp>
+              <stringProp name="1631">32</stringProp>
+            </collectionProp>
+          </collectionProp>
+        </kg.apc.jmeter.timers.VariableThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Base" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">application/json</stringProp>
+          <stringProp name="HTTPSampler.path">/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:\\Users\\jyarrington\\Documents\\spike\\${timestamp}\base_spike.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.listener.GraphsGeneratorListener guiclass="TestBeanGUI" testclass="kg.apc.jmeter.listener.GraphsGeneratorListener" testname="jp@gc - Graphs Generator" enabled="true">
+          <boolProp name="aggregateRows">false</boolProp>
+          <boolProp name="autoScaleRows">false</boolProp>
+          <stringProp name="endOffset"></stringProp>
+          <stringProp name="excludeLabels"></stringProp>
+          <boolProp name="excludeSamplesWithRegex">false</boolProp>
+          <intProp name="exportMode">0</intProp>
+          <stringProp name="filePrefix">SPIKETEST</stringProp>
+          <stringProp name="forceY"></stringProp>
+          <stringProp name="granulation">500</stringProp>
+          <intProp name="graphHeight">600</intProp>
+          <intProp name="graphWidth">800</intProp>
+          <stringProp name="includeLabels"></stringProp>
+          <boolProp name="includeSamplesWithRegex">false</boolProp>
+          <stringProp name="limitRows">150</stringProp>
+          <stringProp name="lineWeight"></stringProp>
+          <stringProp name="lowCountLimit"></stringProp>
+          <stringProp name="outputBaseFolder">C:\\Users\\jyarrington\\Documents\\spike\\${timestamp}\graphs</stringProp>
+          <boolProp name="paintGradient">true</boolProp>
+          <boolProp name="paintZeroing">true</boolProp>
+          <boolProp name="preventOutliers">false</boolProp>
+          <boolProp name="relativeTimes">false</boolProp>
+          <stringProp name="resultsFileName">C:\\Users\\jyarrington\\Documents\\spike\\${timestamp}\base_spike.csv</stringProp>
+          <stringProp name="startOffset"></stringProp>
+          <stringProp name="successFilter"></stringProp>
+        </kg.apc.jmeter.listener.GraphsGeneratorListener>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Spike" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <longProp name="ThreadGroup.start_time">1471965398000</longProp>
+        <longProp name="ThreadGroup.end_time">1471965398000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">import org.apache.commons.io.FileUtils;
+List files =  FileUtils.listFiles(new File(&quot;C:\\Users\\jyarrington\\Documents\\spike&quot;), new String[]{&quot;csv&quot;}, true);
+log.info(&quot;I know this script is running...&quot;);
+for (File file : files) {
+  file.delete();
+  log.info(&quot;Tried to delete &quot; + file.getName());
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
     </hashTree>
   </hashTree>
 </jmeterTestPlan>
