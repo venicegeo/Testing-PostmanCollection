@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "GatewayAPI_July2016_noworkflow_forINT",
-		"_postman_id": "2fdc6cef-5775-9aaa-929a-025c6f97d68a",
+		"_postman_id": "053209f8-9f4a-da0b-021a-2f2ec3ced820",
 		"description": "\n\ntriggers, events, and alerts are all null - not all settings tested",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
