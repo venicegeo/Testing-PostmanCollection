@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "GatewayAPI_July2016_noworkflow_forINT",
+		"name": "GatewayAPI_Sept2016_noworkflow_forINT",
 		"_postman_id": "053209f8-9f4a-da0b-021a-2f2ec3ced820",
 		"description": "\n\ntriggers, events, and alerts are all null - not all settings tested",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -1181,7 +1181,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "\n\n"
+						"exec": "\n\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;"
 					}
 				}
 			],
@@ -1225,7 +1225,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOnRlc3Q0bGlmZQ==",
 						"description": ""
 					}
 				],
@@ -1378,7 +1378,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
@@ -1389,7 +1389,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy",
 						"description": ""
 					}
 				],
@@ -1423,7 +1423,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
@@ -1783,7 +1783,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
@@ -1837,7 +1837,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
@@ -1880,7 +1880,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
@@ -1923,7 +1923,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
@@ -1993,7 +1993,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
@@ -2031,13 +2031,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/v2/job",
+				"url": "https://pz-gateway.int.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -2089,13 +2089,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/v2/job",
+				"url": "https://pz-gateway.int.geointservices.io/job",
 				"method": "POST",
 				"header": [
 					{
@@ -2147,7 +2147,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "citester",
+						"username": "{{apikey}}",
 						"password": "citester",
 						"saveHelperData": true,
 						"showPassword": false
