@@ -1168,7 +1168,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}"
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -1181,7 +1181,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "\n\n\n\ntests[\"Status code is 200\"] = responseCode.code === 200;"
+						"exec": "\ntests[\"Status code is 200\"] = responseCode.code === 200;"
 					}
 				}
 			],
@@ -1195,7 +1195,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/deployment/{{deploymentGroupId}}",
+				"url": "https://pz-gateway.int.geointservices.io/deployment/group/{{deploymentGroupId}}",
 				"method": "DELETE",
 				"header": [
 					{
@@ -1231,7 +1231,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}"
+					"raw": ""
 				},
 				"description": ""
 			},
