@@ -932,7 +932,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"High Severity\",\n    \"eventTypeId\": \"{{eventtype_id}}\",\n    \"condition\": {\n        \"query\": {\n            \"match_all\": {}\n        }\n\n    },\n    \"job\": {\n        \"userName\": \"test\",\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"135123e0-e38d-4668-a7c8-52e9d023cbba\",\n                \"dataInputs\": {},\n                \"dataOutput\": [{\n                    \"mimeType\": \"application/json\",\n                    \"type\": \"text\"\n                }]\n            }\n        }\n    },\n    \"enabled\": true\n}\n"
+					"raw": "{\n    \"name\": \"High Severity\",\n    \"eventTypeId\": \"{{eventtype_id}}\",\n    \"condition\": {\n        \"query\": {\n            \"match_all\": {}\n        }\n\n    },\n    \"job\": {\n        \"userName\": \"test\",\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"135123e0-e38d-4668-a7c8-52e9d023cbba\",\n                \"dataInputs\": {},\n                \"dataOutput\": [{\n                    \"mimeType\": \"application/json\",\n                    \"type\": \"text\"\n                }]\n            }\n        }\n    },\n    \"enabled\": true\n}"
 				},
 				"description": ""
 			},
