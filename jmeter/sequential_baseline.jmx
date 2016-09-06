@@ -1493,7 +1493,7 @@
     &quot;name&quot;: &quot;CI Testing Trigger&quot;,&#xd;
     &quot;enabled&quot;: true,&#xd;
     &quot;condition&quot;: {&#xd;
-        &quot;eventTypeIds&quot;: [&quot;7fdb14b2-cbeb-4246-9009-a60abc370179&quot;],&#xd;
+        &quot;eventTypeIds&quot;: [&quot;a46815a7-5c34-4bc1-9dba-76bd54f94dc5&quot;],&#xd;
         &quot;query&quot;: {&#xd;
             &quot;query&quot;: {&#xd;
                 &quot;bool&quot;: {&#xd;
