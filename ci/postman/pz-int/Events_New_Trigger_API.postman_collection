@@ -545,7 +545,7 @@
 		{
 			"id": "7007d278-3f4a-22ac-60b1-76d0beaa4207",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/event?perPage=1000&order=desc&sortBy=createdOn",
+			"url": "https://pz-gateway.{{domain}}/event?perPage=100&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -560,7 +560,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471032413771,
+			"time": 1473426092848,
 			"name": "Query Events",
 			"description": "",
 			"collectionId": "40c6b309-f391-45b2-5059-ad13c90430db",
