@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\ntests[\"Error\"] = responseBody.has(\"Error\");\n"
+						"exec": "var data = JSON.parse(responseBody);\ntests[\"error\"] = responseBody.has(\"error\");\n"
 					}
 				}
 			],
