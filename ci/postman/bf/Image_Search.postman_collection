@@ -165,13 +165,13 @@
 		{
 			"id": "60b7b96e-ca6f-9917-ba14-8b3d1beb55cc",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pzsvc-image-catalog.{{domain}}/eventTypeID?pzGateway=https://pz-gateway.{{domain}}",
+			"url": "https://pzsvc-image-catalog.{{domain}}/eventTypeID?",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "OPTIONS",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar header = postman.getResponseHeader(\"Access-Control-Allow-Headers\");\nif (typeof header === 'string') {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = true;\n    tests[\"'authorization' header is allowed\"] = header.match(/authorization/i);\n}\nelse {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = false;\n}\ntests[\"'Access-Control-Allow-Methods' is present\"] = postman.getResponseHeader(\"Access-Control-Allow-Methods\");\ntests[\"'Access-Control-Allow-Origin' is present\"] = postman.getResponseHeader(\"Access-Control-Allow-Origin\");\n\ntests[\"Response body is empty\"] = responseBody === '';",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar header = postman.getResponseHeader(\"Access-Control-Allow-Headers\");\nif (typeof header === 'string') {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = true;\n    tests[\"'authorization' header is allowed\"] = header.match(/authorization/i);\n}\nelse {\n    tests[\"'Access-Control-Allow-Headers' is present\"] = false;\n}\ntests[\"'Access-Control-Allow-Methods' is present\"] = postman.getResponseHeader(\"Access-Control-Allow-Methods\");\ntests[\"'Access-Control-Allow-Origin' is present\"] = postman.getResponseHeader(\"Access-Control-Allow-Origin\");\n\ntests[\"Response body is empty\"] = responseBody === '';\ntests[JSON.stringify(responseHeaders)] = true;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -179,7 +179,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1473776134192,
+			"time": 1473777930355,
 			"name": "Check CORS",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
