@@ -164,8 +164,8 @@
 		},
 		{
 			"id": "60b7b96e-ca6f-9917-ba14-8b3d1beb55cc",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
-			"url": "https://pzsvc-image-catalog.{{domain}}/eventTypeID?pzGateway=https%3A%2F%2Fpz-gateway.{{domain}}",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pzsvc-image-catalog.{{domain}}/eventTypeID?pzGateway=https://pz-gateway.{{domain}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "OPTIONS",
@@ -179,7 +179,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1472500167666,
+			"time": 1473776134192,
 			"name": "Check CORS",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
