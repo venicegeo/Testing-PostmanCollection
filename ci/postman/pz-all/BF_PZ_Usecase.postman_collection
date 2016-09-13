@@ -29,7 +29,7 @@
 		{
 			"id": "1893f07d-f550-7a8e-ad0b-9181d010fdfc",
 			"headers": "Access-Control-Request-Headers: authorization\nAccess-Control-Request-Method: GET\n",
-			"url": "https://pz-gateway.{{domain}}/key",
+			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "OPTIONS",
@@ -39,7 +39,7 @@
 			"tests": "var header = postman.getResponseHeader(\"Access-Control-Allow-Headers\");\nif (typeof header === 'string') {\n    tests[\"'Access-Control-Allow-Headers' is present (Bug #6218)\"] = true;\n    tests[\"'authorization' header is allowed\"] = header.match(/authorization/i);\n    tests[\"'content-type' header is allowed\"] =header.match(/content-type/i);\n}\nelse {\n    tests[\"'Access-Control-Allow-Headers' is present (Bug #6218)\"] = false;\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1472830468665,
+			"time": 1473778643651,
 			"name": "Get Job Options",
 			"description": "",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
