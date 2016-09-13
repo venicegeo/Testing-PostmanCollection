@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 echo start
 #mail settings
-RCVR="abcmauck@gmail.com,jamesyarrington88@gmail.com"
+RCVR="jamesyarrington88@gmail.com"
 SUBJ= $BUILDURL
 
 #awm
