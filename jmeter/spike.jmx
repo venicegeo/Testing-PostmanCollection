@@ -1421,7 +1421,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/event" enabled="false">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/event" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -1588,9 +1588,12 @@
         &quot;minY&quot;: 1.0,&#xd;
         &quot;maxX&quot;: 10.0,&#xd;
         &quot;maxY&quot;: 10.0,&#xd;
-        &quot;hosted&quot;: true&#xd;
+        &quot;hosted&quot;: true,&#xd;
+      &quot;sampleNest&quot;: {&#xd;
+        &quot;someParam&quot;: &quot;someValue&quot;&#xd;
+      }&#xd;
     },&#xd;
-  &quot;eventTypeId&quot;: &quot;7fdb14b2-cbeb-4246-9009-a60abc370179&quot; &#xd;
+  &quot;eventTypeId&quot;: &quot;8014ee5d-88c6-4804-910c-15d6e7eb3892&quot; &#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1647,7 +1650,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/alert" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/alert" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -1787,7 +1790,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
       </kg.apc.jmeter.threads.UltimateThreadGroup>
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/alert" enabled="true">
