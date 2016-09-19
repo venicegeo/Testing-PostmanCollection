@@ -272,6 +272,7 @@
 			"data": [
 				{
 					"key": "file",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -285,7 +286,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470831841823,
+			"time": 1474287504138,
 			"name": "Load No Data",
 			"description": "",
 			"collectionId": "7454a532-e14c-e1a4-d95a-3ecc8af3913d",
@@ -403,7 +404,7 @@
 		},
 		{
 			"id": "983952ba-6b7c-b846-b580-be881dafd34b",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/file/00000000-0000-0000-0000-000000000000",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -419,7 +420,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470144390049,
+			"time": 1474287511024,
 			"name": "Download No File",
 			"description": "",
 			"collectionId": "7454a532-e14c-e1a4-d95a-3ecc8af3913d",
@@ -489,6 +490,7 @@
 				},
 				{
 					"key": "file",
+					"value": "somecat.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -497,7 +499,7 @@
 			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1470773632990,
+			"time": 1474287485322,
 			"name": "Load File w/o Auth",
 			"description": "",
 			"collectionId": "7454a532-e14c-e1a4-d95a-3ecc8af3913d",
