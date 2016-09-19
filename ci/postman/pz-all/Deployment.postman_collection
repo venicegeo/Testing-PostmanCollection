@@ -10,6 +10,7 @@
 		"b8ca5a7c-c22d-ed63-5c00-27a27d108fc6",
 		"4a19880b-0930-6377-4d60-c75f3dc1fe81",
 		"3226a362-5fca-430f-be02-8f9afc33ed36",
+		"8cba9c01-bc5b-dc12-7352-23b051608d31",
 		"76ca5066-5524-33f8-3a73-b15f5ec598e3",
 		"e1c5cfb5-6c87-f3d3-27e4-2b6bfbd9fd96",
 		"bd5f2278-b886-f824-f344-2210d8be879a",
@@ -656,6 +657,30 @@
 			},
 			"time": 1470772217849,
 			"name": "Create Group",
+			"description": "",
+			"collectionId": "efb45821-9f5a-8cd5-9ded-7b3f880e9718",
+			"responses": []
+		},
+		{
+			"id": "8cba9c01-bc5b-dc12-7352-23b051608d31",
+			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/deployment?perPage=100&sortBy=createdOn&order=desc",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar all_fit = true;\nif(data.hasOwnProperty('pagination') && data.pagination.hasOwnProperty('count') && typeof data.pagination.count === 'number' && data.pagination.hasOwnProperty('perPage') && typeof data.pagination.perPage === 'number') {\n    tests[\"pagination field (and count/perPage number sub-fields) present in output\"] = true;\n    if(data.pagination.count > data.pagination.perPage){\n        all_fit = false;\n    }\n}\nelse {\n    tests[\"pagination field (and count/per_page sub-fields) present in output\"] = false;\n}\nif (data.hasOwnProperty('data') && Array.isArray(data.data)) {\n    tests[\"data array field present in output\"] = true;\n    var returned_ids = data.data.map(function(a) {return a.deploymentId});\n    var suggestion = '';\n    if (!all_fit) {suggestion = ' Try changing the perPage parameter'}\n    tests[\"deploymentId found in list.\" + suggestion] = returned_ids.indexOf(postman.getEnvironmentVariable('deploymentId')) != -1;\n}\nelse{\n    tests[\"data array field present in output\"] = false;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1474297033732,
+			"name": "Query Deployments",
 			"description": "",
 			"collectionId": "efb45821-9f5a-8cd5-9ded-7b3f880e9718",
 			"responses": []
