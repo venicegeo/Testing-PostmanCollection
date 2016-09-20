@@ -7,7 +7,7 @@
 		{
 			"id": "3107dc0f-c42b-f0c8-b00b-ca317cce8468",
 			"name": "1_Startup",
-			"description": "",
+			"description": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n < < < < < < < < < < < < START-UP > > > > > > > > > > > > \nThese tests create required environment variables.\nAny failures here will cause other tests to fail.\nDO NOT PUSH if these tests fail.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 			"order": [
 				"382f4799-3a18-7d68-b591-6f25694cbb5a",
 				"12600a27-3e5a-7916-920e-f21b393bca3c",
@@ -16,13 +16,15 @@
 				"0418aa09-bf63-8e65-1e4b-62641162da03",
 				"a8f0c07b-d52c-ea85-05ae-ff579895c7b3"
 			],
-			"owner": "699425"
+			"owner": "699425",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
 			"id": "ed4acd95-58bc-4ffb-410b-92dc9085cce0",
 			"name": "2_Critical",
 			"description": "",
 			"order": [
+				"677ed37a-d1c4-46ce-759f-638709b27e19",
 				"a025f979-8849-7f0e-37cd-76d6b4b20df2",
 				"d8c7db1e-1207-a3fb-0442-a72f319b2bea",
 				"05e879b5-0b31-d398-948b-182f2102eae9",
@@ -34,12 +36,13 @@
 				"d32fb7cf-f172-6797-7e0e-a7be34e33f27",
 				"6db9affc-8ec4-3657-06a9-9e6ef1d3c1a7"
 			],
-			"owner": "699425"
+			"owner": "699425",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
 			"id": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
 			"name": "3_Normal",
-			"description": "",
+			"description": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n< < < < < < < < < < < < < NORMAL > > > > > > > > > > > > >\nThese tests represent important features\nUse extreme caution when pushing if any of these tests fail\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 			"order": [
 				"6c6933b5-d290-5f00-2145-7a77c6b60e23",
 				"75853edd-54d6-fcb8-6de6-eb50a56a5f84",
@@ -72,12 +75,13 @@
 				"d3b9f618-821d-ad92-d81b-adb619184f06",
 				"6f777a93-94e8-ff11-e93d-a885a2ab0da4"
 			],
-			"owner": "699425"
+			"owner": "699425",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
 			"id": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"name": "4_Low",
-			"description": "",
+			"description": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n< < < < < < < < < < < < < < LOW > > > > > > > > > > > > > >\nThese tests represent less-important features.\nMore attention is given to options and edge cases.\nYou may push if these tests fail, but be careful.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 			"order": [
 				"dc1b1e97-783e-bea9-e180-e3862218669e",
 				"3e73dc36-6955-d9ce-7143-3b82e29e0de6",
@@ -107,12 +111,13 @@
 				"9e2f4848-5071-3690-db28-c2afe3ea79ca",
 				"89cf9440-5759-47e9-6957-3cfac30a819b"
 			],
-			"owner": "699425"
+			"owner": "699425",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
 			"id": "0e29f236-2061-8522-5123-eab4334b560d",
 			"name": "5_Teardown",
-			"description": "",
+			"description": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > > \nThese tests destroy any items created by previous tests.\nThese tests represent important features, like DELETEs.\nDO NOT PUSH if these tests fail.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 			"order": [
 				"01ceeb47-0c0b-fb65-2f5a-f8b21a23723b",
 				"2b19c954-d145-ead7-60e9-effb67becc69",
@@ -131,7 +136,7 @@
 			"id": "01ceeb47-0c0b-fb65-2f5a-f8b21a23723b",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
-			"preRequestScript": "",
+			"preRequestScript": "console.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.error(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
@@ -144,12 +149,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1473958398802,
+			"time": 1474393421118,
 			"name": "Delete Event",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "0e29f236-2061-8522-5123-eab4334b560d",
 			"rawModeData": ""
 		},
 		{
@@ -487,7 +491,7 @@
 			"id": "382f4799-3a18-7d68-b591-6f25694cbb5a",
 			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/",
-			"preRequestScript": null,
+			"preRequestScript": "console.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.error(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"   These tests create required environment variables.    \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
@@ -496,7 +500,7 @@
 			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\n\n\ntests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('eventTypeId', '');\npostman.setEnvironmentVariable('serviceId', '');\npostman.setEnvironmentVariable('triggerId', '');\npostman.setEnvironmentVariable('eventId', '');\npostman.setEnvironmentVariable('alertId', '');\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 5);\n\npostman.setEnvironmentVariable('eventId_notrigger', '');\npostman.setEnvironmentVariable('triggerId_nested', '');\npostman.setEnvironmentVariable('eventId_nested', '');\npostman.setEnvironmentVariable('eventTypeId_deletion', '');\npostman.setEnvironmentVariable('eventId_deletion', '');\npostman.setEnvironmentVariable('triggerId_deletion', '');\npostman.setEnvironmentVariable('eventId_soft', '');\npostman.setEnvironmentVariable('jobId_soft', '');\npostman.setEnvironmentVariable('eventType Name', '');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1474308461167,
+			"time": 1474392998055,
 			"name": "Hello & Variable Initialization",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
@@ -782,6 +786,25 @@
 			"rawModeData": "{\n    \"data\": {\t\n      \"mapping\": {\n\t\t\"dataId\": \"testId\",\n\t\t\"dataType\": \"raster\",\n\t\t\"epsg\": \"3\",\n\t\t\"minX\": \"1.0\",\n\t\t\"minY\": \"1.0\",\n\t\t\"maxX\": \"10.0\",\n\t\t\"maxY\": \"10.0\",\n\t\t\"hosted\": true\n      }\n    }\n}"
 		},
 		{
+			"id": "677ed37a-d1c4-46ce-759f-638709b27e19",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/",
+			"preRequestScript": "console.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.error(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1474393459545,
+			"name": "Display",
+			"description": "",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": []
+		},
+		{
 			"id": "6a2828ac-5a7f-b9a2-ed8e-3b58355b63f2",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
@@ -860,7 +883,7 @@
 			"id": "6c6933b5-d290-5f00-2145-7a77c6b60e23",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
-			"preRequestScript": "",
+			"preRequestScript": "console.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.error(\"< < < < < < < < < < < < NORMAL > > > > > > > > > > > \");\nconsole.log(\"      These tests represent important features.      \");\nconsole.log(\"Use extreme caution when pushing if these tests fail.\");\nconsole.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "GET",
 			"data": [],
@@ -873,12 +896,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1473962918338,
+			"time": 1474393337682,
 			"name": "Get EventType",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -1279,12 +1301,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1473959823204,
+			"time": 1474386328403,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
-			"responses": [],
-			"folder": "ed4acd95-58bc-4ffb-410b-92dc9085cce0"
+			"responses": []
 		},
 		{
 			"id": "a09540e4-d655-775e-ce0e-2ad02a32c16c",
@@ -1870,7 +1891,7 @@
 			"id": "dc1b1e97-783e-bea9-e180-e3862218669e",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
-			"preRequestScript": "",
+			"preRequestScript": "console.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.error(\"< < < < < < < < < < < < LOW > > > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.warn(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "GET",
 			"data": [],
@@ -1883,12 +1904,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1474029344381,
+			"time": 1474393367962,
 			"name": "Get EventType Details",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
