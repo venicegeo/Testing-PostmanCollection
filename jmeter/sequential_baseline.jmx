@@ -25,7 +25,7 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100000</stringProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -158,11 +158,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on base" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_trigger" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100000</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;trigger&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on base" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -242,11 +274,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_base" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;base&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /alert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100000</stringProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -326,11 +390,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /event" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_alert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100000</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;alert&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /event" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -438,11 +534,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /deployment" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_event" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;event&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /deployment" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -542,11 +670,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /data/query" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_deployment" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;deployment&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /data/query" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -648,11 +808,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /service" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_dataquery" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;dataquery&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /service" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -758,11 +950,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /data/file" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_service" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;service&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /data/file" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -860,11 +1084,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /data" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_datafile" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;datafile&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /data" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -944,11 +1200,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /eventType" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_data" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">3000</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;data&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /eventType" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -1056,11 +1344,43 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /job" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_eventType" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String[] tests;
+String folder;
+tests = new String[] { &quot;eventType&quot; };
+for (int i=0; i&lt;tests.length; i++) {
+	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
+	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
+	Process process = Runtime.getRuntime().exec(command_RT);
+	String command_RC = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseCodes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+	Process process = Runtime.getRuntime().exec(command_RC);
+}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="100K on /job" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
@@ -1163,7 +1483,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="some_name" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_job" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1181,7 +1501,7 @@
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
           <stringProp name="BeanShellSampler.query">String[] tests;
 String folder;
-tests = new String[] { &quot;base&quot;, &quot;base1&quot;, &quot;datafile&quot;, &quot;dataquery&quot;, &quot;service&quot;, &quot;data&quot;, &quot;job&quot;, &quot;eventType&quot;, &quot;trigger&quot;, &quot;event&quot;, &quot;alert&quot;, &quot;deployment&quot; };
+tests = new String[] { &quot;job&quot; };
 for (int i=0; i&lt;tests.length; i++) {
 	folder = tests[i] + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 	String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\sequential\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 10000&quot;;
@@ -1195,41 +1515,6 @@ for (int i=0; i&lt;tests.length; i++) {
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>false</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>false</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>false</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>false</xml>
-            <fieldNames>true</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-            <threadCounts>true</threadCounts>
-            <sampleCount>true</sampleCount>
-            <idleTime>true</idleTime>
-          </value>
-        </objProp>
-        <stringProp name="filename"></stringProp>
-      </ResultCollector>
-      <hashTree/>
       <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Failure Logger (XML)" enabled="true">
         <boolProp name="ResultCollector.error_logging">true</boolProp>
         <objProp>
