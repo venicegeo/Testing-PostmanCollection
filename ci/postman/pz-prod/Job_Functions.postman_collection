@@ -80,20 +80,14 @@
 		},
 		{
 			"id": "20d76299-31f5-808d-cdbe-d89aa8934ade",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/service?perPage=10&keyword=bf-handle",
-			"pathVariables": {},
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=10&keyword=https://bf-handle.stage.geointservices.io/execute",
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f",
 			"data": null,
 			"dataMode": "params",
-			"name": "Find bf-handle serviceId",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1470928203666,
 			"version": 2,
-			"responses": [],
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data') && Array.isArray(data.data) && data.data.length > 0) {\n    tests[\"data array field present in output and is not empty\"] = true;\n    if (data.data[0].hasOwnProperty('serviceId')) {\n        tests[\"data[0].serviceId field present in output\"] = true;\n        postman.setEnvironmentVariable('bf-handle serviceId',data.data[0].serviceId);\n    }\n    else {\n        tests[\"data[0].serviceId field present in output\"] = true;\n    }\n}\nelse{\n    tests[\"data array field present in output and is not empty\"] = false;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -101,7 +95,12 @@
 				"username": "{{API Key}}",
 				"password": "",
 				"saveToRequest": true
-			}
+			},
+			"time": 1475064650468,
+			"name": "Find bf-handle serviceId",
+			"description": "",
+			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f",
+			"responses": []
 		},
 		{
 			"id": "3c4f04b2-819e-4133-c066-29fe3f93de21",
@@ -112,7 +111,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "function pausecomp(millis)\n{\n    var date = new Date();\n    var curDate = null;\n    do { curDate = new Date(); }\n    while(curDate-date < millis);\n}\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output\"] = true;\n    if (data.data.hasOwnProperty('status')) {\n        tests[\"data.status field present in output\"] = true;\n        if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n            if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n                postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n                postman.setNextRequest('Check Job Status');\n                pausecomp(1000);\n            }\n            else {\n                tests[\"Job finished in time\"] = false;\n            }\n        }\n        else if(data.data.status === 'Success') {\n            postman.setEnvironmentVariable('retry_loop',0);\n            tests[\"Job finished in time\"] = true;\n            if (data.data.hasOwnProperty('result')) {\n                tests[\"data.result field present in output\"] = true;\n                if (data.data.result.hasOwnProperty('dataId') && typeof data.data.result.dataId === 'string') {\n                    tests[\"data.result.dataId string field present in output\"] = true;\n                    tests[\"GUID created for dataId\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n                }\n                else {\n                    tests[\"data.result.dataId string field present in output\"] = false;\n                }\n            }\n            else {\n                tests[\"data.result field present in output\"] = false;\n            }\n        }\n        else {\n            tests[\"status should not be \" + data.data.status] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else {\n        tests[\"data.status field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobType') && typeof data.data.jobType === 'string') {\n        tests[\"data.jobType string field present in output\"] = true;\n        tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n    }\n    else {\n        tests[\"data.jobType string field present in output\"] = false;\n    }\n    if (data.data.hasOwnProperty('jobId')) {\n        tests[\"data.jobId field present in output\"] = true;\n        tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n    }\n    else {\n        tests[\"data.jobId field present in output\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output\"] = false;\n}\n",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\n\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Check Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId', 'string')) {\n            tests[\"GUID created for dataId\"] = data.data.result.dataId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.jobType', 'string')) {\n    tests[\"Correct jobType\"] = data.data.jobType.match(/[eE]xecute.*[sS]ervice/);\n}\nif (testLevels(tests, data, 'data.jobId')) {\n    tests[\"Correct jobId used\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -120,7 +119,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1470940060134,
+			"time": 1475064869823,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f"
@@ -271,14 +270,14 @@
 		},
 		{
 			"id": "617357b7-24c0-6aa4-7a4e-c3477238986f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (data.hasOwnProperty('data')) {\n    tests[\"data field present in output.\"] = true;\n    if (data.data.hasOwnProperty('jobId') && typeof data.data.jobId === 'string') {\n        tests[\"data.jobId string field present in output.\"] = true;\n        tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n        postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n    }\n    else{\n        tests[\"data.jobId string field present in output.\"] = false;\n    }\n}\nelse {\n    tests[\"data field present in output.\"] = false;\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.jobId', 'string')) {\n    tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -286,7 +285,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1471441365476,
+			"time": 1475064731356,
 			"name": "Create Job",
 			"description": "",
 			"collectionId": "72a82a94-0d1c-9360-cc1e-eab639f19d6f",

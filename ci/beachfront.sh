@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 echo start
 #mail settings
-RCVR="abcmauck@gmail.com,jamesyarrington88@gmail.com"
+RCVR="jamesyarrington88@gmail.com"
 SUBJ= $BUILDURL
 
 #awm
@@ -29,7 +29,7 @@ for space in $spaces; do
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-	cmd="newman -x -e $envfile -c"
+	cmd="newman --requestTimeout 960000 -x -e $envfile -c"
 
 	latch=0
 
