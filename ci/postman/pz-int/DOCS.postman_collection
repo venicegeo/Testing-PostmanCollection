@@ -9,8 +9,17 @@
 	"item": [
 		{
 			"name": "Gateway Health Check UG 2.3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
 			"request": {
-				"url": "https://pz-gatewy.int.geointservices.io/",
+				"url": "https://pz-gateway.int.geointservices.io/",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -71,7 +80,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data.result.dataId)\n"
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"datId\",data.data.result.dataId)\n"
 					}
 				}
 			],
