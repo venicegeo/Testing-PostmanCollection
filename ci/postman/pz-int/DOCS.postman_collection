@@ -10,7 +10,7 @@
 		{
 			"name": "Gateway Health Check UG 2.3",
 			"request": {
-				"url": "https://pz-gateway.int.geointservices.io/",
+				"url": "https://pz-gatewy.int.geointservices.io/",
 				"method": "GET",
 				"header": [],
 				"body": {
