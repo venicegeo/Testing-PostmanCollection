@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 00;"
 					}
 				}
 			],
@@ -37,7 +37,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)"
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)\n\ntests[\"Status code is 200\"] = responseCode.code === 200;"
 					}
 				}
 			],
@@ -67,7 +67,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"fae\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
 				},
 				"description": ""
 			},
