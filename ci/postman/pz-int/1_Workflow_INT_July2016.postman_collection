@@ -1071,7 +1071,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"enable:false\"] = responseBody.has( \"false\");"
 					}
 				}
 			],
