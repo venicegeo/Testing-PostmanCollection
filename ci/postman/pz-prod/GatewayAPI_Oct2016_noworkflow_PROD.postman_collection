@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikeyprod\",\"bb0be536-e1e6-4add-8f94-7d2a375f12f9\")"
+						"exec": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikeyprod\",\"85892a66-7fd1-49e3-b840-c120eb2c9856\")"
 					}
 				}
 			],
@@ -22,7 +22,7 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "bb0be536-e1e6-4add-8f94-7d2a375f12f9",
+						"username": "85892a66-7fd1-49e3-b840-c120eb2c9856",
 						"password": "",
 						"saveHelperData": true,
 						"showPassword": false
@@ -58,7 +58,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==",
+						"value": "Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==",
 						"description": ""
 					}
 				],
