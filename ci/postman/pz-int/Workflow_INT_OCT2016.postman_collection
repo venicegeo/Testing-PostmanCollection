@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Workflow_INT_July2016",
+		"name": "Workflow_INT_OCT2016",
 		"_postman_id": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -1224,7 +1224,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 201;"
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
 					}
 				}
 			],
@@ -1287,7 +1287,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"enable:false\"] = responseBody.has( \"false\");"
+						"exec": "\n\ntests[\"enable:false\"] = responseBody.has( \"false\");"
 					}
 				}
 			],
