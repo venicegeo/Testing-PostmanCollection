@@ -53,7 +53,7 @@ for space in $spaces; do
 		echo $f
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || { latch=1; BODY="${BODY}\n$space:${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		$cmd $f || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
 		echo $latch
 	done
 	

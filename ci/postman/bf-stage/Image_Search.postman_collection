@@ -20,7 +20,8 @@
 			"order": [
 				"60b7b96e-ca6f-9917-ba14-8b3d1beb55cc",
 				"6ad216f4-befd-9039-b05f-375f93261622",
-				"1cd2554a-a52f-0b29-94e5-05cd28a9677f"
+				"1cd2554a-a52f-0b29-94e5-05cd28a9677f",
+				"363c2ddf-5d73-d173-6e59-330ba3820678"
 			],
 			"owner": "699425",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab"
@@ -169,10 +170,10 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.match(/h(ello|i)/i);\npostman.setEnvironmentVariable('initial BB', '-150,-60,-90,-10');\npostman.setEnvironmentVariable('cloudCover', 25);\npostman.setEnvironmentVariable('acquiredDate', '2016-06-01T00:00:01Z');\npostman.setEnvironmentVariable('maxAcquiredDate', '2016-06-30T00:00:01Z');\npostman.setEnvironmentVariable('bands', 'swir1,coastal');\npostman.setEnvironmentVariable('count', 900);\npostman.setEnvironmentVariable('count_test', 42);\npostman.setEnvironmentVariable('randomCC', Math.random() * 10 + 5); // This tries to make \"Image Search Pagination 1\" a new search that doesn't reuse an old search.\npostman.setEnvironmentVariable('part1 count', '');\npostman.setEnvironmentVariable('pos dateline BB', '178,-80,180,80');\npostman.setEnvironmentVariable('neg dateline BB', '-180,-80,-178,80');",
+			"tests": "tests[\"Says Hello!\"] = responseBody.match(/h(ello|i)/i);\npostman.setEnvironmentVariable('initial BB', '-150,-60,-90,-10');\npostman.setEnvironmentVariable('cloudCover', 25);\npostman.setEnvironmentVariable('acquiredDate', '2016-06-01T00:00:01Z');\npostman.setEnvironmentVariable('maxAcquiredDate', '2016-06-30T00:00:01Z');\npostman.setEnvironmentVariable('bands', 'swir1,coastal');\npostman.setEnvironmentVariable('count', 900);\npostman.setEnvironmentVariable('count_test', 42);\npostman.setEnvironmentVariable('randomCC', Math.random() * 10 + 5); // This tries to make \"Image Search Pagination 1\" a new search that doesn't reuse an old search.\npostman.setEnvironmentVariable('part1 count', '');\npostman.setEnvironmentVariable('pos dateline BB', '178,-80,180,80');\npostman.setEnvironmentVariable('neg dateline BB', '-180,-80,-178,80');\n\n\nif (postman.getEnvironmentVariable('environment') === 'int') {\n    var pz_key = postman.getEnvironmentVariable('Stage API Key');\n    postman.setEnvironmentVariable('piazza domain','https://piazza.stage.geointservices.io');  //pz-exec on int points to pz on stage.\n}\nelse {\n    var pz_key = postman.getEnvironmentVariable('API Key');\n    postman.setEnvironmentVariable('piazza domain','https://piazza.' + postman.getEnvironmentVariable('domain'));\n}\npostman.setEnvironmentVariable('pz key', pz_key);",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1475175762810,
+			"time": 1475245298056,
 			"name": "Hello, pzsvc-image-catalog",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
@@ -198,6 +199,29 @@
 			"responses": []
 		},
 		{
+			"id": "363c2ddf-5d73-d173-6e59-330ba3820678",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pzsvc-image-catalog.{{domain}}/eventTypeID?pzGateway={{piazza domain}}",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"eventTypeID GUID returned\"] = responseBody.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{pz key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1475245313792,
+			"name": "Get EventTypeId",
+			"description": "",
+			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
+			"responses": []
+		},
+		{
 			"id": "4188c9db-ae32-9de6-25fd-331600d278f6",
 			"headers": "",
 			"url": "https://pzsvc-image-catalog.{{domain}}/subindex",
@@ -206,11 +230,11 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\ntests[\"At least one subindex is present\"] = Object.keys(data).length > 0;\nvar first = Object.keys(data)[0];\nif (testLevels(tests, data, [first,'key'])) {\n    postman.setEnvironmentVariable('subindex key', data[first].key);\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\ntests[\"At least one subindex is present\"] = Object.keys(data).length > 0;\nvar subindices = Object.keys(data);\nvar found = false;\n\nfor (var i in subindices) {\n    if(testLevels(tests, data, [subindices[i], 'name'], 'string') && testLevels(tests, data, [subindices[i], 'key'])) {\n        if (data[subindices[i]].name.match(/world.*shore/i)) {\n            found = true;\n            postman.setEnvironmentVariable('subindex key', data[subindices[i]].key);\n        }\n    }\n}\ntests[\"World Shorelines subindex found.\"] = found;",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1475176154588,
-			"name": "Get subindex",
+			"time": 1475242418951,
+			"name": "Get \"World Shorelines\" subindex",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
 			"responses": []
@@ -443,7 +467,7 @@
 		{
 			"id": "f2322d10-73c4-a25b-2f17-127f50aedf38",
 			"headers": "",
-			"url": "https://pzsvc-image-catalog.{{domain}}/discover?bbox={{initial BB}}&cloudCover={{cloudCover}}&acquiredDate={{acquiredDate}}&count={{count}}&subindex=&startIndex=0&subIndex={{subindex key}}&maxAcquiredDate=",
+			"url": "https://pzsvc-image-catalog.{{domain}}/discover?bbox={{initial BB}}&cloudCover={{cloudCover}}&acquiredDate={{acquiredDate}}&count={{count}}&startIndex=0&subIndex={{subindex key}}&maxAcquiredDate=",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -453,7 +477,7 @@
 			"tests": "function checkIntersection(imgBB, srcBB) {\n    var latIntersect = (imgBB[0] >= srcBB[0] && imgBB[0] <= srcBB[2]) || (srcBB[0] >= imgBB[0] && srcBB[0] <= imgBB[2]);\n    var lonIntersect = (imgBB[1] >= srcBB[1] && imgBB[1] <= srcBB[3]) || (srcBB[1] >= imgBB[1] && srcBB[1] <= imgBB[3]);\n    return latIntersect && lonIntersect;\n}\n\nfunction adjBBs(imgBB, srcBB) {\n    if (imgBB[0] > imgBB[2]) {\n        imgBB[2] += 360;\n        if (srcBB[0] < 0) {\n            srcBB[0] += 360;\n        }\n        if (srcBB[2] < 0) {\n            srcBB[2] += 360;\n        }\n    }\n}\n\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar min_search_date = Date.parse(postman.getEnvironmentVariable('acquiredDate'));\n\n\nif (testLevels(tests, data, 'images.features', 'array')) {\n    if (testLevels(tests, data, 'count') && testLevels(tests, data, 'totalCount')) {\n        tests[\"Count is accurate\"] = data.count === data.images.features.length;\n        tests[\"Expected count\"] = data.count === Number(postman.getEnvironmentVariable('count')) || data.count === data.totalCount;\n    }\n    for (i = 0; i < data.images.features.length; i++) {\n        var srcBB = postman.getEnvironmentVariable('initial BB').split(',').map(Number);\n        if (testLevels(tests, data.images.features[i], 'bbox', 'array', 'images.features[].')) {\n            // adjust both BBs for comparison\n            var imgBB = data.images.features[i].bbox;\n            adjBBs(imgBB, srcBB);\n            tests[\"All images intersect the specified BB\"] = checkIntersection(imgBB, srcBB);\n        }\n        if (testLevels(tests, data.images.features[i], 'properties.acquiredDate', 'skip', 'images.features[].')) {\n            var image_date = Date.parse(data.images.features[i].properties.acquiredDate);\n            tests[\"All images were within the specified date\"] = image_date >= min_search_date;\n        }\n        if (testLevels(tests, data.images.features[i], 'properties.cloudCover', 'skip', 'images.features[].')) {\n            tests[\"CloudCover is less than or equal to the queried value\"] = data.images.features[i].properties.cloudCover <= postman.getEnvironmentVariable('cloudCover');\n        }\n        // Note id of failing feature.\n        if (!(tests[\"All images intersect the specified BB\"] && tests[\"All images were within the specified date\"] && tests[\"CloudCover is less than or equal to the queried value\"])) {\n            if (testLevels(tests, data.images.features[i], 'id', 'skip', 'images.features[].')) {\n                tests[\"The id of the failing feature: \" + data.images.features[i].id] = false;\n            }\n            break;\n        }\n    }\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1475175072244,
+			"time": 1475242096422,
 			"name": "BF - empty maxAcquiredDate",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
