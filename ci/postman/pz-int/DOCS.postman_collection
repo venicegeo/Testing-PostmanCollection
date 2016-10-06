@@ -250,7 +250,7 @@
 			"method": "DELETE",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\nwait(5000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -258,7 +258,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475770970183,
+			"time": 1475785365101,
 			"name": "Delete Trigger",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
@@ -333,7 +333,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (postman.getEnvironmentVariable('fileSize') === '0') {\n    console.log(\"~~~ Note: size of downloaded file not checked. ~~~\");\n}\nelse {\n    tests[\"Correct File Size\"] = postman.getResponseHeader(\"Content-Length\") === postman.getEnvironmentVariable('fileSize');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (postman.getEnvironmentVariable('fileSize') === '0') {\n    console.log(\"~~~ Note: size of downloaded file not checked. ~~~\");\n}\nelse {\n    tests[\"Correct File Size\"] = postman.getResponseHeader(\"content-length\") === postman.getEnvironmentVariable('fileSize');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -341,7 +341,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475769242980,
+			"time": 1475785014824,
 			"name": "3.3 Get GeoJSON file",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
@@ -493,14 +493,14 @@
 		},
 		{
 			"id": "432ff118-0a53-2909-27b4-b1dfb7463b7e",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Authorization: Basic e3tBUEkgS2V5fX06\n",
 			"url": "https://pz-gateway.{{domain}}/file/{{dataId_local}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (postman.getEnvironmentVariable('fileSize') === '0') {\n    console.log(\"~~~ Note: size of downloaded file not checked. ~~~\");\n}\nelse {\n    tests[\"Correct File Size\"] = postman.getResponseHeader(\"Content-Length\") === postman.getEnvironmentVariable('fileSize');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (postman.getEnvironmentVariable('fileSize') === '0') {\n    console.log(\"~~~ Note: size of downloaded file not checked. ~~~\");\n}\nelse {\n    tests[\"Correct File Size\"] = postman.getResponseHeader(\"content-length\") === postman.getEnvironmentVariable('fileSize');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -508,7 +508,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475769153240,
+			"time": 1475785003214,
 			"name": "3.1.2 Get Image File",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
