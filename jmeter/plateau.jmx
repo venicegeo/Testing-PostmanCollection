@@ -66,7 +66,7 @@
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/data/file" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/data/file" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -246,7 +246,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_datafile" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_datafile" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -262,7 +262,7 @@
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;datafile&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;datafile&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -278,7 +278,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Base" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Base" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -441,7 +441,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_base" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_base" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -457,7 +457,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;base&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;base&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -473,7 +473,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/data/query" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/data/query" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -658,7 +658,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_dataquery" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_dataquery" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -674,7 +674,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;dataquery&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;dataquery&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -690,7 +690,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/service" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/service" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -879,7 +879,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_service" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_service" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -895,7 +895,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;service&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;service&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -911,7 +911,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/data" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/data" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -1074,7 +1074,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_data" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_data" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1090,7 +1090,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;data&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;data&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -1106,7 +1106,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/job" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/job" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -1292,7 +1292,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_job" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_job" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1308,7 +1308,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;job&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;job&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -1456,9 +1456,12 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
 		&quot;minY&quot;: 1.0,&#xd;
 		&quot;maxX&quot;: 10.0,&#xd;
 		&quot;maxY&quot;: 10.0,&#xd;
-		&quot;hosted&quot;: true&#xd;
+		&quot;hosted&quot;: true,&#xd;
+        &quot;sampleNest&quot;: {&#xd;
+            &quot;someParam&quot;: &quot;someValue&quot;&#xd;
+        }&#xd;
     },&#xd;
-    &quot;eventTypeId&quot;: &quot;1f89a40f-10c3-4ff1-bcb6-8ff919f320ef&quot; &#xd;
+  &quot;eventTypeId&quot;: &quot;ac2155ee-3aec-4d32-bde2-8760b9dea2ea&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1531,7 +1534,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;event&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;event&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -1726,7 +1729,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;alert&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;alert&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -1742,7 +1745,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/deployment" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/deployment" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -1925,7 +1928,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_deployment" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_deployment" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1941,7 +1944,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;deployment&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;deployment&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -2083,7 +2086,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
                 <stringProp name="Argument.value">{&#xd;
     &quot;name&quot;: &quot;CI Testing Trigger&quot;,&#xd;
     &quot;enabled&quot;: true,&#xd;
-    &quot;eventTypeId&quot;: &quot;3019eda8-fe1e-41ae-8470-e3c8cc60e6fb&quot;,&#xd;
+    &quot;eventTypeId&quot;: &quot;6372f039-6e55-4e7f-a6b0-984ab62b6ceb&quot;,&#xd;
     &quot;condition&quot;: {&#xd;
             &quot;query&quot;: {&#xd;
                 &quot;bool&quot;: {&#xd;
@@ -2189,7 +2192,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;trigger&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;trigger&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -2205,7 +2208,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/eventType" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/eventType" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -2396,7 +2399,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_eventType" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_eventType" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -2412,7 +2415,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
       </ThreadGroup>
       <hashTree>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
-          <stringProp name="BeanShellSampler.query">String testsName = &quot;eventType&quot;
+          <stringProp name="BeanShellSampler.query">String testName = &quot;eventType&quot;;
 String folder = testName + &quot;\\&quot; + vars.get(&quot;timestamp&quot;);
 String command_RT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ResponseTimes.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ResponseTimesOverTime --granulation 2000&quot;;
 String command_AT = &quot;java -jar \&quot;C:\\Program Files\\apache-jmeter-3.0\\lib\\ext\\CMDRunner.jar\&quot; --tool Reporter --generate-png \&quot;C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + 	&quot;\\graphs\\ActiveThreads.png\&quot; --input-jtl C:\\Users\\jyarrington\\Documents\\spike\\&quot; + folder + &quot;\\raw.csv --plugin-type ThreadsStateOverTime --granulation 2000&quot;;
@@ -2536,7 +2539,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
           </value>
         </objProp>
         <stringProp name="filename"></stringProp>
-        <longProp name="interval_grouping">500</longProp>
+        <longProp name="interval_grouping">10000</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
         <stringProp name="exclude_sample_labels"></stringProp>
@@ -2545,98 +2548,6 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         <boolProp name="include_checkbox_state">false</boolProp>
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
-      <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time" enabled="true">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>false</message>
-            <threadName>true</threadName>
-            <dataType>false</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>false</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>false</xml>
-            <fieldNames>true</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-            <hostname>true</hostname>
-            <threadCounts>true</threadCounts>
-            <sampleCount>true</sampleCount>
-            <idleTime>true</idleTime>
-          </value>
-        </objProp>
-        <stringProp name="filename"></stringProp>
-        <longProp name="interval_grouping">500</longProp>
-        <boolProp name="graph_aggregated">false</boolProp>
-        <stringProp name="include_sample_labels"></stringProp>
-        <stringProp name="exclude_sample_labels"></stringProp>
-        <stringProp name="start_offset"></stringProp>
-        <stringProp name="end_offset"></stringProp>
-        <boolProp name="include_checkbox_state">false</boolProp>
-        <boolProp name="exclude_checkbox_state">false</boolProp>
-      </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
-      <hashTree/>
-      <kg.apc.jmeter.vizualizers.CompositeResultCollector guiclass="kg.apc.jmeter.vizualizers.CompositeGraphGui" testclass="kg.apc.jmeter.vizualizers.CompositeResultCollector" testname="jp@gc - Composite Graph" enabled="true">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>false</message>
-            <threadName>true</threadName>
-            <dataType>false</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>false</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>false</xml>
-            <fieldNames>true</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-            <hostname>true</hostname>
-            <threadCounts>true</threadCounts>
-            <sampleCount>true</sampleCount>
-            <idleTime>true</idleTime>
-          </value>
-        </objProp>
-        <stringProp name="filename"></stringProp>
-        <longProp name="interval_grouping">500</longProp>
-        <boolProp name="graph_aggregated">false</boolProp>
-        <stringProp name="include_sample_labels"></stringProp>
-        <stringProp name="exclude_sample_labels"></stringProp>
-        <stringProp name="start_offset"></stringProp>
-        <stringProp name="end_offset"></stringProp>
-        <boolProp name="include_checkbox_state">false</boolProp>
-        <boolProp name="exclude_checkbox_state">false</boolProp>
-        <collectionProp name="COMPOSITE_CFG">
-          <collectionProp name=""/>
-          <collectionProp name=""/>
-        </collectionProp>
-      </kg.apc.jmeter.vizualizers.CompositeResultCollector>
       <hashTree/>
     </hashTree>
   </hashTree>
