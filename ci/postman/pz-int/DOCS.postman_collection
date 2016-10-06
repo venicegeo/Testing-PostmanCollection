@@ -333,7 +333,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (postman.getEnvironmentVariable('fileSize') === '0') {\n    console.log(\"~~~ Note: size of downloaded file not checked. ~~~\");\n}\nelse {\n    tests[\"Correct File Size\"] = postman.getResponseHeader(\"content-length\") === postman.getEnvironmentVariable('fileSize');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -341,7 +341,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475785014824,
+			"time": 1475785871050,
 			"name": "3.3 Get GeoJSON file",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
@@ -500,7 +500,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (postman.getEnvironmentVariable('fileSize') === '0') {\n    console.log(\"~~~ Note: size of downloaded file not checked. ~~~\");\n}\nelse {\n    tests[\"Correct File Size\"] = postman.getResponseHeader(\"content-length\") === postman.getEnvironmentVariable('fileSize');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -508,7 +508,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475785003214,
+			"time": 1475785845806,
 			"name": "3.1.2 Get Image File",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
@@ -592,7 +592,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar dummy = {}; // dummy testing variable to get info if it exists.\n\nif (testLevels(dummy, data, 'data.dataType.location.fileSize')) {\n    postman.setEnvironmentVariable(\"fileSize\",data.data.dataType.location.fileSize);\n}\nelse {\n    postman.setEnvironmentVariable(\"fileSize\", 0);\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -600,7 +600,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475769145913,
+			"time": 1475785859272,
 			"name": "3.1.1 Get Image Data",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
@@ -1184,7 +1184,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar dummy = {}; // dummy testing variable to get info if it exists.\n\nif (testLevels(dummy, data, 'data.dataType.location.fileSize')) {\n    postman.setEnvironmentVariable(\"fileSize\",data.data.dataType.location.fileSize);\n}\nelse {\n    postman.setEnvironmentVariable(\"fileSize\", 0);\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1192,7 +1192,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475769230342,
+			"time": 1475785877345,
 			"name": "3.3 Get GeoJSON data",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
