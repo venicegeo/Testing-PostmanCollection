@@ -659,12 +659,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475767362629,
+			"time": 1476188010254,
 			"name": "5.2.1 Register Hello Example Service",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
 			"responses": [],
-			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello-767ae0c.int.geointservices.io/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
+			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "7597e40d-fc8b-8e72-6f0c-be8d9967fbcd",
@@ -1305,7 +1305,7 @@
 				"saveToRequest": true
 			},
 			"time": 1475767034353,
-			"name": "6.1.1 System EventTypes - piazza:iexecutionComplete",
+			"name": "6.1.1 System EventTypes - piazza:executionComplete",
 			"description": "",
 			"collectionId": "779a67b2-12e0-c6d6-c7e3-d73036ff3aed",
 			"responses": []
