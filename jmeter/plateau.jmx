@@ -1324,7 +1324,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/event" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/event" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -1461,7 +1461,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
             &quot;someParam&quot;: &quot;someValue&quot;&#xd;
         }&#xd;
     },&#xd;
-  &quot;eventTypeId&quot;: &quot;ac2155ee-3aec-4d32-bde2-8760b9dea2ea&quot;&#xd;
+  &quot;eventTypeId&quot;: &quot;f2a19364-c964-463b-b5c5-85164f40e006&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -1518,7 +1518,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_event" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_event" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1550,7 +1550,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/alert" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/alert" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -1713,7 +1713,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_alert" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_alert" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1960,7 +1960,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/trigger" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/trigger" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -2086,7 +2086,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
                 <stringProp name="Argument.value">{&#xd;
     &quot;name&quot;: &quot;CI Testing Trigger&quot;,&#xd;
     &quot;enabled&quot;: true,&#xd;
-    &quot;eventTypeId&quot;: &quot;6372f039-6e55-4e7f-a6b0-984ab62b6ceb&quot;,&#xd;
+    &quot;eventTypeId&quot;: &quot;104ba4e8-043b-4f9e-918e-95ff6a42a40b&quot;,&#xd;
     &quot;condition&quot;: {&#xd;
             &quot;query&quot;: {&#xd;
                 &quot;bool&quot;: {&#xd;
@@ -2104,7 +2104,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         &quot;jobType&quot;: {&#xd;
             &quot;type&quot;: &quot;execute-service&quot;,&#xd;
             &quot;data&quot;: {&#xd;
-                &quot;serviceId&quot;: &quot;aea7d2f9-9142-4e9b-b3c1-07215ce91cfb&quot;,&#xd;
+                &quot;serviceId&quot;: &quot;f3673f15-5107-4ac3-9dc8-bc2f0cd92d01&quot;,&#xd;
                 &quot;dataInputs&quot;: {&#xd;
                     &quot;test&quot;: {&#xd;
                         &quot;content&quot;: &quot;{ \&quot;log\&quot;: \&quot;Received event with type $dataType\&quot; }&quot;,&#xd;
@@ -2176,7 +2176,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_trigger" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_trigger" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -2208,7 +2208,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </BeanShellSampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/eventType" enabled="false">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="/eventType" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="-66291547">
             <stringProp name="49">1</stringProp>
@@ -2399,7 +2399,7 @@ Process process = Runtime.getRuntime().exec(command_RC);</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_eventType" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_eventType" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
