@@ -1412,8 +1412,8 @@
 		},
 		{
 			"id": "a2212f06-9578-b286-78b5-02422e61431b",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/trigger?eventType={{eventType}}",
+			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/trigger?",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -1428,7 +1428,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475856559745,
+			"time": 1476905356044,
 			"name": "Query Trigger",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
