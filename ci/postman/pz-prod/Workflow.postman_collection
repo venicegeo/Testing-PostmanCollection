@@ -425,7 +425,7 @@
 			"method": "DELETE",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\n\nwait(5000); // Time for items to truly be deleted.",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -433,12 +433,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1473958236074,
+			"time": 1476907315635,
 			"name": "Delete Trigger",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "0e29f236-2061-8522-5123-eab4334b560d",
 			"rawModeData": ""
 		},
 		{
