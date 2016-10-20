@@ -1,0 +1,1462 @@
+{
+	"variables": [],
+	"info": {
+		"name": "DOCS_Oct2016",
+		"_postman_id": "211532d9-5d56-ccaa-e626-77a53b41517e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "5.2.1 Register Hello Example Service",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "\nvar data = JSON.parse(responseBody);\n\n\n    postman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/service",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "from",
+						"value": "0",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Health Check UG 2.3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.1 Loading a Local Image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/file",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"Testing the DOCS\" } } }",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "file",
+							"value": "terrametrics.tif",
+							"type": "file",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Health Check UG 2.3 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Status of Local Image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.2 WMS Deployment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/deployment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dataId\": \"{{dataId}}\",\n    \"type\": \"access\",\n    \"deploymentType\": \"geoserver\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.1 Get Image Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.2 Get Image File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.2 WMS Deployment Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n            postman.setEnvironmentVariable(\"deploymentId\",data.data.result.deployment.deploymentId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Local Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Ingest External Raster",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Health Check UG 2.3 copy copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Status of External Ingest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete External Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Loading a GeoJSON File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/file",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"geojson\" }, \"metadata\": { \"name\": \"Test.geojson\", \"description\": \"Testing the DOCS\" } } }",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "file",
+							"value": "Test.geojson",
+							"type": "file",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Execute Job copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "test4life",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "size",
+						"value": "30",
+						"description": ""
+					},
+					{
+						"key": "key",
+						"value": "stamp",
+						"description": ""
+					},
+					{
+						"key": "order",
+						"value": "true",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4OnRlc3Q0bGlmZQ==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"type\":\"execute-service\",\n\"data\":{\n\"serviceId\":  \"{{serviceId}}\",\n   \"dataInputs\": {},\n\"dataOutput\": [ {  \"mimeType\":\"application/json\", \"type\":\"text\"}]\n}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Status of GeoJSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Get GeoJSON data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Get GeoJSON file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete GeoJSON Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "4.1 Setup: dog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/file",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"The lazy dog.\" } } }",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "file",
+							"value": "terrametrics.tif",
+							"type": "file",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "4.1 Status: dog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "\nvar data = JSON.parse(responseBody);\n\n            postman.setEnvironmentVariable(\"dataId_dog\", data.data.result.dataId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "4.2 Filtered GET: dog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "\n\n\n\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data?keyword=dog",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "5.3.1 Invoke Hello Example Service with GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"execute-service\",\n\t\"data\":{\n\t\t\"serviceId\":  \"{{serviceId}}\",\n\t\t\"dataInputs\": {},\n\t\t\"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }]\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dog Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "5.3.3 Invoked service Job Status POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "6.1 Create EventType",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n    postman.setEnvironmentVariable('eventtype_id', data.data.eventTypeId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/eventType",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"testevent-{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"filename\":\t\"string\",\r\n\t\t\"code\":\t\t\"string\",\r\n\t\t\"severity\":\t\"integer\"\r\n\t}\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "6.2 Create Trigger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n\n\n    postman.setEnvironmentVariable('triggerId', data.data.triggerId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/trigger",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"High Severity\",\r\n    \"eventTypeId\": \"{{eventtype_id}}\",\r\n    \"condition\": {\r\n        \"query\": { \"query\": { \"match_all\": {} } }\r\n    },\r\n    \"job\": {\r\n        \"userName\": \"test\",\r\n        \"jobType\": {\r\n            \"type\": \"execute-service\",\r\n            \"data\": {\r\n                \"serviceId\": \"{{serviceId}}\",\r\n                \"dataInputs\": {},\r\n                \"dataOutput\": [\r\n                    {\r\n                        \"mimeType\": \"application/json\",\r\n                        \"type\": \"text\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"enabled\": true\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "6.3 Create Event",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n\n\n\n    postman.setEnvironmentVariable('eventId', data.data.eventId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/event",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eventTypeId\": \"{{eventtype_id}}\",\r\n    \"data\": {\r\n        \"filename\": \"test\",\r\n        \"severity\": 200,\r\n        \"code\": \"us-bbox\"\r\n    }\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "6.4 Find Alert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/alert?triggerId={{triggerId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Deployment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Service",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Event",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Trigger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic e3tBUEkgS2V5fX06",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete EventType",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/eventType/{{eventtype_id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
