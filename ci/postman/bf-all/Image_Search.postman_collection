@@ -74,7 +74,8 @@
 				"e24c4a1b-f3ce-a755-bf37-506f8efe11ef",
 				"98e4a008-0331-81a3-bcf1-b393c2b6586f",
 				"23bad0ae-40e6-37c9-b744-0d94dfaf1cfd",
-				"442b1505-e6eb-b67a-62c4-8ec9ae429156"
+				"442b1505-e6eb-b67a-62c4-8ec9ae429156",
+				"e78b9f89-ebb5-6e3c-e629-4eb6d2c2fa2f"
 			],
 			"owner": "699425"
 		}
@@ -336,7 +337,7 @@
 			"id": "7abba20a-1eb0-f028-fff0-0053599a6eb7",
 			"headers": "",
 			"url": "https://pzsvc-image-catalog.{{domain}}/image/{{Image id}}",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
@@ -344,7 +345,7 @@
 			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'id')) {\n    tests[\"Correct ID Returned\"] = postman.getEnvironmentVariable('Image id') === data.id;\n}\npostman.setNextRequest('w/ acquiredDate');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1476888183756,
+			"time": 1476888844185,
 			"name": "Single Image",
 			"description": "",
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
@@ -462,6 +463,24 @@
 			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
 			"responses": [],
 			"folder": "4095896a-26f4-7333-8c82-c7a76bf4ed28"
+		},
+		{
+			"id": "e78b9f89-ebb5-6e3c-e629-4eb6d2c2fa2f",
+			"headers": "",
+			"url": "https://pzsvc-image-catalog.{{domain}}/image/foo",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 404 (Bug #9287)\"] = responseCode.code === 404;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1476991281119,
+			"name": "Fake Image",
+			"description": "",
+			"collectionId": "8c38f0f3-5334-c662-6982-f2659a604aab",
+			"responses": []
 		},
 		{
 			"id": "ec6f1837-99ca-cb4b-c998-f5a3e2d2242b",
