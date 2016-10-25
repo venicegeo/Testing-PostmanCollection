@@ -14,7 +14,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\npostman.setEnvironmentVariable(\"apikey\",\"b7d153ec-2480-4da3-84f7-0145cf59a298\")\n"
 					}
 				}
 			],
