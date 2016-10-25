@@ -313,7 +313,7 @@
 		},
 		{
 			"id": "27295b58-09e3-078b-b52c-f9a968a3d303",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic OTE1MmI2MmYtZDJmOC00OTQwLWFkMTItYzRkZTY5ZjYyOWYzOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -329,12 +329,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477321553987,
+			"time": 1477404037864,
 			"name": "Complex Query",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"rawModeData": "{\n    \"query\": {\n        \"match\": {\n            \"_all\": true\n        }\n    }\n}"
+			"rawModeData": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
 		},
 		{
 			"id": "2b80f10b-c742-bef1-63e6-80462429c7ab",
@@ -345,7 +345,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.dataType.content', 'string')) {\n    tests[\"Hello Service was executed\"] = data.data.dataType.content.match(/h(ello|i)/i);\n    postman.setEnvironmentVariable('Repeat Job Check', data.data.dataType.content);\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Created by 'citester' (Bug #8978)\"] = data.data.metadata.createdBy === 'citester';\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.dataType.content', 'string')) {\n    tests[\"Hello Service was executed\"] = data.data.dataType.content.match(/h(ello|i)/i);\n    postman.setEnvironmentVariable('Repeat Job Check', data.data.dataType.content);\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy (Bug #8978)\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -353,7 +353,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476966610486,
+			"time": 1477404154743,
 			"name": "Check Resulting dataId",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
@@ -661,7 +661,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Bad Method - Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.message', 'string')) {\n            tests[\"I don't know what this message should be\"] = false;\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status + \" (Bug #9480)\"] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.createdBy === 'citester';\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Bad Method - Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.message', 'string')) {\n            tests[\"I don't know what this message should be\"] = false;\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status + \" (Bug #9480)\"] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -669,7 +669,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477314762006,
+			"time": 1477404301988,
 			"name": "Bad Method - Job Status",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
@@ -757,7 +757,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Check Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.createdBy === 'citester';\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Check Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -765,7 +765,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476296970400,
+			"time": 1477404115147,
 			"name": "Check Job Status",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
@@ -973,7 +973,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Rerun/Disable - Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.message', 'string')) {\n            tests[\"Message states service is offline\"] = data.data.result.message.match(/service/i) && data.data.result.message.match(/offline/i);\n            tests[\"serviceId included in message\"] = data.data.result.message.match(postman.getEnvironmentVariable('serviceId'));\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.createdBy === 'citester';\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Rerun/Disable - Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.message', 'string')) {\n            tests[\"Message states service is offline\"] = data.data.result.message.match(/service/i) && data.data.result.message.match(/offline/i);\n            tests[\"serviceId included in message\"] = data.data.result.message.match(postman.getEnvironmentVariable('serviceId'));\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -981,12 +981,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476967936350,
+			"time": 1477404228453,
 			"name": "Rerun/Disable - Status",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623"
+			"responses": []
 		},
 		{
 			"id": "8ce8a578-51f8-6dd3-d1ce-07cc96d4df0f",
@@ -998,7 +997,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Rerun - Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_rerun\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.createdBy === 'citester';\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Rerun - Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_rerun\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1006,12 +1005,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476966364525,
+			"time": 1477404195789,
 			"name": "Rerun - Status",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"responses": [],
-			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247"
+			"responses": []
 		},
 		{
 			"id": "9333601e-593c-9bb4-bcdf-b437349d4e7b",
@@ -1188,19 +1186,13 @@
 			"id": "b1d531da-e9a7-7995-ada5-10eb4ebc87f3",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
-			"pathVariables": {},
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"data": null,
 			"dataMode": "params",
-			"name": "Get Service Info Details",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1476297420337,
 			"version": 2,
-			"responses": [],
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.resourceMetadata.description')) {\n    tests[\"Description is correct\"] = data.data.resourceMetadata.description === postman.getEnvironmentVariable('text description');\n}\nif (testLevels(tests, data, 'data.resourceMetadata.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.resourceMetadata.createdBy === 'citester';\n}\nif (testLevels(tests, data, 'data.resourceMetadata.createdOn')) {\n    tests[\"CreatedOn Field Exists\"] = data.data.resourceMetadata.createdOn !== null && data.data.resourceMetadata.createdOn !== '';\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.resourceMetadata.description')) {\n    tests[\"Description is correct\"] = data.data.resourceMetadata.description === postman.getEnvironmentVariable('text description');\n}\nif (testLevels(tests, data, 'data.resourceMetadata.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.resourceMetadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.resourceMetadata.createdOn')) {\n    tests[\"CreatedOn Field Exists\"] = data.data.resourceMetadata.createdOn !== null && data.data.resourceMetadata.createdOn !== '';\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1208,7 +1200,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623"
+			"time": 1477402205906,
+			"name": "Get Service Info Details",
+			"description": "",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"responses": []
 		},
 		{
 			"id": "b69ec83b-69a7-eb5e-699e-65e6a052c6db",
@@ -1286,23 +1282,26 @@
 		{
 			"id": "c84a5cf0-b44c-7aea-d56c-a4a98e54b7dd",
 			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&createdBy=citester",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&createdBy={{username}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_createdBy = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === 'citester');\n        }\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified createdBy\"] = found_createdBy;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_createdBy = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === postman.getEnvironmentVariable('username'));\n        }\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified createdBy\"] = found_createdBy;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
-			"time": 1477082461495,
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1477403953117,
 			"name": "List Services with userName",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"timestamp": null,
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -1365,7 +1364,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Deleted Service - Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.message', 'string')) {\n            tests[\"Pending Bug #9490\"] = false;\n        }\n        if (testLevels(tests, data, 'data.result.statusCode')) {\n            tests[\"Pending Bug #9490\"] = false;\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.createdBy === 'citester';\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Deleted Service - Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.message', 'string')) {\n            tests[\"Pending Bug #9490\"] = false;\n        }\n        if (testLevels(tests, data, 'data.result.statusCode')) {\n            tests[\"Pending Bug #9490\"] = false;\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1373,7 +1372,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477323071634,
+			"time": 1477404265358,
 			"name": "Deleted Service - Job Status",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
@@ -1413,7 +1412,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Reenable - Check Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Created by 'citester'\"] = data.data.createdBy === 'citester';\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Reenable - Check Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1421,12 +1420,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477321099332,
+			"time": 1477404240545,
 			"name": "Reenable - Check Job Status",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623"
+			"responses": []
 		},
 		{
 			"id": "edd57179-6da4-ce97-f66e-6cd52eb43fa0",
@@ -1585,7 +1583,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.dataType.content', 'string')) {\n    tests[\"Hello Service was executed\"] = data.data.dataType.content.match(/h(ello|i)/i);\n    tests[\"Rerunning Job yields the same data\"] = data.data.dataType.content === postman.getEnvironmentVariable('Repeat Job Check')\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Created by 'citester' (Bug #8978)\"] = data.data.metadata.createdBy === 'citester';\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.dataType.content', 'string')) {\n    tests[\"Hello Service was executed\"] = data.data.dataType.content.match(/h(ello|i)/i);\n    tests[\"Rerunning Job yields the same data\"] = data.data.dataType.content === postman.getEnvironmentVariable('Repeat Job Check');\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy (Bug #8978)\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1593,7 +1591,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477080618840,
+			"time": 1477403944249,
 			"name": "Rerun - Check Data",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
@@ -1602,23 +1600,26 @@
 		{
 			"id": "fd9d2b67-b2f9-93e2-9652-d0e31be7e659",
 			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&createdBy=citester&keyword=integration",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&createdBy={{username}}&keyword=integration",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_createdBy = true;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === 'citester');\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(/integration/i);\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified createdBy\"] = found_createdBy;\ntests[\"All services had specified keyword\"] = found_keyword;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_createdBy = true;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === postman.getEnvironmentVariable('username'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(/integration/i);\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified createdBy\"] = found_createdBy;\ntests[\"All services had specified keyword\"] = found_keyword;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
-			"time": 1477082484412,
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1477403961193,
 			"name": "List Services with userName and keyword",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"timestamp": null,
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		}
 	]

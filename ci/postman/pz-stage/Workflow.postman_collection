@@ -323,7 +323,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.eventId')) {\n    tests[\"Correct eventId returned\"] = data.data.eventId === postman.getEnvironmentVariable('eventId');\n}\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === 'citester';\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.data.sampleNest.someParam')) {\n    tests[\"Nested Structure maintained\"] = data.data.data.sampleNest.someParam === 'someValue';\n}\nif (testLevels(tests, data, 'data.data.epsg')) {\n    tests[\"Number Stored\"] = data.data.data.epsg === 3;\n}\nif (testLevels(tests, data, 'data.data.hosted')) {\n    tests[\"Boolean Stored\"] = data.data.data.hosted === true;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent/);\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.eventId')) {\n    tests[\"Correct eventId returned\"] = data.data.eventId === postman.getEnvironmentVariable('eventId');\n}\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.data.sampleNest.someParam')) {\n    tests[\"Nested Structure maintained\"] = data.data.data.sampleNest.someParam === 'someValue';\n}\nif (testLevels(tests, data, 'data.data.epsg')) {\n    tests[\"Number Stored\"] = data.data.data.epsg === 3;\n}\nif (testLevels(tests, data, 'data.data.hosted')) {\n    tests[\"Boolean Stored\"] = data.data.data.hosted === true;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -331,12 +331,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1474028483952,
+			"time": 1477406129950,
 			"name": "Get Event Details",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -571,7 +570,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.triggerId')) {\n    tests[\"Correct triggerId returned\"] = data.data.triggerId === postman.getEnvironmentVariable('triggerId');\n}\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === 'citester';\n}\nif (testLevels(tests, data, 'data.enabled')) {\n    tests[\"Trigger is enabled\"] = data.data.enabled === true;\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.condition.query.bool.must','array')) {\n    if (testLevels(tests, data.data.condition.query.bool.must[0], 'match')) {\n        tests[\"eventType Name added to query parameter\"] = data.data.condition.query.bool.must[0].match.hasOwnProperty('data.' + postman.getEnvironmentVariable('eventType Name') + '.dataType');\n        if (tests[\"eventType Name added to query parameter\"]) {\n            tests[\"Correct query value\"] = data.data.condition.query.bool.must[0].match['data.' + postman.getEnvironmentVariable('eventType Name') + '.dataType'] === 'raster';\n        }\n    }\n}\n\nif (testLevels(tests, data, 'data.job.jobType.data.serviceId')) {\n    tests[\"Correct serviceId\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.triggerId')) {\n    tests[\"Correct triggerId returned\"] = data.data.triggerId === postman.getEnvironmentVariable('triggerId');\n}\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.enabled')) {\n    tests[\"Trigger is enabled\"] = data.data.enabled === true;\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.condition.query.bool.must','array')) {\n    if (testLevels(tests, data.data.condition.query.bool.must[0], 'match')) {\n        tests[\"eventType Name added to query parameter\"] = data.data.condition.query.bool.must[0].match.hasOwnProperty('data.' + postman.getEnvironmentVariable('eventType Name') + '.dataType');\n        if (tests[\"eventType Name added to query parameter\"]) {\n            tests[\"Correct query value\"] = data.data.condition.query.bool.must[0].match['data.' + postman.getEnvironmentVariable('eventType Name') + '.dataType'] === 'raster';\n        }\n    }\n}\n\nif (testLevels(tests, data, 'data.job.jobType.data.serviceId')) {\n    tests[\"Correct serviceId\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -579,12 +578,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1474029588278,
+			"time": 1477406124870,
 			"name": "Get Trigger Details",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -866,7 +864,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.alertId')) {\n    tests[\"Correct alertId returned\"] = data.data.alertId === postman.getEnvironmentVariable('alertId');\n}\nif (testLevels(tests, data, 'data.triggerId')) {\n    tests[\"Correct triggerId returned\"] = data.data.triggerId === postman.getEnvironmentVariable('triggerId');\n}\nif (testLevels(tests, data, 'data.eventId')) {\n    tests[\"Correct eventId returned\"] = data.data.eventId === postman.getEnvironmentVariable('eventId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === 'citester';\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Aa]lert/);\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.alertId')) {\n    tests[\"Correct alertId returned\"] = data.data.alertId === postman.getEnvironmentVariable('alertId');\n}\nif (testLevels(tests, data, 'data.triggerId')) {\n    tests[\"Correct triggerId returned\"] = data.data.triggerId === postman.getEnvironmentVariable('triggerId');\n}\nif (testLevels(tests, data, 'data.eventId')) {\n    tests[\"Correct eventId returned\"] = data.data.eventId === postman.getEnvironmentVariable('eventId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Aa]lert/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -874,12 +872,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1474029833150,
+			"time": 1477406134813,
 			"name": "Get Alert Details",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -2020,7 +2017,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === 'citester';\n}\nif (testLevels(tests, data, 'data.name')) {\n    postman.setEnvironmentVariable('eventType Name', data.data.name);\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.mapping.sampleNest.someParam')) {\n    tests[\"Nested Structure maintained\"] = data.data.mapping.sampleNest.someParam === 'string';\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent.*[Tt]ype/);\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.name')) {\n    postman.setEnvironmentVariable('eventType Name', data.data.name);\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.mapping.sampleNest.someParam')) {\n    tests[\"Nested Structure maintained\"] = data.data.mapping.sampleNest.someParam === 'string';\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent.*[Tt]ype/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2028,7 +2025,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1475176180122,
+			"time": 1477406118607,
 			"name": "Get EventType Details",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
