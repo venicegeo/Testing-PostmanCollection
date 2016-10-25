@@ -8,6 +8,57 @@
 	},
 	"item": [
 		{
+			"name": "3.1.1 Loading a Local Image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/file",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"Testing the DOCS\" } } }",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "file",
+							"value": "terrametrics.tif",
+							"type": "file",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "5.2.1 Register Hello Example Service",
 			"event": [
 				{
@@ -103,57 +154,6 @@
 			"response": []
 		},
 		{
-			"name": "3.1.1 Loading a Local Image",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/data/file",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "data",
-							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"Testing the DOCS\" } } }",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "file",
-							"value": "terrametrics.tif",
-							"type": "file",
-							"enabled": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "Gateway Health Check UG 2.3 copy",
 			"event": [
 				{
@@ -177,81 +177,6 @@
 				"url": "https://pz-gateway.int.geointservices.io/",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Gateway Health Check UG 2.3 copy copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.int.geointservices.io/",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "3.1 Status of Local Image",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
 				"body": {
 					"mode": "formdata",
 					"formdata": []
@@ -298,6 +223,49 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"dataId\": \"{{dataId}}\",\n    \"type\": \"access\",\n    \"deploymentType\": \"geoserver\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Status of Local Image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
 				},
 				"description": ""
 			},
@@ -371,6 +339,38 @@
 						"description": ""
 					}
 				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Health Check UG 2.3 copy copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.int.geointservices.io/",
+				"method": "GET",
+				"header": [],
 				"body": {
 					"mode": "formdata",
 					"formdata": []
@@ -721,6 +721,57 @@
 			"response": []
 		},
 		{
+			"name": "4.1 Setup: dog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/file",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"The lazy dog.\" } } }",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "file",
+							"value": "terrametrics.tif",
+							"type": "file",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "3.3 Status of GeoJSON",
 			"event": [
 				{
@@ -872,57 +923,6 @@
 				"body": {
 					"mode": "formdata",
 					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "4.1 Setup: dog",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/data/file",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "data",
-							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"The lazy dog.\" } } }",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "file",
-							"value": "terrametrics.tif",
-							"type": "file",
-							"enabled": true
-						}
-					]
 				},
 				"description": ""
 			},
