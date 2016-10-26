@@ -313,8 +313,8 @@
 		},
 		{
 			"id": "27295b58-09e3-078b-b52c-f9a968a3d303",
-			"headers": "Authorization: Basic OTE1MmI2MmYtZDJmOC00OTQwLWFkMTItYzRkZTY5ZjYyOWYzOg==\nContent-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/service/query",
+			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/service/query?sortBy=service.resourceMetadata.createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -329,7 +329,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477404037864,
+			"time": 1477417507631,
 			"name": "Complex Query",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
