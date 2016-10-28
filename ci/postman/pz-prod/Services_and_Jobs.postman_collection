@@ -10,7 +10,8 @@
 			"description": "",
 			"order": [
 				"9333601e-593c-9bb4-bcdf-b437349d4e7b",
-				"2c75fd00-6eb4-a0f4-40be-9e0ea11fbf90"
+				"2c75fd00-6eb4-a0f4-40be-9e0ea11fbf90",
+				"c52d2ba3-3eb0-536b-a91e-87438c9f1910"
 			],
 			"owner": "699425"
 		},
@@ -58,6 +59,7 @@
 				"734b2868-631b-2288-71d0-0d22da21070f",
 				"c84a5cf0-b44c-7aea-d56c-a4a98e54b7dd",
 				"fd9d2b67-b2f9-93e2-9652-d0e31be7e659",
+				"bbcd6358-db92-801a-d4c6-c750f1fd781d",
 				"35a40a05-7aa6-d57e-7c27-f0030f31e694",
 				"a7b2cd63-f52b-4698-72e3-7e2422e8f41b",
 				"89ba72d6-fd54-abff-3cf4-fd9fac236c10",
@@ -797,7 +799,7 @@
 		},
 		{
 			"id": "677d2925-a9e1-5fe2-6dea-1c3b1e8b220e",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic OTE1MmI2MmYtZDJmOC00OTQwLWFkMTItYzRkZTY5ZjYyOWYzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -813,12 +815,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476966199099,
+			"time": 1477503177102,
 			"name": "Rerun - Create Job",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
@@ -989,7 +990,7 @@
 		},
 		{
 			"id": "8ce8a578-51f8-6dd3-d1ce-07cc96d4df0f",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic OTE1MmI2MmYtZDJmOC00OTQwLWFkMTItYzRkZTY5ZjYyOWYzOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_rerun}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1005,7 +1006,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477404195789,
+			"time": 1477503172813,
 			"name": "Rerun - Status",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
@@ -1229,6 +1230,56 @@
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
+		},
+		{
+			"id": "bbcd6358-db92-801a-d4c6-c750f1fd781d",
+			"headers": "Content-Type: application/json\nAuthorization: Basic e3tBUEkgS2V5fX06\n",
+			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&keyword=^Serv.*[Ww][Oo0][j-s][j-s].*(ing)$",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_regex = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        found_regex = found_regex && JSON.stringify(data.data[i]).match(/Serv.*[Ww][Oo0][j-s][j-s].*(ing)/);\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified regular expression\"] = found_regex;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1477676751146,
+			"name": "List Services with regex",
+			"description": "",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
+		},
+		{
+			"id": "c52d2ba3-3eb0-536b-a91e-87438c9f1910",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/service",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1477676982376,
+			"name": "Register Asynch Service",
+			"description": "",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"responses": [],
+			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"true\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "c773461b-5e85-3686-4761-8d5af5897bd2",
@@ -1555,7 +1606,7 @@
 			"url": "https://pz-gateway.{{domain}}/job/foo",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < LOW > > > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
-			"method": "DELETE",
+			"method": "GET",
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
@@ -1567,7 +1618,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477327448455,
+			"time": 1477503596789,
 			"name": "Job Not Found - GET",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
