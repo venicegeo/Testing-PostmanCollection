@@ -1266,7 +1266,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_asynch\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1274,7 +1274,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477676982376,
+			"time": 1477687936360,
 			"name": "Register Asynch Service",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",

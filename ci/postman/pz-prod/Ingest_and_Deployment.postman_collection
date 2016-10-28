@@ -2123,7 +2123,7 @@
 		},
 		{
 			"id": "c10a59ee-d08c-48c5-b8b7-676345673a90",
-			"headers": "Content-Type: application/json\nAuthorization: Basic OTE1MmI2MmYtZDJmOC00OTQwLWFkMTItYzRkZTY5ZjYyOWYzOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_shape}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2131,7 +2131,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200 (Bug #9734)\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2139,7 +2139,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477669429699,
+			"time": 1477688700965,
 			"name": "Update Shape Metadata",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
