@@ -55,6 +55,7 @@
 				"e324b993-d03c-abc4-7ac6-ec0a6fc13535",
 				"e1dbba77-3657-4875-33cb-6368e9fd9f2b",
 				"10d11622-39d1-414f-b959-d153973849e2",
+				"c10a59ee-d08c-48c5-b8b7-676345673a90",
 				"234e6a56-d982-5de3-453c-dcae55f93f87",
 				"33c9840f-a208-1d25-f86a-b514c7f6434a",
 				"14b5af2a-5436-ef79-8f5a-228735052685",
@@ -358,7 +359,7 @@
 		},
 		{
 			"id": "234e6a56-d982-5de3-453c-dcae55f93f87",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_shape}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -366,7 +367,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Update was successful\"] = data.data.metadata.name === 'foo';\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -374,12 +375,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476723989609,
+			"time": 1477926140700,
 			"name": "Get Shape Metadata",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"responses": [],
-			"folder": "cc9daf7d-42ff-f62e-baf6-6982777d3ca2",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -703,7 +703,7 @@
 		},
 		{
 			"id": "4401d44a-fb95-e00b-1a3e-cad4dc1d1a60",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_external}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -711,7 +711,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_external');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'geojson'\"] = data.data.dataType.type === 'raster';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === 'PiazzaAustere03@Piazza.geointservices.io';\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_external');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'My Test raster external file';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 496147.97;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 496545.97;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 5422119.88;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 5422343.88;\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_external');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'geojson'\"] = data.data.dataType.type === 'raster';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_external');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'My Test raster external file';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 496147.97;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 496545.97;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 5422119.88;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 5422343.88;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -719,7 +719,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477401441046,
+			"time": 1477507031799,
 			"name": "Get External Raster Metadata Details",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -785,7 +785,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Large - Get GeoJSON dataId');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_geojson_large\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Large - Get GeoJSON dataId');\n            wait(3000); // Longer because of larger file.\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_geojson_large\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -793,7 +793,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476733959441,
+			"time": 1478003653197,
 			"name": "Large - Get GeoJSON dataId",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1080,7 +1080,7 @@
 		},
 		{
 			"id": "6de3ba54-091d-d836-bea1-960749b10f52",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic OTE1MmI2MmYtZDJmOC00OTQwLWFkMTItYzRkZTY5ZjYyOWYzOg==\n",
 			"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId_raster}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1088,7 +1088,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 403 (Bug #9242)\"] = responseCode.code === 403;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Error response\"] = data.type.match(/[Ee]rror/);\n}\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Unable to delete message\"] = data.message.match(/unable.*delet/i);\n    tests[\"Deployment Id included in message\"] = data.message.match(postman.getEnvironmentVariable('dataId_raster'));\n    tests[\"Deployment Group Id included in message\"] = data.message.match(postman.getEnvironmentVariable('deploymentGroupId'));\n}",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 500\"] = responseCode.code === 500;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Error response\"] = data.type.match(/[Ee]rror/);\n}\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Unable to delete message\"] = data.message.match(/unable.*delet/i);\n    tests[\"Deployment Id included in message\"] = data.message.match(postman.getEnvironmentVariable('dataId_raster'));\n    tests[\"Deployment Group Id included in message\"] = data.message.match(postman.getEnvironmentVariable('deploymentGroupId'));\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1096,7 +1096,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476897673813,
+			"time": 1477658126311,
 			"name": "Delete Deployment in Group",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1823,7 +1823,7 @@
 		},
 		{
 			"id": "aa468395-a868-76ff-b905-56f2a002ea99",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_text}}",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < LOW > > > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -1831,7 +1831,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_text');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'text'\"] = data.data.dataType.type === 'text';\n}\nif (testLevels(tests, data, 'data.dataType.content')) {\n    tests[\"Correct Content\"] = data.data.dataType.content === postman.getEnvironmentVariable('Ingested Text');\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === 'PiazzaAustere03@Piazza.geointservices.io';\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_text');\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_text');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'text'\"] = data.data.dataType.type === 'text';\n}\nif (testLevels(tests, data, 'data.dataType.content')) {\n    tests[\"Correct Content\"] = data.data.dataType.content === postman.getEnvironmentVariable('Ingested Text');\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_text');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1839,7 +1839,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477401387892,
+			"time": 1477506999518,
 			"name": "Get Text Metadata Details",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1948,7 +1948,7 @@
 		},
 		{
 			"id": "b0ed611f-c055-c916-f590-a62d0801cea1",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_geojson}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1956,7 +1956,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_geojson');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'geojson'\"] = data.data.dataType.type === 'geojson';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === 'PiazzaAustere03@Piazza.geointservices.io';\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_geojson');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'Test.geojson';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 102;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 106;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 0.5;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 4;\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_geojson');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'geojson'\"] = data.data.dataType.type === 'geojson';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_geojson');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'Test.geojson';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 102;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 106;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 0.5;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 4;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1964,7 +1964,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477401399159,
+			"time": 1477507007937,
 			"name": "Get geoJSON Metadata Details",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -2121,16 +2121,16 @@
 			"responses": []
 		},
 		{
-			"id": "c38641a0-3320-2c3e-2597-33c4c173cc3c",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"id": "c10a59ee-d08c-48c5-b8b7-676345673a90",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_shape}}",
 			"preRequestScript": "",
 			"pathVariables": {},
-			"method": "GET",
+			"method": "PUT",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'shapefile'\"] = data.data.dataType.type === 'shapefile';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === 'PiazzaAustere03@Piazza.geointservices.io';\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_shape');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'TestShape.zip';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 102;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 106;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 0.5;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 4;\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.message', 'string')) {\n    tests[\"Updated message\"] = data.data.message.match(/update/i);\n    tests[\"Correct dataId mentioned\"] = data.data.message.match(postman.getEnvironmentVariable('dataId_shape'));\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2138,7 +2138,32 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477401421041,
+			"time": 1477925734533,
+			"name": "Update Shape Metadata",
+			"description": "",
+			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"name\": \"foo\",\r\n\t\"classType\": {\r\n\t\t\"classification\": \"UNCLASSIFIED\"\r\n\t}\r\n}"
+		},
+		{
+			"id": "c38641a0-3320-2c3e-2597-33c4c173cc3c",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_shape}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'shapefile'\"] = data.data.dataType.type === 'shapefile';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_shape');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'foo';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 102;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 106;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 0.5;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 4;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478003615370,
 			"name": "Get Shape Metadata Details",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -2507,7 +2532,7 @@
 		},
 		{
 			"id": "e1f15481-e3fd-64dd-de2d-feef3ce6ffff",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_raster}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2515,7 +2540,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_raster');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'geojson'\"] = data.data.dataType.type === 'raster';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === 'PiazzaAustere03@Piazza.geointservices.io';\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_raster');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'terrametrics.tif';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === -48.52855770516021;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === -48.34313089042421;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === -6.404746816973356;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === -6.182956360425359;\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_raster');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'geojson'\"] = data.data.dataType.type === 'raster';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_raster');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'terrametrics.tif';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === -48.52855770516021;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === -48.34313089042421;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === -6.404746816973356;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === -6.182956360425359;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2523,7 +2548,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477401415283,
+			"time": 1477507016957,
 			"name": "Get Raster Metadata Details",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",

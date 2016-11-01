@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="timestamp" elementType="Argument">
+            <stringProp name="Argument.name">timestamp</stringProp>
+            <stringProp name="Argument.value">${__time(yyyy-MM-dd_HH.mm.ss)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">example.com</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/</stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Plateau on example" enabled="true">
+        <collectionProp name="ultimatethreadgroupdata">
+          <collectionProp name="-1266452074">
+            <stringProp name="49">1</stringProp>
+            <stringProp name="0">0</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="1509345">1200</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="1895774547">
+            <stringProp name="49">1</stringProp>
+            <stringProp name="48909">195</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="49617">210</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="691990238">
+            <stringProp name="49">1</stringProp>
+            <stringProp name="49587">201</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48912">198</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="1508811687">
+            <stringProp name="51">3</stringProp>
+            <stringProp name="49593">207</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48879">186</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="-1933588742">
+            <stringProp name="52">4</stringProp>
+            <stringProp name="49620">213</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48846">174</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="-1786532337">
+            <stringProp name="56">8</stringProp>
+            <stringProp name="49626">219</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48813">162</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="388772171">
+            <stringProp name="1568">11</stringProp>
+            <stringProp name="49653">225</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48780">150</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="1381617231">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="49680">231</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48726">138</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="997952093">
+            <stringProp name="1601">23</stringProp>
+            <stringProp name="49686">237</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48693">126</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="690905459">
+            <stringProp name="1630">31</stringProp>
+            <stringProp name="49713">243</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48660">114</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="-356769522">
+            <stringProp name="1661">41</stringProp>
+            <stringProp name="49719">249</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48627">102</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="502507347">
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="49746">255</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="1815">90</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="-522934713">
+            <stringProp name="1697">56</stringProp>
+            <stringProp name="49773">261</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="1761">78</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="-516277587">
+            <stringProp name="1697">56</stringProp>
+            <stringProp name="49779">267</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="1728">66</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+        </collectionProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+      </kg.apc.jmeter.threads.UltimateThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="EStest" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">./spike/example/${timestamp}/raw.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_Plateau" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String test = &quot;example&quot;;
+String folder = &quot;./spike/&quot; + test + &quot;/&quot; + vars.get(&quot;timestamp&quot;);
+String command_RT = &quot;java -jar ./apache-jmeter-3.0/lib/ext/CMDRunner.jar --tool Reporter --generate-png &quot; + folder + &quot;/graphs/ResponseTimes.png --input-jtl &quot; + folder + &quot;/raw.csv --plugin-type ResponseTimesOverTime&quot;;
+Process process = Runtime.getRuntime().exec(command_RT);
+String command_RC = &quot;java -jar ./apache-jmeter-3.0/lib/ext/CMDRunner.jar --tool Reporter --generate-png &quot; + folder + &quot;/graphs/ResponseCodes.png --input-jtl &quot; + folder + &quot;/raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+Process process = Runtime.getRuntime().exec(command_RC);
+String command_AT = &quot;java -jar ./apache-jmeter-3.0/lib/ext/CMDRunner.jar --tool Reporter --generate-png &quot; + folder + &quot;/graphs/ActiveThreads.png --input-jtl &quot; + folder + &quot;/raw.csv --plugin-type ThreadStateOverTime&quot;;
+Process process = Runtime.getRuntime().exec(command_AT);
+String command_TvT = &quot;java -jar ./apache-jmeter-3.0/lib/ext/CMDRunner.jar --tool Reporter --generate-png &quot; + folder + &quot;/graphs/TimesVsThreads.png --input-jtl &quot; + folder + &quot;/raw.csv --plugin-type TimesVsThreads --hide-low-counts 6&quot;;
+Process process = Runtime.getRuntime().exec(command_TvT);
+System.out.println(&quot;[UTC &quot; + new java.text.SimpleDateFormat(&quot;HH:mm:ss&quot;, Locale.US).format(new Date()) + &quot;] - The test for &apos;&quot; + folder + &quot;&apos; has completed.  Delay underway before next test.&quot;);
+Thread.sleep(3600000);
+System.out.println(&quot;[UTC &quot; + new java.text.SimpleDateFormat(&quot;HH:mm:ss&quot;, Locale.US).format(new Date()) + &quot;] - Delay complete - starting next test.&quot;);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="50K on example" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">50000</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
+        <longProp name="ThreadGroup.start_time">1471965398000</longProp>
+        <longProp name="ThreadGroup.end_time">1471965398000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">application/json</stringProp>
+          <stringProp name="HTTPSampler.path">/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">./sequential/example/${timestamp}/raw.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="log_sequential" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1473275601000</longProp>
+        <longProp name="ThreadGroup.end_time">1473275601000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">String test = &quot;example&quot;;
+String folder = &quot;./sequential/&quot; + test + &quot;/&quot; + vars.get(&quot;timestamp&quot;);
+String command_RT = &quot;java -jar ./apache-jmeter-3.0/lib/ext/CMDRunner.jar --tool Reporter --generate-png &quot; + folder + &quot;/graphs/ResponseTimes.png --input-jtl &quot; + folder + &quot;/raw.csv --plugin-type ResponseTimesOverTime&quot;;
+Process process = Runtime.getRuntime().exec(command_RT);
+String command_RC = &quot;java -jar ./apache-jmeter-3.0/lib/ext/CMDRunner.jar --tool Reporter --generate-png &quot; + folder + &quot;/graphs/ResponseCodes.png --input-jtl &quot; + folder + &quot;/raw.csv --plugin-type ResponseCodesPerSecond&quot;;
+Process process = Runtime.getRuntime().exec(command_RC);
+System.out.println(&quot;[UTC &quot; + new java.text.SimpleDateFormat(&quot;HH:mm:ss&quot;, Locale.US).format(new Date()) + &quot;] - The test for &apos;&quot; + folder + &quot;&apos; has completed.  Delay underway before next test.&quot;);
+Thread.sleep(3600000);
+System.out.println(&quot;[UTC &quot; + new java.text.SimpleDateFormat(&quot;HH:mm:ss&quot;, Locale.US).format(new Date()) + &quot;] - Delay complete - starting next test.&quot;);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
