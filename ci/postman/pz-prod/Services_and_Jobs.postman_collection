@@ -469,7 +469,7 @@
 		},
 		{
 			"id": "35a40a05-7aa6-d57e-7c27-f0030f31e694",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&page=1",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -479,14 +479,17 @@
 			"version": 2,
 			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_cancel'));\n        }\n    }\n    if (testLevels(tests, data, 'pagination.count')) {\n        tests[\"Displays second page\"] = Math.min(200, Math.max(data.pagination.count - 200, 0)) == data.data.length;\n    }\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Displays second page\"] = data.pagination.page == 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Correct perPage\"] = data.pagination.perPage == 200;\n}\nif (testLevels(tests, data, 'pagination.sortBy')) {\n    tests[\"Correct sortBy\"] = data.pagination.sortBy == 'resourceMetadata.createdOn';\n}\nif (testLevels(tests, data, 'pagination.order')) {\n    tests[\"Correct order\"] = data.pagination.order == 'desc';\n}\n\ntests[\"Service not found in list\"] = !found_service;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
-			"time": 1477311449485,
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478004450642,
 			"name": "List Services Pagination",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"timestamp": null,
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -614,7 +617,7 @@
 		},
 		{
 			"id": "4d9dac29-bdb0-31b9-b4a1-b80f44b2b531",
-			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -624,14 +627,17 @@
 			"version": 2,
 			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 400 (Bug #7542)\"] = responseCode.code === 400;\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Missing type\"] = data.message.match(/type/i);\n}",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
-			"time": 1477325120157,
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478004503814,
 			"name": "Create Job - No type",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"timestamp": null,
 			"rawModeData": "{\r\n\t\"data\": {\r\n\t\t\"dataInputs\": {},\r\n\t\t\"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n\t\t\"serviceId\": \"{{serviceId}}\"\r\n\t}\r\n}"
 		},
 		{
@@ -903,7 +909,7 @@
 		},
 		{
 			"id": "734b2868-631b-2288-71d0-0d22da21070f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&keyword=integration",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -913,14 +919,17 @@
 			"version": 2,
 			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(/integration/i);\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified keyword\"] = found_keyword;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
-			"time": 1477082472923,
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478004438741,
 			"name": "List Services with keyword",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"timestamp": null,
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -973,7 +982,7 @@
 		},
 		{
 			"id": "7c0a2afb-01f8-f75b-abd4-a166b847c615",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -983,14 +992,17 @@
 			"version": 2,
 			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_cancel'));\n        }\n    }\n}\n\ntests[\"Service not found in list\"] = !found_service;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
-			"time": 1476993492152,
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478004483288,
 			"name": "Deleted Service - List Services",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"timestamp": null,
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
