@@ -785,7 +785,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Large - Get GeoJSON dataId');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_geojson_large\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Large - Get GeoJSON dataId');\n            wait(3000); // Longer because of larger file.\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_geojson_large\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -793,7 +793,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476733959441,
+			"time": 1478003653197,
 			"name": "Large - Get GeoJSON dataId",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -2147,7 +2147,7 @@
 		},
 		{
 			"id": "c38641a0-3320-2c3e-2597-33c4c173cc3c",
-			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_shape}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2155,7 +2155,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'shapefile'\"] = data.data.dataType.type === 'shapefile';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_shape');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'TestShape.zip';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 102;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 106;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 0.5;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 4;\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}\nif (testLevels(tests, data, 'data.dataType.type')) {\n    tests[\"Type is 'shapefile'\"] = data.data.dataType.type === 'shapefile';\n}\nif (testLevels(tests, data, 'data.metadata.description')) {\n    tests[\"Correct Description\"] = data.data.metadata.description === 'A file for integration tests.';\n}\nif (testLevels(tests, data, 'data.metadata.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.metadata.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.metadata.createdOn', 'string')) {\n    tests[\"Date Generated\"] = data.data.metadata.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.metadata.createdOn)) <= 1800000;\n}\nif (testLevels(tests, data, 'data.metadata.createdByJobId')) {\n    tests[\"Correct createdByJobId\"] = data.data.metadata.createdByJobId === postman.getEnvironmentVariable('jobId_shape');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Correct name\"] = data.data.metadata.name === 'foo';\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minX')) {\n    tests[\"Correct minX\"] = data.data.spatialMetadata.minX === 102;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxX')) {\n    tests[\"Correct maxX\"] = data.data.spatialMetadata.maxX === 106;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.minY')) {\n    tests[\"Correct minY\"] = data.data.spatialMetadata.minY === 0.5;\n}\nif (testLevels(tests, data, 'data.spatialMetadata.maxY')) {\n    tests[\"Correct maxY\"] = data.data.spatialMetadata.maxY === 4;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2163,7 +2163,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477507024554,
+			"time": 1478003615370,
 			"name": "Get Shape Metadata Details",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
