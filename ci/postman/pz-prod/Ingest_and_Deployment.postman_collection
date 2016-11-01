@@ -55,8 +55,8 @@
 				"e324b993-d03c-abc4-7ac6-ec0a6fc13535",
 				"e1dbba77-3657-4875-33cb-6368e9fd9f2b",
 				"10d11622-39d1-414f-b959-d153973849e2",
-				"234e6a56-d982-5de3-453c-dcae55f93f87",
 				"c10a59ee-d08c-48c5-b8b7-676345673a90",
+				"234e6a56-d982-5de3-453c-dcae55f93f87",
 				"33c9840f-a208-1d25-f86a-b514c7f6434a",
 				"14b5af2a-5436-ef79-8f5a-228735052685",
 				"cd64dd9a-30ca-c8da-e1ce-4e17e99dfb43",
@@ -359,7 +359,7 @@
 		},
 		{
 			"id": "234e6a56-d982-5de3-453c-dcae55f93f87",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_shape}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -367,7 +367,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}\nif (testLevels(tests, data, 'data.metadata.name')) {\n    tests[\"Update was successful\"] = data.data.metadata.name === 'foo';\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -375,12 +375,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476723989609,
+			"time": 1477926140700,
 			"name": "Get Shape Metadata",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"responses": [],
-			"folder": "cc9daf7d-42ff-f62e-baf6-6982777d3ca2",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
@@ -2123,7 +2122,7 @@
 		},
 		{
 			"id": "c10a59ee-d08c-48c5-b8b7-676345673a90",
-			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_shape}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2131,7 +2130,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200 (Bug #9734)\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.dataId')) {\n    tests[\"Correct dataId returned\"] = data.data.dataId === postman.getEnvironmentVariable('dataId_shape');\n}",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.message', 'string')) {\n    tests[\"Updated message\"] = data.data.message.match(/update/i);\n    tests[\"Correct dataId mentioned\"] = data.data.message.match(postman.getEnvironmentVariable('dataId_shape'));\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2139,12 +2138,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477688700965,
+			"time": 1477925734533,
 			"name": "Update Shape Metadata",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"responses": [],
-			"rawModeData": "{\n\t\"metadata\": {\n\t\t\"name\": \"foo\"\n\t}\n}"
+			"rawModeData": "{\r\n\t\"name\": \"foo\",\r\n\t\"classType\": {\r\n\t\t\"classification\": \"UNCLASSIFIED\"\r\n\t}\r\n}"
 		},
 		{
 			"id": "c38641a0-3320-2c3e-2597-33c4c173cc3c",
