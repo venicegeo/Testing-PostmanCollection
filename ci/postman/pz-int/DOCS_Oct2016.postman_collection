@@ -186,125 +186,6 @@
 			"response": []
 		},
 		{
-			"name": "3.1 Status of Local Image",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "3.1.1 Get Image Data",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "3.1.2 Get Image File",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "3.1.2 WMS Deployment",
 			"event": [
 				{
@@ -403,44 +284,6 @@
 				"url": "https://pz-gateway.int.geointservices.io/",
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Local Data",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
-						"description": ""
-					}
-				],
 				"body": {
 					"mode": "formdata",
 					"formdata": []
@@ -1283,6 +1126,163 @@
 					{
 						"key": "Authorization",
 						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Status of Local Image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"dataId_localimage\",data.data.result.dataId);\n"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/job/{{jobId_localimage}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.1 Get Image Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId_localimage}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.2 Get Image File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/file/{{dataId_localimage}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Local Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "{{apikey}}",
+						"password": "",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://pz-gateway.{{domain}}/data/{{dataId_localimage}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
 						"description": ""
 					}
 				],
