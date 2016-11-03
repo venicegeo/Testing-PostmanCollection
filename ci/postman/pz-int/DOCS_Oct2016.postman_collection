@@ -385,7 +385,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"jobId_geojson\",data.data.jobId);\n    \nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 60000);\n"
+						"exec": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"jobId_geojson\",data.data.jobId);\n    \nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 5000);\n"
 					}
 				}
 			],
