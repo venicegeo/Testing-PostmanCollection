@@ -20,7 +20,8 @@ snkFile = open(os.path.join(folder, target), 'wb')
 csvWrite = csv.writer(snkFile)
 
 # Assume that the folders within "folder" are timestamps for when the test was run.
-timestamps = [f for f in os.listdir(folder) if os.path.isdir(os.path.join(folder, f))]
+# Only include directories that contain "dataFilename".
+timestamps = [f for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f, dataFilename))]
 
 # Append header from the first file.
 with open(os.path.join(folder, timestamps[0], dataFilename)) as firstFile:
@@ -31,7 +32,8 @@ with open(os.path.join(folder, timestamps[0], dataFilename)) as firstFile:
 
 # For each timestamp, open a csv reader for the file {folder}/{timestamp}/{dataFilename}.
 for timestamp in timestamps:
-	with open(os.path.join(folder, timestamp, dataFilename)) as srcFile:
+	sourceFilepath = os.path.join(folder, timestamp, dataFilename)
+	with open(sourceFilepath) as srcFile:
 		csvRead = csv.reader(srcFile, delimiter=';')
 		# Move past the first (header) line.
 		next(csvRead)
