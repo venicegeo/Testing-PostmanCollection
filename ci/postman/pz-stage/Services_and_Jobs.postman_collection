@@ -1790,7 +1790,7 @@
 			"id": "fef41362-f65b-83c1-cde6-bcd71870cc49",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
@@ -1804,7 +1804,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478000474950,
+			"time": 1478263758440,
 			"name": "Create Asynch Job",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
