@@ -31,7 +31,7 @@ for space in $spaces; do
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-	cmd="newman -x -e $envfile -c"
+	cmd="newman --requestTimeout 120000 -x -e $envfile -c"
 
 	latch=0
 

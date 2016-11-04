@@ -5,6 +5,51 @@
 	"order": [],
 	"folders": [
 		{
+			"id": "c7a2a43d-e1c5-8fda-1e2e-589814dbe35c",
+			"name": "Hello - 1_Critical",
+			"description": "",
+			"order": [
+				"64f595c8-17c9-00c6-1cd5-a2777c20c052",
+				"2374cb04-f879-8d11-3fdf-c6b331bdf58f",
+				"511a52b2-092f-11ec-ae3e-b78c09821060",
+				"d3909c48-230d-0a50-5be4-032ed9e2735b"
+			],
+			"owner": "699425",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
+		},
+		{
+			"id": "ff19cac1-72d1-4bd3-70ce-9b77174fb1c9",
+			"name": "Hello - 2_Important",
+			"description": "",
+			"order": [
+				"602d3710-9320-edc9-4b2e-b6b09bcc1d3a",
+				"377f1837-7f14-b6be-b35c-bbfb461ede3b",
+				"6acfac59-26f8-f983-2684-f7143d4ae9e6",
+				"e9099ce0-e930-90ce-a048-0c1a363ef840",
+				"ae59fdb2-dbf9-0841-1d9c-41ef4604f86e",
+				"dc387304-e304-6f7d-3c20-68fccb741845",
+				"eb1e456a-1bc2-4c49-3203-954f387dde53",
+				"e63bcc82-1021-9517-03a3-9771141bdfa5",
+				"d4b91e08-c1e4-d5f3-38b3-5bd8e45c1f1a",
+				"669ebced-0832-af29-f93d-4d55c467fb7b"
+			],
+			"owner": "699425",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
+		},
+		{
+			"id": "35c743d1-078b-1560-4d69-afb668adf4c5",
+			"name": "Hello - 4_Teardown",
+			"description": "",
+			"order": [
+				"74720839-61bd-11a1-5cd4-bf306369804b",
+				"4c2457a1-ccac-5ae1-61d4-b5a785ad33ee",
+				"c06f7f3d-1780-b1ca-100f-f36798db7e99",
+				"0b26d6c2-d362-de7c-5359-acf6ebab5e81"
+			],
+			"owner": "699425",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
+		},
+		{
 			"id": "99262cd1-2504-0c3f-4281-f162b21ceef0",
 			"name": "Preview Gen - 1_Critical",
 			"description": "",
@@ -61,7 +106,8 @@
 				"4880b561-9c3a-1cd3-c5ae-366022a7e6fc",
 				"ec23a0da-5633-9d1c-85e6-dfd6b0ed8935",
 				"128d85c6-d0d8-68b8-9c2d-811a3be24274",
-				"64e46704-4648-1102-c919-d1216e32a25b"
+				"64e46704-4648-1102-c919-d1216e32a25b",
+				"6a5db5bd-0b12-b811-3cc3-efadd12bc1f6"
 			],
 			"owner": "699425",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
@@ -116,6 +162,31 @@
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
+		},
+		{
+			"id": "0b26d6c2-d362-de7c-5359-acf6ebab5e81",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_lightning}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478206276737,
+			"name": "Delete Lightning Data",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": [],
+			"rawModeData": ""
 		},
 		{
 			"id": "11289d52-5b7a-f6e8-f286-209aa8665ac7",
@@ -186,6 +257,25 @@
 			"responses": []
 		},
 		{
+			"id": "2374cb04-f879-8d11-3fdf-c6b331bdf58f",
+			"headers": "",
+			"url": "https://pzsvc-hello.{{domain}}/hello",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'greeting', 'string')) {\n    tests[\"Says hello!\"] = data.greeting.match(/h(i|ello)/i);\n}\nif (testLevels(tests, data, 'countSquared')) {\n    tests[\"Correct countSquared value\"] = data.countSquared = -1;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1478197489001,
+			"name": "GET hello",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
 			"id": "2e0c4d1c-df2a-9552-265b-a4e67e4aaf89",
 			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_async}}",
@@ -208,6 +298,31 @@
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
+		},
+		{
+			"id": "377f1837-7f14-b6be-b35c-bbfb461ede3b",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.jobId', 'string')) {\n    tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId_hello\",data.data.jobId);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478270493989,
+			"name": "Create Hello Job",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": [],
+			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_hello}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\\"name\\\":\\\"Jimmy\\\",\\\"count\\\":8}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"application/json\",          \n            \"type\" : \"text\"\n        }]\n    }\n}"
 		},
 		{
 			"id": "4125c1e3-5f90-a774-5927-0dcdeb290ac1",
@@ -236,7 +351,7 @@
 			"id": "4880b561-9c3a-1cd3-c5ae-366022a7e6fc",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_norm}}",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < PREVIEW - TEAR-DOWN > > > > > > > > >\");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
@@ -250,12 +365,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478111379248,
+			"time": 1478206651606,
 			"name": "Delete Normal Service",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
-			"responses": [],
-			"folder": "6f667756-0bbd-bdae-a365-66b143ee3b3f"
+			"responses": []
 		},
 		{
 			"id": "4a8fad64-32cc-d966-11f1-5bc5df124705",
@@ -276,6 +390,30 @@
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"source\": {\n        \"domain\": \"s3.amazonaws.com\",\n        \"bucketName\": \"pz-svcs-prevgen\",\n        \"fileName\": \"nasa_land_ocean_ice.tif\"\n    },\n    \"function\": \"crop\",\n    \"bounds\": {\n        \"minx\": -140.00,\n        \"miny\": 10.00,\n        \"maxx\": -60.00,\n        \"maxy\": 70.00\n    }\n}"
+		},
+		{
+			"id": "4c2457a1-ccac-5ae1-61d4-b5a785ad33ee",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_lightning}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478265267221,
+			"name": "Delete Lightning Service",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
 		},
 		{
 			"id": "4c60494e-9a7e-ec9c-bb79-f29453fe3f14",
@@ -326,6 +464,93 @@
 			"responses": []
 		},
 		{
+			"id": "511a52b2-092f-11ec-ae3e-b78c09821060",
+			"headers": "Content-Type: application/json\n",
+			"url": "https://pzsvc-hello.{{domain}}/hello",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'greeting', 'string')) {\n    tests[\"Says hello!\"] = data.greeting.match(/h(i|ello)/i);\n    tests[\"Uses my name\"] = data.greeting.match(/james/i);\n}\nif (testLevels(tests, data, 'countSquared')) {\n    tests[\"Correct countSquared value\"] = data.countSquared == 9;\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1478198046643,
+			"name": "POST hello",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"James\",\n\t\"count\": 3\n}"
+		},
+		{
+			"id": "602d3710-9320-edc9-4b2e-b6b09bcc1d3a",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/service",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < HELLO - IMPORTANT > > > > > > > > >\");\nconsole.log(\"      These tests represent important features.      \");\nconsole.log(\"Use extreme caution when pushing if these tests fail.\");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_hello\",data.data.serviceId);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478206376597,
+			"name": "Register Hello Service",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": [],
+			"rawModeData": "{\n\t\"url\" : \"https://pzsvc-hello.{{domain}}/hello\",\n\t\"timeout\" : \"180000\",\n\t\"method\" : \"POST\",\n\t\"contractUrl\" : \"https://pzsvc-hello.{{domain}}/hello\",\n\t\"resourceMetadata\" : {\n\t\t\"name\" : \"hello test\",\n\t\t\"description\" : \"hello says hello ... with lightning!\",\n\t\t\"classType\": {\n\t\t\t\"classification\": \"UNCLASSIFIED\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "64f595c8-17c9-00c6-1cd5-a2777c20c052",
+			"headers": "",
+			"url": "https://pzsvc-hello.{{domain}}/",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < HELLO - CRITICAL > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Says Hi!\"] = responseBody.match(/h(i|ello)/i);\n\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\n\npostman.setEnvironmentVariable('serviceId_hello','');\npostman.setEnvironmentVariable('jobId_hello','');\npostman.setEnvironmentVariable('dataId_hello','');\npostman.setEnvironmentVariable('serviceId_lightning','');\npostman.setEnvironmentVariable('jobId_lightning','');\npostman.setEnvironmentVariable('dataId_lightning','');",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1478263940186,
+			"name": "pzsvc-hello ... says hello ...",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
+			"id": "669ebced-0832-af29-f93d-4d55c467fb7b",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId_lightning}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'strike')) {\n    tests[\"'strike' is a boolean\"] = typeof data.strike === 'boolean';\n    if (testLevels(tests, data, 'lat')) {\n        tests[\"Valid lat\"] = data.lat >= -180 && data.lat <= 180;\n    }\n    if (testLevels(tests, data, 'lon')) {\n        tests[\"Valid lon\"] = data.lon >= -90 && data.lon <= 90;\n    }\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478270563638,
+			"name": "Get Resulting Lightning dataId",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
 			"id": "698fd6c3-dbfd-7751-5224-47929f94cfd8",
 			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_norm}}",
@@ -345,6 +570,55 @@
 			},
 			"time": 1478111181100,
 			"name": "Check Normal Job Status",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
+			"id": "6a5db5bd-0b12-b811-3cc3-efadd12bc1f6",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_async}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478205227286,
+			"name": "Delete Async Data",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "6acfac59-26f8-f983-2684-f7143d4ae9e6",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId_hello}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Check Hello Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_hello\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478203905223,
+			"name": "Check Hello Job Status",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
@@ -418,6 +692,30 @@
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_async}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\\"source\\\":{\\\"domain\\\":\\\"s3.amazonaws.com\\\",\\\"bucketName\\\":\\\"pz-svcs-prevgen\\\",\\\"fileName\\\":\\\"nasa_land_ocean_ice.tif\\\"},\\\"function\\\":\\\"crop\\\",\\\"bounds\\\":{\\\"minx\\\":-140.00,\\\"miny\\\":10.00,\\\"maxx\\\":-60.00,\\\"maxy\\\":70.00}}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}"
+		},
+		{
+			"id": "74720839-61bd-11a1-5cd4-bf306369804b",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_hello}}",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < HELLO - TEAR-DOWN > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478206460629,
+			"name": "Delete Hello Service",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
 		},
 		{
 			"id": "9c9cb011-a404-63d0-9a8b-a6d9145a06be",
@@ -513,10 +811,33 @@
 			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_norm}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\\"source\\\":{\\\"domain\\\":\\\"s3.amazonaws.com\\\",\\\"bucketName\\\":\\\"pz-svcs-prevgen\\\",\\\"fileName\\\":\\\"nasa_land_ocean_ice.tif\\\"},\\\"function\\\":\\\"crop\\\",\\\"bounds\\\":{\\\"minx\\\":-140.00,\\\"miny\\\":10.00,\\\"maxx\\\":-60.00,\\\"maxy\\\":70.00}}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}"
 		},
 		{
+			"id": "ae59fdb2-dbf9-0841-1d9c-41ef4604f86e",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId_hello}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'greeting', 'string')) {\n    tests[\"Says hello!\"] = data.greeting.match(/h(i|ello)/i);\n    tests[\"Uses my name\"] = data.greeting.match(/jimmy/i);\n}\nif (testLevels(tests, data, 'countSquared')) {\n    tests[\"Correct countSquared value\"] = data.countSquared == 64;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478199952953,
+			"name": "Get Resulting Hello dataId",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
 			"id": "bf32cc12-f3d0-3e65-1145-8ff1d3d46ef1",
 			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
 			"url": "https://pz-svcs-prevgen.{{domain}}/cropasync/job/{{jobId}}",
-			"preRequestScript": "",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < PREVIEW - LOW > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
@@ -530,12 +851,36 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478104451353,
+			"time": 1478206627016,
 			"name": "Delete Job",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
+			"id": "c06f7f3d-1780-b1ca-100f-f36798db7e99",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_hello}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478206173473,
+			"name": "Delete Hello Data",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
-			"folder": "45030304-abb8-a6fd-616c-f3c7d929ac61"
+			"rawModeData": ""
 		},
 		{
 			"id": "c1f30a65-8da7-5af6-e11c-c92bcf853274",
@@ -582,10 +927,29 @@
 			"rawModeData": "{\n    \"source\": {\n        \"domain\": \"s3.amazonaws.com\",\n        \"bucketName\": \"pz-svcs-prevgen\",\n        \"fileName\": \"nasa_land_ocean_ice.tif\"\n    },\n    \"function\": \"crop\",\n    \"bounds\": {\n        \"minx\": -140.00,\n        \"miny\": 10.00,\n        \"maxx\": -60.00,\n        \"maxy\": 70.00\n    }\n}"
 		},
 		{
+			"id": "d3909c48-230d-0a50-5be4-032ed9e2735b",
+			"headers": "",
+			"url": "https://pzsvc-hello.{{domain}}/lightning",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'strike')) {\n    tests[\"'strike' is a boolean\"] = typeof data.strike === 'boolean';\n    if (testLevels(tests, data, 'lat')) {\n        tests[\"Valid lat\"] = data.lat >= -180 && data.lat <= 180;\n    }\n    if (testLevels(tests, data, 'lon')) {\n        tests[\"Valid lon\"] = data.lon >= -90 && data.lon <= 90;\n    }\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1478198522743,
+			"name": "lightning",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
 			"id": "d46cb0b8-1e39-68a1-d028-45d26dcd4727",
 			"headers": "",
 			"url": "https://pz-svcs-prevgen.{{domain}}/",
-			"preRequestScript": null,
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < PREVIEW - CRITICAL > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "GET",
 			"data": null,
@@ -594,17 +958,138 @@
 			"tests": "tests[\"Says Greetings!\"] = responseBody.match(/greet/i);\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('croppedURL','https://pz-gateway.geointservices.io/fakeurl');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('serviceId_norm','');\npostman.setEnvironmentVariable('jobId_norm','');\npostman.setEnvironmentVariable('dataId_norm','');\npostman.setEnvironmentVariable('serviceId_async','');\npostman.setEnvironmentVariable('jobId_async','');\npostman.setEnvironmentVariable('dataId_async','');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1478113621664,
+			"time": 1478206506065,
 			"name": "Hello Preview Generator!",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
 		{
+			"id": "d4b91e08-c1e4-d5f3-38b3-5bd8e45c1f1a",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_lightning}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478265381727,
+			"name": "Check Resulting Lightning dataId",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
+			"id": "dc387304-e304-6f7d-3c20-68fccb741845",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/service",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_lightning\",data.data.serviceId);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478203708469,
+			"name": "Register Lightning Service",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": [],
+			"rawModeData": "{\n\t\"url\" : \"https://pzsvc-hello.{{domain}}/lightning\",\n\t\"timeout\" : \"180000\",\n\t\"method\" : \"GET\",\n\t\"contractUrl\" : \"https://pzsvc-hello.{{domain}}/lightning\",\n\t\"resourceMetadata\" : {\n\t\t\"name\" : \"hello test\",\n\t\t\"description\" : \"hello says hello ... with lightning!\",\n\t\t\"classType\": {\n\t\t\t\"classification\": \"UNCLASSIFIED\"\n\t\t}\n\t}\n}"
+		},
+		{
+			"id": "e63bcc82-1021-9517-03a3-9771141bdfa5",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId_lightning}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Check Lightning Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_lightning\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478265472978,
+			"name": "Check Lightning Job Status",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
+			"id": "e9099ce0-e930-90ce-a048-0c1a363ef840",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_hello}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478199866266,
+			"name": "Check Resulting Hello dataId",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
+		},
+		{
+			"id": "eb1e456a-1bc2-4c49-3203-954f387dde53",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.jobId', 'string')) {\n    tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId_lightning\",data.data.jobId);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478270499026,
+			"name": "Create Lightning Job",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": [],
+			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_lightning}}\",\n        \"dataInputs\" : {}, \n        \"dataOutput\": [{\n            \"mimeType\" : \"application/json\",          \n            \"type\" : \"text\"\n        }]\n    }\n}"
+		},
+		{
 			"id": "ec23a0da-5633-9d1c-85e6-dfd6b0ed8935",
 			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_async}}",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
@@ -618,18 +1103,17 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478110060079,
+			"time": 1478206654549,
 			"name": "Delete Asynch Service",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
-			"responses": [],
-			"folder": "6f667756-0bbd-bdae-a365-66b143ee3b3f"
+			"responses": []
 		},
 		{
 			"id": "f12324aa-7eab-7795-40fe-ff46eb2aab49",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/service",
-			"preRequestScript": "",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < PREVIEW - IMPORTANT > > > > > > > > \");\nconsole.log(\"      These tests represent important features.      \");\nconsole.log(\"Use extreme caution when pushing if these tests fail.\");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
@@ -637,14 +1121,17 @@
 			"version": 2,
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_norm\",data.data.serviceId);\n}",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{API Key}}\",\"password\":\"\",\"saveToRequest\":true}",
-			"time": 1478110763285,
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1478206541582,
 			"name": "Register Normal Service",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
-			"folder": "826545a7-9851-46ae-c4ec-fa1966db2362",
-			"timestamp": null,
 			"rawModeData": "{\n\t\"url\" : \"https://pz-svcs-prevgen.{{domain}}/crop\",\n\t\"timeout\" : \"180000\",\n\t\"method\" : \"POST\",\n\t\"contractUrl\" : \"https://pz-svcs-prevgen.{{domain}}/crop\",\n\t\"resourceMetadata\" : {\n\t\t\"name\" : \"pz-svcs-prevgen crop raster test\",\n\t\t\"description\" : \"pz-svcs-prevgen is an awesome sample crop image external service.\",\n\t\t\"classType\": {\n\t\t\t\"classification\": \"UNCLASSIFIED\"\n\t\t}\n\t}\n}"
 		}
 	]
