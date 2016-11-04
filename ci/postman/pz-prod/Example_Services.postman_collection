@@ -303,7 +303,7 @@
 			"id": "377f1837-7f14-b6be-b35c-bbfb461ede3b",
 			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
@@ -317,7 +317,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478199308816,
+			"time": 1478270493989,
 			"name": "Create Hello Job",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
@@ -536,7 +536,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "params",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'greeting', 'string')) {\n    tests[\"Says hello!\"] = data.greeting.match(/h(i|ello)/i);\n    tests[\"Uses my name\"] = data.greeting.match(/jimmy/i);\n}\nif (testLevels(tests, data, 'countSquared')) {\n    tests[\"Correct countSquared value\"] = data.countSquared == 64;\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'strike')) {\n    tests[\"'strike' is a boolean\"] = typeof data.strike === 'boolean';\n    if (testLevels(tests, data, 'lat')) {\n        tests[\"Valid lat\"] = data.lat >= -180 && data.lat <= 180;\n    }\n    if (testLevels(tests, data, 'lon')) {\n        tests[\"Valid lon\"] = data.lon >= -90 && data.lon <= 90;\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -544,7 +544,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478204095067,
+			"time": 1478270563638,
 			"name": "Get Resulting Lightning dataId",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
@@ -1064,7 +1064,7 @@
 			"id": "eb1e456a-1bc2-4c49-3203-954f387dde53",
 			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/job",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
@@ -1078,7 +1078,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478203845433,
+			"time": 1478270499026,
 			"name": "Create Lightning Job",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
