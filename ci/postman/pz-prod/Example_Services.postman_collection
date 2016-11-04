@@ -395,7 +395,7 @@
 			"id": "4c2457a1-ccac-5ae1-61d4-b5a785ad33ee",
 			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_lightning}}",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
@@ -409,7 +409,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478205319404,
+			"time": 1478265267221,
 			"name": "Delete Lightning Service",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
@@ -967,19 +967,13 @@
 		{
 			"id": "d4b91e08-c1e4-d5f3-38b3-5bd8e45c1f1a",
 			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
-			"url": "https://pz-gateway.{{domain}}/data/{{dataId_hello}}",
-			"pathVariables": {},
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_lightning}}",
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"data": [],
 			"dataMode": "params",
-			"name": "Check Resulting Lightning dataId",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1478203964131,
 			"version": 2,
-			"responses": [],
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -988,7 +982,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"folder": "ff19cac1-72d1-4bd3-70ce-9b77174fb1c9"
+			"time": 1478265381727,
+			"name": "Check Resulting Lightning dataId",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"responses": []
 		},
 		{
 			"id": "dc387304-e304-6f7d-3c20-68fccb741845",
@@ -1018,7 +1016,7 @@
 		{
 			"id": "e63bcc82-1021-9517-03a3-9771141bdfa5",
 			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/job/{{jobId_hello}}",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId_lightning}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -1033,7 +1031,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478203892196,
+			"time": 1478265472978,
 			"name": "Check Lightning Job Status",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
