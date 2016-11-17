@@ -290,15 +290,15 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikey\",\"582823c3-511f-4c8d-8b53-6ddef2d46a7a\")",
+			"tests": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikey\",\"2ce0fed6-64f6-471f-b4fd-f6d98f62a426\")",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "582823c3-511f-4c8d-8b53-6ddef2d46a7a",
+				"username": "2ce0fed6-64f6-471f-b4fd-f6d98f62a426",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1479318729683,
+			"time": 1479389894934,
 			"name": "Register Service",
 			"description": "",
 			"collectionId": "57d0153b-1aa8-f739-c498-5f6727c6766e",
