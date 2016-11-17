@@ -463,7 +463,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\nwait(15000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -471,7 +471,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1479393106585,
+			"time": 1479394032064,
 			"name": "Delete Trigger",
 			"description": "",
 			"collectionId": "ac3e08e0-6fc1-d123-0cf7-15627c380807",
