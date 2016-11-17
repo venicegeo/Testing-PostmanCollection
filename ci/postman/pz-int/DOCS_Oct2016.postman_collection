@@ -30,13 +30,14 @@
 		"e9faa79d-5005-32ba-0287-b11f902b4c66",
 		"9ced816c-221d-583d-083b-2510267c1973",
 		"dd6e845c-9f20-0f9a-5d79-9d26a57d8d6e",
-		"e48d5ff3-bd8d-769b-7184-2760c5cf747f",
 		"43a4b81b-2bc3-944e-5f7e-5c812e123ead",
+		"e48d5ff3-bd8d-769b-7184-2760c5cf747f",
 		"11ad8365-a64c-e572-f004-c70ed2191839"
 	],
 	"folders": [],
+	"timestamp": 0,
 	"owner": "699425",
-	"hasRequests": true,
+	"public": false,
 	"requests": [
 		{
 			"id": "049c970a-37e5-ae02-6ffa-91b5bda40f9c",
@@ -599,10 +600,14 @@
 		},
 		{
 			"id": "e48d5ff3-bd8d-769b-7184-2760c5cf747f",
-			"name": "Delete EventType",
-			"description": "",
-			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
+			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\n",
+			"url": "https://pz-gateway.{{domain}}/eventType/{{eventtype_id}}",
+			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -610,11 +615,10 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"url": "https://pz-gateway.{{domain}}/eventType/{{eventtype_id}}",
+			"time": 1479394373004,
+			"name": "Delete EventType",
+			"description": "",
+			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
 			"responses": []
 		},
 		{
