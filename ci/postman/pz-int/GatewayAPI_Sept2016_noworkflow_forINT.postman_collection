@@ -166,10 +166,14 @@
 		},
 		{
 			"id": "2cf79511-5cc0-7810-f2fa-936f89a69203",
-			"name": "Ingest External Raster",
-			"description": "",
-			"collectionId": "57d0153b-1aa8-f739-c498-5f6727c6766e",
+			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.int.geointservices.io/data",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\nwait(30000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -177,14 +181,12 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.int.geointservices.io/data",
-			"responses": []
+			"time": 1479391897808,
+			"name": "Ingest External Raster",
+			"description": "",
+			"collectionId": "57d0153b-1aa8-f739-c498-5f6727c6766e",
+			"responses": [],
+			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
 		},
 		{
 			"id": "331802b4-6c97-ce4f-e26e-5ccdf7b7ebff",
