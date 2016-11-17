@@ -253,10 +253,14 @@
 		},
 		{
 			"id": "43a4b81b-2bc3-944e-5f7e-5c812e123ead",
-			"name": "Delete Trigger",
-			"description": "",
-			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
+			"headers": "Authorization: Basic e3tBUEkgS2V5fX06\n",
+			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\nwait(15000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -264,13 +268,10 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic e3tBUEkgS2V5fX06",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
+			"time": 1479396071647,
+			"name": "Delete Trigger",
+			"description": "",
+			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
 			"responses": []
 		},
 		{

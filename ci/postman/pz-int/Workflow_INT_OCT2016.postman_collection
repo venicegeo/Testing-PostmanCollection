@@ -455,8 +455,8 @@
 		},
 		{
 			"id": "e00a4478-d2c7-fa41-4941-339a7ab1388c",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic e3thcGlrZXl9fTo=\n",
-			"url": "https://pz-gateway.int.geointservices.io/event/{{triggerId}}",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MmNlMGZlZDYtNjRmNi00NzFmLWI0ZmQtZjZkOThmNjJhNDI2Og==\n",
+			"url": "https://pz-gateway.int.geointservices.io/trigger/{{triggerId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "DELETE",
@@ -471,7 +471,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1479394032064,
+			"time": 1479395981624,
 			"name": "Delete Trigger",
 			"description": "",
 			"collectionId": "ac3e08e0-6fc1-d123-0cf7-15627c380807",
