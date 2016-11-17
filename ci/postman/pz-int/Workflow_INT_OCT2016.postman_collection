@@ -255,10 +255,14 @@
 		},
 		{
 			"id": "8c7ce6bd-99e5-2392-dddd-c75e4f6a5214",
-			"name": "Create Event",
-			"description": "",
-			"collectionId": "ac3e08e0-6fc1-d123-0cf7-15627c380807",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\n",
+			"url": "https://pz-gateway.int.geointservices.io/event",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"eventId\",data.data.eventId)",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -266,14 +270,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n \"createdBy\": \"citester\",\n \"data\": {  \n   \"dataId\": \"testId\",\n   \"dataType\": \"raster\",\n   \"epsg\": 3,\n   \"minX\": 1.0,\n   \"minY\": 1.0,\n   \"maxX\": 10.0,\n   \"maxY\": 10.0,\n   \"hosted\": true\n },\n \"eventTypeId\": \"{{eventtype_id}}\"\n}",
-			"tests": "{\n    var data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"eventId\",data.id)\n\n  }",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.int.geointservices.io/event",
-			"responses": []
+			"time": 1479393195261,
+			"name": "Create Event",
+			"description": "",
+			"collectionId": "ac3e08e0-6fc1-d123-0cf7-15627c380807",
+			"responses": [],
+			"rawModeData": "{\n \"createdBy\": \"citester\",\n \"data\": {  \n   \"dataId\": \"testId\",\n   \"dataType\": \"raster\",\n   \"epsg\": 3,\n   \"minX\": 1.0,\n   \"minY\": 1.0,\n   \"maxX\": 10.0,\n   \"maxY\": 10.0,\n   \"hosted\": true\n },\n \"eventTypeId\": \"{{eventtype_id}}\"\n}"
 		},
 		{
 			"id": "92ff7336-22af-19ba-5ad3-4cd126781732",
@@ -454,19 +456,13 @@
 		{
 			"id": "e00a4478-d2c7-fa41-4941-339a7ab1388c",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic e3thcGlrZXl9fTo=\n",
-			"url": "https://pz-gateway.int.geointservices.io/event/{{eventId}}",
-			"pathVariables": {},
+			"url": "https://pz-gateway.int.geointservices.io/event/{{triggerId}}",
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "DELETE",
-			"collectionId": "ac3e08e0-6fc1-d123-0cf7-15627c380807",
 			"data": [],
 			"dataMode": "raw",
-			"name": "Delete Trigger",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1479392512402,
 			"version": 2,
-			"responses": [],
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -475,6 +471,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1479393106585,
+			"name": "Delete Trigger",
+			"description": "",
+			"collectionId": "ac3e08e0-6fc1-d123-0cf7-15627c380807",
+			"responses": [],
 			"rawModeData": "{\r\n  \"eventtype_id\": {{eventtype_id}},\r\n  \"date\": \"2016-06-06T16:30:00.595Z\",\r\n  \"mapping\": {\r\n    \"dataType\": {{type}},\r\n    \"epsg\": 0,\r\n    \"minX\": 0,\r\n    \"minY\": 0,\r\n    \"maxX\": 0,\r\n    \"maxY\": 0,\r\n    \"hosted\": true\r\n  }\r\n}  "
 		},
 		{
