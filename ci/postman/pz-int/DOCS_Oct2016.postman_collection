@@ -150,19 +150,11 @@
 		},
 		{
 			"id": "19c0aaf7-2a6b-50fd-3945-63399c845fed",
-			"name": "3.3 Loading a GeoJSON File",
-			"description": "",
-			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
+			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-			"dataMode": "params",
 			"data": [
 				{
 					"key": "data",
@@ -172,14 +164,24 @@
 				},
 				{
 					"key": "file",
+					"value": "Test.geojson",
 					"type": "file",
 					"enabled": true
 				}
 			],
-			"rawModeData": "",
+			"dataMode": "params",
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_geojson\",data.data.jobId);\n  \nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 60000);  \n",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/data/file",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1479390603561,
+			"name": "3.3 Loading a GeoJSON File",
+			"description": "",
+			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
 			"responses": []
 		},
 		{
@@ -468,7 +470,7 @@
 				}
 			],
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_localimage\",data.data.jobId);\npostman.setEnvironmentVariable(\"apikey\",\"b7d153ec-2480-4da3-84f7-0145cf59a298\")\n\nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 5000);",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_localimage\",data.data.jobId);\nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 5000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -476,7 +478,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1479390560177,
+			"time": 1479391109603,
 			"name": "3.1.1 Loading a Local Image",
 			"description": "",
 			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
@@ -704,19 +706,11 @@
 		},
 		{
 			"id": "fb8d53a3-9a6d-5d56-3bf0-efa1d6c117ee",
-			"name": "4.1 Setup: dog",
-			"description": "",
-			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
+			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-			"dataMode": "params",
 			"data": [
 				{
 					"key": "data",
@@ -726,14 +720,24 @@
 				},
 				{
 					"key": "file",
+					"value": "terrametrics.tif",
 					"type": "file",
 					"enabled": true
 				}
 			],
-			"rawModeData": "",
+			"dataMode": "params",
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/data/file",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1479390699414,
+			"name": "4.1 Setup: dog",
+			"description": "",
+			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
 			"responses": []
 		}
 	]
