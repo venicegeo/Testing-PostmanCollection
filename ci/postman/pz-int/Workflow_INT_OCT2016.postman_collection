@@ -171,15 +171,15 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "{\n    var data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId)\n    postman.setEnvironmentVariable(\"apikey\",\"2ce0fed6-64f6-471f-b4fd-f6d98f62a426\")\n\n  }",
+			"tests": "{\n    var data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId)\n    postman.setEnvironmentVariable(\"apikey\",\"5c3959bc-aa1f-4053-b133-c88f855194a1\")\n\n  }",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "2ce0fed6-64f6-471f-b4fd-f6d98f62a426",
+				"username": "5c3959bc-aa1f-4053-b133-c88f855194a1",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1479389804743,
+			"time": 1479833829237,
 			"name": "Create Event Type",
 			"description": "",
 			"collectionId": "ac3e08e0-6fc1-d123-0cf7-15627c380807",
