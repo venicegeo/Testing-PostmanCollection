@@ -115,7 +115,9 @@
 				"72450ce2-7ba8-b2c3-2bec-c3bb77e59c24",
 				"f0372133-bd20-ded4-91e0-41473ca4e051",
 				"9e2f4848-5071-3690-db28-c2afe3ea79ca",
-				"89cf9440-5759-47e9-6957-3cfac30a819b"
+				"89cf9440-5759-47e9-6957-3cfac30a819b",
+				"2784ced1-e08a-8943-df1b-44bfa5c72ea8",
+				"fa777617-04f6-bbc2-af3c-17a3b262e22b"
 			],
 			"owner": "699425",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
@@ -256,12 +258,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1473955827723,
+			"time": 1478023273713,
 			"name": "Create EventType",
 			"description": "",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
-			"folder": "3107dc0f-c42b-f0c8-b00b-ca317cce8468",
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\",\r\n\t\t\"sampleNest\": {\r\n\t\t    \"someParam\": \"string\"\r\n\t\t}\r\n\t}\r\n}"
 		},
 		{
@@ -416,6 +417,30 @@
 			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50"
 		},
 		{
+			"id": "2784ced1-e08a-8943-df1b-44bfa5c72ea8",
+			"headers": "Content-Type: application/json\nAuthorization: Basic MmNlMGZlZDYtNjRmNi00NzFmLWI0ZmQtZjZkOThmNjJhNDI2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/event/{{triggerId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 404 (Bug #11058)\"] = responseCode.code === 404;\n\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Not found / exist message\"] = data.message.match(/[Nn]o.*(([Ee]xist)|([Ff]ound))/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1479399827437,
+			"name": "Get Trigger through /event",
+			"description": "Check that a trigger cannot be retrieved through the /event endpoint.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
 			"id": "2b19c954-d145-ead7-60e9-effb67becc69",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
@@ -434,7 +459,7 @@
 			},
 			"time": 1477488415368,
 			"name": "Delete Trigger",
-			"description": "",
+			"description": "Delete the trigger used throughout this collection.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
 			"rawModeData": ""
@@ -1082,21 +1107,15 @@
 		},
 		{
 			"id": "7b04d36f-071b-3eb1-8e4b-c30c4c29a2ce",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=eventId",
-			"pathVariables": {},
+			"headers": "Authorization: Basic e3tBUEkgS2V5fX06\n",
+			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=asc&sortBy=alertId",
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"data": null,
 			"dataMode": "params",
-			"name": "Query Alert - Ascending alertId",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1474054154589,
 			"version": 2,
-			"responses": [],
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar last = '';\nvar next = '';\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].')) {\n            next = data.data[i].eventId;\n            if (next <= last || last === '') {\n                last = next;\n                tests[\"Results are in descending order\"] = true;\n            }\n            else {\n                tests[\"Results are in descending order\"] = false;\n                break;\n            }\n        }\n    }\n}",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar last = '';\nvar next = '';\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n            next = data.data[i].alertId;\n            if (next >= last || last === '') {\n                last = next;\n                tests[\"Results are in ascending order\"] = true;\n            }\n            else {\n                tests[\"Results are in ascending order\"] = false;\n                break;\n            }\n        }\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1104,7 +1123,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50"
+			"time": 1478535867650,
+			"name": "Query Alert - Ascending alertId",
+			"description": "",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": []
 		},
 		{
 			"id": "7f606417-cbb5-20cf-573b-5ee32ee65e52",
@@ -2158,6 +2181,30 @@
 			"responses": [],
 			"folder": "ed4acd95-58bc-4ffb-410b-92dc9085cce0",
 			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"dummy\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true,\n        \"sampleNest\": {\n            \"someParam\": \"SillyString\"\n        }\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
+		},
+		{
+			"id": "fa777617-04f6-bbc2-af3c-17a3b262e22b",
+			"headers": "Content-Type: application/json\nAuthorization: Basic MmNlMGZlZDYtNjRmNi00NzFmLWI0ZmQtZjZkOThmNjJhNDI2Og==\n",
+			"url": "https://pz-gateway.{{domain}}/event/{{triggerId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 404 (Bug #11058)\"] = responseCode.code === 404;\n\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Not found / exist message\"] = data.message.match(/[Nn]o.*(([Ee]xist)|([Ff]ound))/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1479399558494,
+			"name": "Delete Trigger through /event",
+			"description": "Check that a trigger cannot be deleted through the /event endpoint.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": [],
+			"rawModeData": ""
 		},
 		{
 			"id": "fabe139c-0322-125f-493f-a40dd60464f2",

@@ -290,7 +290,7 @@
 			},
 			"time": 1477312131747,
 			"name": "List Services - Bad sortBy",
-			"description": "",
+			"description": "Provide an invalid field name to the \"sortBy\" parameter when listing available services.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -363,7 +363,7 @@
 			},
 			"time": 1477404154743,
 			"name": "Check Resulting dataId",
-			"description": "",
+			"description": "Check the metadata of the dataId that came from a completed sychronous execute-service job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -709,7 +709,7 @@
 			},
 			"time": 1477404301988,
 			"name": "Bad Method - Job Status",
-			"description": "",
+			"description": "Verify that an execute-service job fails if the services has a bad \"method\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1117,7 +1117,7 @@
 			},
 			"time": 1477318726378,
 			"name": "Deleted Service - Update",
-			"description": "",
+			"description": "Try to update the metadata of a deleted service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"name\": \"bar\"\n    }\n}"
@@ -1491,7 +1491,7 @@
 			},
 			"time": 1479327261247,
 			"name": "Deleted Service - Job Status",
-			"description": "This request verifies that a job created from a deleted serviceId will not work.",
+			"description": "Verify that an execute-service job fails if the service was deleted before the request was made.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1611,7 +1611,7 @@
 			},
 			"time": 1477321361116,
 			"name": "Cancel Completed Job",
-			"description": "",
+			"description": "Try to cancel a completed job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1634,7 +1634,7 @@
 			},
 			"time": 1478001041381,
 			"name": "Check Resulting Asynch dataId",
-			"description": "",
+			"description": "Check the metadata of the dataId that came from a completed asychronous execute-service job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1733,7 +1733,7 @@
 			},
 			"time": 1477403944249,
 			"name": "Rerun - Check Data",
-			"description": "",
+			"description": "Check the metadata of the dataId that came from a completed sychronous execute-service job that was rerun.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
