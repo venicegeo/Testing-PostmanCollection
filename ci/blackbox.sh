@@ -31,7 +31,7 @@ for space in $spaces; do
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-	cmd="newman -o results.json --requestTimeout 120000 -x -e $envfile -c"
+	cmd="newman --requestTimeout 120000 -x -e $envfile -c"
 
 	latch=0
 
@@ -45,8 +45,8 @@ for space in $spaces; do
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
 		$cmd $f || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		json_results=$(<results.json)
-		curl -H "Content-Type: application/json" -X POST -d "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl
+		# json_results=$(<results.json)
+		# curl -H "Content-Type: application/json" -X POST -d "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl
 		echo $latch
 	done
 
@@ -56,8 +56,8 @@ for space in $spaces; do
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
 		$cmd $f || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		json_results=$(<results.json)
-		curl -H "Content-Type: application/json" -X POST -d "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl
+		# json_results=$(<results.json)
+		# curl -H "Content-Type: application/json" -X POST -d "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl
 		echo $latch
 	done
 	
