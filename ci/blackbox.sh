@@ -14,6 +14,8 @@ popd > /dev/null
 
 bigLatch=0
 
+curl -s http://whatismyip.akamai.com/
+
 echo $PCF_SPACE
 
 if [ "$PCF_SPACE" == "test" ]; then
@@ -37,8 +39,8 @@ for space in $spaces; do
 
 	set -e
 	
-	BODY="Failing Collections:"
-
+	BODY="Failing Collections:"	
+	
 	#Run all generic tests.
 	for f in $(ls -1 $base/postman/pz-all/*postman_collection); do
 		echo $f
