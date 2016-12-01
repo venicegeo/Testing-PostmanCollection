@@ -129,10 +129,14 @@
 		},
 		{
 			"id": "1466ecb7-dbb0-b8cf-d977-3bd0a80f159f",
-			"name": "3.1.2 WMS Deployment Status",
-			"description": "",
-			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
+			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId_deploy}}",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.status')) {\n    tests[\"Deployment was a success (Bug #11544)\"] = data.data.status === \"Success\";\n    if (tests[\"Deployment was a success (Bug #11544)\"] && testLevels(tests, data, 'data.result.deployment.deploymentId')) {\n        postman.setEnvironmentVariable(\"deploymentId\",data.data.result.deployment.deploymentId);\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -140,13 +144,10 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"tests": "\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"deploymentId\",data.data.result.deployment.deploymentId);\n",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.{{domain}}/job/{{jobId_deploy}}",
+			"time": 1480622515401,
+			"name": "3.1.2 WMS Deployment Status",
+			"description": "",
+			"collectionId": "199569bf-c0d2-c17b-9b89-9831d1ec3bcd",
 			"responses": []
 		},
 		{
