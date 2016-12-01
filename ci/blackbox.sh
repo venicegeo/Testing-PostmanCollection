@@ -45,12 +45,8 @@ for space in $spaces; do
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
 		$cmd $f || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		set +x
-		set -v
 		json_results=$(<results.json)
 		curl -H "Content-Type: application/json" -X POST -d "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl
-		set +v
-		set -x
 		echo $latch
 	done
 
@@ -60,12 +56,8 @@ for space in $spaces; do
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
 		$cmd $f || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		set +x
-		set -v
 		json_results=$(<results.json)
 		curl -H "Content-Type: application/json" -X POST -d "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl
-		set +v
-		set -x
 		echo $latch
 	done
 	
