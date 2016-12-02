@@ -51,6 +51,10 @@
 				"0600a010-d79f-b396-cb2f-e11e47d56ced",
 				"a2212f06-9578-b286-78b5-02422e61431b",
 				"5e1a0b41-45e5-41e3-ee4e-751c8d8953dc",
+				"469ca7e4-dff3-ad60-ad08-bbb77ff68b08",
+				"f9094871-5d2b-efd8-26a4-29cc23e5784c",
+				"0670ab54-99b6-ffdc-3047-9c40af2de8ec",
+				"e5515a1c-0d96-af6d-271e-d22cdf00a3b1",
 				"c6ade417-2895-b8da-1f51-8511f28e5f72",
 				"3d8eaa05-a549-e002-eeb2-e24369ac53b6",
 				"399576c7-a9fa-032e-15df-01c862658442",
@@ -239,6 +243,31 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"responses": [],
 			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783"
+		},
+		{
+			"id": "0670ab54-99b6-ffdc-3047-9c40af2de8ec",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/trigger/query",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId')) {\n                found = true;\n            }\n        }\n    }\n    tests[\"Trigger found\"] = found;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1480694163198,
+			"name": "Trigger Complex Query",
+			"description": "Try a \"match_all\" Elastic Search query to find triggers.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": [],
+			"rawModeData": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
 		},
 		{
 			"id": "12600a27-3e5a-7916-920e-f21b393bca3c",
@@ -660,6 +689,31 @@
 			"responses": [],
 			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
 			"rawModeData": ""
+		},
+		{
+			"id": "469ca7e4-dff3-ad60-ad08-bbb77ff68b08",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/alert/query",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200 (Bug #11598)\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n            if (data.data[i].alertId === postman.getEnvironmentVariable('alertId')) {\n                found = true;\n            }\n        }\n    }\n    tests[\"Alert found\"] = found;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1480695605663,
+			"name": "Alert Complex Query",
+			"description": "Try a \"match_all\" Elastic Search query to find alerts.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": [],
+			"rawModeData": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
 		},
 		{
 			"id": "49e93bdc-f135-fd14-4d6b-14751fb08c68",
@@ -2082,6 +2136,31 @@
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
+			"id": "e5515a1c-0d96-af6d-271e-d22cdf00a3b1",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/event/query",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].')) {\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n    }\n    tests[\"Event found\"] = found;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1480694291450,
+			"name": "Event Complex Query",
+			"description": "Try a \"match_all\" Elastic Search query to find events.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": [],
+			"rawModeData": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
+		},
+		{
 			"id": "e6883d62-8670-c9b7-312c-f230f22ff663",
 			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
@@ -2181,6 +2260,31 @@
 			"responses": [],
 			"folder": "ed4acd95-58bc-4ffb-410b-92dc9085cce0",
 			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n\t\t\"dataType\": \"dummy\",\n\t\t\"epsg\": 3,\n\t\t\"minX\": 1,\n\t\t\"minY\": 1.0,\n\t\t\"maxX\": 10.0,\n\t\t\"maxY\": 10.0,\n\t\t\"hosted\": true,\n        \"sampleNest\": {\n            \"someParam\": \"SillyString\"\n        }\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
+		},
+		{
+			"id": "f9094871-5d2b-efd8-26a4-29cc23e5784c",
+			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/eventType/query",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data[].')) {\n            if (data.data[i].eventTypeId === postman.getEnvironmentVariable('eventTypeId')) {\n                found = true;\n            }\n        }\n    }\n    tests[\"EventType found\"] = found;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1480694237922,
+			"name": "EventType Complex Query",
+			"description": "Try a \"match_all\" Elastic Search query to find eventTypes.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": [],
+			"rawModeData": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
 		},
 		{
 			"id": "fa777617-04f6-bbc2-af3c-17a3b262e22b",
