@@ -323,15 +323,15 @@
 		},
 		{
 			"id": "27295b58-09e3-078b-b52c-f9a968a3d303",
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\nContent-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/service/query?sortBy=service.resourceMetadata.createdOn",
+			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/service/query?",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #9336)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n    }\n}\n\ntests[\"Service found in list\"] = found_service;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n    }\n}\n\ntests[\"Service found in list\"] = found_service;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -339,7 +339,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477417507631,
+			"time": 1481138865150,
 			"name": "Complex Query",
 			"description": "",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
