@@ -1462,10 +1462,10 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('Ingested Text', 'This is the ingested text for integration tests!');\npostman.setEnvironmentVariable('Ingested Geojson', '{\"type\": \"FeatureCollection\",\"features\": [{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [102.0,0.5]},\"properties\": {\"prop0\": \"value0\"}},{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [106.0,4]},\"properties\": {\"prop0\": \"value0\"}}]}');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('jobId_text','');\npostman.setEnvironmentVariable('dataId_text','');\npostman.setEnvironmentVariable('jobId_geojson','');\npostman.setEnvironmentVariable('dataId_geojson','');\npostman.setEnvironmentVariable('jobId_raster','');\npostman.setEnvironmentVariable('dataId_raster','');\npostman.setEnvironmentVariable('jobId_shape','');\npostman.setEnvironmentVariable('dataId_shape','');\npostman.setEnvironmentVariable('jobId_external','');\npostman.setEnvironmentVariable('dataId_external','');\npostman.setEnvironmentVariable('deploymentId_geojson','');\npostman.setEnvironmentVariable('deploymentId_external','');\npostman.setEnvironmentVariable('deploymentGroupId','');\npostman.setEnvironmentVariable('deploymentId_raster','');\npostman.setEnvironmentVariable('deploymentId_shape','');\npostman.setEnvironmentVariable('capabilitiesUrl','');\npostman.setEnvironmentVariable('dataId_geojson_large','');\npostman.setEnvironmentVariable('deploymentId_geojson_large','');",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('Ingested Text', 'This is the ingested text for integration tests!');\npostman.setEnvironmentVariable('Ingested Geojson', '{\"type\": \"FeatureCollection\",\"features\": [{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [102.0,0.5]},\"properties\": {\"prop0\": \"value0\"}},{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [106.0,4]},\"properties\": {\"prop0\": \"value0\"}}]}');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('jobId_text','');\npostman.setEnvironmentVariable('dataId_text','');\npostman.setEnvironmentVariable('jobId_geojson','');\npostman.setEnvironmentVariable('dataId_geojson','');\npostman.setEnvironmentVariable('jobId_raster','');\npostman.setEnvironmentVariable('dataId_raster','');\npostman.setEnvironmentVariable('jobId_shape','');\npostman.setEnvironmentVariable('dataId_shape','');\npostman.setEnvironmentVariable('jobId_external','');\npostman.setEnvironmentVariable('dataId_external','');\npostman.setEnvironmentVariable('deploymentId_geojson','');\npostman.setEnvironmentVariable('deploymentId_external','');\npostman.setEnvironmentVariable('deploymentGroupId','');\npostman.setEnvironmentVariable('deploymentId_raster','');\npostman.setEnvironmentVariable('deploymentId_shape','');\npostman.setEnvironmentVariable('capabilitiesUrl','http://google.com/awt9eorjfgid');\npostman.setEnvironmentVariable('dataId_geojson_large','');\npostman.setEnvironmentVariable('deploymentId_geojson_large','');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1476905035478,
+			"time": 1481320314402,
 			"name": "Hello, pz-gateway!",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1873,7 +1873,7 @@
 		},
 		{
 			"id": "ab39292f-2466-1e67-4934-fcda0178e59a",
-			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1881,7 +1881,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\nvar found_raster = false;\nvar found_shape = false;\nvar found_text = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n            found_raster = (found_raster || data.data[i].dataId === postman.getEnvironmentVariable('dataId_raster'));\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n            found_text = (found_text || data.data[i].dataId === postman.getEnvironmentVariable('dataId_text'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"Ingested Shape data found in list\"] = found_shape;\ntests[\"Ingested Text data found in list\"] = found_text;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_external = false;\nvar found_geojson = false;\nvar found_raster = false;\nvar found_shape = false;\nvar found_text = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_external = (found_external || data.data[i].dataId === postman.getEnvironmentVariable('dataId_external'));\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n            found_raster = (found_raster || data.data[i].dataId === postman.getEnvironmentVariable('dataId_raster'));\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n            found_text = (found_text || data.data[i].dataId === postman.getEnvironmentVariable('dataId_text'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;\ntests[\"Ingested External Raster data found in list\"] = found_external;\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"Ingested Shape data found in list\"] = found_shape;\ntests[\"Ingested Text data found in list\"] = found_text;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1889,7 +1889,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481138950062,
+			"time": 1481139915866,
 			"name": "Complex Query",
 			"description": "Check that the deployments created in this suite of tests are present in the result of an Elastic Search query.\nThis is a \"match_all\" query.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -2396,7 +2396,7 @@
 		},
 		{
 			"id": "dbf61b56-d9c9-a9d5-5548-9ff76e5c8cba",
-			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2424,7 +2424,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481052591496,
+			"time": 1481207662329,
 			"name": "Ingest GeoJSON",
 			"description": "",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
