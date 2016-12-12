@@ -32,7 +32,7 @@
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.int.geointservices.io/service",
+				"url": "https://pz-gateway.int.geointservices.io/service/close",
 				"method": "POST",
 				"header": [
 					{
@@ -68,7 +68,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"url\": \"https://pzsvc-hello-767ae0c.int.geointservices.io/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"ClosePipeline\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
+					"raw": "{\n    \"url\": \"https://pzsvc-hello-767ae0c.int.geointservices.io/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 				},
 				"description": ""
 			},
