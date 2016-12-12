@@ -14,6 +14,8 @@ popd > /dev/null
 
 bigLatch=0
 
+curl -s http://whatismyip.akamai.com/
+
 echo $PCF_SPACE
 
 if [ "$PCF_SPACE" == "test" ]; then
@@ -31,20 +33,21 @@ for space in $spaces; do
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-	cmd="newman --requestTimeout 120000 -x -e $envfile -c"
+	cmd="newman -o results.json --requestTimeout 120000 -x -e $envfile -c"
 
 	latch=0
 
 	set -e
 	
-	BODY="Failing Collections:"
-
+	BODY="Failing Collections:"	
+	
 	#Run all generic tests.
 	for f in $(ls -1 $base/postman/pz-all/*postman_collection); do
 		echo $f
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		$cmd $f || "$PCF_SPACE" == "stage" || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/load.pl < results.json
 		echo $latch
 	done
 
@@ -53,7 +56,8 @@ for space in $spaces; do
 		echo $f
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		$cmd $f || "$PCF_SPACE" == "stage" || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		curl -H "Content-Type: application/json" -X POST -d @- "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl < results.json
 		echo $latch
 	done
 	
