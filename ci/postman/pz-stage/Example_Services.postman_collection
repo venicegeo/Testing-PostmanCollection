@@ -227,7 +227,7 @@
 			},
 			"time": 1478113802108,
 			"name": "Delete Normal Data",
-			"description": "",
+			"description": "Delete the data created by the synchronous crop service from Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": ""
@@ -367,7 +367,7 @@
 			},
 			"time": 1478206651606,
 			"name": "Delete Normal Service",
-			"description": "",
+			"description": "Unregister the synchronous crop service from Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -459,7 +459,7 @@
 			},
 			"time": 1481650635085,
 			"name": "Confirm Delete",
-			"description": "",
+			"description": "Attempt to get the status of a job that has been deleted.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -594,7 +594,7 @@
 			},
 			"time": 1478205227286,
 			"name": "Delete Async Data",
-			"description": "",
+			"description": "Delete the data created by the asynchronous crop service from Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": ""
@@ -663,7 +663,7 @@
 			"helperAttributes": {},
 			"time": 1478114834240,
 			"name": "Delete Before Complete - Crop Async",
-			"description": "",
+			"description": "Part of a sequence of requests that verifies that a job can be deleted while it is in propgress.\nCreate asynchronous crop job.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"source\": {\n        \"domain\": \"s3.amazonaws.com\",\n        \"bucketName\": \"pz-svcs-prevgen\",\n        \"fileName\": \"nasa_land_ocean_ice.tif\"\n    },\n    \"function\": \"crop\",\n    \"bounds\": {\n        \"minx\": -140.00,\n        \"miny\": 10.00,\n        \"maxx\": -60.00,\n        \"maxy\": 70.00\n    }\n}"
@@ -758,7 +758,7 @@
 			},
 			"time": 1478114961310,
 			"name": "Delete Before Complete - Delete Job",
-			"description": "",
+			"description": "Part of a sequence of requests that verifies that a job can be deleted while it is in propgress.\nDelete asynchronous crop job.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -853,7 +853,7 @@
 			},
 			"time": 1478206627016,
 			"name": "Delete Job",
-			"description": "",
+			"description": "Delete the synchronous crop job through the Preview Generator.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -902,7 +902,7 @@
 			},
 			"time": 1481650639451,
 			"name": "Delete Before Complete - Confirm Delete",
-			"description": "",
+			"description": "Part of a sequence of requests that verifies that a job can be deleted while it is in propgress.\nAttempt to get the status of the deleted asynchronous crop job.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -1105,7 +1105,7 @@
 			},
 			"time": 1478206654549,
 			"name": "Delete Asynch Service",
-			"description": "",
+			"description": "Unregister the asynchronous crop service from Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
