@@ -193,7 +193,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_shape = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_shape;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_shape = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_shape;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -201,7 +201,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476802138727,
+			"time": 1481633594466,
 			"name": "Complex Query - Search Name (TestShape.zip)",
 			"description": "Check that the Shape deployment (and no other deploymens) created in this suite of tests are present in the result of an Elastic Search query.\nThis query is checking that \"dataResource.metadata.name\" contains \"TestShape.zip\".",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -260,7 +260,7 @@
 		},
 		{
 			"id": "14b5af2a-5436-ef79-8f5a-228735052685",
-			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic ZmNlNTU4ZTAtMDBkMC00YzcwLWFmZTItMDc0YjE2YjljYTBjOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId_geojson}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -268,7 +268,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_geojson');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && !postman.getEnvironmentVariable('capabilitiesUrl')) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_geojson');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && !postman.getEnvironmentVariable('capabilitiesUrl').match('garbage')) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -276,7 +276,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481044688514,
+			"time": 1481634434867,
 			"name": "Get Geojson Deployment Metadata",
 			"description": "Get the geoJSON deployment metadata.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -609,7 +609,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON removed from list (Bug #9174)\"] = !found_geojson;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON removed from list (Bug #9174)\"] = !found_geojson;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -617,7 +617,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476897866231,
+			"time": 1481633645275,
 			"name": "Deleted Data - Verify Removed from ES",
 			"description": "Query the /data/query (Elastic Search) endpoint to verify that the deleted dataId is not present in the result.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -878,19 +878,13 @@
 			"id": "521d4871-6cee-0715-d6fa-ca9b85caab84",
 			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/data/query",
-			"pathVariables": {},
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "POST",
-			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"data": [],
 			"dataMode": "raw",
-			"name": "Complex Query - Search Description",
-			"description": "Check that the deployments created in this suite of tests are present in the result of an Elastic Search query.\nThis query is checking that \"dataResource.metadata.descritpion\" contains \"integration\".",
-			"descriptionFormat": "html",
-			"time": 1476801858598,
 			"version": 2,
-			"responses": [],
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\nvar found_raster = false;\nvar found_shape = false;\nvar found_text = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n            found_raster = (found_raster || data.data[i].dataId === postman.getEnvironmentVariable('dataId_raster'));\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n            found_text = (found_text || data.data[i].dataId === postman.getEnvironmentVariable('dataId_text'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"Ingested Shape data found in list\"] = found_shape;\ntests[\"Ingested Text data found in list\"] = found_text;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\nvar found_raster = false;\nvar found_shape = false;\nvar found_text = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n            found_raster = (found_raster || data.data[i].dataId === postman.getEnvironmentVariable('dataId_raster'));\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n            found_text = (found_text || data.data[i].dataId === postman.getEnvironmentVariable('dataId_text'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"Ingested Shape data found in list\"] = found_shape;\ntests[\"Ingested Text data found in list\"] = found_text;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -898,7 +892,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"folder": "eab39bb3-61a3-84aa-43ab-eac21622eb16",
+			"time": 1481633575486,
+			"name": "Complex Query - Search Description",
+			"description": "Check that the deployments created in this suite of tests are present in the result of an Elastic Search query.\nThis query is checking that \"dataResource.metadata.descritpion\" contains \"integration\".",
+			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
+			"responses": [],
 			"rawModeData": "{\n    \"query\": {\n        \"match\": {\n            \"dataResource.metadata.description\": \"integration\"\n        }\n    }\n}"
 		},
 		{
@@ -1238,7 +1236,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_shape');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && !postman.getEnvironmentVariable('capabilitiesUrl')) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_shape');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && postman.getEnvironmentVariable('capabilitiesUrl').match(/garbage/)) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1246,7 +1244,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481044693753,
+			"time": 1481634601121,
 			"name": "Get Shape Deployment Metadata",
 			"description": "Get the Shape deployment metadata.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1287,7 +1285,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 404\"] = responseCode.code === 404;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ee]rror/);\n}\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Not Found Message\"] = data.message.match(/[Nn]o/) && data.message.match(/[Ff]ound/);\n    tests[\"Deployment Id included in message\"] = data.message.match(postman.getEnvironmentVariable('deploymentId_geojson'));\n}",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 404\"] = responseCode.code === 404;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ee]rror/);\n}\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Not Found Message\"] = data.message.match(/[Nn]o/) && data.message.match(/[Ff]ound/);\n    tests[\"Deployment Id included in message\"] = data.message.match(postman.getEnvironmentVariable('deploymentId_raster'));\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1295,9 +1293,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481575612690,
+			"time": 1481633470453,
 			"name": "Deleted Deployment - GET",
-			"description": "",
+			"description": "Attempt to retrieve the metadata of the deleted deployment.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"responses": [],
 			"rawModeData": ""
@@ -1436,10 +1434,10 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('Ingested Text', 'This is the ingested text for integration tests!');\npostman.setEnvironmentVariable('Ingested Geojson', '{\"type\": \"FeatureCollection\",\"features\": [{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [102.0,0.5]},\"properties\": {\"prop0\": \"value0\"}},{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [106.0,4]},\"properties\": {\"prop0\": \"value0\"}}]}');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('jobId_text','');\npostman.setEnvironmentVariable('dataId_text','');\npostman.setEnvironmentVariable('jobId_geojson','');\npostman.setEnvironmentVariable('dataId_geojson','');\npostman.setEnvironmentVariable('jobId_raster','');\npostman.setEnvironmentVariable('dataId_raster','');\npostman.setEnvironmentVariable('jobId_shape','');\npostman.setEnvironmentVariable('dataId_shape','');\npostman.setEnvironmentVariable('jobId_external','');\npostman.setEnvironmentVariable('dataId_external','');\npostman.setEnvironmentVariable('deploymentId_geojson','');\npostman.setEnvironmentVariable('deploymentId_external','');\npostman.setEnvironmentVariable('deploymentGroupId','');\npostman.setEnvironmentVariable('deploymentId_raster','');\npostman.setEnvironmentVariable('deploymentId_shape','');\npostman.setEnvironmentVariable('capabilitiesUrl','http://google.com/awt9eorjfgid');\npostman.setEnvironmentVariable('dataId_geojson_large','');\npostman.setEnvironmentVariable('deploymentId_geojson_large','');",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('Ingested Text', 'This is the ingested text for integration tests!');\npostman.setEnvironmentVariable('Ingested Geojson', '{\"type\": \"FeatureCollection\",\"features\": [{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [102.0,0.5]},\"properties\": {\"prop0\": \"value0\"}},{\"type\": \"Feature\",\"geometry\": {\"type\": \"Point\",\"coordinates\": [106.0,4]},\"properties\": {\"prop0\": \"value0\"}}]}');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('jobId_text','');\npostman.setEnvironmentVariable('dataId_text','');\npostman.setEnvironmentVariable('jobId_geojson','');\npostman.setEnvironmentVariable('dataId_geojson','');\npostman.setEnvironmentVariable('jobId_raster','');\npostman.setEnvironmentVariable('dataId_raster','');\npostman.setEnvironmentVariable('jobId_shape','');\npostman.setEnvironmentVariable('dataId_shape','');\npostman.setEnvironmentVariable('jobId_external','');\npostman.setEnvironmentVariable('dataId_external','');\npostman.setEnvironmentVariable('deploymentId_geojson','');\npostman.setEnvironmentVariable('deploymentId_external','');\npostman.setEnvironmentVariable('deploymentGroupId','');\npostman.setEnvironmentVariable('deploymentId_raster','');\npostman.setEnvironmentVariable('deploymentId_shape','');\npostman.setEnvironmentVariable('capabilitiesUrl','http://google.com/garbage');\npostman.setEnvironmentVariable('dataId_geojson_large','');\npostman.setEnvironmentVariable('deploymentId_geojson_large','');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1481320314402,
+			"time": 1481634292208,
 			"name": "Hello, pz-gateway!",
 			"description": "Simple Health check to pz-gateway.  Postman Environemnt Variables are initialized in this step.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1756,7 +1754,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_external');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && !postman.getEnvironmentVariable('capabilitiesUrl')) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_external');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && postman.getEnvironmentVariable('capabilitiesUrl').match(/garbage/)) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1764,7 +1762,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481044699380,
+			"time": 1481634606109,
 			"name": "Get External Raster Deployment Metadata",
 			"description": "Get the (External) Raster deployment metadata.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1980,7 +1978,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1988,7 +1986,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476801976793,
+			"time": 1481633588737,
 			"name": "Complex Query - Search Type (geojson)",
 			"description": "Check that the geoJSON deployment (and no other deploymens) created in this suite of tests are present in the result of an Elastic Search query.\nThis query is checking that \"dataResource.dataType.type\" contains \"geojson\".",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -1997,7 +1995,7 @@
 		},
 		{
 			"id": "b6cf60c7-826f-0435-f24f-027b52be8a69",
-			"headers": "Content-Type: application/json\nAuthorization: Basic e3tweiBrZXl9fTo=\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ZmNlNTU4ZTAtMDBkMC00YzcwLWFmZTItMDc0YjE2YjljYTBjOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_geojson}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2013,12 +2011,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476726662913,
+			"time": 1481577921913,
 			"name": "Delete GeoJSON Data",
 			"description": "Delete the ingested geoJSON dataId used throughout this test.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"responses": [],
-			"folder": "eab39bb3-61a3-84aa-43ab-eac21622eb16",
 			"rawModeData": ""
 		},
 		{
@@ -2122,7 +2119,7 @@
 		},
 		{
 			"id": "c2ec915c-e6d5-759a-251b-0cfa33760729",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic ZmNlNTU4ZTAtMDBkMC00YzcwLWFmZTItMDc0YjE2YjljYTBjOg==\n",
 			"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId_geojson}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2138,7 +2135,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481567830409,
+			"time": 1481577914430,
 			"name": "Deleted Data - Verify DeploymentId Deleted",
 			"description": "After deleting the geoJSON dataId, verify that the corresponding deploymentId was deleted.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
@@ -2205,7 +2202,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_raster');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && !postman.getEnvironmentVariable('capabilitiesUrl')) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.deployment.deploymentId')) {\n    tests[\"Correct deploymentId returned\"] = data.data.deployment.deploymentId === postman.getEnvironmentVariable('deploymentId_raster');\n}\nif (testLevels(tests, data, 'data.deployment.capabilitiesUrl') && postman.getEnvironmentVariable('capabilitiesUrl').match(/garbage/)) {\n    postman.setEnvironmentVariable('capabilitiesUrl', data.data.deployment.capabilitiesUrl);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2213,7 +2210,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481044683970,
+			"time": 1481634595908,
 			"name": "Get Raster Deployment Metadata",
 			"description": "Get the (Local) Raster deployment metadata.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",

@@ -89,9 +89,6 @@
 				"217d4034-c24a-4697-5380-d8cefdc4cc38",
 				"edd57179-6da4-ce97-f66e-6cd52eb43fa0",
 				"129f49e0-8a94-37df-12c1-526be6b240fa",
-				"4ef428ec-c58a-185a-7eab-04720f9b9794",
-				"5edc1b6c-441a-730b-4f32-3d8080600929",
-				"66cf4779-9668-3597-3678-376ccd8ce2a8",
 				"f5b67f48-2dcb-b8f9-3c4f-9b87e911c3da",
 				"cf0fe603-796d-bd1f-fa68-dcc3207c43a6",
 				"6d7646ca-b685-82e0-55ec-d18b3d80a1ff",
@@ -143,7 +140,7 @@
 			},
 			"time": 1477324209413,
 			"name": "Create Job - No dataOutput.type",
-			"description": "",
+			"description": "Attempt to create a Job with a no \"dataOutput.type\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
@@ -169,7 +166,7 @@
 			},
 			"time": 1477312543064,
 			"name": "List Services - Bad perPage",
-			"description": "",
+			"description": "Attempt to list Services, specifying a string for a perPage value.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -193,13 +190,13 @@
 			},
 			"time": 1477327085895,
 			"name": "Job Not Found - DELETE",
-			"description": "",
+			"description": "Attempt to delete a non-existant Job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
 		{
 			"id": "129f49e0-8a94-37df-12c1-526be6b240fa",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -207,7 +204,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_badmethod\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\n\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'errors', 'array')) {\n    if (testLevels(tests, data.errors[0], 'field', 'skip', 'errors[0]')) {\n        tests[\"Problem with 'method' field\"] = data.errors[0].field == 'method';\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -215,9 +212,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477313970807,
-			"name": "Bad  Method - Register Service",
-			"description": "",
+			"time": 1481645911017,
+			"name": "Register Service - Bad Method",
+			"description": "Attempt to register a Service with a bad \"method\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : 1,\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
@@ -242,7 +239,7 @@
 			},
 			"time": 1477323297087,
 			"name": "Create Job - No dataOutput",
-			"description": "",
+			"description": "Attempt to create a Job with a no \"dataOutput\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
@@ -267,7 +264,7 @@
 			},
 			"time": 1478002155318,
 			"name": "Deleted Service - Register Service",
-			"description": "",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nRegister the Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
@@ -316,15 +313,15 @@
 			},
 			"time": 1476987134071,
 			"name": "Deleted Service - Create Job",
-			"description": "",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nAttempt to create a Job from the deleted Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId_cancel}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
 			"id": "27295b58-09e3-078b-b52c-f9a968a3d303",
-			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/service/query?",
+			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/service/query?sortBy=service.resourceMetadata.createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -339,9 +336,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481138865150,
+			"time": 1481646552461,
 			"name": "Complex Query",
-			"description": "",
+			"description": "List services via Elastic Search, verifying both the synchronous and asynchronous services are present.\nThis is a \"match_all\" query.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
@@ -371,7 +368,7 @@
 		},
 		{
 			"id": "2c75fd00-6eb4-a0f4-40be-9e0ea11fbf90",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -387,9 +384,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1479743394858,
+			"time": 1481643276101,
 			"name": "Register Service",
-			"description": "",
+			"description": "Register the synchronous Service (pzsvc-hello) to be used throughout this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"garbage\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
@@ -414,7 +411,7 @@
 			},
 			"time": 1481118287923,
 			"name": "Check Asynch Job Status",
-			"description": "",
+			"description": "Check the job status of the asynchronous job to get the dataId.  Repeat up to 10 times until the job is successful.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -438,7 +435,7 @@
 			},
 			"time": 1476967278009,
 			"name": "Disable - Create Job",
-			"description": "",
+			"description": "This sequence of tests verifies that a job cannot be created from a softDeleted Serivce.\nAttempt to create a job from the softDeleted Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
@@ -464,7 +461,7 @@
 			},
 			"time": 1481119387279,
 			"name": "Create Job",
-			"description": "",
+			"description": "Create a Job using the synchronous Service, pzsvc-hello.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
@@ -489,7 +486,7 @@
 			},
 			"time": 1478004450642,
 			"name": "List Services Pagination",
-			"description": "",
+			"description": "Verify that the pagination parameters match the requested values.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
@@ -514,7 +511,7 @@
 			},
 			"time": 1477323237046,
 			"name": "Create Job - No dataInputs",
-			"description": "",
+			"description": "Attempt to create a Job with a no \"dataInputs\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
@@ -539,7 +536,7 @@
 			},
 			"time": 1476984388515,
 			"name": "Deleted Service - Delete",
-			"description": "",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nDelete the Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -563,7 +560,7 @@
 			},
 			"time": 1477320918650,
 			"name": "Reenable - Update Service",
-			"description": "",
+			"description": "Re-enable the Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
@@ -589,7 +586,7 @@
 			},
 			"time": 1477311653127,
 			"name": "List Services - Negative Page",
-			"description": "",
+			"description": "Attempt to list Services, specifying a negative page.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -613,7 +610,7 @@
 			},
 			"time": 1476981675849,
 			"name": "Cancelling Job - Cancel Job",
-			"description": "",
+			"description": "Cancel a long-running Job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -637,35 +634,10 @@
 			},
 			"time": 1478004503814,
 			"name": "Create Job - No type",
-			"description": "",
+			"description": "Attempt to create a Job with a no \"type\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"data\": {\r\n\t\t\"dataInputs\": {},\r\n\t\t\"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n\t\t\"serviceId\": \"{{serviceId}}\"\r\n\t}\r\n}"
-		},
-		{
-			"id": "4ef428ec-c58a-185a-7eab-04720f9b9794",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
-			"url": "https://pz-gateway.{{domain}}/job",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.jobId', 'string')) {\n    tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1477314736711,
-			"name": "Bad Method - Create Job",
-			"description": "",
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"responses": [],
-			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId_badmethod}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
 			"id": "5def9700-4e0c-c03e-f168-c364e88e5563",
@@ -687,31 +659,7 @@
 			},
 			"time": 1477327460576,
 			"name": "Delete Service",
-			"description": "",
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"responses": []
-		},
-		{
-			"id": "5edc1b6c-441a-730b-4f32-3d8080600929",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\nContent-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Bad Method - Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.message', 'string')) {\n            tests[\"I don't know what this message should be\"] = false;\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status + \" (Bug #9480)\"] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1477404301988,
-			"name": "Bad Method - Job Status",
-			"description": "Verify that an execute-service job fails if the services has a bad \"method\" parameter.",
+			"description": "Delete the synchronous Service used throughout this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -734,7 +682,7 @@
 			},
 			"time": 1476297549665,
 			"name": "Get Service Info",
-			"description": "",
+			"description": "Get the metadata of the Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -758,7 +706,7 @@
 			},
 			"time": 1476298091922,
 			"name": "Update Service",
-			"description": "",
+			"description": "Update the \"resourceMetadata.name\" field of the service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"name\": \"{{New Name}}\"\n    }\n}"
@@ -783,7 +731,7 @@
 			},
 			"time": 1477083835759,
 			"name": "Disable - Validate Soft Delete",
-			"description": "",
+			"description": "This sequence of tests verifies that a job cannot be created from a softDeleted Serivce.\nLook for \"OFFLINE\" in the Service metadata.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -807,7 +755,7 @@
 			},
 			"time": 1478000668687,
 			"name": "Delete Asynch Data",
-			"description": "",
+			"description": "Delete the (asynch) data created in this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -831,31 +779,7 @@
 			},
 			"time": 1481119382232,
 			"name": "Check Job Status",
-			"description": "",
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"responses": []
-		},
-		{
-			"id": "66cf4779-9668-3597-3678-376ccd8ce2a8",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
-			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_badmethod}}",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "params",
-			"version": 2,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1477326112625,
-			"name": "Bad Method - Delete Service",
-			"description": "",
+			"description": "Check the job status of the synchronous job to get the dataId.  Repeat up to 10 times until the job is successful.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -879,7 +803,7 @@
 			},
 			"time": 1481119112832,
 			"name": "Rerun - Create Job",
-			"description": "",
+			"description": "Rerun the job run on the synch Service.  Verify that a new jobId is returned.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
@@ -904,14 +828,14 @@
 			},
 			"time": 1477325818426,
 			"name": "Register Service - No method",
-			"description": "",
+			"description": "Attempt to register a Service with a no \"method\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "734b2868-631b-2288-71d0-0d22da21070f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&keyword=integration",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -919,7 +843,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(/integration/i);\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified keyword\"] = found_keyword;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_synch = false;\nvar found_asynch = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_synch = (found_synch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n            found_asynch = (found_asynch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_asynch'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(/integration/i);\n    }\n}\n\ntests[\"Synchronous service found in list\"] = found_synch;\ntests[\"Asynchronous service missing from list\"] = !found_asynch;\ntests[\"All services had specified keyword\"] = found_keyword;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -927,9 +851,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478004438741,
+			"time": 1481643966214,
 			"name": "List Services with keyword",
-			"description": "",
+			"description": "List services, filtered by the keyword \"integration\", verifying that the synchronous service is present, and that all results match the keyword search.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
@@ -954,7 +878,7 @@
 			},
 			"time": 1476965335179,
 			"name": "Delete Data",
-			"description": "",
+			"description": "Delete the (synch) data created in this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -978,7 +902,7 @@
 			},
 			"time": 1477076601378,
 			"name": "Deleted Service - Delete Again",
-			"description": "",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nAttempt to delete the Service again.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1002,7 +926,7 @@
 			},
 			"time": 1478004483288,
 			"name": "Deleted Service - List Services",
-			"description": "",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nList Services to verify that the deleted Service is not present.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
@@ -1027,7 +951,7 @@
 			},
 			"time": 1477324530533,
 			"name": "Create Job - No serviceId",
-			"description": "",
+			"description": "Attempt to create a Job with a no \"serviceId\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }]\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
@@ -1119,7 +1043,7 @@
 			},
 			"time": 1477318726378,
 			"name": "Deleted Service - Update",
-			"description": "Try to update the metadata of a deleted service.",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nAttempt to update the metadata of a deleted service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"name\": \"bar\"\n    }\n}"
@@ -1144,7 +1068,7 @@
 			},
 			"time": 1477311835792,
 			"name": "List Services - Bad Page",
-			"description": "",
+			"description": "Attempt to list Services, specifying a string for a page number.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1168,7 +1092,7 @@
 			},
 			"time": 1476967074473,
 			"name": "Disable - Soft Delete Service",
-			"description": "",
+			"description": "This request belongs to a sequence that verifies that a job cannot be created from a softDeleted Serivce.\n\"softDelete\" the Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247"
@@ -1217,7 +1141,7 @@
 			},
 			"time": 1477325807559,
 			"name": "Register Service - No contractUrl",
-			"description": "",
+			"description": "Attempt to register a Service with a no \"contractUrl\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"method\": \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
@@ -1242,7 +1166,7 @@
 			},
 			"time": 1481119716416,
 			"name": "Rerun/Disable - Create Job",
-			"description": "",
+			"description": "Attempt to rerun a Job whose Service has been disabled.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
@@ -1258,7 +1182,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"name": "Reenable - Create Job",
-			"description": "",
+			"description": "Create a Job from a re-enabled Service.",
 			"descriptionFormat": "html",
 			"time": 1477321064404,
 			"version": 2,
@@ -1294,7 +1218,7 @@
 			},
 			"time": 1477402205906,
 			"name": "Get Service Info Details",
-			"description": "",
+			"description": "Validate the details of the Service metadata.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1318,13 +1242,13 @@
 			},
 			"time": 1476982453386,
 			"name": "Cancelling Job - Validating",
-			"description": "",
+			"description": "Check the status of a cancelled Job to verify that it was cancelled.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
 		{
 			"id": "bbcd6358-db92-801a-d4c6-c750f1fd781d",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&keyword=^Serv.*[Ii1][Nn][j-t][b-h].*(ing)\\.$",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1332,7 +1256,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_regex = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        found_regex = found_regex && JSON.stringify(data.data[i]).match(/Serv.*[Ii1][Nn][j-t][b-h].*(ing)\\./);\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified regular expression\"] = found_regex;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_synch = false;\nvar found_asynch = false;\nvar found_regex = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_synch = (found_synch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n            found_asynch = (found_asynch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_asynch'));\n        }\n        found_regex = found_regex && JSON.stringify(data.data[i]).match(/Serv.*[Ii1][Nn][j-t][b-h].*(ing)\\./);\n    }\n}\n\ntests[\"Synchronous service found in list\"] = found_synch;\ntests[\"Asynchronous service missing from list\"] = !found_asynch;\ntests[\"All services had specified regular expression\"] = found_regex;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1340,16 +1264,16 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478001601075,
+			"time": 1481645534427,
 			"name": "List Services with regex",
-			"description": "",
+			"description": "List services, filtered by a regEx keyword, verifying that the synchronous service is present, and that all results match the keyword search.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
 		},
 		{
 			"id": "c52d2ba3-3eb0-536b-a91e-87438c9f1910",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1365,9 +1289,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477928857792,
+			"time": 1481643274335,
 			"name": "Register Asynch Service",
-			"description": "",
+			"description": "Register the asynchronous Service (Preview Generator) to be used throughout this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n  \"isAsynchronous\":true,\n  \"url\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"timeout\" : \"180000\",\n  \"method\" : \"POST\",\n  \"contractUrl\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"resourceMetadata\" : {\n    \"name\" : \"pz-svcs-prevgen crop raster test\",\n    \"description\" : \"pz-svcs-prevgen is an awesome sample crop image external service.\",\n    \"classType\": {\n        \"classification\": \"UNCLASSIFIED\"\n     }\n  }\n}"
@@ -1392,7 +1316,7 @@
 			},
 			"time": 1476301198074,
 			"name": "Validate Update",
-			"description": "",
+			"description": "Verify that the \"resourceMetadata.name\" field of the service was updated.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1416,14 +1340,14 @@
 			},
 			"time": 1477325880494,
 			"name": "Register Service - No url",
-			"description": "",
+			"description": "Attempt to register a Service with a no \"url\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"method\": \"GET\",\n    \"contractUrl\": \"http://helloContract\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "c84a5cf0-b44c-7aea-d56c-a4a98e54b7dd",
-			"headers": "Content-Type: application/json\nAuthorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&createdBy={{username}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1431,7 +1355,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_createdBy = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === postman.getEnvironmentVariable('username'));\n        }\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified createdBy\"] = found_createdBy;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_synch = false;\nvar found_asynch = false;\nvar found_createdBy = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_synch = (found_synch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n            found_asynch = (found_asynch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_asynch'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === postman.getEnvironmentVariable('username'));\n        }\n    }\n}\n\ntests[\"Synchronous service found in list\"] = found_synch;\ntests[\"Asynchronous service found in list\"] = found_asynch;\ntests[\"All services had specified createdBy\"] = found_createdBy;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1439,9 +1363,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477403953117,
+			"time": 1481644067970,
 			"name": "List Services with userName",
-			"description": "",
+			"description": "List services, filtered by userName, verifying both the the synchronous and asynchronous services are present, and that all results were created by the specified user.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
@@ -1466,14 +1390,14 @@
 			},
 			"time": 1477315676471,
 			"name": "Register Service - No resourceMetadata.classType",
-			"description": "",
+			"description": "Attempt to register a Service with a no \"resourceMetadata.classType\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\"\n    }\n}"
 		},
 		{
 			"id": "d8bebf66-1119-749f-4087-0a9b28f7e079",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < IMPORTANT > > > > > > > > > > >\");\nconsole.log(\"      These tests represent important features.      \");\nconsole.log(\"Use extreme caution when pushing if these tests fail.\");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -1481,7 +1405,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n    }\n}\n\ntests[\"Service found in list\"] = found_service;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_synch = false;\nvar found_asynch = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_synch = (found_synch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n            found_asynch = (found_asynch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_asynch'));\n        }\n    }\n}\n\ntests[\"Synchronous service found in list\"] = found_synch;\ntests[\"Asynchronous service found in list\"] = found_asynch;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1489,9 +1413,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477327432571,
+			"time": 1481643973156,
 			"name": "List Services",
-			"description": "",
+			"description": "List services, verifying both the synchronous and asynchronous services are present.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
@@ -1516,7 +1440,7 @@
 			},
 			"time": 1479327261247,
 			"name": "Deleted Service - Job Status",
-			"description": "Verify that an execute-service job fails if the service was deleted before the request was made.",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nVerify that an execute-service job fails if the service was deleted before the request was made.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1540,7 +1464,7 @@
 			},
 			"time": 1477327200224,
 			"name": "Job Not Found - POST",
-			"description": "",
+			"description": "Attempt to rerun a non-existant Job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1564,7 +1488,7 @@
 			},
 			"time": 1477404240545,
 			"name": "Reenable - Check Job Status",
-			"description": "",
+			"description": "Verify that a Job created from a re-enabled Service was successful.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1588,7 +1512,7 @@
 			},
 			"time": 1477312425425,
 			"name": "List Services - Bad order",
-			"description": "",
+			"description": "Attempt to list Services, giving an invalid string for the \"sortBy\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1612,7 +1536,7 @@
 			},
 			"time": 1476984612997,
 			"name": "Deleted Service - GET",
-			"description": "",
+			"description": "Part of a sequence of requests to check that a deleted Service cannot be utilized.\nAttempt to get the metadata of the deleted Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1683,7 +1607,7 @@
 			},
 			"time": 1478001681431,
 			"name": "Cancelling Job - Create Job",
-			"description": "",
+			"description": "Create a long-running Job for the purpose of cancelling it.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId_asynch}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
@@ -1708,7 +1632,7 @@
 			},
 			"time": 1477315093576,
 			"name": "Register Service - No resourceMetadata",
-			"description": "",
+			"description": "Attempt to register a Service with a no \"resourceMetadata\" parameter.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
@@ -1734,7 +1658,7 @@
 			},
 			"time": 1477503596789,
 			"name": "Job Not Found - GET",
-			"description": "",
+			"description": "Attempt to get the status of a non-existant Job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1782,7 +1706,7 @@
 			},
 			"time": 1478002252343,
 			"name": "Delete Asynch Service",
-			"description": "",
+			"description": "Delete the asynchronous Service used throughout this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": []
 		},
@@ -1796,7 +1720,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\nvar found_createdBy = true;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === postman.getEnvironmentVariable('username'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(/integration/i);\n    }\n}\n\ntests[\"Service found in list\"] = found_service;\ntests[\"All services had specified createdBy\"] = found_createdBy;\ntests[\"All services had specified keyword\"] = found_keyword;",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_synch = false;\nvar found_asynch = false;\nvar found_createdBy = true;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_synch = (found_synch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n            found_asynch = (found_asynch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_asynch'));\n        }\n        if (testLevels(tests, data.data[i], 'resourceMetadata.createdBy', 'skip', 'data[]')) {\n            found_createdBy = (found_createdBy && data.data[i].resourceMetadata.createdBy === postman.getEnvironmentVariable('username'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(/integration/i);\n    }\n}\n\ntests[\"Synchronous service found in list\"] = found_synch;\ntests[\"Asynchronous service missing from list\"] = found_asynch;\ntests[\"All services had specified createdBy\"] = found_createdBy;\ntests[\"All services had specified keyword\"] = found_keyword;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1804,9 +1728,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1477403961193,
+			"time": 1481644673114,
 			"name": "List Services with userName and keyword",
-			"description": "",
+			"description": "List services, filtered by the keyword \"integration\" and by username, verifying that the synchronous service is present, and that all results match both filters.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\": \"{{$timestamp}}\",\r\n\t\"mapping\": {\r\n\t\t\"dataId\": \"string\",\r\n\t\t\"dataType\": \"string\",\r\n\t\t\"epsg\": \"short\",\r\n\t\t\"minX\": \"long\",\r\n\t\t\"minY\": \"long\",\r\n\t\t\"maxX\": \"long\",\r\n\t\t\"maxY\": \"long\",\r\n\t\t\"hosted\": \"boolean\"\r\n\t}\r\n}\t"
@@ -1855,7 +1779,7 @@
 			},
 			"time": 1478263758440,
 			"name": "Create Asynch Job",
-			"description": "",
+			"description": "Create a Job using the asynchronous Service, Preview Generator.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"responses": [],
 			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_asynch}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\n\\\"source\\\": {\\n\\\"domain\\\": \\\"s3.amazonaws.com\\\",\\n\\\"bucketName\\\": \\\"pz-svcs-prevgen\\\",\\n\\\"fileName\\\": \\\"NASA-GDEM-10km-colorized.tif\\\"\\n},\\n\\\"function\\\": \\\"crop\\\",\\n\\\"bounds\\\": {\\n\\\"minx\\\": -140.00,\\n\\\"miny\\\": 10.00,\\n\\\"maxx\\\": -60.00,\\n\\\"maxy\\\": 70.00\\n}\\n}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}"
