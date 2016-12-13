@@ -136,7 +136,7 @@
 			},
 			"time": 1478111351129,
 			"name": "Get Resulting Normal dataId",
-			"description": "",
+			"description": "Download the result of the synchronous crop service job run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -159,7 +159,7 @@
 			},
 			"time": 1478113838931,
 			"name": "Check Resulting Async dataId",
-			"description": "",
+			"description": "Get the resulting dataId metadata of the asynchronous crop service job run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -183,7 +183,7 @@
 			},
 			"time": 1478206276737,
 			"name": "Delete Lightning Data",
-			"description": "",
+			"description": "Delete the data created by the lightning service.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": ""
@@ -203,7 +203,7 @@
 			"helperAttributes": {},
 			"time": 1478100658566,
 			"name": "Get Cropped Image",
-			"description": "",
+			"description": "Verify that the synchronous cropped image was created.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -252,7 +252,7 @@
 			},
 			"time": 1478104278472,
 			"name": "View Result",
-			"description": "",
+			"description": "Examine the result of the asynchronous crop job.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -269,9 +269,9 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'greeting', 'string')) {\n    tests[\"Says hello!\"] = data.greeting.match(/h(i|ello)/i);\n}\nif (testLevels(tests, data, 'countSquared')) {\n    tests[\"Correct countSquared value\"] = data.countSquared = -1;\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1478197489001,
+			"time": 1481653081774,
 			"name": "GET hello",
-			"description": "",
+			"description": "Check the \"greeting\" and \"countSquared\" outputs of the /hello endpoint.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -295,7 +295,7 @@
 			},
 			"time": 1478113654862,
 			"name": "Check Async Job Status",
-			"description": "",
+			"description": "Check that the registered asynchronous crop service job was successful through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -319,7 +319,7 @@
 			},
 			"time": 1478270493989,
 			"name": "Create Hello Job",
-			"description": "",
+			"description": "Create a hello service job through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_hello}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\\"name\\\":\\\"Jimmy\\\",\\\"count\\\":8}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"application/json\",          \n            \"type\" : \"text\"\n        }]\n    }\n}"
@@ -343,7 +343,7 @@
 			},
 			"time": 1478111256504,
 			"name": "Check Resulting Normal dataId",
-			"description": "",
+			"description": "Get the resulting dataId metadata of the synchronous crop service job run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -386,7 +386,7 @@
 			"helperAttributes": {},
 			"time": 1478100508207,
 			"name": "Crop",
-			"description": "",
+			"description": "Create a synchronous crop job on an image in the s3 bucket.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"source\": {\n        \"domain\": \"s3.amazonaws.com\",\n        \"bucketName\": \"pz-svcs-prevgen\",\n        \"fileName\": \"nasa_land_ocean_ice.tif\"\n    },\n    \"function\": \"crop\",\n    \"bounds\": {\n        \"minx\": -140.00,\n        \"miny\": 10.00,\n        \"maxx\": -60.00,\n        \"maxy\": 70.00\n    }\n}"
@@ -411,7 +411,7 @@
 			},
 			"time": 1478265267221,
 			"name": "Delete Lightning Service",
-			"description": "",
+			"description": "Unregister the lightning service.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -435,13 +435,13 @@
 			},
 			"time": 1478115950872,
 			"name": "Check Status",
-			"description": "",
+			"description": "Check the status of the asynchronous cropped job.  Retry until successful or 10 attempts made.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
 		{
 			"id": "4dd10e72-143a-2c33-3614-69764f45b364",
-			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\nContent-Type: application/json\n",
 			"url": "https://pz-svcs-prevgen.{{domain}}/cropasync/status/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -449,7 +449,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;",
+			"tests": "tests[\"Status code is 404 (Bug #10041)\"] = responseCode.code === 404;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -457,7 +457,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478108503833,
+			"time": 1481650635085,
 			"name": "Confirm Delete",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
@@ -478,7 +478,7 @@
 			"helperAttributes": {},
 			"time": 1478198046643,
 			"name": "POST hello",
-			"description": "",
+			"description": "Check that the \"greeting\" and \"countSquared\" outputs of the /hello endpoint match the expected value based on the POSTed data.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n\t\"name\": \"James\",\n\t\"count\": 3\n}"
@@ -503,7 +503,7 @@
 			},
 			"time": 1478206376597,
 			"name": "Register Hello Service",
-			"description": "",
+			"description": "Check that the hello service (as a POST) can be registered through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n\t\"url\" : \"https://pzsvc-hello.{{domain}}/hello\",\n\t\"timeout\" : \"180000\",\n\t\"method\" : \"POST\",\n\t\"contractUrl\" : \"https://pzsvc-hello.{{domain}}/hello\",\n\t\"resourceMetadata\" : {\n\t\t\"name\" : \"hello test\",\n\t\t\"description\" : \"hello says hello ... with lightning!\",\n\t\t\"classType\": {\n\t\t\t\"classification\": \"UNCLASSIFIED\"\n\t\t}\n\t}\n}"
@@ -523,7 +523,7 @@
 			"helperAttributes": {},
 			"time": 1478263940186,
 			"name": "pzsvc-hello ... says hello ...",
-			"description": "",
+			"description": "Simple Health check to pzsvc-hello.  Postman Environemnt Variables are initialized in this step.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -546,7 +546,7 @@
 			},
 			"time": 1478270563638,
 			"name": "Get Resulting Lightning dataId",
-			"description": "",
+			"description": "Download the output of the lightning service job when run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -570,7 +570,7 @@
 			},
 			"time": 1478111181100,
 			"name": "Check Normal Job Status",
-			"description": "",
+			"description": "Check that the registered synchronous crop service job was successful through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -619,7 +619,7 @@
 			},
 			"time": 1478203905223,
 			"name": "Check Hello Job Status",
-			"description": "",
+			"description": "Check that the hello service job was successful.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -643,7 +643,7 @@
 			},
 			"time": 1478110070653,
 			"name": "Register Async Service",
-			"description": "",
+			"description": "Register the asynchronous crop service through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n  \"isAsynchronous\":true,\n  \"url\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"timeout\" : \"180000\",\n  \"method\" : \"POST\",\n  \"contractUrl\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"resourceMetadata\" : {\n    \"name\" : \"pz-svcs-prevgen crop raster test\",\n    \"description\" : \"pz-svcs-prevgen is an awesome sample crop image external service.\",\n    \"classType\": {\n        \"classification\": \"UNCLASSIFIED\"\n     }\n  }\n}"
@@ -688,7 +688,7 @@
 			},
 			"time": 1478271220755,
 			"name": "Create Async Job",
-			"description": "",
+			"description": "Create a job with the registered asynchronous crop service through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_async}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\\"source\\\":{\\\"domain\\\":\\\"s3.amazonaws.com\\\",\\\"bucketName\\\":\\\"pz-svcs-prevgen\\\",\\\"fileName\\\":\\\"nasa_land_ocean_ice.tif\\\"},\\\"function\\\":\\\"crop\\\",\\\"bounds\\\":{\\\"minx\\\":-140.00,\\\"miny\\\":10.00,\\\"maxx\\\":-60.00,\\\"maxy\\\":70.00}}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}"
@@ -713,7 +713,7 @@
 			},
 			"time": 1478206460629,
 			"name": "Delete Hello Service",
-			"description": "",
+			"description": "Unregister the hello service.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -728,7 +728,7 @@
 			"data": null,
 			"dataMode": "params",
 			"name": "Get Async Cropped Image",
-			"description": "",
+			"description": "Verify that the asynchronous cropped image was created.",
 			"descriptionFormat": "html",
 			"time": 1478104308284,
 			"version": 2,
@@ -781,7 +781,7 @@
 			},
 			"time": 1478113633293,
 			"name": "Get Resulting Async dataId",
-			"description": "",
+			"description": "Download the result of the asynchronous crop service job run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -805,7 +805,7 @@
 			},
 			"time": 1478271215355,
 			"name": "Create Normal Job",
-			"description": "",
+			"description": "Create a job with the registered synchronous crop service through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_norm}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\\"source\\\":{\\\"domain\\\":\\\"s3.amazonaws.com\\\",\\\"bucketName\\\":\\\"pz-svcs-prevgen\\\",\\\"fileName\\\":\\\"nasa_land_ocean_ice.tif\\\"},\\\"function\\\":\\\"crop\\\",\\\"bounds\\\":{\\\"minx\\\":-140.00,\\\"miny\\\":10.00,\\\"maxx\\\":-60.00,\\\"maxy\\\":70.00}}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}"
@@ -829,7 +829,7 @@
 			},
 			"time": 1478199952953,
 			"name": "Get Resulting Hello dataId",
-			"description": "",
+			"description": "Validate the output of the hello service job when run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -877,14 +877,14 @@
 			},
 			"time": 1478206173473,
 			"name": "Delete Hello Data",
-			"description": "",
+			"description": "Delete the data created by the hello service.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": ""
 		},
 		{
 			"id": "c1f30a65-8da7-5af6-e11c-c92bcf853274",
-			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\nContent-Type: application/json\n",
 			"url": "https://pz-svcs-prevgen.{{domain}}/cropasync/status/{{jobId_del}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -892,7 +892,7 @@
 			"data": [],
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;",
+			"tests": "tests[\"Status code is 404 (Bug #10041)\"] = responseCode.code === 404;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -900,7 +900,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478114953880,
+			"time": 1481650639451,
 			"name": "Delete Before Complete - Confirm Delete",
 			"description": "",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
@@ -921,7 +921,7 @@
 			"helperAttributes": {},
 			"time": 1478100932467,
 			"name": "Crop Async",
-			"description": "",
+			"description": "Create a asynchronous crop job on an image in the s3 bucket.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"source\": {\n        \"domain\": \"s3.amazonaws.com\",\n        \"bucketName\": \"pz-svcs-prevgen\",\n        \"fileName\": \"nasa_land_ocean_ice.tif\"\n    },\n    \"function\": \"crop\",\n    \"bounds\": {\n        \"minx\": -140.00,\n        \"miny\": 10.00,\n        \"maxx\": -60.00,\n        \"maxy\": 70.00\n    }\n}"
@@ -936,12 +936,12 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'strike')) {\n    tests[\"'strike' is a boolean\"] = typeof data.strike === 'boolean';\n    if (testLevels(tests, data, 'lat')) {\n        tests[\"Valid lat\"] = data.lat >= -180 && data.lat <= 180;\n    }\n    if (testLevels(tests, data, 'lon')) {\n        tests[\"Valid lon\"] = data.lon >= -90 && data.lon <= 90;\n    }\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'strike')) {\n    tests[\"'strike' is a boolean\"] = typeof data.strike === 'boolean';\n    if (testLevels(tests, data, 'lat')) {\n        tests[\"Valid lat\"] = data.lat >= -90 && data.lat <= 90;\n    }\n    if (testLevels(tests, data, 'lon')) {\n        tests[\"Valid lon\"] = data.lon >= -180 && data.lon <= 180;\n    }\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1478198522743,
+			"time": 1481648232238,
 			"name": "lightning",
-			"description": "",
+			"description": "Check that the latest lightning strike (if any) is returned.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -960,7 +960,7 @@
 			"helperAttributes": {},
 			"time": 1478206506065,
 			"name": "Hello Preview Generator!",
-			"description": "",
+			"description": "Simple Health check to Preview Generator.  Postman Environemnt Variables are initialized in this step.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -984,7 +984,7 @@
 			},
 			"time": 1478265381727,
 			"name": "Check Resulting Lightning dataId",
-			"description": "",
+			"description": "Validate the output of the lightning service job when run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -1008,7 +1008,7 @@
 			},
 			"time": 1478203708469,
 			"name": "Register Lightning Service",
-			"description": "",
+			"description": "Check that the lightning service (as a GET) can be registered through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n\t\"url\" : \"https://pzsvc-hello.{{domain}}/lightning\",\n\t\"timeout\" : \"180000\",\n\t\"method\" : \"GET\",\n\t\"contractUrl\" : \"https://pzsvc-hello.{{domain}}/lightning\",\n\t\"resourceMetadata\" : {\n\t\t\"name\" : \"hello test\",\n\t\t\"description\" : \"hello says hello ... with lightning!\",\n\t\t\"classType\": {\n\t\t\t\"classification\": \"UNCLASSIFIED\"\n\t\t}\n\t}\n}"
@@ -1033,7 +1033,7 @@
 			},
 			"time": 1478265472978,
 			"name": "Check Lightning Job Status",
-			"description": "",
+			"description": "Check that the lightning service job was successful.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": []
 		},
@@ -1080,7 +1080,7 @@
 			},
 			"time": 1478270499026,
 			"name": "Create Lightning Job",
-			"description": "",
+			"description": "Create a lightning job through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_lightning}}\",\n        \"dataInputs\" : {}, \n        \"dataOutput\": [{\n            \"mimeType\" : \"application/json\",          \n            \"type\" : \"text\"\n        }]\n    }\n}"
@@ -1129,7 +1129,7 @@
 			},
 			"time": 1478206541582,
 			"name": "Register Normal Service",
-			"description": "",
+			"description": "Register the synchronous crop service through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"responses": [],
 			"rawModeData": "{\n\t\"url\" : \"https://pz-svcs-prevgen.{{domain}}/crop\",\n\t\"timeout\" : \"180000\",\n\t\"method\" : \"POST\",\n\t\"contractUrl\" : \"https://pz-svcs-prevgen.{{domain}}/crop\",\n\t\"resourceMetadata\" : {\n\t\t\"name\" : \"pz-svcs-prevgen crop raster test\",\n\t\t\"description\" : \"pz-svcs-prevgen is an awesome sample crop image external service.\",\n\t\t\"classType\": {\n\t\t\t\"classification\": \"UNCLASSIFIED\"\n\t\t}\n\t}\n}"
