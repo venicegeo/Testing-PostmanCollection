@@ -47,7 +47,7 @@ for space in $spaces; do
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
 		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/load.pl < results.json
+		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/piazza/$space/cgi-bin/load.pl < results.json
 		echo $latch
 	done
 
@@ -57,7 +57,7 @@ for space in $spaces; do
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch & e-mail.
 		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		curl -H "Content-Type: application/json" -X POST -d @- "$json_results" http://dashboard.venicegeo.io/cgi-bin/load.pl < results.json
+		curl -H "Content-Type: application/json" -X POST -d @- "$json_results" http://dashboard.venicegeo.io/piazza/$space/cgi-bin/load.pl < results.json
 		echo $latch
 	done
 	
