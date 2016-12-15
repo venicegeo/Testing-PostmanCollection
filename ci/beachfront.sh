@@ -31,7 +31,7 @@ for space in $spaces; do
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-	cmd="newman -o results.json --requestTimeout 960000 -x -e $envfile -c"
+	cmd="newman -o results.json --requestTimeout 960000 -x -e $envfile -g $POSTMAN_FILE -c"
 
 	latch=0
 
