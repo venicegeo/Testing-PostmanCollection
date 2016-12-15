@@ -49,7 +49,7 @@
 	"requests": [
 		{
 			"id": "04a5e604-03cd-5ea2-dbf9-c3e6b26fb35d",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/data/{{shoreDataID_URL}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -73,7 +73,7 @@
 		},
 		{
 			"id": "59c3e546-8a8f-4d2d-4b11-736aece95eef",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/data/{{shoreDataID_JSON}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -97,7 +97,7 @@
 		},
 		{
 			"id": "9f754f1c-273d-4932-ce08-07c8fdd57e2f",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/data/{{shoreDataID_JSON}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -121,7 +121,7 @@
 		},
 		{
 			"id": "afa861ed-f822-83bd-c9f3-b1fb47cac150",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/deployment/{{shoreDeplID_JSON}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -145,7 +145,7 @@
 		},
 		{
 			"id": "bcdbca4b-4430-2214-26da-2906a75cdef8",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/deployment/{{shoreDeplID_JSON}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -189,7 +189,7 @@
 		},
 		{
 			"id": "f02665ee-5df1-cff7-2f9f-e39b81922104",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOg==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/deployment/{{shoreDeplID_URL}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -232,7 +232,7 @@
 		},
 		{
 			"id": "f7574584-e556-4c90-c6c0-31ff95ea7356",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/deployment/{{shoreDeplID_URL}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -276,7 +276,7 @@
 		},
 		{
 			"id": "fc49a488-c15b-eead-f7b9-b9cbe9112b34",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "",
 			"url": "{{piazza domain}}/data/{{shoreDataID_URL}}",
 			"preRequestScript": null,
 			"pathVariables": {},

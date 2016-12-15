@@ -147,7 +147,7 @@
 	"requests": [
 		{
 			"id": "01ceeb47-0c0b-fb65-2f5a-f8b21a23723b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -171,7 +171,7 @@
 		},
 		{
 			"id": "0418aa09-bf63-8e65-1e4b-62641162da03",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -196,7 +196,7 @@
 		},
 		{
 			"id": "05e879b5-0b31-d398-948b-182f2102eae9",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -222,7 +222,7 @@
 		},
 		{
 			"id": "0600a010-d79f-b396-cb2f-e11e47d56ced",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/eventType?perPage=100&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -247,7 +247,7 @@
 		},
 		{
 			"id": "0670ab54-99b6-ffdc-3047-9c40af2de8ec",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -272,7 +272,7 @@
 		},
 		{
 			"id": "12600a27-3e5a-7916-920e-f21b393bca3c",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -297,7 +297,7 @@
 		},
 		{
 			"id": "130e1bcd-88e7-de64-29bc-d9733ebf0114",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/event?perPage=100&order=asc&sortBy=eventId",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -322,7 +322,7 @@
 		},
 		{
 			"id": "17ce21f2-b177-9824-8c04-6b91587ca8ee",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -347,7 +347,7 @@
 		},
 		{
 			"id": "1819142b-32b8-72be-34ae-7cfd228fe9f3",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -371,7 +371,7 @@
 		},
 		{
 			"id": "1d5a3d38-e661-7d9b-7343-cf0284552579",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -397,7 +397,7 @@
 		},
 		{
 			"id": "1ef95476-2a21-6997-d6d7-7201de7587ac",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/trigger?perPage=100&order=asc&sortBy=enabled",
 			"pathVariables": {},
 			"preRequestScript": null,
@@ -423,7 +423,7 @@
 		},
 		{
 			"id": "202d23c1-f510-7216-dc5b-5a963e0a17f1",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/eventType?perPage=100&order=asc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -448,7 +448,7 @@
 		},
 		{
 			"id": "2784ced1-e08a-8943-df1b-44bfa5c72ea8",
-			"headers": "Content-Type: application/json\nAuthorization: Basic MmNlMGZlZDYtNjRmNi00NzFmLWI0ZmQtZjZkOThmNjJhNDI2Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -472,7 +472,7 @@
 		},
 		{
 			"id": "2b19c954-d145-ead7-60e9-effb67becc69",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -496,7 +496,7 @@
 		},
 		{
 			"id": "2d780775-a840-d234-791f-14417e4e01a6",
-			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_orig}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -520,7 +520,7 @@
 		},
 		{
 			"id": "3364457e-20b2-ea0c-0ea8-d581af4b5b19",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -546,7 +546,7 @@
 		},
 		{
 			"id": "36fd9f47-8c7e-203a-f1f5-ca2eeface9d9",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -591,7 +591,7 @@
 		},
 		{
 			"id": "399576c7-a9fa-032e-15df-01c862658442",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -617,7 +617,7 @@
 		},
 		{
 			"id": "3d8eaa05-a549-e002-eeb2-e24369ac53b6",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -642,7 +642,7 @@
 		},
 		{
 			"id": "3e73dc36-6955-d9ce-7143-3b82e29e0de6",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -666,7 +666,7 @@
 		},
 		{
 			"id": "40a40178-8fdf-2b16-9111-267da82b33da",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/event?perPage=100&order=desc&sortBy=createdBy",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -691,7 +691,7 @@
 		},
 		{
 			"id": "43628373-9d0b-bf51-efe0-89d7d4a871c9",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -717,7 +717,7 @@
 		},
 		{
 			"id": "469ca7e4-dff3-ad60-ad08-bbb77ff68b08",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/alert/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -742,7 +742,7 @@
 		},
 		{
 			"id": "49e93bdc-f135-fd14-4d6b-14751fb08c68",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -767,7 +767,7 @@
 		},
 		{
 			"id": "56a048d9-0a5f-acdd-c960-b78fe9876c76",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/eventType?perPage=3&page=1",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -792,7 +792,7 @@
 		},
 		{
 			"id": "56cc8148-ca72-0550-3c7f-e02a0148464d",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -814,7 +814,7 @@
 		},
 		{
 			"id": "5e1a0b41-45e5-41e3-ee4e-751c8d8953dc",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/event?perPage=100&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -838,7 +838,7 @@
 		},
 		{
 			"id": "5f5dd927-345f-7550-9277-acbbe22de4bc",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -862,7 +862,7 @@
 		},
 		{
 			"id": "61fc52d5-d3e6-56c7-4d9b-37f1e8f247b0",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/alert/{{alertId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -887,7 +887,7 @@
 		},
 		{
 			"id": "63f8284d-9c18-eaa7-5806-ba700dbb19a7",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -932,7 +932,7 @@
 		},
 		{
 			"id": "6a2828ac-5a7f-b9a2-ed8e-3b58355b63f2",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -957,7 +957,7 @@
 		},
 		{
 			"id": "6a535752-5478-cf69-5995-7a21ff75c962",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/alert/{{alertId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -981,7 +981,7 @@
 		},
 		{
 			"id": "6c3b1ce7-5452-839c-1064-2a042a789864",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=eventId",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1006,7 +1006,7 @@
 		},
 		{
 			"id": "6c6933b5-d290-5f00-2145-7a77c6b60e23",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < IMPORTANT > > > > > > > > > > >\");\nconsole.log(\"      These tests represent important features.      \");\nconsole.log(\"Use extreme caution when pushing if these tests fail.\");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -1030,7 +1030,7 @@
 		},
 		{
 			"id": "6db9affc-8ec4-3657-06a9-9e6ef1d3c1a7",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId_nested}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1056,7 +1056,7 @@
 		},
 		{
 			"id": "6f777a93-94e8-ff11-e93d-a885a2ab0da4",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId_soft}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1081,7 +1081,7 @@
 		},
 		{
 			"id": "72168779-f2cb-e1ea-0e5a-4af78d2933f4",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1106,7 +1106,7 @@
 		},
 		{
 			"id": "72450ce2-7ba8-b2c3-2bec-c3bb77e59c24",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1131,7 +1131,7 @@
 		},
 		{
 			"id": "73861207-aa0b-f386-6061-2286bcf4cce8",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1157,7 +1157,7 @@
 		},
 		{
 			"id": "75853edd-54d6-fcb8-6de6-eb50a56a5f84",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1182,7 +1182,7 @@
 		},
 		{
 			"id": "7b04d36f-071b-3eb1-8e4b-c30c4c29a2ce",
-			"headers": "Authorization: Basic e3tBUEkgS2V5fX06\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=asc&sortBy=alertId",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1206,7 +1206,7 @@
 		},
 		{
 			"id": "7f606417-cbb5-20cf-573b-5ee32ee65e52",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId_disabled}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1231,7 +1231,7 @@
 		},
 		{
 			"id": "7f7fd8a9-2c4e-2552-2c30-ef54d7033f4b",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1256,7 +1256,7 @@
 		},
 		{
 			"id": "89b8a80b-ecd4-bcf4-6611-1280ef623c31",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=3&page=1",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1281,7 +1281,7 @@
 		},
 		{
 			"id": "89cf9440-5759-47e9-6957-3cfac30a819b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-workflow.{{domain}}/eventType",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1307,7 +1307,7 @@
 		},
 		{
 			"id": "8a38d894-9de3-315e-810f-4e0a895dc809",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1332,7 +1332,7 @@
 		},
 		{
 			"id": "8bfe9aad-8553-dfb8-4a0d-fdec67099b46",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1356,7 +1356,7 @@
 		},
 		{
 			"id": "8c2b749d-ddae-ae5b-2ff9-ee8992f1183b",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/eventType?perPage=100&order=desc&sortBy=eventTypeId",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1381,7 +1381,7 @@
 		},
 		{
 			"id": "8fc295ab-c416-da26-0ae7-00777626b6a3",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}?softDelete=true",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1406,7 +1406,7 @@
 		},
 		{
 			"id": "9bf03c56-2a5b-976f-0b20-a548efcb3c00",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1432,7 +1432,7 @@
 		},
 		{
 			"id": "9e2f4848-5071-3690-db28-c2afe3ea79ca",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1458,7 +1458,7 @@
 		},
 		{
 			"id": "a025f979-8849-7f0e-37cd-76d6b4b20df2",
-			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_orig}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1481,7 +1481,7 @@
 		},
 		{
 			"id": "a09540e4-d655-775e-ce0e-2ad02a32c16c",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1507,7 +1507,7 @@
 		},
 		{
 			"id": "a2212f06-9578-b286-78b5-02422e61431b",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/trigger?",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1531,7 +1531,7 @@
 		},
 		{
 			"id": "a8f0c07b-d52c-ea85-05ae-ff579895c7b3",
-			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1555,7 +1555,7 @@
 		},
 		{
 			"id": "a96b1301-559f-61bd-2c57-9b7e91578174",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1580,7 +1580,7 @@
 		},
 		{
 			"id": "af13b3e4-cb7f-4b92-4e51-022e7803db6b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1606,7 +1606,7 @@
 		},
 		{
 			"id": "b3bd365b-f4f3-8936-2ed1-833ba6ae5171",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/alert/foo",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1632,7 +1632,7 @@
 		},
 		{
 			"id": "b759925b-cb33-5215-ec57-e4fe52a34916",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/trigger?perPage=3&page=1",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1657,7 +1657,7 @@
 		},
 		{
 			"id": "b75d4547-b93c-5f5a-da8b-7dda1b15b56a",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/eventType?perPage=100&order=asc&sortBy=name",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1682,7 +1682,7 @@
 		},
 		{
 			"id": "b99eda6e-0ba5-4b1f-9cc1-c131596854ad",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1707,7 +1707,7 @@
 		},
 		{
 			"id": "be2a3390-ab90-234b-5cbb-1eada913e361",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=1000&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1732,7 +1732,7 @@
 		},
 		{
 			"id": "bf740ce4-9c8e-8629-478d-93a9eb7312ca",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/trigger?perPage=100&order=desc&sortBy=percolationId",
 			"pathVariables": {},
 			"preRequestScript": null,
@@ -1758,7 +1758,7 @@
 		},
 		{
 			"id": "c1876e88-cbd1-32a5-a1c8-085d93b678d4",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1783,7 +1783,7 @@
 		},
 		{
 			"id": "c5063351-e0d6-94bb-60b6-c16a8a9fc209",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1808,7 +1808,7 @@
 		},
 		{
 			"id": "c6ade417-2895-b8da-1f51-8511f28e5f72",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1834,7 +1834,7 @@
 		},
 		{
 			"id": "c8ff77d0-c1ca-5acc-dba2-acb7e662c4a7",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1856,7 +1856,7 @@
 		},
 		{
 			"id": "ca62860f-5e9c-676f-9732-abca22652c04",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1881,7 +1881,7 @@
 		},
 		{
 			"id": "cb7529e4-ff36-9bf8-b15f-34b54378dc1c",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/event?perPage=100&order=desc&sortBy=eventTypeId",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1906,7 +1906,7 @@
 		},
 		{
 			"id": "ce6c6e53-5f83-611d-31c6-36523847914f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1932,7 +1932,7 @@
 		},
 		{
 			"id": "d32fb7cf-f172-6797-7e0e-a7be34e33f27",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId_nested}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1957,7 +1957,7 @@
 		},
 		{
 			"id": "d3b9f618-821d-ad92-d81b-adb619184f06",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_soft}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1981,7 +1981,7 @@
 		},
 		{
 			"id": "d5646eb8-19b5-9a13-8b15-23a6a8073611",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId_notrigger}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2006,7 +2006,7 @@
 		},
 		{
 			"id": "d84231e1-9a8e-1546-d865-3978de162e92",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/event?perPage=3&page=1",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2031,7 +2031,7 @@
 		},
 		{
 			"id": "d898682c-950c-9471-95ed-df6fc991c022",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=createdOn",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2055,7 +2055,7 @@
 		},
 		{
 			"id": "d8c7db1e-1207-a3fb-0442-a72f319b2bea",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2079,7 +2079,7 @@
 		},
 		{
 			"id": "dbbf49a3-bd1c-fa72-7da5-128334a396b3",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/trigger?perPage=100&order=asc&sortBy=eventTypeId",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2104,7 +2104,7 @@
 		},
 		{
 			"id": "dc1b1e97-783e-bea9-e180-e3862218669e",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < LOW > > > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -2128,7 +2128,7 @@
 		},
 		{
 			"id": "dea29b91-bb84-1ba7-4ce7-efea9fe45b93",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId_deletion}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2150,7 +2150,7 @@
 		},
 		{
 			"id": "e5515a1c-0d96-af6d-271e-d22cdf00a3b1",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2175,7 +2175,7 @@
 		},
 		{
 			"id": "e6883d62-8670-c9b7-312c-f230f22ff663",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2199,7 +2199,7 @@
 		},
 		{
 			"id": "f0372133-bd20-ded4-91e0-41473ca4e051",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2225,7 +2225,7 @@
 		},
 		{
 			"id": "f293b3a0-7ffb-b38b-15a0-3e603e704327",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2251,7 +2251,7 @@
 		},
 		{
 			"id": "f8a82a95-77a7-7991-61de-f755174d4a3b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2276,7 +2276,7 @@
 		},
 		{
 			"id": "f9094871-5d2b-efd8-26a4-29cc23e5784c",
-			"headers": "Authorization: Basic ODU4OTJhNjYtN2ZkMS00OWUzLWI4NDAtYzEyMGViMmM5ODU2Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/query",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2301,7 +2301,7 @@
 		},
 		{
 			"id": "fa777617-04f6-bbc2-af3c-17a3b262e22b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic MmNlMGZlZDYtNjRmNi00NzFmLWI0ZmQtZjZkOThmNjJhNDI2Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2325,7 +2325,7 @@
 		},
 		{
 			"id": "fabe139c-0322-125f-493f-a40dd60464f2",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2350,7 +2350,7 @@
 		},
 		{
 			"id": "fb027c23-25f5-637f-5465-77c80dca672d",
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=jobId",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -2375,7 +2375,7 @@
 		},
 		{
 			"id": "fcbe0a37-8628-540e-3d0e-11cb6c358478",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
