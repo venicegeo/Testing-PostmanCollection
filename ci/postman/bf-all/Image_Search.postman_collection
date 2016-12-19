@@ -201,7 +201,7 @@
 		},
 		{
 			"id": "363c2ddf-5d73-d173-6e59-330ba3820678",
-			"headers": "Authorization: Basic YmY5MDViODItNGMxYi00ZDhhLWJiMGYtZGM0MjQyOGJhOTU2Og==\n",
+			"headers": "",
 			"url": "https://pzsvc-image-catalog.{{domain}}/eventTypeID?pzGateway={{piazza domain}}",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},

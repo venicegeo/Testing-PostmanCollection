@@ -45,7 +45,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic MGNlYTc4N2ItYWE0ZS00OWNjLThjMjgtYTg3YTFhNTZkZDlkOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nkey: stamp\nfrom: 0\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nkey: stamp\nfrom: 0\norder: true",
 			"dataMode": "params",
 			"data": [],
 			"rawModeData": "",
@@ -67,7 +67,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
@@ -89,7 +89,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "params",
 			"data": [],
 			"rawModeData": "",
@@ -153,7 +153,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "",
@@ -164,7 +164,7 @@
 		},
 		{
 			"id": "66891ce7-784a-4c15-a4b8-a4c84337d3fd",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmp0a2lya25jYy0xN28xRw==\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.int.geointservices.io/eventType",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -210,7 +210,7 @@
 		},
 		{
 			"id": "74d2506d-3af6-655c-6366-87641390134b",
-			"headers": "Authorization: Basic e3thcGlrZXl9fTo=\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.int.geointservices.io/alert",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -244,7 +244,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{\n    \"name\": \"High Severity\",\n    \"eventTypeId\": \"{{eventtype_id}}\",\n    \"condition\": {\n        \"query\": {\n            \"match_all\": {}\n        }\n\n    },\n    \"job\": {\n        \"userName\": \"test\",\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"135123e0-e38d-4668-a7c8-52e9d023cbba\",\n                \"dataInputs\": {},\n                \"dataOutput\": [{\n                    \"mimeType\": \"application/json\",\n                    \"type\": \"text\"\n                }]\n            }\n        }\n    },\n    \"enabled\": true\n}",
@@ -255,7 +255,7 @@
 		},
 		{
 			"id": "8c7ce6bd-99e5-2392-dddd-c75e4f6a5214",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.int.geointservices.io/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -290,7 +290,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "\n{\n   \"enabled\": false\n}",
@@ -312,7 +312,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "params",
 			"data": [],
 			"rawModeData": "",
@@ -334,7 +334,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "params",
 			"data": [],
 			"rawModeData": "",
@@ -345,7 +345,7 @@
 		},
 		{
 			"id": "b84f89ec-5b33-bd23-5d4e-5ef14aa01df8",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic e3thcGlrZXl9fTo=\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.int.geointservices.io/eventType/{{eventtype_id}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -424,7 +424,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: 0",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: 0",
 			"dataMode": "params",
 			"data": [],
 			"rawModeData": "",
@@ -455,7 +455,7 @@
 		},
 		{
 			"id": "e00a4478-d2c7-fa41-4941-339a7ab1388c",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MmNlMGZlZDYtNjRmNi00NzFmLWI0ZmQtZjZkOThmNjJhNDI2Og==\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.int.geointservices.io/trigger/{{triggerId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -511,7 +511,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Authorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true",
 			"dataMode": "params",
 			"data": [],
 			"rawModeData": "",
@@ -522,7 +522,7 @@
 		},
 		{
 			"id": "fee1664e-6706-325c-bccd-adb1a2cc7d85",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic e3thcGlrZXl9fTo=\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.int.geointservices.io/event/{{eventId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
