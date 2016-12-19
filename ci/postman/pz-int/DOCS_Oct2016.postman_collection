@@ -17,7 +17,7 @@
 						"exec": [
 							"",
 							"var data = JSON.parse(responseBody);",
-							"postman.setEnvironmentVariable(\"apikey\",\"b7d153ec-2480-4da3-84f7-0145cf59a298\")",
+							"postman.setEnvironmentVariable(\"apikey\",\"5c3959bc-aa1f-4053-b133-c88f855194a1\")",
 							"postman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);",
 							""
 						]
@@ -28,13 +28,13 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "b7d153ec-2480-4da3-84f7-0145cf59a298",
+						"username": "5c3959bc-aa1f-4053-b133-c88f855194a1",
 						"password": "",
 						"saveHelperData": true,
 						"showPassword": false
 					}
 				},
-				"url": "https://pz-gateway.{{domain}}/service/close",
+				"url": "https://pz-gateway.{{domain}}/service",
 				"method": "POST",
 				"header": [
 					{
@@ -64,7 +64,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"value": "Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==",
 						"description": ""
 					}
 				],
@@ -86,7 +86,7 @@
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"jobId_localimage\",data.data.jobId);",
-							"postman.setEnvironmentVariable(\"apikey\",\"b7d153ec-2480-4da3-84f7-0145cf59a298\")",
+							"//postman.setEnvironmentVariable(\"apikey\",\"b7d153ec-2480-4da3-84f7-0145cf59a298\")",
 							"",
 							"var t = new Date().getTime();",
 							"while (new Date().getTime() < t + 5000);"
@@ -109,7 +109,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"value": "Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==",
 						"description": ""
 					}
 				],
@@ -120,12 +120,14 @@
 							"key": "data",
 							"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"Testing the DOCS\" } } }",
 							"type": "text",
-							"enabled": true
+							"enabled": true,
+							"warning": ""
 						},
 						{
 							"key": "file",
 							"type": "file",
 							"enabled": true,
+							"warning": "",
 							"src": "terrametrics.tif"
 						}
 					]
@@ -1072,7 +1074,10 @@
 							"",
 							"var data = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"deploymentId\",data.data.result.deployment.deploymentId);",
-							""
+							"",
+							"",
+							"var t = new Date().getTime();",
+							"while (new Date().getTime() < t + 5000);"
 						]
 					}
 				}
@@ -1092,7 +1097,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==",
+						"value": "Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==",
 						"description": ""
 					}
 				],
@@ -1192,7 +1197,10 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var t = new Date().getTime();",
+							"while (new Date().getTime() < t + 5000);"
 						]
 					}
 				}
@@ -1208,46 +1216,6 @@
 					}
 				},
 				"url": "https://pz-gateway.{{domain}}/data/{{dataId_localimage}}",
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Deployment",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"username": "{{apikey}}",
-						"password": "",
-						"saveHelperData": true,
-						"showPassword": false
-					}
-				},
-				"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId}}",
 				"method": "DELETE",
 				"header": [
 					{
