@@ -119,7 +119,7 @@
 	"requests": [
 		{
 			"id": "18139b2b-b828-320e-2fbe-e6223c44368a",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -144,7 +144,7 @@
 		},
 		{
 			"id": "1e55789e-b4cc-6168-11a0-12f5d93460d1",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -169,7 +169,7 @@
 		},
 		{
 			"id": "1f4360e3-bea4-da3c-8133-c11503bff374",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/by_scene/{{scene_id}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -201,10 +201,10 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif ((postman.getEnvironmentVariable('environment') === 'prod') || (postman.getEnvironmentVariable('environment') === 'stage')) {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('API Key'));\n} else {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('Stage API Key'));\n}\n\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('scene_id', 'landsat:LC81610532016279LGN00');\npostman.setEnvironmentVariable('PL Name', 'IntegrationTest_SriLanka');",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif ((postman.getEnvironmentVariable('environment') === 'prod') || (postman.getEnvironmentVariable('environment') === 'stage')) {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('API Key'));\n} else {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('Stage API Key'));\n}\n\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('scene_id', 'landsat:LC81610532016279LGN00');\npostman.setEnvironmentVariable('PL Name', 'IntegrationTest_SriLanka');\n\nconsole.log(postman.getGlobalVariable('bf_password').replace('user','!@#$'));",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1481289899341,
+			"time": 1482243241471,
 			"name": "Health Check",
 			"description": "Check that the app responds at all.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
@@ -213,7 +213,7 @@
 		},
 		{
 			"id": "240da778-45bc-dbfd-9286-a3be3c936bcd",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -238,7 +238,7 @@
 		},
 		{
 			"id": "24826489-7270-c44b-e040-7ba98333b29c",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline/{{productLineId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -263,7 +263,7 @@
 		},
 		{
 			"id": "2655be01-50ce-4e6a-1d8f-98c53fcfa980",
-			"headers": "Authorization: Basic ZmVmNDZjMzEtMWM1ZS00MWUzLThlZGEtZTA1ZmVlMjM0N2MzOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -288,7 +288,7 @@
 		},
 		{
 			"id": "2bfad1d3-bcdd-a528-2499-37baa2e6bb89",
-			"headers": "Authorization: Basic MjI2ZWNjMzItZWIzZS00ZWQ0LWE3ZDEtMmU0YTIzZjQxZWNiOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -313,7 +313,7 @@
 		},
 		{
 			"id": "39b0b157-b5c6-f9d9-e4e6-7b88d4492a8d",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -338,7 +338,7 @@
 		},
 		{
 			"id": "3aa682a3-50d6-e2fc-2149-6e353af1ff46",
-			"headers": "Authorization: Basic MzcyZDM1NTUtNTVlZC00YjE5LTliMmEtZTg5MDIxZjBlMTdkOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/{{jobId_other}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -363,7 +363,7 @@
 		},
 		{
 			"id": "3ba7c0ab-7d7a-aa84-ec09-ed9237b0884b",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -388,7 +388,7 @@
 		},
 		{
 			"id": "3bd1d009-5179-f152-046a-f422bac3a626",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -413,7 +413,7 @@
 		},
 		{
 			"id": "43ae3dc7-46fd-6cfd-2b61-def29583c991",
-			"headers": "Authorization: Basic e3tiZl9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -438,7 +438,7 @@
 		},
 		{
 			"id": "4a3b5a9e-0db6-44f6-d29d-4483a8ccb78b",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.dev.geointservices.io/v0/job/by_productline/{{productLineId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -462,7 +462,7 @@
 		},
 		{
 			"id": "4bcc7df5-34b7-cf0e-da51-68d0b7a4c935",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -487,7 +487,7 @@
 		},
 		{
 			"id": "4d65e7e3-b5a2-96e7-aaae-d08b848490bd",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -512,7 +512,7 @@
 		},
 		{
 			"id": "5a54ae81-ddd3-667f-bb14-635a12063865",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -537,7 +537,7 @@
 		},
 		{
 			"id": "5c6a0965-afd4-395c-d4fd-3fd3a6c954ea",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -562,7 +562,7 @@
 		},
 		{
 			"id": "5ddf7b8c-f966-1fce-7efd-a04e5cc74344",
-			"headers": "Authorization: Basic ZmJkYmFkMjktNjllYy00NWE2LWFmZWYtNzNkMzZmNDRjYmVmOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -587,7 +587,7 @@
 		},
 		{
 			"id": "668083e7-bd36-eca5-f980-36366e292e4f",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "http://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -612,7 +612,7 @@
 		},
 		{
 			"id": "6dc15921-1892-bbfc-36f6-8718532298e8",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/by_scene/{{scene_id}}",
 			"pathVariables": {},
 			"preRequestScript": null,
@@ -639,7 +639,7 @@
 		},
 		{
 			"id": "714dfaef-ec7b-c196-9578-9e005ce4a27a",
-			"headers": "Authorization: Basic ZjM2ZDk1YmYtMDU1MC00M2EwLTlkM2UtNzE2MWRiOWMzMDhhOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -685,7 +685,7 @@
 		},
 		{
 			"id": "71728f0d-535f-87bb-d9bb-b549fb0f3f21",
-			"headers": "Authorization: Basic ZmVmNDZjMzEtMWM1ZS00MWUzLThlZGEtZTA1ZmVlMjM0N2MzOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -709,7 +709,7 @@
 		},
 		{
 			"id": "72d2d59f-6b6c-b82f-fc90-2cc256b2a3dd",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -734,7 +734,7 @@
 		},
 		{
 			"id": "73f74336-ac16-8c05-c684-9c13dfeb8187",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -760,7 +760,7 @@
 		},
 		{
 			"id": "7523d89d-2335-6ad0-78c2-036125c4e4a6",
-			"headers": "Authorization: Basic ZmVmNDZjMzEtMWM1ZS00MWUzLThlZGEtZTA1ZmVlMjM0N2MzOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline/{{productLineId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -785,7 +785,7 @@
 		},
 		{
 			"id": "753a697b-03b9-38fb-4f71-d7e9c85e6cd9",
-			"headers": "Content-Type: application/json\nAuthorization: Basic UHpUZXN0UGFzczEzOlAxYXp6YXVzZXJwYXNzd29yZCo=\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "http://bf-api.{{domain}}/login",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -809,7 +809,7 @@
 		},
 		{
 			"id": "7d6640a9-0ad4-b759-28df-93bb365d9d7d",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/{{jobId_other}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -833,7 +833,7 @@
 		},
 		{
 			"id": "81913220-6678-7bb3-802e-bbb0fd844166",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NzA5MDQ1NzEtMDRmYy00N2YyLTlkOTAtNzA2MTZiMzQzNjI3Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "http://bf-api.{{domain}}/v0/algorithm",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -857,7 +857,7 @@
 		},
 		{
 			"id": "8ed84db9-bc48-ecc5-3d04-c63aaae676ae",
-			"headers": "Authorization: Basic ZmVmNDZjMzEtMWM1ZS00MWUzLThlZGEtZTA1ZmVlMjM0N2MzOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -882,7 +882,7 @@
 		},
 		{
 			"id": "95b19647-35ef-e9b6-7663-3363fde45aea",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "http://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -907,7 +907,7 @@
 		},
 		{
 			"id": "97fea031-32b8-6f0e-d91f-f38f572366b4",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -932,7 +932,7 @@
 		},
 		{
 			"id": "99a6520e-8253-73c6-a7f8-5c4e1a93815c",
-			"headers": "Authorization: Basic ZmJkYmFkMjktNjllYy00NWE2LWFmZWYtNzNkMzZmNDRjYmVmOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -957,7 +957,7 @@
 		},
 		{
 			"id": "a1341f16-7c1a-9447-9faa-3631dd5e4440",
-			"headers": "Authorization: Basic ZmJkYmFkMjktNjllYy00NWE2LWFmZWYtNzNkMzZmNDRjYmVmOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/foo",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -981,7 +981,7 @@
 		},
 		{
 			"id": "a15103e1-fded-ef46-7999-81835713143e",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"pathVariables": {},
 			"preRequestScript": null,
@@ -1008,7 +1008,7 @@
 		},
 		{
 			"id": "a65ec4cf-ea56-4779-5fdb-fc048f0c8b73",
-			"headers": "Authorization: Basic Zm9vOmJhcg==\n",
+			"headers": "",
 			"url": "https://bf-api.{{domain}}/login",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1034,7 +1034,7 @@
 		},
 		{
 			"id": "ac5ad91e-2aa7-0329-354d-9d659379c540",
-			"headers": "Authorization: Basic MGIyMjBkNWEtOGU3NC00YmEwLWFjOTgtZjZmYzBjZWVhYzcwOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/algorithm",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1060,7 +1060,7 @@
 		},
 		{
 			"id": "ae040b12-5103-2d42-3e43-d8bd1ad4ae28",
-			"headers": "Authorization: Basic ZmJkYmFkMjktNjllYy00NWE2LWFmZWYtNzNkMzZmNDRjYmVmOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/foo",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1084,7 +1084,7 @@
 		},
 		{
 			"id": "ae050b93-1cae-7503-a19b-8b762b61f787",
-			"headers": "Authorization: Basic e3tiZl9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"pathVariables": {},
 			"preRequestScript": null,
@@ -1130,7 +1130,7 @@
 		},
 		{
 			"id": "affc727f-b104-2d34-3488-5a2dd893c1e8",
-			"headers": "Authorization: Basic e3tiZl9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1155,7 +1155,7 @@
 		},
 		{
 			"id": "b2613ee7-65e6-02c7-d492-a682a488867b",
-			"headers": "Authorization: Basic UHpUZXN0UGFzczEzOlAxYXp6YXVzZXJwYXNzd29yZCo=\n",
+			"headers": "",
 			"url": "https://bf-api.{{domain}}/login",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1179,7 +1179,7 @@
 		},
 		{
 			"id": "b457c662-63d8-1b69-760d-46d257f58e8a",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1204,7 +1204,7 @@
 		},
 		{
 			"id": "b4bfa388-3875-0151-0cc4-e9bf4eaf2811",
-			"headers": "Authorization: Basic MGIyMjBkNWEtOGU3NC00YmEwLWFjOTgtZjZmYzBjZWVhYzcwOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/algorithm/{{algServiceId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1230,7 +1230,7 @@
 		},
 		{
 			"id": "b7b8d760-f2c3-fb6d-0266-4dcd85ded83d",
-			"headers": "Authorization: Basic ZmJkYmFkMjktNjllYy00NWE2LWFmZWYtNzNkMzZmNDRjYmVmOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1255,7 +1255,7 @@
 		},
 		{
 			"id": "b9045fd2-0c16-ccdd-b8b0-932da1b7754f",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline/{{productLineId_unending}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1280,7 +1280,7 @@
 		},
 		{
 			"id": "c1002077-7801-e13f-09bb-b7fd372a831f",
-			"headers": "Authorization: Basic UHpUZXN0UGFzczEzOlAxYXp6YXVzZXJwYXNzd29yZCo=\n",
+			"headers": "",
 			"url": "https://bf-api.{{domain}}/login",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1295,7 +1295,7 @@
 				"password": "{{bf_password}}",
 				"saveToRequest": true
 			},
-			"time": 1481302656379,
+			"time": 1482241700170,
 			"name": "Log In",
 			"description": "Log in to BF, generating a new (Piazza) API Key.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
@@ -1304,7 +1304,7 @@
 		},
 		{
 			"id": "c35e15aa-940b-344d-4572-bbdd529f25e1",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1329,7 +1329,7 @@
 		},
 		{
 			"id": "c6a18fb4-a801-78d0-d96e-167dab2526e2",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/{{jobId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1354,7 +1354,7 @@
 		},
 		{
 			"id": "d5e94aca-2921-3cbf-5834-756ff1d2fde9",
-			"headers": "Authorization: Basic ZjM2ZDk1YmYtMDU1MC00M2EwLTlkM2UtNzE2MWRiOWMzMDhhOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1379,7 +1379,7 @@
 		},
 		{
 			"id": "dcc1dbd9-28f8-c477-a752-00286aa9e7ba",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1404,7 +1404,7 @@
 		},
 		{
 			"id": "dd5a1fa1-a6e1-c6e6-62ba-b54a39ed8c94",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1448,7 +1448,7 @@
 		},
 		{
 			"id": "dee721bd-788d-248f-7ac6-abb2c662e4fb",
-			"headers": "Authorization: Basic MzcyZDM1NTUtNTVlZC00YjE5LTliMmEtZTg5MDIxZjBlMTdkOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"pathVariables": {},
 			"preRequestScript": null,
@@ -1475,7 +1475,7 @@
 		},
 		{
 			"id": "e1ddcdf2-89f9-6443-ad36-b6779d7f7afb",
-			"headers": "Authorization: Basic Yzc5ZGM1NjgtM2NlOC00ZTBmLWJiYzEtYjMzMjY4ZmVjYjY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/{{jobId_other}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1500,7 +1500,7 @@
 		},
 		{
 			"id": "e2685fc8-77e5-babe-ff1b-76289b7c6a1f",
-			"headers": "Authorization: Basic MjMyM2FhMDYtN2E4MS00ZGM0LTk1ZDYtYjc1YTljZTNkOTFkOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/user",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1524,7 +1524,7 @@
 		},
 		{
 			"id": "e3e50bd8-eba1-4f3f-4c49-4d2fdc2f30af",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1549,7 +1549,7 @@
 		},
 		{
 			"id": "e6f3a706-ef10-fead-8989-c2d131827120",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1574,7 +1574,7 @@
 		},
 		{
 			"id": "edfb2ae4-abeb-abfb-cb88-f732f4742929",
-			"headers": "Authorization: Basic NmM5YmQ3YjUtYjg3Ni00YWI2LWFkMjEtYmMwYTc1MDJlZDY0Og==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/productline",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1601,7 +1601,7 @@
 		},
 		{
 			"id": "f12b0128-7958-d252-c43e-3fef49e24903",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NzA5MDQ1NzEtMDRmYy00N2YyLTlkOTAtNzA2MTZiMzQzNjI3Og==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "http://bf-api.{{domain}}/v0/user",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1625,7 +1625,7 @@
 		},
 		{
 			"id": "f376964a-0e39-2ce3-56e1-e0206c928201",
-			"headers": "Authorization: Basic e3twel9rZXl9fTo=\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job/by_scene/{{scene_id}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1650,7 +1650,7 @@
 		},
 		{
 			"id": "f5164622-b1f1-d9ac-5486-5f848623e77a",
-			"headers": "Authorization: Basic ZmNlNTU4ZTAtMDBkMC00YzcwLWFmZTItMDc0YjE2YjljYTBjOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1675,7 +1675,7 @@
 		},
 		{
 			"id": "fcce742d-4a8b-4e45-c989-cd81204310df",
-			"headers": "Authorization: Basic MGIyMjBkNWEtOGU3NC00YmEwLWFjOTgtZjZmYzBjZWVhYzcwOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/algorithm/foo",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1701,7 +1701,7 @@
 		},
 		{
 			"id": "ff2d0bec-b972-4888-0b81-498c8c01f286",
-			"headers": "Authorization: Basic MzcyZDM1NTUtNTVlZC00YjE5LTliMmEtZTg5MDIxZjBlMTdkOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://bf-api.{{domain}}/v0/job",
 			"preRequestScript": null,
 			"pathVariables": {},
