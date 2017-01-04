@@ -1,0 +1,317 @@
+{
+	"id": "4b065ce9-e3b4-400f-8257-66663884a543",
+	"name": "TMaaS",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "7190aa14-a5cf-392c-d57d-63535a62e6b3",
+			"name": "1_Startup",
+			"description": "",
+			"order": [
+				"628691b3-aa86-e405-3b6d-b2bb3772dcd3"
+			],
+			"owner": "699425"
+		},
+		{
+			"id": "1898293e-c24f-33a4-d9f8-62e2c268737a",
+			"name": "2_Critical",
+			"description": "",
+			"order": [
+				"208ff5ff-63e4-f21a-2fab-1f0639677d61",
+				"9fe17c4a-b269-2807-6970-ba57f2267803",
+				"b0c76a49-d08c-e097-bb4c-5081f3823058",
+				"fe75a6b8-1489-6e3e-c8ff-d4f2998ce0fe",
+				"9587687d-8feb-f887-4217-3b3314060353",
+				"dd119cb2-a84b-0aab-6755-33ab44a61c26",
+				"f18c9462-3443-9e4e-38f8-748606252615",
+				"eda80c9d-4626-7de7-6eba-457c3e46c98e",
+				"f7c4c6be-fbd9-b6de-e448-1e6a0a6e3932"
+			],
+			"owner": "699425",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
+		},
+		{
+			"id": "02f09274-8d7a-8c83-2651-224576af8346",
+			"name": "5_Teardown",
+			"description": "",
+			"order": [
+				"40dcae2d-ee0a-bdd8-364e-b6d81834cd3d"
+			],
+			"owner": "699425"
+		}
+	],
+	"timestamp": 1482421743479,
+	"owner": "699425",
+	"public": false,
+	"requests": [
+		{
+			"id": "208ff5ff-63e4-f21a-2fab-1f0639677d61",
+			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/metadata",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'totalJobCount')) {\n    tests[\"No Jobs in Queue\"] = data.totalJobCount === 0;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483558062945,
+			"name": "Job Count",
+			"description": "Verify that there are no jobs in the job queue, before a job is created.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": []
+		},
+		{
+			"id": "40dcae2d-ee0a-bdd8-364e-b6d81834cd3d",
+			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557725978,
+			"name": "Delete Service",
+			"description": "Delete the service used throughout this collection.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "02f09274-8d7a-8c83-2651-224576af8346"
+		},
+		{
+			"id": "628691b3-aa86-e405-3b6d-b2bb3772dcd3",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"      These tests create objects needed elsewhere.       \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557998887,
+			"name": "Register Service",
+			"description": "Create a task-managed service.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"rawModeData": "{\n    \"url\": \"garbage\",\n    \"contractUrl\": \"garbage\",\n    \"isTaskManaged\": true,\n    \"method\" : \"GET\",\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"TMS Testing.\" \n    }\n}"
+		},
+		{
+			"id": "9587687d-8feb-f887-4217-3b3314060353",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.jobId')) {\n    tests[\"Correct jobId pulled from queue\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n}\nif (testLevels(tests, data, 'data.serviceData.data.serviceId')) {\n    tests[\"Correct serviceId given in response\"] = data.data.serviceData.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557615859,
+			"name": "Pull Job from Queue",
+			"description": "Get a job from the service's queue.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a",
+			"rawModeData": ""
+		},
+		{
+			"id": "9fe17c4a-b269-2807-6970-ba57f2267803",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/job",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.jobId', 'string')) {\n    tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483555458761,
+			"name": "Create Job",
+			"description": "Create a Job for the task-managed service.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a",
+			"rawModeData": "{\n  \"data\": {\n      \"dataInputs\": {},\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\n      \"serviceId\": \"{{serviceId}}\"\n  },\n  \"type\": \"execute-service\"\n}"
+		},
+		{
+			"id": "b0c76a49-d08c-e097-bb4c-5081f3823058",
+			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.status')) {\n    tests[\"Status starts as 'Pending'\"] = data.data.status === \"Pending\";\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483555496251,
+			"name": "Job Status - Pending",
+			"description": "Verify that the job's status was set to \"Pending\" after it was created.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a"
+		},
+		{
+			"id": "dd119cb2-a84b-0aab-6755-33ab44a61c26",
+			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.status')) {\n    tests[\"Status becomes 'Running'\"] = data.data.status === \"Running\";\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557633720,
+			"name": "Job Status - Running",
+			"description": "Verify that the job's status was set to \"Running\" after it was pulled from the queue.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a"
+		},
+		{
+			"id": "eda80c9d-4626-7de7-6eba-457c3e46c98e",
+			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.status')) {\n    tests[\"Status matches updated status\"] = data.data.status === \"Success\";\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557648415,
+			"name": "Job Status - After Update",
+			"description": "Verify that the Job's status was properly updated.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a"
+		},
+		{
+			"id": "f18c9462-3443-9e4e-38f8-748606252615",
+			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/{{jobId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557640305,
+			"name": "Update Job",
+			"description": "Update the status of a job pulled from the queue.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a",
+			"rawModeData": "{\n\t\"status\": \"Success\"\n}"
+		},
+		{
+			"id": "f7c4c6be-fbd9-b6de-e448-1e6a0a6e3932",
+			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/metadata",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'totalJobCount')) {\n    tests[\"No Jobs in Queue\"] = data.totalJobCount === 0;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557654457,
+			"name": "Job Count - After Update",
+			"description": "Verify that there are no jobs in the job queue, after the  job was removed from the queue.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a"
+		},
+		{
+			"id": "fe75a6b8-1489-6e3e-c8ff-d4f2998ce0fe",
+			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/metadata",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'totalJobCount')) {\n    tests[\"1 Job in Queue\"] = data.totalJobCount === 1;\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1483557437239,
+			"name": "Job Count - After Execution",
+			"description": "Verify that there is 1 job in the job queue, after a job is created.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a"
+		}
+	]
+}

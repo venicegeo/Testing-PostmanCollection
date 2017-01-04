@@ -201,10 +201,10 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif ((postman.getEnvironmentVariable('environment') === 'prod') || (postman.getEnvironmentVariable('environment') === 'stage')) {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('API Key'));\n} else {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('Stage API Key'));\n}\n\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('scene_id', 'landsat:LC81610532016279LGN00');\npostman.setEnvironmentVariable('PL Name', 'IntegrationTest_SriLanka');\n\nconsole.log(postman.getGlobalVariable('bf_password').replace('user','!@#$'));",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nif ((postman.getEnvironmentVariable('environment') === 'prod') || (postman.getEnvironmentVariable('environment') === 'stage')) {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('API Key'));\n} else {\n    postman.setEnvironmentVariable('other_key', postman.getEnvironmentVariable('Stage API Key'));\n}\n\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('scene_id', 'landsat:LC81610532016279LGN00');\npostman.setEnvironmentVariable('PL Name', 'IntegrationTest_SriLanka');\n\ntests[\"globals available\"] = postman.getGlobalVariable('bf_password')",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1482243241471,
+			"time": 1482249628206,
 			"name": "Health Check",
 			"description": "Check that the app responds at all.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
@@ -246,7 +246,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Correct Product Line deleted\"] = responseBody.match(postman.getEnvironmentVariable('uinkmpwvlrhotgse'));",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Correct Product Line deleted\"] = responseBody.match(postman.getEnvironmentVariable('productLineId'));",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -254,7 +254,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481299336089,
+			"time": 1482268392288,
 			"name": "Delete Product Line",
 			"description": "Delete the Product Line created in this test.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
@@ -1263,7 +1263,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Correct Product Line deleted\"] = responseBody.match(postman.getEnvironmentVariable('uinkmpwvlrhotgse'));",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Correct Product Line deleted\"] = responseBody.match(postman.getEnvironmentVariable('productLineId'));",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1271,7 +1271,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481315540897,
+			"time": 1482268413202,
 			"name": "Delete Unending Product Line",
 			"description": "Delete the Product Line (with null \"stop_on\") created in this test.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
@@ -1295,7 +1295,7 @@
 				"password": "{{bf_password}}",
 				"saveToRequest": true
 			},
-			"time": 1482241700170,
+			"time": 1482265802815,
 			"name": "Log In",
 			"description": "Log in to BF, generating a new (Piazza) API Key.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
@@ -1507,7 +1507,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'services.catalog')) {\n    postman.setEnvironmentVariable('catalog_url', data.services.catalog);\n}\nif (testLevels(tests, data, 'services.wms_server')) {\n    postman.setEnvironmentVariable('wms_server_url', data.services.wms_server);\n}\nif (testLevels(tests, data, 'profile.username')) {\n    tests[\"Correct username retruned\"] = data.profile.username == postman.getEnvironmentVariable('bf_username');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'services.catalog')) {\n    postman.setEnvironmentVariable('catalog_url', data.services.catalog);\n}\nif (testLevels(tests, data, 'services.wms_server')) {\n    postman.setEnvironmentVariable('wms_server_url', data.services.wms_server);\n}\nif (testLevels(tests, data, 'profile.username')) {\n    tests[\"Correct username retruned\"] = data.profile.username == postman.getGlobalVariable('bf_username');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1515,7 +1515,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481981402963,
+			"time": 1482268672786,
 			"name": "Get Services",
 			"description": "Get a list of services in use by BF.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
@@ -1532,7 +1532,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'job.id')) {\n    postman.setEnvironmentVariable('jobId', data.job.id);\n}\ntestLevels(tests, data, 'job.geometry');\nif (testLevels(tests, data, 'job.properties.created_by')) {\n    tests[\"Correct User\"] = postman.getEnvironmentVariable('bf_username') === data.job.properties.created_by;\n}",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'job.id')) {\n    postman.setEnvironmentVariable('jobId', data.job.id);\n}\ntestLevels(tests, data, 'job.geometry');\nif (testLevels(tests, data, 'job.properties.created_by')) {\n    tests[\"Correct User\"] = postman.getGlobalVariable('bf_username') === data.job.properties.created_by;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1540,7 +1540,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481304924071,
+			"time": 1482268268180,
 			"name": "Create Job",
 			"description": "Start a shoreline calculation job.",
 			"collectionId": "64480ac4-6fe3-1699-1172-958f16b68420",
