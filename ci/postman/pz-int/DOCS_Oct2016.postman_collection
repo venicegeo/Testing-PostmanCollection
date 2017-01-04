@@ -406,7 +406,7 @@
 		},
 		{
 			"id": "7e3fc21b-3187-a4be-aa17-e22acee05980",
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\n",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -421,7 +421,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1476896662852,
+			"time": 1483559546371,
 			"name": "3.3 Get GeoJSON data",
 			"description": "",
 			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
@@ -429,7 +429,7 @@
 		},
 		{
 			"id": "8d6fd07f-2bcd-6b98-5970-c49de616d2bf",
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_geojson}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -445,7 +445,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478105626327,
+			"time": 1483559250399,
 			"name": "3.3 Status of GeoJSON",
 			"description": "",
 			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
@@ -502,7 +502,7 @@
 		},
 		{
 			"id": "a08a43a9-9d59-076f-9691-58c3e8040ef4",
-			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\nContent-Type: application/json\n",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\nContent-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_localimage}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -518,7 +518,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1478092315024,
+			"time": 1483559522822,
 			"name": "3.1 Status of Local Image",
 			"description": "",
 			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
@@ -610,22 +610,22 @@
 		},
 		{
 			"id": "c8784f33-5fe1-aa66-336f-a56f8cdf34b2",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apikey\",\"5c3959bc-aa1f-4053-b133-c88f855194a1\")\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
+			"tests": "\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apikey\",\"6354ff81-b415-4986-b543-79d4fe420dbd\")\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "5c3959bc-aa1f-4053-b133-c88f855194a1",
+				"username": "6354ff81-b415-4986-b543-79d4fe420dbd",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1481566412913,
+			"time": 1483465555021,
 			"name": "5.2.1 Register Hello Example Service",
 			"description": "",
 			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
