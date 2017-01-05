@@ -579,19 +579,11 @@
 		},
 		{
 			"id": "b336629f-e640-d9e1-746c-36069bc104c5",
-			"name": "Get Job Status",
-			"description": "",
-			"collectionId": "544ab655-00f4-3167-c84a-12519980061c",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOnRlc3Q0bGlmZQ==\n",
+			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "GET",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "test4life",
-				"saveToRequest": true
-			},
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
-			"dataMode": "params",
 			"data": [
 				{
 					"key": "body",
@@ -600,10 +592,19 @@
 					"enabled": true
 				}
 			],
-			"rawModeData": "",
+			"dataMode": "params",
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.int.geointservices.io/job/b9e31b57-7a49-4ff4-96a9-c0ad8b9fc56c",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "test4life",
+				"saveToRequest": true
+			},
+			"time": 1483645485151,
+			"name": "Get Job Status",
+			"description": "",
+			"collectionId": "544ab655-00f4-3167-c84a-12519980061c",
 			"responses": []
 		},
 		{
