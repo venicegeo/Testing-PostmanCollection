@@ -23,9 +23,9 @@ else
 	spaces=$PCF_SPACE
 fi
 
-
 cd ci/Selenium
-chmod +x src/test/resources/chromedriver
+
+npm install chromedriver
 
 for space in $spaces; do
 
