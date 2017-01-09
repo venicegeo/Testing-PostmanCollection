@@ -68,6 +68,10 @@ for space in $spaces; do
 	fi
 done
 
+cd ci\Selenium
+mvn test
+
+
 #Return an overall error if any collections failed.
 exit $bigLatch
 #awm
