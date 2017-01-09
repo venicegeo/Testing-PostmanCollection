@@ -16,6 +16,7 @@ public class TestLogin {
   private String baseUrl = System.getenv("bf_url");
   private String username = System.getenv("bf_username");
   private String password = System.getenv("bf_password");
+  private String driverPath = System.getenv("driver_path");
   
   // Elements used:
   public WebElement pwField;
@@ -26,6 +27,7 @@ public class TestLogin {
   @Before
   public void setUp() throws Exception {
 	  System.out.println("URL: " + baseUrl);
+		System.setProperty("webdriver.chrome.driver", driverPath);
 	  driver = new ChromeDriver();
 	  driver.get(baseUrl);
 	  pwField = driver.findElement(By.cssSelector("input[placeholder=password]"));
