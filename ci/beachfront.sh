@@ -23,7 +23,9 @@ else
 	spaces=$PCF_SPACE
 fi
 
+
 cd ci/Selenium
+chmod +x src/test/resources/chromedriver
 mvn test
 
 for space in $spaces; do
