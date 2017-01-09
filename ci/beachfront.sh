@@ -23,6 +23,9 @@ else
 	spaces=$PCF_SPACE
 fi
 
+cd ci/Selenium
+mvn test
+
 for space in $spaces; do
 	echo $space
 	envfile=$base/environments/$space.postman_environment
@@ -67,9 +70,6 @@ for space in $spaces; do
 		bigLatch=1
 	fi
 done
-
-cd ci\Selenium
-mvn test
 
 
 #Return an overall error if any collections failed.
