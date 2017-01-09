@@ -29,7 +29,7 @@ chmod +x src/test/resources/chromedriver
 
 for space in $spaces; do
 
-	bf_url=https://beachfront.$space.geointservices.io/
+	export bf_url=https://beachfront.$space.geointservices.io/
 	mvn test
 
 	echo $space
