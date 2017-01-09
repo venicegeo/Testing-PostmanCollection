@@ -26,8 +26,8 @@ public class TestLogin {
   @Before
   public void setUp() throws Exception {
 	  System.out.println("URL: " + baseUrl);
-	  DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-	  driver = new RemoteWebDriver(new URL("http://ec2-54-244-62-140.us-west-2.compute.amazonaws.com:4444/wd/hub"), capabilities);
+	  System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver");
+	  driver = new FirefoxDriver();
 	  driver.get(baseUrl);
 	  pwField = driver.findElement(By.cssSelector("input[placeholder=password]"));
 	  userField = driver.findElement(By.cssSelector("input[placeholder=username]"));
