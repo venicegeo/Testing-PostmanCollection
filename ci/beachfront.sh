@@ -30,7 +30,7 @@ npm install chromedriver
 for space in $spaces; do
 
 	export bf_url=https://beachfront.$space.geointservices.io/
-	export driver_path=/node_modules/chromedriver/lib/chromedriver
+	export driver_path=node_modules/chromedriver/lib/chromedriver
 	mvn test
 
 	echo $space
