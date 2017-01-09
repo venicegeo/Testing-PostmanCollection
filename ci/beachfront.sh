@@ -26,9 +26,12 @@ fi
 
 cd ci/Selenium
 chmod +x src/test/resources/chromedriver
-mvn test
 
 for space in $spaces; do
+
+	bf_url = https://beachfront.$space.geointservices.io/
+	mvn test
+
 	echo $space
 	envfile=$base/environments/$space.postman_environment
 
