@@ -1,8 +1,11 @@
 package bfui.test;
 
+import java.net.URL;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -23,7 +26,8 @@ public class TestLogin {
   @Before
   public void setUp() throws Exception {
 	  System.out.println("URL: " + baseUrl);
-	  driver= new FirefoxDriver();
+	  DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+	  driver = new RemoteWebDriver(new URL("http://ec2-54-244-62-140.us-west-2.compute.amazonaws.com:4444/wd/hub"), capabilities);
 	  driver.get(baseUrl);
 	  pwField = driver.findElement(By.cssSelector("input[placeholder=password]"));
 	  userField = driver.findElement(By.cssSelector("input[placeholder=username]"));
