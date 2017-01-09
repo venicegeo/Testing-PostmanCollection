@@ -27,8 +27,9 @@ public class TestLogin {
   @Before
   public void setUp() throws Exception {
 	  System.out.println("URL: " + baseUrl);
-		System.setProperty("webdriver.chrome.driver", driverPath);
-	  driver = new ChromeDriver();
+	  System.setProperty("webdriver.chrome.driver", driverPath);
+	  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+	  driver = new ChromeDriver(capabilities);
 	  driver.get(baseUrl);
 	  pwField = driver.findElement(By.cssSelector("input[placeholder=password]"));
 	  userField = driver.findElement(By.cssSelector("input[placeholder=username]"));
