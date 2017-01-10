@@ -24,7 +24,7 @@ fi
 
 cd ci/Selenium
 
-Xvfb :99 &
+Xvfb :99 2>/dev/null &
 export DISPLAY=:99
 npm install geckodriver
 
