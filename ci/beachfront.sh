@@ -41,7 +41,7 @@ for space in $spaces; do
 	# Build the beachfront url, to be used in the Selenium tests.
 	export bf_url=https://beachfront.$space.geointservices.io/
 	# Run the Selenium tests.  
-	mvn test || [[ "$PCF_SPACE" == "stage" ]] || { latch=1 }
+	mvn test || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
 	
 	# Postman / Newman configuration.
 	envfile=$base/environments/$space.postman_environment
@@ -51,7 +51,7 @@ for space in $spaces; do
 	# Run all generic tests.
 	for f in $(ls -1 $base/postman/bf-all/*postman_collection); do
 		# Run the newman test.  If it fails, latch.
-		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1 }
+		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
 		
 		# Send a POST request to the bug dahsboard with the JSON output of the newman test.
 		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/beachfront/$space/load.pl < results.json
@@ -61,7 +61,7 @@ for space in $spaces; do
 	# Run all specific environment tests.
 	for f in $(ls -1 $base/postman/bf-$space/*postman_collection); do
 		# Run the newman test.  If it fails, latch.
-		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1 }
+		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
 		
 		# Send a POST request to the bug dahsboard with the JSON output of the newman test.
 		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/beachfront/$space/load.pl < results.json
