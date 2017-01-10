@@ -24,8 +24,8 @@ fi
 
 cd ci/Selenium
 
-# Xvfb :99 &
-# export DISPLAY=:99
+Xvfb :99 &
+export DISPLAY=:99
 npm install geckodriver
 
 for space in $spaces; do
@@ -33,7 +33,7 @@ for space in $spaces; do
 	export bf_url=https://beachfront.$space.geointservices.io/
 	export driver_path=node_modules/geckodriver/geckodriver
 	export browser_path=/usr/bin/firefox
-	xvfb-run mvn test
+	mvn test
 
 	echo $space
 	envfile=$base/environments/$space.postman_environment
