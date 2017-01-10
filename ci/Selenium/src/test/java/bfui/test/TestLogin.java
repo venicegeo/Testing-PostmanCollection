@@ -17,6 +17,7 @@ public class TestLogin {
   private String username = System.getenv("bf_username");
   private String password = System.getenv("bf_password");
   private String driverPath = System.getenv("driver_path");
+  private String browserPath = System.getenv("browser_path");
   
   // Elements used:
   public WebElement pwField;
@@ -28,7 +29,12 @@ public class TestLogin {
   public void setUp() throws Exception {
 	  System.out.println("URL: " + baseUrl);
 	  System.setProperty("webdriver.firefox.driver", driverPath);
-	  driver = new FirefoxDriver();
+	  System.setProperty("webdriver.firefox.driver", browserPath);
+	  DesiredCapabilities caps = DesiredCapabilities.firefox();
+	  caps.setBrowserName("firefox");
+	  caps.setCapability("binary", browserPath);
+	  caps.setPlatform(Platform.ANY);
+	  driver = new FirefoxDriver(caps);
 	  driver.get(baseUrl);
 	  pwField = driver.findElement(By.cssSelector("input[placeholder=password]"));
 	  userField = driver.findElement(By.cssSelector("input[placeholder=username]"));
