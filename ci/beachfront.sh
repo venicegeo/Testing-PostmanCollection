@@ -25,7 +25,7 @@ fi
 
 cd ci/Selenium
 
-apt-get install chromium-browser
+yum install chromium-browser
 npm install chromedriver
 
 for space in $spaces; do
