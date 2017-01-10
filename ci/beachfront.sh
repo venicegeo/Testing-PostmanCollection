@@ -39,36 +39,36 @@ set -e
 for space in $spaces; do
 	# Reinitialize "latch" for the tests against the current space.
 	latch=0
-	
+
 	# Build the beachfront url, to be used in the Selenium tests.
 	export bf_url=https://beachfront.$space.geointservices.io/
 	# Run the Selenium tests.  
 	mvn test || [[ "$PCF_SPACE" == "stage" ]] || { latch=1 }
-	
+
 	# Postman / Newman configuration.
 	envfile=$base/environments/$space.postman_environment
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 	cmd="newman -o results.json --requestTimeout 960000 -x -e $envfile -g $POSTMAN_FILE -c"
-	
+
 	#Run all generic tests.
 	for f in $(ls -1 $base/postman/bf-all/*postman_collection); do
 		# Run the newman test.  If it fails, latch.
 		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1 }
-		
+
 		# Send a POST request to the bug dahsboard with the JSON output of the newman test.
 		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/beachfront/$space/load.pl < results.json
 	done
-	
+
 	#Run all specific environment tests.
 	for f in $(ls -1 $base/postman/bf-$space/*postman_collection); do
 		# Run the newman test.  If it fails, latch.
 		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1 }
-		
+
 		# Send a POST request to the bug dahsboard with the JSON output of the newman test.
 		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/beachfront/$space/load.pl < results.json
 	done
-	
-	# Remember that there was a noverall failure, if a single iteration has a failure.
+
+	# Remember that there was an overall failure, if a single iteration has a failure.
 	if [ "$latch" -eq "1" ]; then
 		bigLatch=1
 	fi
