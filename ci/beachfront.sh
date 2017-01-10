@@ -1,7 +1,6 @@
 #!/bin/bash -ex
 echo start
 #mail settings
-RCVR="jamesyarrington88@gmail.com"
 SUBJ= $BUILDURL
 
 #awm
@@ -73,8 +72,8 @@ for space in $spaces; do
 	SUBJ="Beachfront failure in $space environment!"
 
 	if [ "$latch" -eq "1" ]; then
-		echo -e "${BODY}" | mail -s "$SUBJ" $RCVR
-		echo "mail sent!"
+		# echo -e "${BODY}" | mail -s "$SUBJ" $RCVR
+		# echo "mail sent!"
 		bigLatch=1
 	fi
 done

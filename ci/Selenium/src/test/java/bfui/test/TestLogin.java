@@ -28,8 +28,7 @@ public class TestLogin {
   @Before
   public void setUp() throws Exception {
 	  System.out.println("URL: " + baseUrl);
-	  System.setProperty("webdriver.firefox.driver", driverPath);
-	  System.setProperty("webdriver.firefox.driver", browserPath);
+	  System.setProperty("webdriver.gecko.driver", driverPath);
 	  DesiredCapabilities caps = DesiredCapabilities.firefox();
 	  caps.setBrowserName("firefox");
 	  caps.setCapability("binary", browserPath);
