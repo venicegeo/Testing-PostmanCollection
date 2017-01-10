@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Value;
 
 public class TestLogin {
@@ -27,9 +27,8 @@ public class TestLogin {
   @Before
   public void setUp() throws Exception {
 	  System.out.println("URL: " + baseUrl);
-	  System.setProperty("webdriver.chrome.driver", driverPath);
-	  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-	  driver = new ChromeDriver(capabilities);
+	  System.setProperty("webdriver.firefox.driver", driverPath);
+	  driver = new FirefoxDriver();
 	  driver.get(baseUrl);
 	  pwField = driver.findElement(By.cssSelector("input[placeholder=password]"));
 	  userField = driver.findElement(By.cssSelector("input[placeholder=username]"));

@@ -25,13 +25,13 @@ fi
 
 cd ci/Selenium
 
-npm install chromedriver
+npm install geckodriver
 chromium-browser -version
 
 for space in $spaces; do
 
 	export bf_url=https://beachfront.$space.geointservices.io/
-	export driver_path=node_modules/chromedriver/lib/chromedriver/chromedriver
+	export driver_path=node_modules/geckodriver/geckodriver
 	mvn test
 
 	echo $space
