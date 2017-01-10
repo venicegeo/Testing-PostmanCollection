@@ -1,13 +1,10 @@
 package bfui.test;
 
-import java.net.URL;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.springframework.beans.factory.annotation.Value;
 
 public class TestLogin {
   private WebDriver driver;
@@ -27,20 +24,26 @@ public class TestLogin {
 
   @Before
   public void setUp() throws Exception {
-	  System.out.println("URL: " + baseUrl);
+	  // Setup Browser:
 	  System.setProperty("webdriver.gecko.driver", driverPath);
 	  DesiredCapabilities caps = DesiredCapabilities.firefox();
 	  caps.setBrowserName("firefox");
 	  caps.setCapability("binary", browserPath);
 	  caps.setPlatform(Platform.ANY);
 	  driver = new FirefoxDriver(caps);
+	  
+	  // Navigate to BF:
 	  driver.get(baseUrl);
+	  
+	  // Check that navigation to BF was successful.
+	  assertTrue("Login field should be present", isElementPresent(By.className("Login-root")));
+	  assertEquals("Should be at correct Url", driver.getCurrentUrl(), baseUrl);
+	  
+	  // Find the elements used in tests:
 	  pwField = driver.findElement(By.cssSelector("input[placeholder=password]"));
 	  userField = driver.findElement(By.cssSelector("input[placeholder=username]"));
 	  submitButton = driver.findElement(By.cssSelector("button[type=submit]"));
 	  jobsButton = driver.findElement(By.className("Navigation-linkJobs"));
-	  assertTrue("Login field should be present", isElementPresent(By.className("Login-root")));
-	  assertEquals("Should be at correct Url", driver.getCurrentUrl(), baseUrl);
 }
 
   @Test
@@ -89,6 +92,8 @@ public class TestLogin {
     driver.quit();
   }
 
+  // Check that an element is present on the page,
+  // without throwing an exception if it is not present.
   private boolean isElementPresent(By by) {
     try {
       driver.findElement(by);
