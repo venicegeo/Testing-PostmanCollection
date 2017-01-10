@@ -25,8 +25,8 @@ fi
 
 cd ci/Selenium
 
-sudo yum install chromium-browser
 npm install chromedriver
+chromium-browser -version
 
 for space in $spaces; do
 
