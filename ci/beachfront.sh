@@ -26,7 +26,6 @@ fi
 cd ci/Selenium
 
 npm install geckodriver
-chromium-browser -version
 
 for space in $spaces; do
 
