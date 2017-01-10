@@ -26,6 +26,8 @@ fi
 cd ci/Selenium
 
 npm install geckodriver
+ls usr/bin
+ls usr/bin/firefox
 
 for space in $spaces; do
 
