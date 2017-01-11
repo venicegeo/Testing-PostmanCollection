@@ -1,7 +1,6 @@
 #!/bin/bash -ex
 echo start
 #mail settings
-RCVR="jamesyarrington88@gmail.com"
 SUBJ= $BUILDURL
 
 #awm
@@ -12,10 +11,13 @@ popd > /dev/null
 
 [ -z "$space" ] && space=int
 
+# Initialize "bigLatch".  If anything fails, this should be set to 1,
+# so that the overall job exists with failure.
 bigLatch=0
 
-echo $PCF_SPACE
-
+# Get the "spaces" environment variable, the spcae that the tests will be run against.
+# If it is "test", that should mean that a change was made to the pztest-integration repo,
+# and all spaces should be tested.
 if [ "$PCF_SPACE" == "test" ]; then
 	echo "test case"
 	spaces="int stage prod"
@@ -23,51 +25,56 @@ else
 	spaces=$PCF_SPACE
 fi
 
+
+# Selenium Configurations:
+cd ci/Selenium
+Xvfb :99 2>/dev/null &
+export DISPLAY=:99
+npm install geckodriver
+export driver_path=node_modules/geckodriver/geckodriver
+export browser_path=/usr/bin/firefox
+
 for space in $spaces; do
-	echo $space
-	envfile=$base/environments/$space.postman_environment
-
-	echo $envfile
-
-	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
-
-	cmd="newman -o results.json --requestTimeout 960000 -x -e $envfile -g $POSTMAN_FILE -c"
-
+	# Reinitialize "latch" for the tests against the current space.
 	latch=0
-
-	set -e
 	
-	BODY="Failing Collections:"
-
-	#Run all generic tests.
+	# Build the beachfront url, to be used in the Selenium tests.
+	export bf_url=https://beachfront.$space.geointservices.io/
+	# Run the Selenium tests.  
+	mvn test || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
+	
+	# Postman / Newman configuration.
+	envfile=$base/environments/$space.postman_environment
+	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
+	cmd="newman -o results.json --requestTimeout 960000 -x -e $envfile -g $POSTMAN_FILE -c"
+	
+	# Run all generic tests.
 	for f in $(ls -1 $base/postman/bf-all/*postman_collection); do
-		echo $f
-		filename=$(basename $f)
-		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/beachfront/$space/load.pl < results.json
-		echo $latch
-	done
-
-	#Run all specific environment tests.
-	for f in $(ls -1 $base/postman/bf-$space/*postman_collection); do
-		echo $f
-		filename=$(basename $f)
-		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		# Run the newman test.  If it fails, latch.
+		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
+		
+		# Send a POST request to the bug dahsboard with the JSON output of the newman test.
 		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/beachfront/$space/load.pl < results.json
 		echo $latch
 	done
 	
-	SUBJ="Beachfront failure in $space environment!"
-
+	# Run all specific environment tests.
+	for f in $(ls -1 $base/postman/bf-$space/*postman_collection); do
+		# Run the newman test.  If it fails, latch.
+		$cmd $f || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
+		
+		# Send a POST request to the bug dahsboard with the JSON output of the newman test.
+		curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/beachfront/$space/load.pl < results.json
+		echo $latch
+	done
+	
+	# Remember that there was an overall failure, if a single iteration has a failure.
 	if [ "$latch" -eq "1" ]; then
-		echo -e "${BODY}" | mail -s "$SUBJ" $RCVR
-		echo "mail sent!"
 		bigLatch=1
 	fi
 done
 
-#Return an overall error if any collections failed.
+
+# Return an overall error if any collections failed.
 exit $bigLatch
 #awm
