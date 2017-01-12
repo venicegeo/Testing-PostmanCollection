@@ -114,7 +114,7 @@
 	"requests": [
 		{
 			"id": "011227fe-5fde-eca2-65d7-af7b6e375024",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Z2FyYmFnZTo=\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -138,7 +138,7 @@
 		},
 		{
 			"id": "05a2d673-d3c0-ff2e-fc84-dcb6f6e88245",
-			"headers": "Authorization: Basic NDQ2ZDIwYmItZjg4Ny00MDZiLTg2MDQtOTc3MGUyODI1Y2YwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_delete}}/task/metadata",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -161,7 +161,7 @@
 		},
 		{
 			"id": "0bfd03f6-cec8-ce62-1c08-27586f027b14",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmFiYTk3M2EtNjAyMC00ZGUyLTlmODYtMjYwZTI1NmNmYjMzOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -185,7 +185,7 @@
 		},
 		{
 			"id": "0db758c1-a4b7-b46f-4ece-7943c0fcdc06",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_delete}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -209,7 +209,7 @@
 		},
 		{
 			"id": "0fbc17bf-ce14-b28f-25ee-855321ee01fa",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NDQ2ZDIwYmItZjg4Ny00MDZiLTg2MDQtOTc3MGUyODI1Y2YwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -233,7 +233,7 @@
 		},
 		{
 			"id": "12c9e6fa-0216-ce25-75da-c1d1c164eea9",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/alert?triggerId={{triggerId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -257,7 +257,7 @@
 		},
 		{
 			"id": "1500f37a-a597-6244-d93b-21319d086953",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -281,7 +281,7 @@
 		},
 		{
 			"id": "1735f7ef-ff0e-9402-1bf3-dc57851779c9",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/{{jobId_update}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -305,7 +305,7 @@
 		},
 		{
 			"id": "1c07d305-4c0a-342e-14f2-78a0da82ae11",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/foo/task/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -330,7 +330,7 @@
 		},
 		{
 			"id": "208ff5ff-63e4-f21a-2fab-1f0639677d61",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/metadata",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < CRITICAL > > > > > > > > > >\");\nconsole.log(\"    These tests represent basic functionality.    \");\nconsole.log(\"         DO NOT PUSH if these tests fail.         \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -353,7 +353,7 @@
 		},
 		{
 			"id": "20d3e4fe-5df7-f47a-18f6-d5249c12cc0d",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_timeout}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -377,7 +377,7 @@
 		},
 		{
 			"id": "21982a66-aefe-36e6-4cb2-3b01c4d4544a",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"      These tests create objects needed elsewhere.       \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -402,7 +402,7 @@
 		},
 		{
 			"id": "24459f5c-65e6-0210-182c-118b34bf2669",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -426,7 +426,7 @@
 		},
 		{
 			"id": "27c60f96-8611-cb2f-3eb4-02c7126f6ca6",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_delete}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -450,7 +450,7 @@
 		},
 		{
 			"id": "2864cab5-d51f-d0d6-39bf-1d324ee8c7fa",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_timeout}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -474,7 +474,7 @@
 		},
 		{
 			"id": "2f091df5-dbd8-05dc-6b22-61aba0be860f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -498,7 +498,7 @@
 		},
 		{
 			"id": "321e979d-4254-f3a3-070b-d13e271efa0b",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"      These tests create objects needed elsewhere.       \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -523,7 +523,7 @@
 		},
 		{
 			"id": "370db2bf-a9ee-23cc-f34d-3298cdc5356a",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/{{jobId_update}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -547,7 +547,7 @@
 		},
 		{
 			"id": "3d8333d5-be0d-41fe-6dd7-b3acb875ab5e",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -571,7 +571,7 @@
 		},
 		{
 			"id": "40dcae2d-ee0a-bdd8-364e-b6d81834cd3d",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -596,7 +596,7 @@
 		},
 		{
 			"id": "43e2539a-1f73-97f4-6346-4e8e21ed5018",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -620,7 +620,7 @@
 		},
 		{
 			"id": "4d2a5c1c-eb87-e01e-727a-f890fe0bc4a9",
-			"headers": "Content-Type: application/json\nAuthorization: Basic Z2FyYmFnZTo=\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -644,7 +644,7 @@
 		},
 		{
 			"id": "51fe0982-fb5a-85d3-c3b3-5164718b54df",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -668,7 +668,7 @@
 		},
 		{
 			"id": "5b0d1320-bb59-3cfb-aaa5-a08dc6a9061c",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NDQ2ZDIwYmItZjg4Ny00MDZiLTg2MDQtOTc3MGUyODI1Y2YwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -692,7 +692,7 @@
 		},
 		{
 			"id": "61a63c55-9107-6b6b-f429-51495eb9a445",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_timeout}}/task/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -716,7 +716,7 @@
 		},
 		{
 			"id": "628691b3-aa86-e405-3b6d-b2bb3772dcd3",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"      These tests create objects needed elsewhere.       \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
 			"pathVariables": {},
@@ -741,7 +741,7 @@
 		},
 		{
 			"id": "62983495-8e28-1ea5-e217-fe08f4ab6b31",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -765,7 +765,7 @@
 		},
 		{
 			"id": "6838fdbf-3de2-1e93-f32f-da8d4555907e",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_delete}}?softDelete=true",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -789,7 +789,7 @@
 		},
 		{
 			"id": "75edc338-c2ff-eea6-f338-df6948d74291",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -813,7 +813,7 @@
 		},
 		{
 			"id": "778daeb1-fd3c-aaff-5214-101baa6c0643",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -837,7 +837,7 @@
 		},
 		{
 			"id": "77ee11a5-77e5-0a2d-fd9c-967ac11f1f64",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_timeout}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -861,7 +861,7 @@
 		},
 		{
 			"id": "9587687d-8feb-f887-4217-3b3314060353",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -886,7 +886,7 @@
 		},
 		{
 			"id": "9e7dc487-67bf-858c-97ea-740b4ab6b660",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -910,7 +910,7 @@
 		},
 		{
 			"id": "9fe17c4a-b269-2807-6970-ba57f2267803",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -935,7 +935,7 @@
 		},
 		{
 			"id": "a16194e6-3bfb-8309-8cf0-72db7800bd3a",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -960,7 +960,7 @@
 		},
 		{
 			"id": "a4e5453c-2980-c3af-7083-3ea789df670c",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -985,7 +985,7 @@
 		},
 		{
 			"id": "a5f7f150-4250-47da-6777-ec2aab1af886",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1009,7 +1009,7 @@
 		},
 		{
 			"id": "b0c76a49-d08c-e097-bb4c-5081f3823058",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1032,7 +1032,7 @@
 		},
 		{
 			"id": "b28a43e0-9a33-d93d-3c1d-8570112cf373",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1056,7 +1056,7 @@
 		},
 		{
 			"id": "b2d99027-a54c-10c2-2db9-a93b98e70c8e",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_cancel}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1080,7 +1080,7 @@
 		},
 		{
 			"id": "c1ee1e11-53b5-adc7-8914-e7b8472a3f49",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1104,7 +1104,7 @@
 		},
 		{
 			"id": "c5adf136-f787-19a5-2109-74d4fd1cd71a",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1128,7 +1128,7 @@
 		},
 		{
 			"id": "c6c215db-bcf4-a3b3-15a6-40fef7bd6249",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/trigger",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1153,7 +1153,7 @@
 		},
 		{
 			"id": "ca0b170e-fb66-d312-aedb-72d77ffb79b3",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId_cancel}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1176,7 +1176,7 @@
 		},
 		{
 			"id": "cc4970e1-6671-3af3-2ee3-50c0989240f4",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_delete}}/task/{{jobId_delete}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1200,7 +1200,7 @@
 		},
 		{
 			"id": "ce3780de-dc73-a99c-05d1-f6c59176c319",
-			"headers": "Authorization: Basic UHpUZXN0UGFzczEzOlAxYXp6YXVzZXJwYXNzd29yZCo=\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/v2/key",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1225,7 +1225,7 @@
 		},
 		{
 			"id": "ce947b98-62e1-803d-188a-d85d6a48bb4c",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1250,7 +1250,7 @@
 		},
 		{
 			"id": "dbded542-ae96-08ec-f37c-ef81c23a2b72",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1274,7 +1274,7 @@
 		},
 		{
 			"id": "dd119cb2-a84b-0aab-6755-33ab44a61c26",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1298,7 +1298,7 @@
 		},
 		{
 			"id": "dd664a3e-ad3e-3b59-d18c-a78447861057",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/foo",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1322,7 +1322,7 @@
 		},
 		{
 			"id": "e48c1a97-65ad-c198-8885-52e9e8da9eec",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1346,9 +1346,9 @@
 		},
 		{
 			"id": "e7118196-16c0-ea4e-aa9f-a6dcc1b0d36f",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/event/{{eventId}}",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
 			"data": [],
@@ -1361,7 +1361,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1483632097696,
+			"time": 1484251511071,
 			"name": "Delete Event",
 			"description": "Delete the Event that was used throughout this suite of tests.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
@@ -1370,7 +1370,7 @@
 		},
 		{
 			"id": "eda80c9d-4626-7de7-6eba-457c3e46c98e",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1394,7 +1394,7 @@
 		},
 		{
 			"id": "f172fb5b-502e-9eee-8a87-0da431ea0b86",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\nContent-Type: application/json\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/eventType",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1419,7 +1419,7 @@
 		},
 		{
 			"id": "f17996e3-75ba-3a4c-25d9-934173cf1807",
-			"headers": "Content-Type: application/json\nAuthorization: Basic YmFiYTk3M2EtNjAyMC00ZGUyLTlmODYtMjYwZTI1NmNmYjMzOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1443,7 +1443,7 @@
 		},
 		{
 			"id": "f18c9462-3443-9e4e-38f8-748606252615",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1468,7 +1468,7 @@
 		},
 		{
 			"id": "f7c4c6be-fbd9-b6de-e448-1e6a0a6e3932",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/metadata",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1492,7 +1492,7 @@
 		},
 		{
 			"id": "fd047dc1-4222-01d5-c07d-66dae111f6df",
-			"headers": "Content-Type: application/json\nAuthorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -1516,7 +1516,7 @@
 		},
 		{
 			"id": "fe75a6b8-1489-6e3e-c8ff-d4f2998ce0fe",
-			"headers": "Authorization: Basic NjE1ODdiZjctM2MwMi00ODY5LTg0ZTktMzVlNjY4Yzg1NjAwOg==\n",
+			"headers": "",
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/metadata",
 			"preRequestScript": null,
 			"pathVariables": {},
