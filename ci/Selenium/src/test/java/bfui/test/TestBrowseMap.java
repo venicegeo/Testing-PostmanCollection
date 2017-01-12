@@ -83,6 +83,7 @@ public class TestBrowseMap {
 		
 		robot.mouseMove(350, 350);
 		System.out.println("Current Coord: " + coordText.getAttribute("innerHTML"));
+		
 	}
 	
 	@After 
