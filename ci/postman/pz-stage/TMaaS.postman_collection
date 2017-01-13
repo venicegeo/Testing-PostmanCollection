@@ -868,7 +868,7 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.jobId')) {\n    tests[\"Correct jobId pulled from queue\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n}\nif (testLevels(tests, data, 'data.serviceData.data.serviceId')) {\n    tests[\"Correct serviceId given in response\"] = data.data.serviceData.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.jobId')) {\n    tests[\"Correct jobId pulled from queue\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n}\nif (testLevels(tests, data, 'data.serviceData.data.serviceId')) {\n    tests[\"Correct serviceId given in response\"] = data.data.serviceData.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}\n\nwait(250);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -876,12 +876,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1483557615859,
+			"time": 1484315464471,
 			"name": "Pull Job from Queue",
 			"description": "Get a job from the service's queue.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
 			"responses": [],
-			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a",
 			"rawModeData": ""
 		},
 		{
@@ -1010,7 +1009,7 @@
 		{
 			"id": "b0c76a49-d08c-e097-bb4c-5081f3823058",
 			"headers": "",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -1024,7 +1023,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1484144701562,
+			"time": 1484314398877,
 			"name": "Job Status - Pending",
 			"description": "Verify that the job's status was set to \"Pending\" after it was created.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
@@ -1154,7 +1153,7 @@
 		{
 			"id": "ca0b170e-fb66-d312-aedb-72d77ffb79b3",
 			"headers": "",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId_cancel}}",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId_cancel}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -1168,7 +1167,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1483645152717,
+			"time": 1484314673617,
 			"name": "Cancelling - Job Status",
 			"description": "This sequence of tests check the functionality of job cancelling (DELETE) related to TMaaS.\nVerify that the job's status is now \"Cancelling\" or \"Cancelled\".",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
@@ -1275,7 +1274,7 @@
 		{
 			"id": "dd119cb2-a84b-0aab-6755-33ab44a61c26",
 			"headers": "",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -1289,12 +1288,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1483557633720,
+			"time": 1484314412491,
 			"name": "Job Status - Running",
 			"description": "Verify that the job's status was set to \"Running\" after it was pulled from the queue.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
-			"responses": [],
-			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a"
+			"responses": []
 		},
 		{
 			"id": "dd664a3e-ad3e-3b59-d18c-a78447861057",
@@ -1371,7 +1369,7 @@
 		{
 			"id": "eda80c9d-4626-7de7-6eba-457c3e46c98e",
 			"headers": "",
-			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -1385,12 +1383,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1483557648415,
+			"time": 1484314679798,
 			"name": "Job Status - After Update",
 			"description": "Verify that the Job's status was properly updated.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
-			"responses": [],
-			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a"
+			"responses": []
 		},
 		{
 			"id": "f172fb5b-502e-9eee-8a87-0da431ea0b86",
