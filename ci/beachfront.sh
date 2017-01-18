@@ -40,6 +40,7 @@ for space in $spaces; do
 	
 	# Build the beachfront url, to be used in the Selenium tests.
 	export bf_url=https://beachfront.$space.geointservices.io/
+	export GX_url=https://bf-api.$space.geointservices.io/login/geoaxis
 	# Run the Selenium tests.  
 	mvn test || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
 	
