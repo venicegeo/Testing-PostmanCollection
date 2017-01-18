@@ -1,0 +1,16 @@
+{
+  "name": "wstamp_e2e",
+  "version": "1.0.0",
+  "description": "e2e testing for wstamp",
+  "main": "conf.js",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "protractor": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
