@@ -42,7 +42,7 @@ for space in $spaces; do
 	export bf_url=https://beachfront.$space.geointservices.io/
 	export GX_url=https://bf-api.$space.geointservices.io/login/geoaxis
 	# Run the Selenium tests.  
-	mvn test || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
+	mvn test -e -X || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
 	
 	# Postman / Newman configuration.
 	envfile=$base/environments/$space.postman_environment
