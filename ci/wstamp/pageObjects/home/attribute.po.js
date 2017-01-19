@@ -10,7 +10,7 @@ var AttributePanel = function() {
         searchInput.sendKeys(text);
     };
 
-    this.getBasketElement = function(name){
+    this.getStampElement = function(name){
          return me.element(by.cssContainingText('.stamp .displayName', name));
     }
 
@@ -18,8 +18,22 @@ var AttributePanel = function() {
         me.element(by.css('.fa-plus')).click();
     };
 
+    this.getAttributeElement = function(name){
+        var ele = me.element(by.cssContainingText('wstamp-attribute .displayName', name))
+        var grandparent = ele.element(by.xpath('..')).element(by.xpath('..'))
+        return grandparent.element(by.css('i.fa.toggle.selectionIcon'))
+    };
+
+    this.selectStamp = function(name){
+        this.getStampElement(name).click();
+    }
+
+    this.selectAttribute = function(name){
+        this.getAttributeElement(name).click();
+    };
+
     this.addACLED = function(){
-        this.getBasketElement('ACLED').click();
+        this.getStampElement('ACLED').click();
         this.addAll();
     };
 
@@ -31,7 +45,7 @@ var AttributePanel = function() {
     }
 
     this.deleteBasket = function(name){
-        var ele = this.getBasketElement(name)
+        var ele = this.getStampElement(name)
         browser.actions().mouseMove( ele ).perform();
         element(by.css('wstamp-popover-content .fa-trash')).click();
         element(by.cssContainingText('.modal button', 'Confirm')).click();

@@ -11,6 +11,20 @@ var Map = function() {
        map.getView().setZoom(3);"
    }
 
+//    this.selectCountries = function(countries){
+//        var promises = []
+//        countries.map((country)=>{
+//         //    return this.selectCountry(country);
+//            promises.push(this.selectCountry(country));
+//        })
+
+//        promises.reduce((p, fn) => p.then(fn), Promise.resolve())
+
+//        return Promise.all(promises)
+//        for(let country of countries){
+//            this.selectCountry(country);
+//         }
+//    }
 
    this.selectCountry = function(country){
        var countries = {
@@ -24,7 +38,7 @@ var Map = function() {
 
         var center = countries[country.toUpperCase()];
 
-        browser.executeScript(centerMap(center.lat, center.long)).then(function(){
+        return browser.executeScript(centerMap(center.lat, center.long)).then(function(){
             browser.sleep(500)
             me.click();
         })

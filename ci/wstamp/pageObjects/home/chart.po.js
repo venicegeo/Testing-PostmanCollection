@@ -2,20 +2,13 @@
 
 var Chart = function() {
 
-    var me = element(by.css('wstamp-time-selector'));
+    var me = element(by.css('wstamp-chart'));
 
-    this.barGroups = element.all(by.css('.barGroup'));    
-    this.boundaryYearStart = element.all(by.css('.boundarYear')).get(0);
-    this.boundaryYearEnd = element.all(by.css('.boundarYear')).get(1);
-    this.primaryYear = me.element(by.css('.pelement(byrimaryYearLabel'));
-    this.minSelectedYear = me.element(by.css('.minSelectedYear'));
-    this.maxSelectedYear = me.element(by.css('.maxSelectedYear'));
-
-    this.setYear = function(year){
-        this.boundaryYearStart.getText().then((startYear)=>{
-            var index = year -parseInt(startYear);
-            this.barGroups.get(index).click();
-        })
+    this.getYAxis = function(){
+        browser.sleep(1000);
+        browser.ignoreSynchronization=true;
+        return me.element(by.css('.y.axis'))
+        browser.ignoreSynchronization=false;
     }
 
   };

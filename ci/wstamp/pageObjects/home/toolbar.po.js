@@ -5,9 +5,17 @@ var Toolbar = function() {
     var me = element(by.css('wstamp-time-selector'));
     this.visualizationSelector = element(by.css('button.visualization-selector'));
 
-    this.select = function(label){
+    this.selectVisType = function(label){
+        browser.ignoreSynchronization=true;
         this.visualizationSelector.click();
         element(by.cssContainingText('li.chart-choice', label)).click();
+        browser.ignoreSynchronization=false;
+    }
+
+    this.resetSelections = function(){
+        browser.ignoreSynchronization=true;
+        element(by.css('button.resetStampBtn')).click();
+        browser.ignoreSynchronization=false;
     }
 
     this.barGroups = element.all(by.css('.barGroup'));    
