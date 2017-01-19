@@ -6,6 +6,13 @@ var LocationPanel = function() {
 
     var searchInput = me.element(by.model('stateStack[0].searchObj.name'));
 
+    this.numSelected = function(){
+        return me.element(by.css('button.showSelected .selectText')).getText().then(function(text){
+            // expects text to be of the form '6 Selected'
+            return parseInt(text.split(' ')[0])
+        })
+    }
+
     this.search = function(text){
         searchInput.sendKeys(text);
     };

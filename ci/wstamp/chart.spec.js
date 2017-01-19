@@ -22,19 +22,7 @@ describe('Protractor Demo App', function() {
     landingPage.getStarted();
     browser.sleep(500)
     homePage.toolbar.resetSelections();
-    // homePage.map.selectCountries(['United States', 'Canada', 'Mexico', 'China', 'India'])
-    homePage.map.selectCountry('United States');
-    browser.sleep(1000);
-    homePage.map.selectCountry('Canada');
-    browser.sleep(1000);
-    homePage.map.selectCountry('Mexico');
-    browser.sleep(1000);
-    homePage.map.selectCountry('China');
-    browser.sleep(1000);
-    homePage.map.selectCountry('India');
-    browser.sleep(1000);
-
-
+    homePage.map.selectCountries(['United States', 'Canada', 'Mexico', 'China', 'India', 'Australia'])
     homePage.attributePanel.selectStamp('Demography');
     homePage.attributePanel.selectAttribute('Population Density');
     utils.clearBrowserErrors();
@@ -51,56 +39,56 @@ describe('Protractor Demo App', function() {
     expect(yAxis.getText()).toContain("Population")
   });
 
-//   it('should show a Time Series with outliers chart', function() {  
-//     homePage.toolbar.selectVisType("Time Series with outliers");
-//     var yAxis = homePage.chart.getYAxis()
-//     expect(yAxis.getText()).toContain("Population")
-//   });
+  it('should show a Time Series with outliers chart', function() {  
+    homePage.toolbar.selectVisType("Time Series with outliers");
+    var yAxis = homePage.chart.getYAxis()
+    expect(yAxis.getText()).toContain("Population")
+  });
 
-//   it('should show a Mean chart', function() {  
-//     homePage.toolbar.selectVisType("Mean");
-//     var yAxis = homePage.chart.getYAxis()
-//     expect(yAxis.getText()).toContain("Mean")
-//   });
+  it('should show a Mean chart', function() {  
+    homePage.toolbar.selectVisType("Mean");
+    var yAxis = homePage.chart.getYAxis()
+    expect(yAxis.getText()).toContain("Mean")
+  });
 
-//   it('should show a Median chart', function() {   
-//     homePage.toolbar.selectVisType("Median");
-//     var yAxis = homePage.chart.getYAxis()
-//     expect(yAxis.getText()).toContain("Median")
-//   });
+  it('should show a Median chart', function() {   
+    homePage.toolbar.selectVisType("Median");
+    var yAxis = homePage.chart.getYAxis()
+    expect(yAxis.getText()).toContain("Median")
+  });
 
-//   it('should show a Variance chart', function() {   
-//     homePage.toolbar.selectVisType("Variance");
-//     var yAxis = homePage.chart.getYAxis()
-//     expect(yAxis.getText()).toContain("Variance")
-//   });
+  it('should show a Variance chart', function() {   
+    homePage.toolbar.selectVisType("Variance");
+    var yAxis = homePage.chart.getYAxis()
+    expect(yAxis.getText()).toContain("Variance")
+  });
 
-//   it('should show a Completeness by Location & Time chart', function() {   
-//     homePage.toolbar.selectVisType("Completeness by Location & Time");
-//   });
+  it('should show a Completeness by Location & Time chart', function() {   
+    homePage.toolbar.selectVisType("Completeness by Location & Time");
+  });
 
-//   it('should show a Completeness by Attribute & Time chart', function() {   
-//     homePage.toolbar.selectVisType("Completeness by Attribute & Time");
-//   });
+  it('should show a Completeness by Attribute & Time chart', function() {   
+    homePage.toolbar.selectVisType("Completeness by Attribute & Time");
+  });
 
-//   it('should show a Repetition by Location & Time chart', function() {   
-//     homePage.toolbar.selectVisType("Repetition by Location & Time");
-//   });
+  it('should show a Repetition by Location & Time chart', function() {   
+    homePage.toolbar.selectVisType("Repetition by Location & Time");
+  });
 
-//   it('should show a Repetition by Attribute & Time chart', function() {   
-//     homePage.toolbar.selectVisType("Repetition by Attribute & Time");
-//   });
+  it('should show a Repetition by Attribute & Time chart', function() {   
+    homePage.toolbar.selectVisType("Repetition by Attribute & Time");
+  });
 
-//   it('should show a  chart', function() {   
-//     homePage.toolbar.selectVisType("Change by Location"); 
-//   });
+  it('should show a  chart', function() {   
+    homePage.toolbar.selectVisType("Change by Location"); 
+  });
 
-//   it('should show a Change by Location chart', function() {   
-//     homePage.toolbar.selectVisType("Change by Attribute");
-//   });
+  it('should show a Change by Location chart', function() {   
+    homePage.toolbar.selectVisType("Change by Attribute");
+  });
 
-//   it('should show a Simple Clusters chart', function() {   
-//     homePage.toolbar.selectVisType("Simple Clusters");
-//   });
+  it('should show a Simple Clusters chart', function() {   
+    homePage.toolbar.selectVisType("Simple Clusters");
+  });
 
 });
