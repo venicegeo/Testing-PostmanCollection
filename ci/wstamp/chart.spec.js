@@ -22,7 +22,7 @@ describe('Protractor Demo App', function() {
     landingPage.getStarted();
     browser.sleep(500)
     homePage.toolbar.resetSelections();
-    homePage.map.selectCountries(['United States', 'Canada', 'Mexico', 'China', 'India', 'Australia'])
+    homePage.explore.map.selectCountries(['United States', 'Canada', 'Mexico', 'China', 'India', 'Australia'])
     homePage.attributePanel.selectStamp('Demography');
     homePage.attributePanel.selectAttribute('Population Density');
     utils.clearBrowserErrors();

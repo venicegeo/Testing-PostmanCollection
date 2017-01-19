@@ -29,7 +29,7 @@ describe('Protractor Demo App', function() {
 
   it('should be able to select countries', function() { 
     var countries = ['United States', 'Canada', 'Mexico', 'China', 'India', 'Australia'];
-    homePage.map.selectCountries(countries);
+    homePage.explore.map.selectCountries(countries);
     expect(homePage.locationPanel.numSelected()).toEqual(countries.length);
   });
 

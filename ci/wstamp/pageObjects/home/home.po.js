@@ -4,8 +4,9 @@ var LocationPanel = require('./location.po');
 var AttributePanel = require('./attribute.po'); 
 var TimeSelector = require('./time.po');
 var Chart = require('./chart.po');
-var Toolbar = require('./toolbar.po')
-var Map = require('./map.po')
+var Toolbar = require('./toolbar.po');
+var Explore = require('./explore.po');
+var Analyze = require('./analyze.po');
 
 var HomePage = function() {
 
@@ -22,7 +23,8 @@ var HomePage = function() {
     this.timeSelector = new TimeSelector();
     this.chart = new Chart();
     this.toolbar = new Toolbar();
-    this.map = new Map();
+    this.explore = new Explore();
+    this.analyze = new Analyze();
 
     this.search = function(text){
         searchInput.sendKeys(text);

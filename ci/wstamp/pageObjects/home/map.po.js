@@ -1,11 +1,15 @@
 "use strict";
 
-var Map = function() {
-    var me = element(by.css("openlayermap"));
-   
+var Map = function(parent) {
+    
+    // parent is passed in because there are two maps that are very, very similar.
+    // one map is for exploring and the other for analyzing
+
+    var me = parent.element(by.css('openlayermap'));
+
+    // arguments[0] is passed to the executeScript function. it is dom object
     function centerMap(lat, long){
-       return "var m = document.querySelector('openlayermap'); \
-       map = angular.element(m).scope().settings.mapReference; \
+       return "map = angular.element(arguments[0]).scope().settings.mapReference; \
        map.getView().setCenter(ol.proj.transform([" + long + "," + lat +"], 'EPSG:4326', 'EPSG:3857')); \
        map.getView().setZoom(6);"
    }
@@ -28,7 +32,7 @@ var Map = function() {
 
         var center = countries[country.toUpperCase()];
 
-        return browser.executeScript(centerMap(center.lat, center.long)).then(function(){
+        return browser.executeScript(centerMap(center.lat, center.long), me).then(function(){
             me.click();
         })
      }
