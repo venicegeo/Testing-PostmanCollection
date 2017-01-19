@@ -7,8 +7,8 @@ exports.config = {
   // seleniumAddress: 'http://' + process.env.SAUCE_USERNAME + ":" + process.env.SAUCE_KEY + '@ondemand.saucelabs.com:80/wd/hub',
   // seleniumAddress: 'http://' + process.env.BROWSERSTACK_USERNAME + ":" + process.env.BROWSERSTACK_KEY + '@hub.browserstack.com:80/wd/hub',
   // seleniumAddress: 'http://luke342:xQotqtzQL17qxid7DeSx@hub.browserstack.com:80/wd/hub',
-  specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js'],
-  // specs: ['home.spec.js'],
+  // specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js'],
+  specs: ['home.spec.js'],
   // specs: ['chart.spec.js'],
   multiCapabilities: [
     {

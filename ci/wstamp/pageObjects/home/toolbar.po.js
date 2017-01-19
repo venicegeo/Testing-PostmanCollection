@@ -25,12 +25,28 @@ var Toolbar = function() {
     this.minSelectedYear = me.element(by.css('.minSelectedYear'));
     this.maxSelectedYear = me.element(by.css('.maxSelectedYear'));
 
+    this.setMode = function(mode){
+        // mode should be either 'Analyze' or 'Explore'
+        var button = element(by.cssContainingText('.temp-view-switcher span', mode))
+        if (hasClass(button, 'view-switcher-off')){
+            button.click();
+        }
+    }
+
+
     this.setYear = function(year){
         this.boundaryYearStart.getText().then((startYear)=>{
             var index = year -parseInt(startYear);
             this.barGroups.get(index).click();
         })
     }
+
+
+    var hasClass = function (element, cls) {
+        return element.getAttribute('class').then(function (classes) {
+            return classes.split(' ').indexOf(cls) !== -1;
+        });
+    };
 
   };
 
