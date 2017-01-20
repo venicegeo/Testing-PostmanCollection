@@ -3,6 +3,8 @@ package bfui.test;
 import static org.junit.Assert.*;
 
 import java.awt.Robot;
+import java.io.File;
+
 import static java.awt.event.InputEvent.BUTTON1_DOWN_MASK;
 
 import java.util.Arrays;
@@ -16,7 +18,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -74,11 +78,9 @@ public class TestBrowseMap {
 	public void setUp() throws Exception {
 		// Setup Browser:
 		System.setProperty("webdriver.gecko.driver", driverPath);
-		DesiredCapabilities caps = DesiredCapabilities.firefox();
-		caps.setBrowserName("firefox");
-		caps.setCapability("binary", browserPath);
-		caps.setPlatform(Platform.ANY);
-		driver = new FirefoxDriver(caps);
+		FirefoxBinary binary =new FirefoxBinary(new File(browserPath));
+		FirefoxProfile profile = new FirefoxProfile();
+		driver = new FirefoxDriver(binary, profile);
 		wait = new WebDriverWait(driver, 5);
 		robot = new Robot();
 		beachfront = new Beachfront(driver);

@@ -3,13 +3,17 @@ package bfui.test;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+import java.awt.Robot;
+import java.io.File;
 import java.util.Arrays;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
 public class TestGeoAxis {
 	private WebDriver driver;
@@ -37,11 +41,9 @@ public class TestGeoAxis {
 	public void setUp() throws Exception {
 		// Setup Browser:
 		System.setProperty("webdriver.gecko.driver", driverPath);
-		DesiredCapabilities caps = DesiredCapabilities.firefox();
-		caps.setBrowserName("firefox");
-		caps.setCapability("binary", browserPath);
-		caps.setPlatform(Platform.ANY);
-		driver = new FirefoxDriver(caps);
+		FirefoxBinary binary =new FirefoxBinary(new File(browserPath));
+		FirefoxProfile profile = new FirefoxProfile();
+		driver = new FirefoxDriver(binary, profile);
 		wait = new WebDriverWait(driver, 5);
 		beachfront = new Beachfront(driver);
 		gx = new GX(driver);
