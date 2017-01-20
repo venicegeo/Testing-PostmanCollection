@@ -28,13 +28,14 @@ fi
 
 # Selenium Configurations:
 curl -sL https://download.mozilla.org/?product=firefox-50.1.0-SSL&os=linux64&lang=en-US > ff.tar.bz2
-tar xjf ff.tar.bz2 -C /usr/bin/
+tar xjf ff.tar.bz2
+sudo mv firefox /opt/firefox50
 cd ci/Selenium
 Xvfb :99 2>/dev/null &
 export DISPLAY=:99
 npm install geckodriver
 export driver_path=node_modules/geckodriver/geckodriver
-export browser_path=/usr/bin/firefox
+export browser_path=/usr/opt/firefox50
 
 for space in $spaces; do
 	# Reinitialize "latch" for the tests against the current space.
