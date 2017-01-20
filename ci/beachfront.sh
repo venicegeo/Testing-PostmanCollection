@@ -20,7 +20,8 @@ bigLatch=0
 # and all spaces should be tested.
 if [ "$PCF_SPACE" == "test" ]; then
 	echo "test case"
-	spaces="int stage prod"
+	spaces="stage"
+#	spaces="int stage prod"
 else
 	spaces=$PCF_SPACE
 fi
