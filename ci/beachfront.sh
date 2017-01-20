@@ -27,6 +27,8 @@ fi
 
 
 # Selenium Configurations:
+curl -sL https://download.mozilla.org/?product=firefox-50.1.0-SSL&os=linux64&lang=en-US > ff.tar.bz2
+tar -xvzf ff.tar.bz2 -C /usr/bin/
 cd ci/Selenium
 Xvfb :99 2>/dev/null &
 export DISPLAY=:99
