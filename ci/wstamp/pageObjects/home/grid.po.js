@@ -6,7 +6,7 @@ var Grid = function() {
 
 
     var _getIndexForLocation = function(location){
-        return $('.ui-grid-canvas').$$('.ui-grid-cell-contents').map((e)=>{
+        return $$('.ui-grid-canvas').get(0).$$('.ui-grid-cell-contents').map((e)=>{
             return e.getText();
         }).then((texts)=>{
             for(let [index, text] of texts.entries()){
@@ -40,7 +40,11 @@ var Grid = function() {
                     cell.getText().then((text)=>{
                         // convers strings like '1,500' to '1500'
                         text = text.replace(/,/g, "");
-                        resolve(parseFloat(text))
+                        if(isNaN(text)){
+                            return text;
+                        }else{
+                            resolve(parseFloat(text));
+                        }
                     })
                 })
              })

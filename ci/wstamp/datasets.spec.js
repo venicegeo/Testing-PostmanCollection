@@ -30,6 +30,19 @@ describe('Protractor Demo App', function() {
     homePage.toolbar.setMode('Analyze');
     expect(homePage.grid.getValueByLocationAndYear('United States', 2005)).toEqual(1000);
     expect(homePage.grid.getValueByLocationAndYear('United States', 2010)).toEqual(1500);
+    expect(homePage.grid.getValueByLocationAndYear('United States', 2004)).toEqual('N/A');
+    expect(homePage.grid.getValueByLocationAndYear('Canada', 2005)).toEqual('N/A');
+  });
+
+  it('should be able to save a stamp with a custom dataset', function() { 
+    var name = 'mystamp'
+    browser.sleep(5000)
+    homePage.toolbar.saveStamp(name);
+    var url = 'https://wstamp.ornl.gov/#/s/lbickston/' + name + '/analyze'
+    browser.refresh();
+    browser.get(url);
+    expect(homePage.toolbar.numLocationsSelected()).toEqual(2);
+    expect(homePage.toolbar.numAttributesSelected()).toEqual(1);
   });
 
   it('should be able to delete a test dataset', function() { 

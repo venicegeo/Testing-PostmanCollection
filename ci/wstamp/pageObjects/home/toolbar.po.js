@@ -2,7 +2,7 @@
 
 var Toolbar = function() {
 
-    var me = $('wstamp-time-selector');
+    var me = $('.centerPane div.toolbar');
     this.visualizationSelector = $('button.visualization-selector');
 
     this.selectVisType = function(label){
@@ -33,6 +33,11 @@ var Toolbar = function() {
         }
     }
 
+    this.saveStamp = function(name){
+        me.$('button.saveStampBtn').click();
+        element(by.model('vm.stampName')).sendKeys(name);
+        element(by.cssContainingText('button', 'Save STAMP')).click();
+    }
 
     this.setYear = function(year){
         this.boundaryYearStart.getText().then((startYear)=>{
@@ -47,6 +52,20 @@ var Toolbar = function() {
             return classes.split(' ').indexOf(cls) !== -1;
         });
     };
+
+    this.numAttributesSelected = function(){
+        return me.$('button.showExploreAttributeMiniBtn').getText().then((text)=>{
+            // expects text to be of the form '6 Attributes'
+            return parseInt(text.split(' ')[0], 10);
+        });
+    }
+    
+    this.numLocationsSelected = function(){
+        return me.$('button.showExploreLocationMiniBtn').getText().then((text)=>{
+            // expects text to be of the form '6 Locations'
+            return parseInt(text.split(' ')[0], 10);
+        });
+    }
 
   };
 
