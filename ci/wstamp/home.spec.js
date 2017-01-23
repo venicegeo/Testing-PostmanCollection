@@ -48,7 +48,8 @@ describe('Protractor Demo App', function() {
   });
 
   it('should be able to create and delete an attribute basket', function(){
-    homePage.attributePanel.addACLED();
+    // homePage.attributePanel.addACLED();
+    homePage.attributePanel.addAllForStamp('ACLED');
     var basketName = Math.random().toString(36).substring(2,7);
     homePage.attributePanel.saveBasket(basketName);
     browser.refresh();

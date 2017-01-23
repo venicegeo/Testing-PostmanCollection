@@ -6,10 +6,8 @@ exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   // seleniumAddress: 'http://' + process.env.SAUCE_USERNAME + ":" + process.env.SAUCE_KEY + '@ondemand.saucelabs.com:80/wd/hub',
   // seleniumAddress: 'http://' + process.env.BROWSERSTACK_USERNAME + ":" + process.env.BROWSERSTACK_KEY + '@hub.browserstack.com:80/wd/hub',
-  // seleniumAddress: 'http://luke342:xQotqtzQL17qxid7DeSx@hub.browserstack.com:80/wd/hub',
-  // specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js'],
-  specs: ['home.spec.js'],
-  // specs: ['chart.spec.js'],
+  specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js', 'datasets.spec.js'],
+  // specs: ['datasets.spec.js'],
   multiCapabilities: [
     {
       browserName: 'chrome',
@@ -25,13 +23,5 @@ exports.config = {
     //   shardTestFiles: true,
     //   maxInstances: 25
     // },
-    // {
-    //   browserName: 'firefox',
-    //   version: 50,
-    //   loggingPrefs: {browser: 'SEVERE'}, // added so that real console errors can be easily detected
-    //   shardTestFiles: true,
-    //   maxInstances: 25
-    // }
-  
   ]
 }

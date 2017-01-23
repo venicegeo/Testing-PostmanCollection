@@ -5,7 +5,7 @@ var Map = function(parent) {
     // parent is passed in because there are two maps that are very, very similar.
     // one map is for exploring and the other for analyzing
 
-    var me = parent.element(by.css('openlayermap'));
+    var me = parent.$('openlayermap');
 
     // arguments[0] is passed to the executeScript function. it is dom object
     function centerMap(lat, long){
@@ -32,7 +32,7 @@ var Map = function(parent) {
 
         var center = countries[country.toUpperCase()];
 
-        return browser.executeScript(centerMap(center.lat, center.long), me).then(function(){
+        return browser.executeScript(centerMap(center.lat, center.long), me).then(()=>{
             me.click();
         })
      }

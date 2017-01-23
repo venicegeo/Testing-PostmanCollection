@@ -4,12 +4,12 @@ var Time = function() {
 
     var me = element(by.css('wstamp-time-selector'));
 
-    this.barGroups = element.all(by.css('.barGroup'));    
-    this.boundaryYearStart = element.all(by.css('.boundarYear')).get(0);
-    this.boundaryYearEnd = element.all(by.css('.boundarYear')).get(1);
-    this.primaryYear = me.element(by.css('.primaryYearLabel'));
-    this.minSelectedYear = me.element(by.css('.minSelectedYear'));
-    this.maxSelectedYear = me.element(by.css('.maxSelectedYear'));
+    this.barGroups = $$('.barGroup');    
+    this.boundaryYearStart = $$('.boundarYear').get(0);
+    this.boundaryYearEnd = $$('.boundarYear').get(1);
+    this.primaryYear = me.$('.primaryYearLabel');
+    this.minSelectedYear = me.$('.minSelectedYear');
+    this.maxSelectedYear = me.$('.maxSelectedYear');
 
     this.setYear = function(year){
         this.boundaryYearStart.getText().then((startYear)=>{

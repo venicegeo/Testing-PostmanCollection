@@ -7,16 +7,13 @@ var Chart = require('./chart.po');
 var Toolbar = require('./toolbar.po');
 var Explore = require('./explore.po');
 var Analyze = require('./analyze.po');
+var Grid = require('./grid.po')
 
 var HomePage = function() {
 
-    var getStartedButton = element(by.css('.fa-play'));
-    var startTutorialButton = element(by.css('.fa-question-circle'));
-    var signOutButton = element(by.css('.fa-sign-out'));
-    var searchInput = element(by.model('.searchText'));
-    var searchButton = element(by.css('.fa-search'));
-
-    var menuButton = element(by.css('.menuBtn'))
+    this.menuButton = $('.menuBtn')
+    this.manageDatasetsButton = element(by.cssContainingText('li', 'Manage Datasets'));
+    this.signOutButton = element(by.cssContainingText('li', 'Log Out'));
 
     this.locationPanel = new LocationPanel();
     this.attributePanel = new AttributePanel();
@@ -25,6 +22,7 @@ var HomePage = function() {
     this.toolbar = new Toolbar();
     this.explore = new Explore();
     this.analyze = new Analyze();
+    this.grid = new Grid();
 
     this.search = function(text){
         searchInput.sendKeys(text);
@@ -36,8 +34,35 @@ var HomePage = function() {
     };
 
     this.logout = function(){
-       menuButton.click();
-       signOutButton.click();
+       this.menuButton.click();
+       this.signOutButton.click();
+   }
+
+   this.uploadDataset = function(path){
+       // used to allow file uploads on remote selinum grids
+       var remote = require('selenium-webdriver/remote');
+       browser.setFileDetector(new remote.FileDetector());
+
+       this.menuButton.click();
+       this.manageDatasetsButton.click();
+       element(by.cssContainingText('button',"Upload New Dataset")).click();
+       // this skips the step of opening the file dialog window and instead
+       // sends the file path directly
+       $('input[type="file"]').sendKeys(path);
+       element(by.cssContainingText('button','Save')).click();
+       $('button.ok').click();
+       $('i.fa-times').click();
+   }
+
+   this.deleteDataset = function(name){
+     this.menuButton.click();
+     this.manageDatasetsButton.click();
+     var ele = element(by.cssContainingText('div.ui-grid-canvas .ui-grid-cell-contents', name))
+     var row = ele.element(by.xpath('..')).element(by.xpath('..')).element(by.xpath('..'))
+     row.$('.deleteIcon').click();
+     $('button.ok').click();
+     $('i.fa-times').click();
+
    }
 
   };

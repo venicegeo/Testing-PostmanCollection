@@ -2,9 +2,9 @@
 
 var LoginPage = function() {
 
-    this.usernameInput = element(by.id('username'));
-    this.passwordInput = element(by.id('password'));
-    this.loginButton = element(by.css('.fa-sign-in'))
+    this.usernameInput = $('#username');
+    this.passwordInput = $('#password');
+    this.loginButton = $('.fa-sign-in');
 
     this.username = process.env.WSTAMP_USERNAME;
     this.password = process.env.WSTAMP_PASSWORD;
