@@ -4,6 +4,9 @@ var Toolbar = function() {
 
     var me = $('.centerPane div.toolbar');
     this.visualizationSelector = $('button.visualization-selector');
+    this.attributeButton = me.$('button.showExploreAttributeMiniBtn');
+    this.locationButton = me.$('button.showExploreLocationMiniBtn');
+    this.removeShapefileButton = me.$('button .fa-remove');
 
     this.selectVisType = function(label){
         browser.ignoreSynchronization=true;
@@ -31,20 +34,20 @@ var Toolbar = function() {
         if (hasClass(button, 'view-switcher-off')){
             button.click();
         }
-    }
+    };
 
     this.saveStamp = function(name){
         me.$('button.saveStampBtn').click();
         element(by.model('vm.stampName')).sendKeys(name);
         element(by.cssContainingText('button', 'Save STAMP')).click();
-    }
+    };
 
     this.setYear = function(year){
         this.boundaryYearStart.getText().then((startYear)=>{
             var index = year-parseInt(startYear, 10);
             this.barGroups.get(index).click();
         })
-    }
+    };
 
 
     var hasClass = function (element, cls) {
@@ -54,18 +57,26 @@ var Toolbar = function() {
     };
 
     this.numAttributesSelected = function(){
-        return me.$('button.showExploreAttributeMiniBtn').getText().then((text)=>{
+        return this.attributeButon.getText().then((text)=>{
             // expects text to be of the form '6 Attributes'
             return parseInt(text.split(' ')[0], 10);
         });
-    }
+    };
     
     this.numLocationsSelected = function(){
-        return me.$('button.showExploreLocationMiniBtn').getText().then((text)=>{
+        return this.locationButton.getText().then((text)=>{
             // expects text to be of the form '6 Locations'
             return parseInt(text.split(' ')[0], 10);
         });
-    }
+    };
+
+    this.showAttributePanel = function(){
+        this.attributeButton.click();
+    };
+
+    this.showLocationPanel = function(){
+        this.locationButton.click();
+    };
 
   };
 

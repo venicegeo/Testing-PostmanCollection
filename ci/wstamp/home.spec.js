@@ -1,9 +1,7 @@
-
-// // var AngularHomepage = require('./pages/angularHomepage.js');  
 var LoginPage = require('./pageObjects/login.po');  
 var LandingPage = require('./pageObjects/landing.po');  
 var HomePage = require('./pageObjects/home/home.po');  
-var verifyNoBrowserErrors = require('./utils.js')
+var utils = require('./utils');
 
 describe('Protractor Demo App', function() {
   
@@ -24,7 +22,7 @@ describe('Protractor Demo App', function() {
   afterEach(function(){
     browser.sleep(1000);
     homePage.logout();
-    // verifyNoBrowserErrors();
+    // utils.verifyNoBrowserErrors();
   })
 
   it('should be able to select countries', function() { 
@@ -41,7 +39,7 @@ describe('Protractor Demo App', function() {
 
   it('should be able to create and delete a location basket', function(){
     homePage.locationPanel.addWorld();
-    var basketName = Math.random().toString(36).substring(2,7);
+    var basketName = utils.randomString();
     homePage.locationPanel.saveBasket(basketName);
     browser.refresh();
     homePage.locationPanel.deleteBasket(basketName);
@@ -50,11 +48,20 @@ describe('Protractor Demo App', function() {
   it('should be able to create and delete an attribute basket', function(){
     // homePage.attributePanel.addACLED();
     homePage.attributePanel.addAllForStamp('ACLED');
-    var basketName = Math.random().toString(36).substring(2,7);
+    var basketName = utils.randomString();
     homePage.attributePanel.saveBasket(basketName);
     browser.refresh();
     homePage.attributePanel.deleteBasket(basketName);
   });
 
+  it('should add and remove a shape file', function(){
+    var removeShapefileButton = homePage.toolbar.removeShapefileButton;
+    // expect(removeShapefileButton.isDisplayed()).toBe(false);
+    var path = __dirname + "/data/test-shapefile.shp";
+    homePage.uploadShapefile(path);
+    expect(removeShapefileButton.isDisplayed()).toBe(true);
+    removeShapefileButton.click();
+    expect(removeShapefileButton.isDisplayed()).toBe(false);
+  });
 
 });

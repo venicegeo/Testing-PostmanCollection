@@ -19,7 +19,7 @@ describe('Protractor Demo App', function() {
   })
 
   it('should be able to upload a test dataset', function() { 
-    var path = __dirname + "/data/test-upload.csv"
+    var path = __dirname + "/data/test-dataset.csv"
     homePage.uploadDataset(path);
     expect(homePage.attributePanel.getStampElement('Test').isPresent()).toBeTruthy();
   });

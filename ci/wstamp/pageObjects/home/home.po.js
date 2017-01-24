@@ -13,6 +13,7 @@ var HomePage = function() {
 
     this.menuButton = $('.menuBtn')
     this.manageDatasetsButton = element(by.cssContainingText('li', 'Manage Datasets'));
+    this.uploadShapefileButton = element(by.cssContainingText('li', 'Upload Shapefile to Map'));
     this.signOutButton = element(by.cssContainingText('li', 'Log Out'));
 
     this.locationPanel = new LocationPanel();
@@ -39,7 +40,7 @@ var HomePage = function() {
    }
 
    this.uploadDataset = function(path){
-       // used to allow file uploads on remote selinum grids
+       // used to allow file uploads on remote selinium grids
        var remote = require('selenium-webdriver/remote');
        browser.setFileDetector(new remote.FileDetector());
 
@@ -62,7 +63,20 @@ var HomePage = function() {
      row.$('.deleteIcon').click();
      $('button.ok').click();
      $('i.fa-times').click();
+   }
 
+   this.uploadShapefile = function(path){
+       // used to allow file uploads on remote selinium grids
+       var remote = require('selenium-webdriver/remote');
+       browser.setFileDetector(new remote.FileDetector());
+
+       this.menuButton.click();
+       this.uploadShapefileButton.click();
+       // this skips the step of opening the file dialog window and instead
+       // sends the file path directly
+       $('input[type="file"]').sendKeys(path);
+       browser.sleep(3000)
+       element(by.cssContainingText('button', 'Submit')).click();
    }
 
   };

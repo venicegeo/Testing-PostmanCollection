@@ -4,7 +4,13 @@ var LocationPanel = function() {
 
     var me = $('wstamp-location-mini');
 
-    var searchInput = me.element(by.model('stateStack[0].searchObj.name'));
+    this.searchInput = me.element(by.model('stateStack[0].searchObj.name'));
+
+    this.hideButton = me.$('button i.fa-eye-slash')
+
+    this.hide = function(){
+        this.hideButton.click();
+    }
 
     this.numSelected = function(){
         return me.$('button.showSelected .selectText').getText().then((text)=>{
@@ -14,7 +20,7 @@ var LocationPanel = function() {
     }
 
     this.search = function(text){
-        searchInput.sendKeys(text);
+        this.searchInput.sendKeys(text);
     };
 
     this.getBasketElement = function(name){

@@ -4,7 +4,12 @@ var AttributePanel = function() {
 
     var me = $('wstamp-attribute-mini');
 
-    var searchInput = me.element(by.model('attributeService.searchText'));
+    this.searchInput = me.element(by.model('attributeService.searchText'));
+    this.hideButton = me.$('button i.fa-eye-slash')
+
+    this.hide = function(){
+        this.hideButton.click();
+    }
 
     this.search = function(text){
         searchInput.sendKeys(text);

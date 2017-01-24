@@ -11,3 +11,7 @@ module.exports.verifyNoBrowserErrors = function verifyNoBrowserErrors(){
 module.exports.clearBrowserErrors = function clearBrowserErrors(){
     browser.manage().logs().get('browser')
 };
+
+module.exports.randomString = function randomString(){
+    return Math.random().toString(36).substring(2,7);
+};
