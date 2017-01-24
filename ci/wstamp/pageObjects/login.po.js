@@ -6,8 +6,8 @@ var LoginPage = function() {
     this.passwordInput = $('#password');
     this.loginButton = $('.fa-sign-in');
 
-    this.username = process.env.WSTAMP_USERNAME;
-    this.password = process.env.WSTAMP_PASSWORD;
+    this.username = browser.params.wstampLogin.username;
+    this.password = browser.params.wstampLogin.password;
 
     this.navigate = function() {
         browser.get('https://wstamp.ornl.gov');

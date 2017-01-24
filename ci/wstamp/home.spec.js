@@ -46,7 +46,6 @@ describe('Protractor Demo App', function() {
   });
 
   it('should be able to create and delete an attribute basket', function(){
-    // homePage.attributePanel.addACLED();
     homePage.attributePanel.addAllForStamp('ACLED');
     var basketName = utils.randomString();
     homePage.attributePanel.saveBasket(basketName);
@@ -56,7 +55,6 @@ describe('Protractor Demo App', function() {
 
   it('should add and remove a shape file', function(){
     var removeShapefileButton = homePage.toolbar.removeShapefileButton;
-    // expect(removeShapefileButton.isDisplayed()).toBe(false);
     var path = __dirname + "/data/test-shapefile.shp";
     homePage.uploadShapefile(path);
     expect(removeShapefileButton.isDisplayed()).toBe(true);

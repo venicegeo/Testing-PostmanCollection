@@ -1,14 +1,8 @@
-
-// // var AngularHomepage = require('./pages/angularHomepage.js');  
 var LoginPage = require('./pageObjects/login.po');  
 var LandingPage = require('./pageObjects/landing.po');  
 var HomePage = require('./pageObjects/home/home.po');  
 var utils = require('./utils');
-
-
-// var verifyNoBrowserErrors = require('./utils.js')   
-// var clearBrowserErrors = require('./utils.js')                          
-
+                      
 describe('Protractor Demo App', function() {
   
   var loginPage = new LoginPage();
