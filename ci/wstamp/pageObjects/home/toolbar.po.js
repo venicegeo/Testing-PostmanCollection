@@ -57,7 +57,7 @@ var Toolbar = function() {
     };
 
     this.numAttributesSelected = function(){
-        return this.attributeButon.getText().then((text)=>{
+        return this.attributeButton.getText().then((text)=>{
             // expects text to be of the form '6 Attributes'
             return parseInt(text.split(' ')[0], 10);
         });

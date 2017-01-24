@@ -1,11 +1,9 @@
-
-// // var AngularHomepage = require('./pages/angularHomepage.js');  
 var LoginPage = require('./pageObjects/login.po');  
 var LandingPage = require('./pageObjects/landing.po');  
 var HomePage = require('./pageObjects/home/home.po');  
-var verifyNoBrowserErrors = require('./utils.js')
+var utils = require('./utils');
 
-describe('Protractor Demo App', function() {
+describe('Test custom dataset functionality', function() {
   
   var loginPage = new LoginPage();
   var landingPage = new LandingPage();
@@ -29,20 +27,25 @@ describe('Protractor Demo App', function() {
     homePage.attributePanel.addAllForStamp('Test');
     homePage.toolbar.setMode('Analyze');
     expect(homePage.grid.getValueByLocationAndYear('United States', 2005)).toEqual(1000);
-    expect(homePage.grid.getValueByLocationAndYear('United States', 2010)).toEqual(1500);
+    expect(homePage.grid.getValueByLocationAndYear('United States', 2006)).toEqual(1100);
     expect(homePage.grid.getValueByLocationAndYear('United States', 2004)).toEqual('N/A');
     expect(homePage.grid.getValueByLocationAndYear('Canada', 2005)).toEqual('N/A');
   });
 
-  it('should be able to save a stamp with a custom dataset', function() { 
-    var name = 'mystamp'
-    browser.sleep(5000)
-    homePage.toolbar.saveStamp(name);
-    var url = 'https://wstamp.ornl.gov/#/s/lbickston/' + name + '/analyze'
+  it('should be able to save and delete a stamp with a custom dataset', function() { 
+    var stampName = utils.randomString();
+    homePage.toolbar.saveStamp(stampName);
+    var username = browser.params.wstampLogin.username
+    var url = 'https://wstamp.ornl.gov/#/s/'+ username +'/' + stampName + '/analyze'
     browser.refresh();
     browser.get(url);
+    browser.sleep(5000)
     expect(homePage.toolbar.numLocationsSelected()).toEqual(2);
     expect(homePage.toolbar.numAttributesSelected()).toEqual(1);
+    landingPage.navigate();
+    landingPage.deleteStamp(stampName);
+    homePage.navigate();
+  
   });
 
   it('should be able to delete a test dataset', function() { 

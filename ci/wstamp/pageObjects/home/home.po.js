@@ -30,7 +30,7 @@ var HomePage = function() {
         searchButton.click();
     }
 
-    this.get = function() {
+    this.navigate = function() {
         browser.get('https://wstamp.ornl.gov/#/home/explore');
     };
 
@@ -40,7 +40,8 @@ var HomePage = function() {
    }
 
    this.uploadDataset = function(path){
-       // used to allow file uploads on remote selinium grids
+
+       // used to allow file uploads on remote selenium grids
        var remote = require('selenium-webdriver/remote');
        browser.setFileDetector(new remote.FileDetector());
 
@@ -66,7 +67,8 @@ var HomePage = function() {
    }
 
    this.uploadShapefile = function(path){
-       // used to allow file uploads on remote selinium grids
+
+       // used to allow file uploads on remote selenium grids
        var remote = require('selenium-webdriver/remote');
        browser.setFileDetector(new remote.FileDetector());
 
@@ -75,7 +77,6 @@ var HomePage = function() {
        // this skips the step of opening the file dialog window and instead
        // sends the file path directly
        $('input[type="file"]').sendKeys(path);
-       browser.sleep(3000)
        element(by.cssContainingText('button', 'Submit')).click();
    }
 

@@ -38,7 +38,7 @@ var Grid = function() {
                     var row = $$('.ui-grid-canvas').get(1).$$('.ui-grid-row').get(location_index)
                     var cell = row.$$('.ui-grid-cell').get(year_index)
                     cell.getText().then((text)=>{
-                        // convers strings like '1,500' to '1500'
+                        // '1,500' => '1500'
                         text = text.replace(/,/g, "");
                         if(isNaN(text)){
                             return text;

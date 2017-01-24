@@ -14,7 +14,7 @@ exports.config = {
 
   // sauceUser: process.env.SAUCE_USERNAME,
   // sauceKey: process.env.SAUCE_KEY,
-  
+
   // browserstackUser: process.env.BROWSERSTACK_USERNAME,
   // browserstackKey: process.env.BROWSERSTACK_KEY,
 
@@ -31,12 +31,12 @@ exports.config = {
   framework: 'jasmine',
 
   // specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js', 'datasets.spec.js'],
-  specs: ['home.spec.js'],
+  specs: ['datasets.spec.js'],
   multiCapabilities: [
     {
       browserName: 'chrome',
       version: 55,
-      loggingPrefs: {browser: 'SEVERE'}, // added so that real console errors can be easily detected
+      loggingPrefs: {browser: 'SEVERE'}, // added so that warnings are ignored
       shardTestFiles: true,
       maxInstances: 25
     },

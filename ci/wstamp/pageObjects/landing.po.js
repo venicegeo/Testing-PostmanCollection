@@ -14,9 +14,17 @@ var LandingPage = function() {
         searchButton.click();
     }
 
-    this.get = function() {
+    this.navigate = function() {
         browser.get('https://wstamp.ornl.gov/#/landing');
     };
+
+    this.deleteStamp = function(name){
+       var ele = element(by.cssContainingText('div.name', name))
+       var grandparent = ele.element(by.xpath('..')).element(by.xpath('..'));
+       grandparent.$('button.infoButton').click();
+       $('button .fa-trash').click();
+       $('button.ok').click();
+    }
 
     this.getWelcomeMsg = function(){
         var welcome = $$('.welcome p').first();
