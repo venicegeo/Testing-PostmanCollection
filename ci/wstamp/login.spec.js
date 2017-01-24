@@ -28,7 +28,7 @@ describe('test login & logout functionality', function() {
     loginPage.navigate();
     loginPage.login()
     expect(browser.getCurrentUrl()).toContain("/landing");
-    expect(landingPage.getWelcomeMsg()).toEqual('Welcome back Luke Bickston');
+    expect(landingPage.getWelcomeMsg()).toContain('Welcome back');
     landingPage.logout();
   });
   

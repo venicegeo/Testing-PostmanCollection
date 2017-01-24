@@ -19,10 +19,6 @@ var AttributePanel = function() {
          return me.element(by.cssContainingText('.stamp .displayName', name));
     }
 
-    this.addAll = function(){
-        me.element(by.css('.fa-plus')).click();
-    };
-
     this.getAttributeElement = function(name){
         var ele = me.element(by.cssContainingText('wstamp-attribute .displayName', name));
         var grandparent = ele.element(by.xpath('..')).element(by.xpath('..'));
@@ -39,7 +35,7 @@ var AttributePanel = function() {
 
     this.addAllForStamp = function(name){
         this.getStampElement(name).click();
-        this.addAll();
+        me.element(by.css('.fa-plus')).click();
     }
 
     this.saveBasket = function(name){

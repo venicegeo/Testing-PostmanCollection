@@ -18,6 +18,14 @@ var Time = function() {
         })
     }
 
+    this.getYear = function(){
+        return new Promise((resolve, reject)=>{
+            this.primaryYear.getText().then((text)=>{
+                resolve(parseInt(text, 10));
+            })
+        })
+    }
+
   };
 
   module.exports = Time

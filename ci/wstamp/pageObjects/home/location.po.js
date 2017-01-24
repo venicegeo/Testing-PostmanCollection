@@ -27,13 +27,9 @@ var LocationPanel = function() {
          return me.element(by.cssContainingText('.stamp .displayName', name));
     }
 
-    this.addAll = function(){
-        me.$('.fa-plus').click();
-    };
-
     this.addWorld = function(){
         this.getBasketElement('World').click();
-        this.addAll();
+        me.$('.fa-plus').click();
     };
 
     this.saveBasket = function(name){

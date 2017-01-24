@@ -4,8 +4,9 @@ var Map = function(parent) {
     
     // parent is passed in because there are two maps that are very, very similar.
     // one map is for exploring and the other for analyzing
-
-    var me = parent.$('openlayermap');
+    var me = parent.$('wstamp-map');
+    this.openlayermap = me.$('openlayermap');
+    this.yearDisplay = me.$('.yearDisplay');
 
     // arguments[0] is passed to the executeScript function. it is dom object
     function centerMap(lat, long){
@@ -18,7 +19,7 @@ var Map = function(parent) {
        for(let country of countries){
            this.selectCountry(country);
         }
-   }
+   };
 
    this.selectCountry = function(country){
        var countries = {
@@ -32,10 +33,28 @@ var Map = function(parent) {
 
         var center = countries[country.toUpperCase()];
 
-        return browser.executeScript(centerMap(center.lat, center.long), me).then(()=>{
-            me.click();
+        return browser.executeScript(centerMap(center.lat, center.long), this.openlayermap).then(()=>{
+            this.openlayermap.click();
         })
-     }
+     };
+
+    this.getYear = function(){
+        browser.ignoreSynchronization=true;
+        return new Promise((resolve, reject)=>{
+            this.yearDisplay.$('.timeDisplay').getText().then((text)=>{
+                browser.ignoreSynchronization=false;
+                resolve(parseInt(text, 10));
+            })
+        })
+    };
+
+    this.nextYear = function(){
+        this.yearDisplay.$('.fa-chevron-right').click();
+    };
+    
+    this.previousYear = function(){
+        this.yearDisplay.$('.fa-chevron-left').click();
+    };
 
   };
 
