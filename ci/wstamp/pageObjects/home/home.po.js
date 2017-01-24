@@ -19,7 +19,6 @@ var HomePage = function() {
     this.locationPanel = new LocationPanel();
     this.attributePanel = new AttributePanel();
     this.timeSelector = new TimeSelector();
-    this.chart = new Chart();
     this.toolbar = new Toolbar();
     this.explore = new Explore();
     this.analyze = new Analyze();

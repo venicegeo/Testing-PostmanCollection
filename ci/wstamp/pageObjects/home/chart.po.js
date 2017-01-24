@@ -1,13 +1,15 @@
 "use strict";
 
-var Chart = function() {
+var Chart = function(parent) {
+    // parent is passed in because there are two charts that are very, very similar.
+    // one map is for exploring and the other for analyzing
 
-    var me = element(by.css('wstamp-chart'));
+    var me = parent.$('wstamp-chart');
 
     this.getYAxis = function(){
         browser.sleep(1000);
         browser.ignoreSynchronization=true;
-        return me.element(by.css('.y.axis'))
+        return me.$('.y.axis');
         browser.ignoreSynchronization=false;
     }
 

@@ -38,7 +38,7 @@ var LandingPage = function() {
     this.logout = function(){
         signOutButton.click();
     }
-
+    
 
   };
 

@@ -1,9 +1,7 @@
-
-// // var AngularHomepage = require('./pages/angularHomepage.js');  
 var LoginPage = require('./pageObjects/login.po');  
 var LandingPage = require('./pageObjects/landing.po');  
 var HomePage = require('./pageObjects/home/home.po');  
-var verifyNoBrowserErrors = require('./utils.js')
+var utils = require('./utils.js')
 
 describe('test login & logout functionality', function() {
   
@@ -17,7 +15,7 @@ describe('test login & logout functionality', function() {
 
 //   uncomment to test for browser errors after each test. right now this fails.
 //   afterEach(function() {
-//     verifyNoBrowserErrors()
+//     utils.verifyNoBrowserErrors()
 //   });
 
   it('should not be able to login using the a wrong username & password', function() {  

@@ -32,8 +32,8 @@ exports.config = {
 
   framework: 'jasmine',
 
-  // specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js', 'datasets.spec.js'],
-  specs: ['datasets.spec.js'],
+  specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js', 'datasets.spec.js'],
+  // specs: ['datasets.spec.js'],
   multiCapabilities: [
     {
       browserName: 'chrome',
