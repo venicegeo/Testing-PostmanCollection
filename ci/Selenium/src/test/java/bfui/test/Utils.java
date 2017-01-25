@@ -1,11 +1,20 @@
 package bfui.test;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -106,5 +115,31 @@ public class Utils {
 		}
 		assertTrue(String.format(msg, range), Math.abs(actual - target) < range || Math.abs(actual - target) - 180 < range);
 	}
+	
+	static WebDriver createWebDriver(String browserPath, String driverPath) throws Exception {
+		if (browserPath.contains("fox")) {
+			System.setProperty("webdriver.gecko.driver", driverPath);
+			FirefoxBinary binary =new FirefoxBinary(new File(browserPath));
+			FirefoxProfile profile = new FirefoxProfile();
+			return new FirefoxDriver(binary, profile);
+		} else if (browserPath.contains("chrom")) {
+			System.setProperty("webdriver.chrome.driver", driverPath);
+			return new ChromeDriver();
+		} else {
+			throw new Exception("Could not identify browser from path: " + browserPath);
+		}
+	}
+	
+	static boolean tryToClick(WebElement element) {
+		try {
+			element.click();
+			return true;
+		} catch (WebDriverException e) {
+			return false;
+		}
+	}
 
+	static void jostleMouse(Actions actions, WebElement element) {
+		actions.moveToElement(element).moveByOffset(1, 1).moveByOffset(-1, -1).build().perform();
+	}
 }
