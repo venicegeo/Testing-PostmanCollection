@@ -1,16 +1,15 @@
-var LoginPage = require('./pageObjects/login.po');  
-var LandingPage = require('./pageObjects/landing.po');  
-var HomePage = require('./pageObjects/home/home.po');  
-var utils = require('./utils');
+var LoginPage = require('../pageObjects/login.po');  
+var LandingPage = require('../pageObjects/landing.po');  
+var HomePage = require('../pageObjects/home/home.po');  
+var utils = require('../utils');
                       
-describe('Test the map year functionality', function() {
+describe('Map & timeline years', function() {
   
   var loginPage = new LoginPage();
   var landingPage = new LandingPage();
   var homePage = new HomePage();
 
   var map = homePage.analyze.map;
-  var year = 2016;
 
   beforeAll(function(){
     browser.driver.manage().window().maximize();
@@ -21,11 +20,10 @@ describe('Test the map year functionality', function() {
     homePage.explore.map.selectCountries(['United States']);
     homePage.attributePanel.addAllForStamp('ACLED');
     homePage.toolbar.setMode('Analyze');
-    year = 2000;
   })
 
 
- it('should be able to change times amnd stay in sync', function() { 
+ it('should be able to change times and stay in sync', function() { 
     expect(map.getYear()).toEqual(homePage.timeSelector.getYear());
     homePage.timeSelector.setYear(2012);
     expect(map.getYear()).toEqual(2012);

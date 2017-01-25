@@ -9,10 +9,8 @@ var Toolbar = function() {
     this.removeShapefileButton = me.$('button .fa-remove');
 
     this.selectVisType = function(label){
-        browser.ignoreSynchronization=true;
         this.visualizationSelector.click();
         element(by.cssContainingText('li.chart-choice', label)).click();
-        browser.ignoreSynchronization=false;
     }
 
     this.resetSelections = function(){

@@ -1,5 +1,6 @@
 "use strict";
 
+var BasePage = require('../base.po.js');
 var LocationPanel = require('./location.po');  
 var AttributePanel = require('./attribute.po'); 
 var TimeSelector = require('./time.po');
@@ -10,6 +11,8 @@ var Analyze = require('./analyze.po');
 var Grid = require('./grid.po')
 
 var HomePage = function() {
+    this.url = 'https://wstamp.ornl.gov/#/home/explore';
+    this.pageLoaded = this.inDom($('i.fa-home'));
 
     this.menuButton = $('.menuBtn')
     this.manageDatasetsButton = element(by.cssContainingText('li', 'Manage Datasets'));
@@ -28,10 +31,6 @@ var HomePage = function() {
         searchInput.sendKeys(text);
         searchButton.click();
     }
-
-    this.navigate = function() {
-        browser.get('https://wstamp.ornl.gov/#/home/explore');
-    };
 
     this.logout = function(){
        this.menuButton.click();
@@ -76,9 +75,10 @@ var HomePage = function() {
        // this skips the step of opening the file dialog window and instead
        // sends the file path directly
        $('input[type="file"]').sendKeys(path);
+       browser.sleep(500);
        element(by.cssContainingText('button', 'Submit')).click();
    }
 
   };
-
+  HomePage.prototype = BasePage; // extend BasePage...
   module.exports = HomePage

@@ -1,7 +1,8 @@
-var LoginPage = require('./pageObjects/login.po');  
-var LandingPage = require('./pageObjects/landing.po');  
-var HomePage = require('./pageObjects/home/home.po');  
-var utils = require('./utils');
+var path = require("path");
+var LoginPage = require('../pageObjects/login.po');  
+var LandingPage = require('../pageObjects/landing.po');  
+var HomePage = require('../pageObjects/home/home.po');  
+var utils = require('../utils');
 
 describe('Test custom dataset functionality', function() {
   
@@ -16,9 +17,13 @@ describe('Test custom dataset functionality', function() {
     landingPage.getStarted();
   })
 
+  afterAll(function(){
+    homePage.logout();
+  })
+
   it('should be able to upload a test dataset', function() { 
-    var path = __dirname + "/data/test-dataset.csv"
-    homePage.uploadDataset(path);
+    var absolutePath = path.join(__dirname, '../data/test-dataset.csv');
+    homePage.uploadDataset(absolutePath);
     expect(homePage.attributePanel.getStampElement('Test').isPresent()).toBeTruthy();
   });
 

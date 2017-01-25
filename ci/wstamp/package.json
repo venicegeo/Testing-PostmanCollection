@@ -5,7 +5,9 @@
   "main": "conf.js",
   "dependencies": {
     "dotenv": "^4.0.0",
-    "protractor": "^5.0.0"
+    "path": "^0.12.7",
+    "protractor": "^5.0.0",
+    "protractor-flake": "^2.3.0"
   },
   "devDependencies": {
     "jasmine-spec-reporter": "^3.2.0"

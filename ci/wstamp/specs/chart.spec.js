@@ -1,25 +1,43 @@
-var LoginPage = require('./pageObjects/login.po');  
-var LandingPage = require('./pageObjects/landing.po');  
-var HomePage = require('./pageObjects/home/home.po');  
-var utils = require('./utils');
+var LoginPage = require('../pageObjects/login.po');  
+var LandingPage = require('../pageObjects/landing.po');  
+var HomePage = require('../pageObjects/home/home.po');  
+var utils = require('../utils');
                       
 describe('Charts should function correctly.', function() {
   
   var loginPage = new LoginPage();
   var landingPage = new LandingPage();
   var homePage = new HomePage();
+  var name = utils.randomString();
+  var chart = homePage.explore.chart;
 
   beforeAll(function(){
+    
     browser.driver.manage().window().maximize();
     loginPage.navigate();
     loginPage.login();
+
     landingPage.getStarted();
-    browser.sleep(500)
-    homePage.toolbar.resetSelections();
+    
     homePage.explore.map.selectCountries(['United States', 'Canada', 'Mexico', 'China', 'India', 'Australia'])
     homePage.attributePanel.selectStamp('Demography');
     homePage.attributePanel.selectAttribute('Population Density');
+    browser.ignoreSynchronization = true;
+    homePage.attributePanel.hide();
+    homePage.locationPanel.hide();
     utils.clearBrowserErrors();
+    
+  })
+
+  afterAll(function(){
+    browser.refresh()
+    browser.ignoreSynchronization = false;
+    homePage.logout();
+  });
+
+  beforeEach(function(){
+    // necessary to prevent large tooltips from blocking buttons
+    utils.hideTooltips();  
   })
 
   afterEach(function(){
@@ -27,34 +45,29 @@ describe('Charts should function correctly.', function() {
     utils.verifyNoBrowserErrors();
   })
 
- it('should select the center of the map', function() {  
+ it('should show a Time Series chart', function() {  
     homePage.toolbar.selectVisType("Time Series");
-    var yAxis = homePage.explore.chart.getYAxis()
-    expect(yAxis.getText()).toContain("Population")
+    expect(chart.getYAxisText()).toContain("Population")
   });
 
   it('should show a Time Series with outliers chart', function() {  
     homePage.toolbar.selectVisType("Time Series with outliers");
-    var yAxis = homePage.explore.chart.getYAxis()
-    expect(yAxis.getText()).toContain("Population")
+    expect(chart.getYAxisText()).toContain("Population")
   });
 
   it('should show a Mean chart', function() {  
     homePage.toolbar.selectVisType("Mean");
-    var yAxis = homePage.explore.chart.getYAxis()
-    expect(yAxis.getText()).toContain("Mean")
+    expect(chart.getYAxisText()).toContain("Mean")
   });
 
   it('should show a Median chart', function() {   
     homePage.toolbar.selectVisType("Median");
-    var yAxis = homePage.explore.chart.getYAxis()
-    expect(yAxis.getText()).toContain("Median")
+    expect(chart.getYAxisText()).toContain("Median")
   });
 
   it('should show a Variance chart', function() {   
     homePage.toolbar.selectVisType("Variance");
-    var yAxis = homePage.explore.chart.getYAxis()
-    expect(yAxis.getText()).toContain("Variance")
+    expect(chart.getYAxisText()).toContain("Variance")
   });
 
   it('should show a Completeness by Location & Time chart', function() {   

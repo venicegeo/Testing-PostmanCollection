@@ -31,16 +31,20 @@ exports.config = {
   },
 
   framework: 'jasmine',
+  allScriptsTimeout: 15 * 1000, // default is 11 seconds 
 
-  specs: ['chart.spec.js', 'home.spec.js', 'login.spec.js', 'datasets.spec.js', 'map.spec.js'],
-  // specs: ['map.spec.js'],
+  // specs: ['specs/chart.spec.js'],
+  specs: ['specs/*spec.js'],
+
   multiCapabilities: [
     {
       browserName: 'chrome',
+      os: 'Windows',
+      os_version: '10',
       version: 55,
       loggingPrefs: {browser: 'SEVERE'}, // added so that warnings are ignored
-      shardTestFiles: true,
-      maxInstances: 25
+      // shardTestFiles: true,
+      // maxInstances: 25
     },
   ]
 }

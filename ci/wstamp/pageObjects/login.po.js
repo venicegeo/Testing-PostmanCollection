@@ -1,4 +1,5 @@
 "use strict";
+var BasePage = require('./base.po.js');
 
 var LoginPage = function() {
 
@@ -6,12 +7,11 @@ var LoginPage = function() {
     this.passwordInput = $('#password');
     this.loginButton = $('.fa-sign-in');
 
+    this.url = "https://wstamp.ornl.gov";
+    this.pageLoaded = this.isVisible(this.usernameInput);
+
     this.username = browser.params.wstampLogin.username;
     this.password = browser.params.wstampLogin.password;
-
-    this.navigate = function() {
-        browser.get('https://wstamp.ornl.gov');
-    };
 
     this.login = function(username=this.username, password=this.password ){
         this.usernameInput.sendKeys(username);
@@ -21,4 +21,5 @@ var LoginPage = function() {
 
   };
 
+  LoginPage.prototype = BasePage; // extend BasePage...
   module.exports = LoginPage

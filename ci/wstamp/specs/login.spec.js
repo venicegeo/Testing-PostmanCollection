@@ -1,7 +1,7 @@
-var LoginPage = require('./pageObjects/login.po');  
-var LandingPage = require('./pageObjects/landing.po');  
-var HomePage = require('./pageObjects/home/home.po');  
-var utils = require('./utils.js')
+var LoginPage = require('../pageObjects/login.po');  
+var LandingPage = require('../pageObjects/landing.po');  
+var HomePage = require('../pageObjects/home/home.po');  
+var utils = require('../utils.js')
 
 describe('test login & logout functionality', function() {
   

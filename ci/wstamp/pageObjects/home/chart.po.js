@@ -6,12 +6,14 @@ var Chart = function(parent) {
 
     var me = parent.$('wstamp-chart');
 
-    this.getYAxis = function(){
-        browser.sleep(1000);
-        browser.ignoreSynchronization=true;
-        return me.$('.y.axis');
-        browser.ignoreSynchronization=false;
-    }
+    this.getYAxisText = function(){
+        return new Promise(( resolve, reject)=>{
+            browser.sleep(1000);
+            me.$('.y.axis').getText().then((text)=>{
+                resolve(text);
+            })
+        })
+    };
 
   };
 

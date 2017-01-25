@@ -7,6 +7,8 @@ var AttributePanel = function() {
     this.searchInput = me.element(by.model('attributeService.searchText'));
     this.hideButton = me.$('button i.fa-eye-slash')
 
+    
+
     this.hide = function(){
         this.hideButton.click();
     }
@@ -40,9 +42,12 @@ var AttributePanel = function() {
 
     this.saveBasket = function(name){
         me.$('.saveBtn').click();
+        browser.sleep(2000);
         var modal = $('.modal');
         modal.element(by.model('stamp.name')).sendKeys(name);
+        browser.sleep(1000);
         modal.element(by.cssContainingText('button', 'Save')).click();
+        browser.sleep(1000);
     }
 
     this.deleteBasket = function(name){

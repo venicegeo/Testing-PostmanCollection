@@ -5,7 +5,8 @@
 3. Set your environment variables (see environment variables section)
 4. Run protractor `protractor conf.js`
 
-## Environment Variables
+## Environment Variablesls
+
 You can set environment variables using a .env file in this project root. See [dotenv](https://github.com/motdotla/dotenv). Note that this file is ignored by git.
 
 To run the wstamp tests, you need to set environment variables for: 
@@ -23,6 +24,12 @@ If you would like to use saucelabs or browserstack, you will also need to uncomm
 - PageObjects should hold reusable properties / methods that abstract away the page interactions
 
 
+## Good References
+- http://www.protractortest.org/#/
+- https://github.com/qualityshepherd/protractor-example
+- https://github.com/NickTomlin/protractor-flake
+- https://github.com/bcaudan/jasmine-spec-reporter
+
 ## Load Testing
 
 1. BlazeMeter
@@ -34,3 +41,8 @@ If you would like to use saucelabs or browserstack, you will also need to uncomm
 - Free: 100 users, 5 tests/month
 - $89/month: 500 users, 15 tests/month  
 - $224/month: 2000 users, unlimited test/month
+
+3. Loader.io
+- Free: 10,000 users, unlimited tests < 1 min
+- $99/month: 100,000 users, unlimited tests < 10 min
+

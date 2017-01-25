@@ -1,7 +1,8 @@
-var LoginPage = require('./pageObjects/login.po');  
-var LandingPage = require('./pageObjects/landing.po');  
-var HomePage = require('./pageObjects/home/home.po');  
-var utils = require('./utils');
+var path = require("path");
+var LoginPage = require('../pageObjects/login.po');  
+var LandingPage = require('../pageObjects/landing.po');  
+var HomePage = require('../pageObjects/home/home.po');  
+var utils = require('../utils');
 
 describe('Protractor Demo App', function() {
   
@@ -17,6 +18,7 @@ describe('Protractor Demo App', function() {
     loginPage.navigate();
     loginPage.login();
     landingPage.getStarted();
+    utils.hideTooltips();
   })
 
   afterEach(function(){
@@ -55,8 +57,8 @@ describe('Protractor Demo App', function() {
 
   it('should add and remove a shape file', function(){
     var removeShapefileButton = homePage.toolbar.removeShapefileButton;
-    var path = __dirname + "/data/test-shapefile.shp";
-    homePage.uploadShapefile(path);
+    var absolutePath = path.join(__dirname , "../data/test-shapefile.shp");
+    homePage.uploadShapefile(absolutePath);
     expect(removeShapefileButton.isDisplayed()).toBe(true);
     removeShapefileButton.click();
     expect(removeShapefileButton.isDisplayed()).toBe(false);

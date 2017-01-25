@@ -4,7 +4,6 @@ var Grid = function() {
 
     var me = element(by.css('wstamp-grid'));
 
-
     var _getIndexForLocation = function(location){
         return $$('.ui-grid-canvas').get(0).$$('.ui-grid-cell-contents').map((e)=>{
             return e.getText();
