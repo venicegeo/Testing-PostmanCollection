@@ -22,7 +22,6 @@ describe('Map & timeline years', function() {
     homePage.toolbar.setMode('Analyze');
   })
 
-
  it('should be able to change times and stay in sync', function() { 
     expect(map.getYear()).toEqual(homePage.timeSelector.getYear());
     homePage.timeSelector.setYear(2012);

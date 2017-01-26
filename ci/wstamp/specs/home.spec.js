@@ -1,4 +1,3 @@
-var path = require("path");
 var LoginPage = require('../pageObjects/login.po');  
 var LandingPage = require('../pageObjects/landing.po');  
 var HomePage = require('../pageObjects/home/home.po');  
@@ -10,28 +9,25 @@ describe('Protractor Demo App', function() {
   var landingPage = new LandingPage();
   var homePage = new HomePage();
 
+  var locationBasketName = utils.randomString();
+  var attributeBasketName = utils.randomString();
+
+
   beforeAll(function(){
     browser.driver.manage().window().maximize();
-  })
-
-  beforeEach(function() {
     loginPage.navigate();
     loginPage.login();
     landingPage.getStarted();
     utils.hideTooltips();
   })
 
-  afterEach(function(){
-    browser.sleep(1000);
-    homePage.logout();
-    // utils.verifyNoBrowserErrors();
+  beforeEach(function() {
+    utils.hideTooltips();
   })
 
-  it('should be able to select countries', function() { 
-    var countries = ['United States', 'Canada', 'Mexico', 'China', 'India', 'Australia'];
-    homePage.explore.map.selectCountries(countries);
-    expect(homePage.locationPanel.numSelected()).toEqual(countries.length);
-  });
+  afterAll(function(){
+    homePage.logout();
+  })
 
   it('should be able to change the year to 1980', function() {  
     homePage.timeSelector.setYear(1980);
@@ -39,29 +35,36 @@ describe('Protractor Demo App', function() {
     expect(homePage.timeSelector.minSelectedYear.getText()).toEqual('1980');
   });
 
-  it('should be able to create and delete a location basket', function(){
+  it('should be able to save a location basket', function(){
     homePage.locationPanel.addWorld();
-    var basketName = utils.randomString();
-    homePage.locationPanel.saveBasket(basketName);
-    browser.refresh();
-    homePage.locationPanel.deleteBasket(basketName);
+    homePage.locationPanel.saveBasket(locationBasketName);
   });
 
-  it('should be able to create and delete an attribute basket', function(){
+  it('should be able to delete a location basket', function(){
+    browser.refresh();
+    homePage.locationPanel.deleteBasket(locationBasketName);
+  });
+
+  it('should be able to create an attribute basket', function(){
     homePage.attributePanel.addAllForStamp('ACLED');
-    var basketName = utils.randomString();
-    homePage.attributePanel.saveBasket(basketName);
-    browser.refresh();
-    homePage.attributePanel.deleteBasket(basketName);
+    homePage.attributePanel.saveBasket(attributeBasketName);
   });
 
-  it('should add and remove a shape file', function(){
+  it('should be able to delete a an attribute basket', function(){
+    browser.refresh();
+    homePage.attributePanel.deleteBasket(attributeBasketName);
+  });
+
+  it('should add a shape file', function(){
+    homePage.uploadShapefile(browser.params.shapefilePath);
+  });
+
+  it('should remove a shape file', function(){
     var removeShapefileButton = homePage.toolbar.removeShapefileButton;
-    var absolutePath = path.join(__dirname , "../data/test-shapefile.shp");
-    homePage.uploadShapefile(absolutePath);
     expect(removeShapefileButton.isDisplayed()).toBe(true);
     removeShapefileButton.click();
     expect(removeShapefileButton.isDisplayed()).toBe(false);
   });
+
 
 });

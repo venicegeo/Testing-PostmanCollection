@@ -1,5 +1,5 @@
 "use strict";
-
+var utils = require('../../utils.js');
 var Grid = function() {
 
     var me = element(by.css('wstamp-grid'));
@@ -34,8 +34,10 @@ var Grid = function() {
         return new Promise(function(resolve, reject){
              _getIndexForLocation(location).then((location_index)=>{
                 _getIndexForYear(year).then((year_index)=>{
-                    var row = $$('.ui-grid-canvas').get(1).$$('.ui-grid-row').get(location_index)
-                    var cell = row.$$('.ui-grid-cell').get(year_index)
+                    var row = $$('.ui-grid-canvas').get(1).$$('.ui-grid-row').get(location_index);
+                    utils.log(`location: ${location}, location_index:, ${location_index}`);
+                    utils.log(`year: ${year}, year_index: ${year_index}`);
+                    var cell = row.$$('.ui-grid-cell').get(year_index);
                     cell.getText().then((text)=>{
                         // '1,500' => '1500'
                         text = text.replace(/,/g, "");

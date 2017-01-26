@@ -1,9 +1,9 @@
 "use strict";
 var BasePage = require('./base.po.js');
+var utils = require('../utils.js')
 
 var LandingPage = function() {
 
-    // var getStartedButton = element(by.css('.fa-play'));
     var startTutorialButton = $('.fa-question-circle');
     var signOutButton = $('.fa-sign-out');
     var searchInput = $('.searchText');
@@ -18,9 +18,11 @@ var LandingPage = function() {
     }
 
     this.deleteStamp = function(name){
+       utils.log(`deleting stamp: ${name}`);
        var ele = element(by.cssContainingText('div.name', name))
        var grandparent = ele.element(by.xpath('..')).element(by.xpath('..'));
        grandparent.$('button.infoButton').click();
+       utils.hideTooltips();
        $('button .fa-trash').click();
        $('button.ok').click();
     }

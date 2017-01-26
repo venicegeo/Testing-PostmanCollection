@@ -1,4 +1,3 @@
-var path = require("path");
 var LoginPage = require('../pageObjects/login.po');  
 var LandingPage = require('../pageObjects/landing.po');  
 var HomePage = require('../pageObjects/home/home.po');  
@@ -22,8 +21,7 @@ describe('Test custom dataset functionality', function() {
   })
 
   it('should be able to upload a test dataset', function() { 
-    var absolutePath = path.join(__dirname, '../data/test-dataset.csv');
-    homePage.uploadDataset(absolutePath);
+    homePage.uploadDataset(browser.params.datasetPath);
     expect(homePage.attributePanel.getStampElement('Test').isPresent()).toBeTruthy();
   });
 
@@ -31,10 +29,9 @@ describe('Test custom dataset functionality', function() {
     homePage.explore.map.selectCountries(['United States', 'Canada']);
     homePage.attributePanel.addAllForStamp('Test');
     homePage.toolbar.setMode('Analyze');
-    expect(homePage.grid.getValueByLocationAndYear('United States', 2005)).toEqual(1000);
-    expect(homePage.grid.getValueByLocationAndYear('United States', 2006)).toEqual(1100);
-    expect(homePage.grid.getValueByLocationAndYear('United States', 2004)).toEqual('N/A');
-    expect(homePage.grid.getValueByLocationAndYear('Canada', 2005)).toEqual('N/A');
+    expect(homePage.grid.getValueByLocationAndYear('United States', 2002)).toEqual(700);
+    expect(homePage.grid.getValueByLocationAndYear('United States', 2003)).toEqual(800);
+    expect(homePage.grid.getValueByLocationAndYear('Canada', 2003)).toEqual('N/A');
   });
 
   it('should be able to save and delete a stamp with a custom dataset', function() { 
@@ -44,7 +41,6 @@ describe('Test custom dataset functionality', function() {
     var url = 'https://wstamp.ornl.gov/#/s/'+ username +'/' + stampName + '/analyze'
     browser.refresh();
     browser.get(url);
-    browser.sleep(5000)
     expect(homePage.toolbar.numLocationsSelected()).toEqual(2);
     expect(homePage.toolbar.numAttributesSelected()).toEqual(1);
     landingPage.navigate();

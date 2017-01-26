@@ -9,7 +9,8 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceRoot}/node_modules/protractor/bin/protractor",
-            "args": ["${workspaceRoot}/conf.js"],
+            "args": ["${workspaceRoot}\\conf.js"],
+            "cwd": "${workspaceRoot}"
         },
         {
             "type": "node",

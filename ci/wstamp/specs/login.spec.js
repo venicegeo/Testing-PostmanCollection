@@ -8,15 +8,10 @@ describe('test login & logout functionality', function() {
   var loginPage = new LoginPage();
   var landingPage = new LandingPage();
   var homePage = new HomePage();
-
-  beforeAll(function(){
+  
+  beforeAll(function() {
     browser.driver.manage().window().maximize();
-  })
-
-//   uncomment to test for browser errors after each test. right now this fails.
-//   afterEach(function() {
-//     utils.verifyNoBrowserErrors()
-//   });
+  });
 
   it('should not be able to login using the a wrong username & password', function() {  
     loginPage.navigate();  
