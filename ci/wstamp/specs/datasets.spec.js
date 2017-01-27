@@ -8,6 +8,7 @@ describe('Test custom dataset functionality', function() {
   var loginPage = new LoginPage();
   var landingPage = new LandingPage();
   var homePage = new HomePage();
+  var stampName = utils.randomString();
 
   beforeAll(function(){
     browser.driver.manage().window().maximize();
@@ -34,24 +35,21 @@ describe('Test custom dataset functionality', function() {
     expect(homePage.grid.getValueByLocationAndYear('Canada', 2003)).toEqual('N/A');
   });
 
-  it('should be able to save and delete a stamp with a custom dataset', function() { 
-    var stampName = utils.randomString();
+  it('should be able to save and a stamp with a custom dataset', function() { 
     homePage.toolbar.saveStamp(stampName);
-    var username = browser.params.wstampLogin.username
-    var url = 'https://wstamp.ornl.gov/#/s/'+ username +'/' + stampName + '/analyze'
-    browser.refresh();
-    browser.get(url);
-    expect(homePage.toolbar.numLocationsSelected()).toEqual(2);
-    expect(homePage.toolbar.numAttributesSelected()).toEqual(1);
+  });
+
+  it('should be able to delete all of my stamps', function() {
     landingPage.navigate();
-    landingPage.deleteStamp(stampName);
-    homePage.navigate();
-  
+    landingPage.deleteAllStamps();
+    expect(landingPage.myStampInfoButtons.count()).toEqual(0)
   });
 
   it('should be able to delete a test dataset', function() { 
+    homePage.navigate();
     homePage.deleteDataset('Test');
     expect(homePage.attributePanel.getStampElement('Test').isPresent()).toBeFalsy();
   });
+
 
 });

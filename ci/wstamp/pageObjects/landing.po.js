@@ -4,24 +4,36 @@ var utils = require('../utils.js')
 
 var LandingPage = function() {
 
-    var startTutorialButton = $('.fa-question-circle');
-    var signOutButton = $('.fa-sign-out');
-    var searchInput = $('.searchText');
-    var searchButton = $('.fa-search');
-
     this.url = 'https://wstamp.ornl.gov/#/landing';
     this.pageLoaded = this.inDom($('i.fa-play'));
+    this.myStampInfoButtons = $$('.stampWidgetList').get(0).$$('i.fa-info-circle');
+    this.signOutButton = $('.fa-sign-out');
 
-    this.search = function(text){
-        searchInput.sendKeys(text);
-        searchButton.click();
+    this.deleteAllStamps = function(){
+        this.myStampInfoButtons.each((button)=>{
+            this.deleteStampFromButton(button);
+        })
     }
+
+    this.deleteStampFromButton = function(button){
+        return new Promise((resolve, reject)=>{
+            button.click();
+            utils.hideTooltips();
+            browser.sleep(2000);
+            $('button .fa-trash').click();
+            $('button.ok').click().then(()=>{
+                browser.sleep(2000);
+                resolve();
+            })
+        })
+    }
+
 
     this.deleteStamp = function(name){
        utils.log(`deleting stamp: ${name}`);
        var ele = element(by.cssContainingText('div.name', name))
        var grandparent = ele.element(by.xpath('..')).element(by.xpath('..'));
-       grandparent.$('button.infoButton').click();
+       grandparent.$('i.fa-info-circle').click();
        utils.hideTooltips();
        $('button .fa-trash').click();
        $('button.ok').click();
@@ -37,7 +49,7 @@ var LandingPage = function() {
     }
 
     this.logout = function(){
-        signOutButton.click();
+        this.signOutButton.click();
     }
     
 

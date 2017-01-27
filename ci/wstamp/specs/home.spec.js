@@ -18,16 +18,17 @@ describe('Protractor Demo App', function() {
     loginPage.navigate();
     loginPage.login();
     landingPage.getStarted();
-    utils.hideTooltips();
+    // utils.hideTooltips();
   })
 
   beforeEach(function() {
-    utils.hideTooltips();
+    // utils.hideTooltips();
   })
 
   afterAll(function(){
     homePage.logout();
   })
+
 
   it('should be able to change the year to 1980', function() {  
     homePage.timeSelector.setYear(1980);
@@ -45,6 +46,10 @@ describe('Protractor Demo App', function() {
     homePage.locationPanel.deleteBasket(locationBasketName);
   });
 
+  it('should delete all my location baskets', function() {  
+    homePage.locationPanel.deleteAllMyBaskets();
+  });
+
   it('should be able to create an attribute basket', function(){
     homePage.attributePanel.addAllForStamp('ACLED');
     homePage.attributePanel.saveBasket(attributeBasketName);
@@ -54,6 +59,11 @@ describe('Protractor Demo App', function() {
     browser.refresh();
     homePage.attributePanel.deleteBasket(attributeBasketName);
   });
+
+  it('should delete all my attribute baskets', function() {  
+    homePage.attributePanel.deleteAllMyBaskets();
+  });
+
 
   it('should add a shape file', function(){
     homePage.uploadShapefile(browser.params.shapefilePath);

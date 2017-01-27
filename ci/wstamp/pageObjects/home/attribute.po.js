@@ -50,6 +50,26 @@ var AttributePanel = function() {
         browser.sleep(1000);
     }
 
+
+    function getNames(){
+       return "var stamps = angular.element(arguments[0]).scope().$parent.type.stamps; \
+       return stamps.map((stamp)=>{return stamp.name});"
+    }
+
+    this.deleteAllMyBaskets = function(){
+        // me.element.all gives an error, and me.element ... .then gives an error, so forced to put
+        // 'me' inside the css selector below.
+        element.all(by.cssContainingText('wstamp-attribute-mini header.stampHeader', 'My Baskets')).then((headers)=>{
+            if(headers.length){
+                var header = headers[0];
+                browser.executeScript(getNames(),header).then((names)=>{
+                    names.map((name)=>{return this.deleteBasket(name)})
+                })
+            }
+        })
+        
+    };
+
     this.deleteBasket = function(name){
         var ele = this.getStampElement(name);
         browser.actions().mouseMove( ele ).perform();
