@@ -28,24 +28,24 @@ fi
 
 
 # Selenium Configurations:
-curl -sL https://download-installer.cdn.mozilla.net/pub/firefox/releases/50.1.0/linux-x86_64/en-US/firefox-50.1.0.tar.bz2 > ff.tar.bz2
-tar xjf ff.tar.bz2
-export browser_path=$PWD/firefox/firefox
-cd ci/Selenium
-Xvfb :99 2>/dev/null &
-export DISPLAY=:99
-npm install geckodriver
-export driver_path=node_modules/geckodriver/geckodriver
+# curl -sL https://download-installer.cdn.mozilla.net/pub/firefox/releases/50.1.0/linux-x86_64/en-US/firefox-50.1.0.tar.bz2 > ff.tar.bz2
+# tar xjf ff.tar.bz2
+# export browser_path=$PWD/firefox/firefox
+# cd ci/Selenium
+# Xvfb :99 2>/dev/null &
+# export DISPLAY=:99
+# npm install geckodriver
+# export driver_path=node_modules/geckodriver/geckodriver
 
 for space in $spaces; do
 	# Reinitialize "latch" for the tests against the current space.
 	latch=0
 	
 	# Build the beachfront url, to be used in the Selenium tests.
-	export bf_url=https://beachfront.$space.geointservices.io/
-	export GX_url=https://bf-api.$space.geointservices.io/login/geoaxis
-	# Run the Selenium tests.  
-	mvn test -e -X || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
+	# export bf_url=https://beachfront.$space.geointservices.io/
+	# export GX_url=https://bf-api.$space.geointservices.io/login/geoaxis
+	# # Run the Selenium tests.  
+	# mvn test -e -X || [[ "$PCF_SPACE" == "stage" ]] || { latch=1; }
 	
 	# Postman / Newman configuration.
 	envfile=$base/environments/$space.postman_environment
