@@ -5,9 +5,8 @@ var AttributePanel = function() {
     var me = $('wstamp-attribute-mini');
 
     this.searchInput = me.element(by.model('attributeService.searchText'));
-    this.hideButton = me.$('button i.fa-eye-slash')
-
-    
+    this.hideButton = me.$('button i.fa-eye-slash');
+    this.myBasketsHeaderElement = me.element(by.cssContainingText('header.stampHeader', 'My Baskets'));
 
     this.hide = function(){
         this.hideButton.click();

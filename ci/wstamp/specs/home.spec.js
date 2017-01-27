@@ -48,6 +48,7 @@ describe('Protractor Demo App', function() {
 
   it('should delete all my location baskets', function() {  
     homePage.locationPanel.deleteAllMyBaskets();
+    expect(homePage.locationPanel.myBasketsHeaderElement.isPresent()).toBe(false);
   });
 
   it('should be able to create an attribute basket', function(){
@@ -55,13 +56,14 @@ describe('Protractor Demo App', function() {
     homePage.attributePanel.saveBasket(attributeBasketName);
   });
 
-  it('should be able to delete a an attribute basket', function(){
+  it('should be able to delete an attribute basket', function(){
     browser.refresh();
     homePage.attributePanel.deleteBasket(attributeBasketName);
   });
 
   it('should delete all my attribute baskets', function() {  
     homePage.attributePanel.deleteAllMyBaskets();
+    expect(homePage.attributePanel.myBasketsHeaderElement.isPresent()).toBe(false);
   });
 
 
