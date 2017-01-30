@@ -33,16 +33,3 @@ module.exports.log = function log(text){
     var stamp = ('\n' + d.toLocaleString() + " "+  d.getMilliseconds() + "                 ").substring(0,30);
     return fs.appendFile("logs.txt", stamp + text);
 }
-
-
-/**
- * Usage: clear(element(by.model('my.model')));
- */
-module.exports.clear = function clear(elem, length) {
-    length = length || 100;
-    var backspaceSeries = '';
-    for (var i = 0; i < length; i++) {
-        backspaceSeries += protractor.Key.BACK_SPACE;
-    }
-    elem.sendKeys(backspaceSeries);
-}
