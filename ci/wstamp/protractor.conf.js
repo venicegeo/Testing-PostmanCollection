@@ -35,8 +35,8 @@ exports.config = {
   },
 
   // uncomment out if you would like to use sauce labs
-  sauceUser: process.env.SAUCE_USERNAME,
-  sauceKey: process.env.SAUCE_KEY,
+  // sauceUser: process.env.SAUCE_USERNAME,
+  // sauceKey: process.env.SAUCE_KEY,
 
   // uncomment out if you would like to use browserstack
   // browserstackUser: process.env.BROWSERSTACK_USERNAME,
@@ -53,8 +53,8 @@ exports.config = {
   // to debug tests locally, uncomment and run 'webdriver-manager start' in another terminal
   // seleniumAddress:  "http://127.0.0.1:4444/wd/hub",
 
-  // specs: ['specs/home.spec.js'],
-  specs: ['specs/*spec.js'],
+  specs: ['specs/menu.spec.js'],
+  // specs: ['specs/*spec.js'],
 
   multiCapabilities: [
     {

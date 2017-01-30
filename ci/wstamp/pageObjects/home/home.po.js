@@ -15,9 +15,20 @@ var HomePage = function() {
     this.pageLoaded = this.inDom($('i.fa-home'));
 
     this.menuButton = $('.menuBtn')
+    this.profileButton = element(by.cssContainingText('li', 'Profile'));
+    this.groupsButton = element(by.cssContainingText('li', 'Groups'));
     this.manageDatasetsButton = element(by.cssContainingText('li', 'Manage Datasets'));
     this.uploadShapefileButton = element(by.cssContainingText('li', 'Upload Shapefile to Map'));
+    this.offerFeedbackButton = element(by.cssContainingText('li', 'Offer Feedback'));
+    this.myStampsButton = element(by.cssContainingText('li', 'My Stamps'));
+    this.saveButton = element.all(by.cssContainingText('li', 'Save')).get(0);
+    this.saveAsButton = element(by.cssContainingText('li', 'Save As'));
     this.signOutButton = element(by.cssContainingText('li', 'Log Out'));
+    
+    this.modal = $('.modal-content');
+    this.modalTitle = this.modal.$('h1');
+    this.closeModalButton = this.modal.$('i.fa-times');
+
 
     this.locationPanel = new LocationPanel();
     this.attributePanel = new AttributePanel();

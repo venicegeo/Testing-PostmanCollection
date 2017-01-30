@@ -37,7 +37,7 @@ describe('Charts should function correctly.', function() {
 
   beforeEach(function(){
     // necessary to prevent large tooltips from blocking buttons
-    utils.hideTooltips();  
+    // utils.hideTooltips();  
   })
 
   afterEach(function(){

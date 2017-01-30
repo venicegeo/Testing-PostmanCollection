@@ -18,7 +18,7 @@ var LandingPage = function() {
     this.deleteStampFromButton = function(button){
         return new Promise((resolve, reject)=>{
             button.click();
-            utils.hideTooltips();
+            // utils.hideTooltips();
             browser.sleep(2000);
             $('button .fa-trash').click();
             $('button.ok').click().then(()=>{
@@ -34,7 +34,7 @@ var LandingPage = function() {
        var ele = element(by.cssContainingText('div.name', name))
        var grandparent = ele.element(by.xpath('..')).element(by.xpath('..'));
        grandparent.$('i.fa-info-circle').click();
-       utils.hideTooltips();
+    //    utils.hideTooltips();
        $('button .fa-trash').click();
        $('button.ok').click();
     }

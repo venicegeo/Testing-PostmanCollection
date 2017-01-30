@@ -2,8 +2,9 @@
 
 1. Install local dependencies from package.json:  `npm install`
 2. Install Protractor globally: `npm install protractor -g`
-3. Set your environment variables (see environment variables section)
-4. Run protractor `protractor conf.js`
+3. Install protractor flake globally `npm install protractor-flake -g`
+4. Set your environment variables (see environment variables section)
+5. Run protractor-flake from the root wstamp directory `protractor-flake`
 
 ## Environment Variablesls
 
