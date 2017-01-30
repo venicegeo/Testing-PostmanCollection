@@ -4,7 +4,10 @@
 2. Install Protractor globally: `npm install protractor -g`
 3. Install protractor flake globally `npm install protractor-flake -g`
 4. Set your environment variables (see environment variables section)
-5. Run protractor-flake from the root wstamp directory `protractor-flake`
+
+5. Running Protractor (from the root wstamp dir)
+ -- To run each test one time: `protractor protractor.conf.js`
+ -- To rerun flaky tests up to 3 times: `protractor-flake`
 
 ## Environment Variablesls
 

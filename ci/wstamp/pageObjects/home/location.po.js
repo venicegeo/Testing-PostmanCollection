@@ -1,4 +1,5 @@
 "use strict";
+var utils = require('../../utils.js');
 
 var LocationPanel = function() {
 
@@ -8,7 +9,14 @@ var LocationPanel = function() {
     this.searchInput = me.element(by.model('stateStack[0].searchObj.name'));
     this.hideButton = me.$('button i.fa-eye-slash')
     this.myBasketsHeaderElement = me.element(by.cssContainingText('header.stampHeader', 'My Baskets'));
+    
+    this.searchResults = me.$$('.displayName');
 
+
+    this.search = function(text){
+        this.searchInput.sendKeys(text);
+    };
+    
     this.hide = function(){
         this.hideButton.click();
     }

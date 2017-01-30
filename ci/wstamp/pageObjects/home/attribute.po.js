@@ -7,18 +7,19 @@ var AttributePanel = function() {
     this.searchInput = me.element(by.model('attributeService.searchText'));
     this.hideButton = me.$('button i.fa-eye-slash');
     this.myBasketsHeaderElement = me.element(by.cssContainingText('header.stampHeader', 'My Baskets'));
+    this.searchResults = me.$$('wstamp-attribute');
 
     this.hide = function(){
         this.hideButton.click();
     }
 
     this.search = function(text){
-        searchInput.sendKeys(text);
+        this.searchInput.sendKeys(text);
     };
 
     this.getStampElement = function(name){
          return me.element(by.cssContainingText('.stamp .displayName', name));
-    }
+    };
 
     this.getAttributeElement = function(name){
         var ele = me.element(by.cssContainingText('wstamp-attribute .displayName', name));
@@ -28,7 +29,7 @@ var AttributePanel = function() {
 
     this.selectStamp = function(name){
         this.getStampElement(name).click();
-    }
+    };
 
     this.selectAttribute = function(name){
         this.getAttributeElement(name).click();
@@ -37,7 +38,7 @@ var AttributePanel = function() {
     this.addAllForStamp = function(name){
         this.getStampElement(name).click();
         me.element(by.css('.fa-plus')).click();
-    }
+    };
 
     this.saveBasket = function(name){
         me.$('.saveBtn').click();
@@ -47,13 +48,13 @@ var AttributePanel = function() {
         browser.sleep(1000);
         modal.element(by.cssContainingText('button', 'Save')).click();
         browser.sleep(1000);
-    }
+    };
 
 
     function getNames(){
        return "var stamps = angular.element(arguments[0]).scope().$parent.type.stamps; \
        return stamps.map((stamp)=>{return stamp.name});"
-    }
+    };
 
     this.deleteAllMyBaskets = function(){
         // me.element.all gives an error, and me.element ... .then gives an error, so forced to put
@@ -66,7 +67,6 @@ var AttributePanel = function() {
                 })
             }
         })
-        
     };
 
     this.deleteBasket = function(name){
@@ -74,7 +74,7 @@ var AttributePanel = function() {
         browser.actions().mouseMove( ele ).perform();
         element(by.css('wstamp-popover-content .fa-trash')).click();
         element(by.cssContainingText('.modal button', 'Confirm')).click();
-    }    
+    };
 
   };
 

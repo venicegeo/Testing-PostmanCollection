@@ -14,9 +14,9 @@ var Toolbar = function() {
     }
 
     this.resetSelections = function(){
-        browser.ignoreSynchronization=true;
+        // browser.ignoreSynchronization=true;
         element(by.css('button.resetStampBtn')).click();
-        browser.ignoreSynchronization=false;
+        // browser.ignoreSynchronization=false;
     }
 
     this.barGroups = $$('.barGroup');    

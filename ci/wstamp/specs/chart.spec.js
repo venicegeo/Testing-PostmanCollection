@@ -35,10 +35,10 @@ describe('Charts should function correctly.', function() {
     homePage.logout();
   });
 
-  beforeEach(function(){
-    // necessary to prevent large tooltips from blocking buttons
-    // utils.hideTooltips();  
-  })
+  // beforeEach(function(){
+  //   // necessary to prevent large tooltips from blocking buttons
+  //   // utils.hideTooltips();  
+  // })
 
   afterEach(function(){
     browser.sleep(1000);
