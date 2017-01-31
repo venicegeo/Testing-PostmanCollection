@@ -1,6 +1,6 @@
 "use strict";
 
-var BasePage = require('../base.po.js');
+var BasePage = require('../base.po');
 var LocationPanel = require('./location.po');  
 var AttributePanel = require('./attribute.po'); 
 var TimeSelector = require('./time.po');
@@ -9,6 +9,7 @@ var Toolbar = require('./toolbar.po');
 var Explore = require('./explore.po');
 var Analyze = require('./analyze.po');
 var Grid = require('./grid.po')
+var Tour = require('./tour.po')
 
 var HomePage = function() {
     this.url = 'https://wstamp.ornl.gov/#/home/explore';
@@ -28,6 +29,8 @@ var HomePage = function() {
     this.modal = $('.modal-content');
     this.modalTitle = this.modal.$('h1');
     this.closeModalButton = this.modal.$('i.fa-times');
+    
+    this.startTutorialButton = element(by.cssContainingText('button', 'Start Tutorial'));
 
 
     this.locationPanel = new LocationPanel();
@@ -37,6 +40,7 @@ var HomePage = function() {
     this.explore = new Explore();
     this.analyze = new Analyze();
     this.grid = new Grid();
+    this.tour= new Tour();
 
     this.search = function(text){
         searchInput.sendKeys(text);

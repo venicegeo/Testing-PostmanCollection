@@ -48,6 +48,10 @@ var LandingPage = function() {
         $('.fa-play').click();
     }
 
+    this.startTutorial = function(){
+        $('.fa-question-circle').click();
+    }
+
     this.logout = function(){
         this.signOutButton.click();
     }
