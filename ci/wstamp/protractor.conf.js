@@ -52,8 +52,8 @@ exports.config = {
   // to debug tests locally, uncomment and run 'webdriver-manager start' in another terminal
   // seleniumAddress:  "http://127.0.0.1:4444/wd/hub",
 
-  specs: ['specs/home.spec.js'],
-  // specs: ['specs/*spec.js'],
+  // specs: ['specs/home.spec.js'],
+  specs: ['specs/*spec.js'],
 
   multiCapabilities: [
     {
