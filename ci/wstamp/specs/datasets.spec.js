@@ -3,7 +3,7 @@ var LandingPage = require('../pageObjects/landing.po');
 var HomePage = require('../pageObjects/home/home.po');  
 var utils = require('../utils');
 
-describe('Test custom dataset functionality', function() {
+describe('Custom datasets', function() {
   
   var loginPage = new LoginPage();
   var landingPage = new LandingPage();

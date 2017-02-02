@@ -18,7 +18,6 @@ exports.config = {
 
   onPrepare: function() {
     // Disable animations so e2e tests run more quickly
-    
     var disableNgAnimate = function() {
         angular
             .module('disableNgAnimate', [])
@@ -53,7 +52,7 @@ exports.config = {
   // to debug tests locally, uncomment and run 'webdriver-manager start' in another terminal
   // seleniumAddress:  "http://127.0.0.1:4444/wd/hub",
 
-  specs: ['specs/tour.spec.js'],
+  specs: ['specs/home.spec.js'],
   // specs: ['specs/*spec.js'],
 
   multiCapabilities: [
@@ -65,7 +64,8 @@ exports.config = {
       loggingPrefs: {browser: 'SEVERE'}, // added so that warnings are ignored
       shardTestFiles: true,
       maxInstances: 2,
-      screenResolution: '1280x1024'
+      screenResolution: '1280x1024', // saucelabs syntax
+      resolution: '1280x1024', // browserstack syntax
     },
   ]
 }

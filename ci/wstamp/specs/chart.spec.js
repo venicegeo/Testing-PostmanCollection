@@ -3,7 +3,7 @@ var LandingPage = require('../pageObjects/landing.po');
 var HomePage = require('../pageObjects/home/home.po');  
 var utils = require('../utils');
                       
-describe('Charts should function correctly.', function() {
+describe('Charts', function() {
   
   var loginPage = new LoginPage();
   var landingPage = new LandingPage();
