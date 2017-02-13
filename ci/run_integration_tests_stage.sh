@@ -10,7 +10,7 @@ pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
 
-[ -z "$space" ] && space=int
+[ -z "$space" ] && space=stage
 
 bigLatch=0
 
