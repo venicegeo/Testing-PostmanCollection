@@ -9,7 +9,7 @@ SUBJ= $BUILDURL
 pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
-
+echo "This is run_integration_tests_stage.sh, the incoming space is $space and the incoming PCF_SPACE is $PCF_SPACE"
 [ -z "$space" ] && space=int
 
 bigLatch=0
