@@ -10,7 +10,7 @@ pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
 
-[ -z "$space" ] && space=stage
+[ -z "$space" ] && space=int
 
 bigLatch=0
 
@@ -20,8 +20,7 @@ echo $PCF_SPACE
 
 if [ "$PCF_SPACE" == "test" ]; then
         echo "test case"
-        spaces="stage"
-#       spaces="int stage prod"
+        spaces="int stage prod"
 else
         spaces=$PCF_SPACE
 fi
