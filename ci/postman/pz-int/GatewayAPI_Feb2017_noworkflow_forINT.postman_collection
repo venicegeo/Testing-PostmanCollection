@@ -1,6 +1,6 @@
 {
 	"id": "053209f8-9f4a-da0b-021a-2f2ec3ced820",
-	"name": "GatewayAPI_Sept2016_noworkflow_forINT",
+	"name": "GatewayAPI_Feb2017_noworkflow_forINT",
 	"description": "\n\ntriggers, events, and alerts are all null - not all settings tested",
 	"order": [
 		"976467ea-dd0b-3ea6-3b94-eb17354c10b9",
@@ -34,12 +34,15 @@
 		"c9ba24b9-7e52-f63a-b4e3-07fbfa25803b",
 		"0febcc28-6045-5e8c-3dd8-939814036064",
 		"d2a4ee22-eb11-c1ca-6ae6-1584c23e2843",
+		"264f6425-7196-0f00-f214-8204ebaef1b4",
 		"205f393b-c99b-195e-c0ca-f751c46a19c2",
 		"91f3589b-552a-0cb6-5614-cf2cc7d69fbf",
 		"a55efb81-d40f-a01f-eac2-26842fb8e888",
 		"47706dae-9d3e-85a2-a60c-e7ae9aa62bb1",
 		"02eb8ce1-a75b-e03b-52fe-27d3d2348801",
-		"c109143b-48c5-b625-7f34-5089c1a90417"
+		"c109143b-48c5-b625-7f34-5089c1a90417",
+		"423d171c-2bc9-760c-a06f-d0ec7e00b767",
+		"e0c08fd9-14a8-a9a7-b849-519f01a2e182"
 	],
 	"folders": [],
 	"timestamp": 0,
@@ -213,6 +216,30 @@
 			"responses": []
 		},
 		{
+			"id": "264f6425-7196-0f00-f214-8204ebaef1b4",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOnRlc3Q0bGlmZQ==\n",
+			"url": "https://pz-gateway.int.geointservices.io/deployment/{{deploymentId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"deploymentId\",data.data[0].deploymentId)",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "test4life",
+				"saveToRequest": true
+			},
+			"time": 1487015220179,
+			"name": "Get Deployment by deploymentId",
+			"description": "",
+			"collectionId": "053209f8-9f4a-da0b-021a-2f2ec3ced820",
+			"responses": [],
+			"rawModeData": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}"
+		},
+		{
 			"id": "291c2878-7c5b-4e96-b686-4a8be3413efb",
 			"name": "Ingest External Raster dataType.Type Error Status",
 			"description": "",
@@ -301,6 +328,28 @@
 			"collectionId": "053209f8-9f4a-da0b-021a-2f2ec3ced820",
 			"responses": [],
 			"rawModeData": ""
+		},
+		{
+			"id": "423d171c-2bc9-760c-a06f-d0ec7e00b767",
+			"name": "Delete Deployment by deploymentId",
+			"description": "",
+			"collectionId": "053209f8-9f4a-da0b-021a-2f2ec3ced820",
+			"method": "GET",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "test4life",
+				"saveToRequest": true
+			},
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n    \"dataId\":\"{{dataId}}\",\r\n    \"deploymentType\": \"{{deploymenttype}}\",\r\n    \"type\":\"access\"\r\n}",
+			"tests": "var data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"deploymentId\",data.data[0].deploymentId)",
+			"preRequestScript": "",
+			"url": "https://pz-gateway.int.geointservices.io/deployment",
+			"responses": []
 		},
 		{
 			"id": "457ccd88-3cdf-a6b9-0c7c-3f2e1943aa15",
@@ -802,6 +851,28 @@
 			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)",
 			"preRequestScript": "",
 			"url": "https://pz-gateway.int.geointservices.io/job",
+			"responses": []
+		},
+		{
+			"id": "e0c08fd9-14a8-a9a7-b849-519f01a2e182",
+			"name": "POST service/query",
+			"description": "",
+			"collectionId": "053209f8-9f4a-da0b-021a-2f2ec3ced820",
+			"method": "POST",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "test4life",
+				"saveToRequest": true
+			},
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n\n    \"query\": {\n      \"matchAll\": {\n        \n      }\n    }\n  }\n",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code < 300;",
+			"preRequestScript": "",
+			"url": "https://pz-gateway.int.geointservices.io/data/query",
 			"responses": []
 		},
 		{

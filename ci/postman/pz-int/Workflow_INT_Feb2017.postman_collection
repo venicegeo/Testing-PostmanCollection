@@ -1,23 +1,29 @@
 {
 	"id": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
-	"name": "Workflow_INT_OCT2016",
+	"name": "Workflow_INT_Feb2017",
 	"description": "",
 	"order": [
 		"2eeb04f9-5ad1-802e-203e-f45bb0de64bc",
 		"efbc39f5-940f-ec16-af90-3e502eda1cd9",
 		"3272007b-5e27-d907-f5a4-04148ed0f99a",
+		"c9f565a3-6823-eb90-2d6e-af3a49b0acde",
 		"313fdb8d-c5a6-1f2f-ed93-6e0bc1893d7f",
+		"b4cbaaf7-9a79-30ff-a419-5de0e221e4a1",
 		"08f50851-aa43-7410-72ae-ebc20c891901",
 		"85c95aad-d487-1f58-01f7-3104b43c595e",
+		"2736ef15-d629-7af1-afd3-44d80a3e70a6",
 		"f48a4ad2-3435-6df4-dec8-6eaf022d4abf",
 		"89e64746-eb48-fc25-774b-c7312fde4861",
 		"c963111f-c90a-c76d-1f48-a16e70ce410b",
+		"84f21bbc-abe2-4c8b-8a95-29729479d030",
 		"5875c0de-7f4b-c2e2-ed6d-bacfd87da8f4",
 		"ae3ebc88-a50d-b20c-b4e8-9ba108c0ead3",
 		"2b8fb83f-f3bf-287f-79b6-461d0a7439c7",
 		"7dba51ba-a26d-b8aa-040a-6f78ffcad527",
+		"0d46ddd3-e12a-c475-7c39-0b7456697e54",
 		"e9d9feae-060b-4aa7-32b6-b6638f7a5030",
 		"851dfe2d-b9d3-a71d-6d8e-24d26b0c019a",
+		"4439c425-5ed1-9ea4-41ce-24707576d2fc",
 		"aaafdf74-797f-3cb9-adc1-c8cf6ca05270",
 		"81e5444d-1f47-62c8-1b15-750ad65e96bd",
 		"60b5b857-2839-26a6-fbf7-5ed8fe336085",
@@ -34,10 +40,14 @@
 	"requests": [
 		{
 			"id": "08f50851-aa43-7410-72ae-ebc20c891901",
-			"name": "Create Event Type null ",
-			"description": "",
-			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmY/QTVydXRBRDV1enVU\n",
+			"url": "https://pz-gateway.int.geointservices.io/eventType",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"error\"] = responseBody.has(\"error\");",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -45,14 +55,36 @@
 				"password": "f?A5rutAD5uzuT",
 				"saveToRequest": true
 			},
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MGNlYTc4N2ItYWE0ZS00OWNjLThjMjgtYTg3YTFhNTZkZDlkOmY/QTVydXRBRDV1enVU",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"tests": "tests[\"error\"] = responseBody.has(\"error\");",
+			"time": 1486492948575,
+			"name": "Create Event Type null ",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "0d46ddd3-e12a-c475-7c39-0b7456697e54",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.int.geointservices.io/eventType/query",
 			"preRequestScript": "",
-			"url": "https://pz-gateway.int.geointservices.io/eventType",
-			"responses": []
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1487267300388,
+			"name": "POST eventtype/query",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": [],
+			"rawModeData": "{\n  \"query\": {}\n}\n"
 		},
 		{
 			"id": "1920fe0e-0d73-f0ed-c22e-676cc061e839",
@@ -93,6 +125,30 @@
 			"rawModeData": "{\r\n  \"eventtype_id\": {{eventtype_id}},\r\n  \"date\": \"2016-06-06T16:30:00.595Z\",\r\n  \"mapping\": {\r\n    \"dataType\": {{type}},\r\n    \"epsg\": 0,\r\n    \"minX\": 0,\r\n    \"minY\": 0,\r\n    \"maxX\": 0,\r\n    \"maxY\": 0,\r\n    \"hosted\": true\r\n  }\r\n}  ",
 			"url": "https://pz-gateway.int.geointservices.io/eventType/{{eventtype_id}}",
 			"responses": []
+		},
+		{
+			"id": "2736ef15-d629-7af1-afd3-44d80a3e70a6",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\n",
+			"url": "https://pz-gateway.int.geointservices.io/event/query",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "{\n    var data = JSON.parse(responseBody);\n\n  \n\n  }",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1487033942507,
+			"name": "Post event/query",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": [],
+			"rawModeData": "{\n\n    \"query\": {\n      \"matchAll\": {\n        \n      }\n    }\n  }"
 		},
 		{
 			"id": "2b8fb83f-f3bf-287f-79b6-461d0a7439c7",
@@ -186,6 +242,30 @@
 			"rawModeData": "{\n    \"name\": \"High Severity\",\n    \"eventTypeId\": \"{{eventtype_id}}\",\n    \"condition\": {\n        \"query\": {\n            \"match_all\": {}\n        }\n\n    },\n    \"job\": {\n        \"userName\": \"test\",\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"135123e0-e38d-4668-a7c8-52e9d023cbba\",\n                \"dataInputs\": {},\n                \"dataOutput\": [{\n                    \"mimeType\": \"application/json\",\n                    \"type\": \"text\"\n                }]\n            }\n        }\n    },\n    \"enabled\": true\n}"
 		},
 		{
+			"id": "4439c425-5ed1-9ea4-41ce-24707576d2fc",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\n",
+			"url": "https://pz-gateway.int.geointservices.io/alert/query",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1486492974369,
+			"name": "Post alert/query",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": [],
+			"rawModeData": "{\n\n    \"query\": {\n      \"match\": {\n        \"_all\": \"kitten\"\n      \n    }\n  }\n}"
+		},
+		{
 			"id": "5875c0de-7f4b-c2e2-ed6d-bacfd87da8f4",
 			"name": "Post Trigger Error Status copy",
 			"description": "",
@@ -272,6 +352,29 @@
 			"responses": []
 		},
 		{
+			"id": "84f21bbc-abe2-4c8b-8a95-29729479d030",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
+			"url": "https://pz-gateway.int.geointservices.io/event",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1487014880124,
+			"name": "Get all events",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": []
+		},
+		{
 			"id": "851dfe2d-b9d3-a71d-6d8e-24d26b0c019a",
 			"name": "Get Alert",
 			"description": "",
@@ -293,7 +396,7 @@
 		},
 		{
 			"id": "85c95aad-d487-1f58-01f7-3104b43c595e",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOmNpdGVzdGVy\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\n",
 			"url": "https://pz-gateway.int.geointservices.io/event",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -308,7 +411,7 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"time": 1473177413583,
+			"time": 1486492945807,
 			"name": "Create Event",
 			"description": "",
 			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
@@ -381,6 +484,30 @@
 			"responses": []
 		},
 		{
+			"id": "b4cbaaf7-9a79-30ff-a419-5de0e221e4a1",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
+			"url": "https://pz-gateway.int.geointservices.io/trigger/{{triggerId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1487011738653,
+			"name": "PUT Trigger by ID to enable or disable",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": [],
+			"rawModeData": "{\n  \"enabled\": false\n}"
+		},
+		{
 			"id": "b9d20523-d12d-c1c7-9202-9a5bc661d140",
 			"name": "Delete EventType  ",
 			"description": "",
@@ -421,6 +548,30 @@
 			"preRequestScript": "",
 			"url": "https://pz-gateway.int.geointservices.io/event?{{eventId}}",
 			"responses": []
+		},
+		{
+			"id": "c9f565a3-6823-eb90-2d6e-af3a49b0acde",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\nContent-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
+			"url": "https://pz-gateway.int.geointservices.io/trigger/query",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": " var data = JSON.parse(responseBody);\n\n    \n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "citester",
+				"saveToRequest": true
+			},
+			"time": 1486499419646,
+			"name": "Post trigger/query",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": [],
+			"rawModeData": "{\n\n    \"query\": {\n      \"matchAll\": {\n        \n      }\n    }\n  }\n"
 		},
 		{
 			"id": "e9d9feae-060b-4aa7-32b6-b6638f7a5030",
@@ -492,10 +643,14 @@
 		},
 		{
 			"id": "f48a4ad2-3435-6df4-dec8-6eaf022d4abf",
-			"name": "Create Event Error Status",
-			"description": "",
-			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOmNpdGVzdGVy\n",
+			"url": "https://pz-gateway.int.geointservices.io/event",
+			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"error\"] = responseBody.has(\"error\");",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -503,14 +658,12 @@
 				"password": "citester",
 				"saveToRequest": true
 			},
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic Y2l0ZXN0ZXI6Y2l0ZXN0ZXI=",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"tests": "tests[\"error\"] = responseBody.has(\"error\");",
-			"preRequestScript": "",
-			"url": "https://pz-gateway.int.geointservices.io/event",
-			"responses": []
+			"time": 1486492943697,
+			"name": "Create Event Error Status",
+			"description": "",
+			"collectionId": "9bfdb196-8d5a-8084-66d1-f1d17a3d9244",
+			"responses": [],
+			"rawModeData": ""
 		},
 		{
 			"id": "f62d3a4f-4f04-3859-1c1a-41fafc901747",

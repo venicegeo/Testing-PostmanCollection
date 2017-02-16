@@ -1,11 +1,13 @@
 {
 	"id": "211532d9-5d56-ccaa-e626-77a53b41517e",
-	"name": "DOCS_Oct2016",
+	"name": "DOCS_Feb2017",
 	"description": "",
 	"order": [
-		"c8784f33-5fe1-aa66-336f-a56f8cdf34b2",
+		"b808ea73-1540-ab9b-ed40-86afedef4ce0",
+		"2d4b6be9-db0f-d4e3-c139-f6283c015bd8",
 		"bebc7dbd-e678-db59-1992-9cdca466ce76",
 		"a08a43a9-9d59-076f-9691-58c3e8040ef4",
+		"2ad6e4a7-bf8f-646e-c0b5-13f76058ae21",
 		"8f2db5a1-d160-4ad9-a16f-55570c7f538f",
 		"2640fedb-438d-36f8-eb1b-988f8bef7278",
 		"f08f3067-f091-1b8a-3f6c-c4d82ad15e6b",
@@ -179,6 +181,54 @@
 			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
 			"responses": [],
 			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"elevation.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}"
+		},
+		{
+			"id": "2ad6e4a7-bf8f-646e-c0b5-13f76058ae21",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\nContent-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/data/{{dataId_localimage}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_localimage\",data.data.jobId);\n//postman.setEnvironmentVariable(\"apikey\",\"b7d153ec-2480-4da3-84f7-0145cf59a298\")\n\nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 5000);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1487266364047,
+			"name": "PUT data/dataId",
+			"description": "",
+			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"name\": \"terrametrics\",\r\n\t\"classType\": {\r\n\t\t\"classification\": \"UNCLASSIFIED\"\r\n\t}\r\n}\r\n\r\n"
+		},
+		{
+			"id": "2d4b6be9-db0f-d4e3-c139-f6283c015bd8",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YmQ4NGYwNGMtZGVmMC00NjQ1LWJiZmItNTJmMGQ2M2NlZjRlOg==\n",
+			"url": "https://pz-gateway.{{domain}}/service",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "\nvar data = JSON.parse(responseBody);\n\n\n    postman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1476897038572,
+			"name": "5.2.1 Register Hello Example Service copy",
+			"description": "",
+			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
+			"responses": [],
+			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "30082290-c24a-78c6-6357-c3b668471a09",
@@ -525,6 +575,30 @@
 			"responses": []
 		},
 		{
+			"id": "b808ea73-1540-ab9b-ed40-86afedef4ce0",
+			"headers": "",
+			"url": "https://pz-gateway.int.geointservices.io/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1476893558698,
+			"name": "Gateway Health Check UG 2.3 copy",
+			"description": "",
+			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
+			"responses": []
+		},
+		{
 			"id": "bda4bbfc-07a6-c177-2787-6a25c9f9b700",
 			"headers": "Authorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\n",
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventtype_id}}",
@@ -549,7 +623,7 @@
 		},
 		{
 			"id": "bebc7dbd-e678-db59-1992-9cdca466ce76",
-			"headers": "Authorization: Basic NWMzOTU5YmMtYWExZi00MDUzLWIxMzMtYzg4Zjg1NTE5NGExOg==\n",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
 			"url": "https://pz-gateway.{{domain}}/data/file",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -557,17 +631,15 @@
 			"data": [
 				{
 					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"Testing the DOCS\" } } }",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics\", \"description\": \"DOC Test File.\", \"classType\": { \"classification\": \"unclassified\" } } } }",
 					"type": "text",
-					"enabled": true,
-					"warning": ""
+					"enabled": true
 				},
 				{
 					"key": "file",
 					"value": "terrametrics.tif",
 					"type": "file",
-					"enabled": true,
-					"warning": ""
+					"enabled": true
 				}
 			],
 			"dataMode": "params",
@@ -579,7 +651,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1482148706632,
+			"time": 1487265857804,
 			"name": "3.1.1 Loading a Local Image",
 			"description": "",
 			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
@@ -607,30 +679,6 @@
 			"description": "",
 			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
 			"responses": []
-		},
-		{
-			"id": "c8784f33-5fe1-aa66-336f-a56f8cdf34b2",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
-			"url": "https://pz-gateway.{{domain}}/service",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apikey\",\"6354ff81-b415-4986-b543-79d4fe420dbd\")\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "6354ff81-b415-4986-b543-79d4fe420dbd",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1483465555021,
-			"name": "5.2.1 Register Hello Example Service",
-			"description": "",
-			"collectionId": "211532d9-5d56-ccaa-e626-77a53b41517e",
-			"responses": [],
-			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "cea3b84d-a9df-969a-8a8f-10a2daede0eb",
