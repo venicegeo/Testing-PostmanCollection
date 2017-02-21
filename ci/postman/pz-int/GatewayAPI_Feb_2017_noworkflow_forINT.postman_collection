@@ -224,7 +224,7 @@
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"deploymentId\",data.data[0].deploymentId)",
+			"tests": "var data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"deploymentId\",data.data.deployment.deploymentId)",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
