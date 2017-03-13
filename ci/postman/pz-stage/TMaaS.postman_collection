@@ -239,20 +239,15 @@
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
 		},
 		{
-			"folder": "6d70c66f-7d7b-ab43-5a8a-31dc326f6a5e",
 			"id": "12c9e6fa-0216-ce25-75da-c1d1c164eea9",
-			"name": "Workflow - Find Alert",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "Part of a sequence of tests that execute a job through a trigger.\nThis finds the alert (and jobId) spawned from the trigger/event.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/alert?triggerId={{triggerId}}",
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_workflow', data.data[i].jobId);\n                }\n            }\n        }\n    }\n}\nif (found) {\n    tests[\"alert found\"] = true;\n    postman.setEnvironmentVariable('retry_loop', 0);\n}\nelse {\n    if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n        postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n        postman.setNextRequest('Find Alert');\n        wait(1000);\n        delete tests[\"data is array\"];\n    }\n    else {\n        tests[\"alert found\"] = false;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n}",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\nvar NoFail = {};  // Don't fail right away if an empty array is returned.\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(NoFail, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_workflow', data.data[i].jobId);\n                }\n            }\n        }\n    }\n}\nif (found) {\n    tests[\"alert found\"] = true;\n    postman.setEnvironmentVariable('retry_loop', 0);\n}\nelse {\n    if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n        postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n        postman.setNextRequest('Find Alert');\n        wait(1000);\n        delete tests[\"data is array\"];\n    }\n    else {\n        tests[\"alert found\"] = false;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -260,6 +255,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1489437032100,
+			"name": "Workflow - Find Alert",
+			"description": "Part of a sequence of tests that execute a job through a trigger.\nThis finds the alert (and jobId) spawned from the trigger/event.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
 		},
 		{

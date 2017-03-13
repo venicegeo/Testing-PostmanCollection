@@ -115,8 +115,7 @@
 				"ec23a0da-5633-9d1c-85e6-dfd6b0ed8935",
 				"4880b561-9c3a-1cd3-c5ae-366022a7e6fc",
 				"128d85c6-d0d8-68b8-9c2d-811a3be24274",
-				"64e46704-4648-1102-c919-d1216e32a25b",
-				"6a5db5bd-0b12-b811-3cc3-efadd12bc1f6"
+				"64e46704-4648-1102-c919-d1216e32a25b"
 			]
 		}
 	],
@@ -594,30 +593,6 @@
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_norm}}",
 			"preRequestScript": "",
 			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Check Normal Job Status');\n            wait(5000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId_norm\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
-		},
-		{
-			"folder": "6f667756-0bbd-bdae-a365-66b143ee3b3f",
-			"id": "6a5db5bd-0b12-b811-3cc3-efadd12bc1f6",
-			"name": "Delete Async Data",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"descriptionFormat": "html",
-			"description": "Delete the data created by the asynchronous crop service from Piazza.",
-			"headers": "Content-Type: application/json\n",
-			"method": "DELETE",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/data/{{dataId_async}}",
-			"preRequestScript": "",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
