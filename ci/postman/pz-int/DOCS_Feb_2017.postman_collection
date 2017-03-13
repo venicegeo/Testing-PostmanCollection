@@ -176,10 +176,12 @@
 			"rawModeData": "{\r\n    \"name\": \"High Severity\",\r\n    \"eventTypeId\": \"{{eventtype_id}}\",\r\n    \"condition\": {\r\n        \"query\": { \"query\": { \"match_all\": {} } }\r\n    },\r\n    \"job\": {\r\n        \"userName\": \"test\",\r\n        \"jobType\": {\r\n            \"type\": \"execute-service\",\r\n            \"data\": {\r\n                \"serviceId\": \"{{serviceId}}\",\r\n                \"dataInputs\": {},\r\n                \"dataOutput\": [\r\n                    {\r\n                        \"mimeType\": \"application/json\",\r\n                        \"type\": \"text\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"enabled\": true\r\n}"
 		},
 		{
-			"folder": null,
 			"id": "3760cf0d-0d4d-8253-3960-595845f55ff0",
-			"name": "3.1.1 Loading a Local Image",
-			"dataMode": "params",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
 			"data": [
 				{
 					"key": "data",
@@ -190,19 +192,13 @@
 				},
 				{
 					"key": "file",
+					"value": "terrametrics.tif",
 					"type": "file",
 					"enabled": true,
 					"warning": ""
 				}
 			],
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "",
-			"headers": "",
-			"method": "POST",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"preRequestScript": null,
+			"dataMode": "params",
 			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_localimage\",data.data.jobId);\n//postman.setEnvironmentVariable(\"apikey\",\"b7d153ec-2480-4da3-84f7-0145cf59a298\")\n\nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 5000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -211,6 +207,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1489424763982,
+			"name": "3.1.1 Loading a Local Image",
+			"description": "",
 			"collectionId": "9727ec9d-fecf-8b7d-f251-e83c23751c7d"
 		},
 		{
@@ -308,18 +307,14 @@
 			"rawModeData": "{\n\"type\":\"execute-service\",\n\"data\":{\n\"serviceId\":  \"{{serviceId}}\",\n   \"dataInputs\": {},\n\"dataOutput\": [ {  \"mimeType\":\"application/json\", \"type\":\"text\"}]\n}\n}"
 		},
 		{
-			"folder": null,
 			"id": "65b89ec7-7592-a4b9-d011-ffbc9fe042db",
-			"name": "5.2.1 Register Hello Example Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apikey\",\"6354ff81-b415-4986-b543-79d4fe420dbd\")\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -328,6 +323,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1489424718777,
+			"name": "5.2.1 Register Hello Example Service",
+			"description": "",
 			"collectionId": "9727ec9d-fecf-8b7d-f251-e83c23751c7d",
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
@@ -395,6 +393,7 @@
 				},
 				{
 					"key": "file",
+					"value": "Test.geojson",
 					"type": "file",
 					"enabled": true
 				}
@@ -408,7 +407,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1489423381257,
+			"time": 1489424802676,
 			"name": "3.3 Loading a GeoJSON File",
 			"description": "",
 			"collectionId": "9727ec9d-fecf-8b7d-f251-e83c23751c7d"
