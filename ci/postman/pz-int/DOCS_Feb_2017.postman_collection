@@ -428,6 +428,7 @@
 				},
 				{
 					"key": "file",
+					"value": "terrametrics.tif",
 					"type": "file",
 					"enabled": true
 				}
@@ -441,7 +442,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1489423378313,
+			"time": 1489426029709,
 			"name": "4.1 Setup: dog",
 			"description": "",
 			"collectionId": "9727ec9d-fecf-8b7d-f251-e83c23751c7d"
