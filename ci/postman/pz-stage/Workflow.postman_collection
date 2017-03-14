@@ -100,7 +100,7 @@
 				"6a535752-5478-cf69-5995-7a21ff75c962",
 				"2d780775-a840-d234-791f-14417e4e01a6",
 				"56a048d9-0a5f-acdd-c960-b78fe9876c76",
-				"b759925b-cb33-5215-ec57-e4fe52a34916",
+				"6eac2dc5-cdc5-aafa-7a6b-e7927573eb09",
 				"d84231e1-9a8e-1546-d865-3978de162e92",
 				"89b8a80b-ecd4-bcf4-6611-1280ef623c31",
 				"202d23c1-f510-7216-dc5b-5a963e0a17f1",
@@ -319,18 +319,14 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "3107dc0f-c42b-f0c8-b00b-ca317cce8468",
 			"id": "17ce21f2-b177-9824-8c04-6b91587ca8ee",
-			"name": "Register Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "Register the pzsvc-hello service, to be used in Trigger creation.",
 			"headers": "Content-Type: application/json\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable('serviceId', data.data.serviceId);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -339,8 +335,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1488402025756,
+			"name": "Register Service",
+			"description": "Register the pzsvc-hello service, to be used in Trigger creation.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
-			"rawModeData": "{\n    \"url\": \"http://pzsvc-hello.int.geointservices.io/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"serviceId\": \"\",\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Service for Workflow Integration Testing\"\n    }\n}"
+			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"serviceId\": \"\",\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Service for Workflow Integration Testing\"\n    }\n}"
 		},
 		{
 			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
@@ -463,20 +462,15 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "0e29f236-2061-8522-5123-eab4334b560d",
 			"id": "2b19c954-d145-ead7-60e9-effb67becc69",
-			"name": "Delete Trigger",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"descriptionFormat": null,
-			"description": "Delete the Trigger used throughout this collection.",
 			"headers": "Content-Type: application/json\n",
-			"method": "DELETE",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
 			"preRequestScript": "",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\n\nwait(15000); // Time for items to truly be deleted.",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -484,7 +478,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
+			"time": 1488913606599,
+			"name": "Delete Trigger",
+			"description": "Delete the Trigger used throughout this collection.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"rawModeData": ""
 		},
 		{
 			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
@@ -746,20 +744,15 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"id": "56a048d9-0a5f-acdd-c960-b78fe9876c76",
-			"name": "2nd page Query - EventType",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "Check that the second page of of the EventType list can be accessed.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/eventType?perPage=3&page=1",
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    tests[\"3 items in data array\"] = data.data.length === 3;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent.*[Tt]ype/) && data.type.match(/[Ll]ist/);\n}",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'pagination.count')) {\n    var numberDisplayed = Math.max(Math.min(data.pagination.count - 3, 3), 0);\n    if (testLevels(tests, data, 'data') && Array.isArray(data.data)) {\n        tests[\"Correct number should be preent on second page\"] = numberDisplayed == data.data.length;\n    }\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent.*[Tt]ype/) && data.type.match(/[Ll]ist/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -767,6 +760,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1489500797645,
+			"name": "2nd page Query - EventType",
+			"description": "Check that the second page of of the EventType list can be accessed.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
@@ -1029,6 +1025,29 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
+			"id": "6eac2dc5-cdc5-aafa-7a6b-e7927573eb09",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/trigger?page=1&perPage=3",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'pagination.count')) {\n    var numberDisplayed = Math.max(Math.min(data.pagination.count - 3, 3), 0);\n    if (testLevels(tests, data, 'data') && Array.isArray(data.data)) {\n        tests[\"Correct number should be preent on second page\"] = numberDisplayed == data.data.length;\n    }\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/) && data.type.match(/[Ll]ist/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1489500886650,
+			"name": "2nd page Query - Trigger",
+			"description": "Check that the second page of of the Trigger list can be accessed.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": []
+		},
+		{
 			"folder": "0e29f236-2061-8522-5123-eab4334b560d",
 			"id": "6f777a93-94e8-ff11-e93d-a885a2ab0da4",
 			"name": "Soft - Delete Event",
@@ -1221,20 +1240,15 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"id": "89b8a80b-ecd4-bcf4-6611-1280ef623c31",
-			"name": "2nd page Query - Alert",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "Check that the second page of of the Alert list can be accessed.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/alert?perPage=3&page=1",
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    tests[\"3 items in data array\"] = data.data.length === 3;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Aa]lert/) && data.type.match(/[Ll]ist/);\n}",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'pagination.count')) {\n    var numberDisplayed = Math.max(Math.min(data.pagination.count - 3, 3), 0);\n    if (testLevels(tests, data, 'data') && Array.isArray(data.data)) {\n        tests[\"Correct number should be preent on second page\"] = numberDisplayed == data.data.length;\n    }\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Aa]lert/) && data.type.match(/[Ll]ist/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1242,6 +1256,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1489500752890,
+			"name": "2nd page Query - Alert",
+			"description": "Check that the second page of of the Alert list can be accessed.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
@@ -1582,30 +1599,6 @@
 		},
 		{
 			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
-			"id": "b759925b-cb33-5215-ec57-e4fe52a34916",
-			"name": "2nd page Query - Trigger",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "Check that the second page of of the Trigger list can be accessed.",
-			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/trigger?perPage=3&page=1",
-			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    tests[\"3 items in data array\"] = data.data.length === 3;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/) && data.type.match(/[Ll]ist/);\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
-		},
-		{
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"id": "b75d4547-b93c-5f5a-da8b-7dda1b15b56a",
 			"name": "Query EventType - Ascending name",
 			"dataMode": "params",
@@ -1869,20 +1862,15 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "0e29f236-2061-8522-5123-eab4334b560d",
 			"id": "d32fb7cf-f172-6797-7e0e-a7be34e33f27",
-			"name": "Nested - Delete Trigger",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"descriptionFormat": null,
-			"description": "Delete the Trigger that was used to validate that a Trigger can match values in a nested structure.",
 			"headers": "Content-Type: application/json\n",
-			"method": "DELETE",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId_nested}}",
 			"preRequestScript": "",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\n\nwait(15000); // Time for items to truly be deleted.",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1890,7 +1878,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
+			"time": 1488913612210,
+			"name": "Nested - Delete Trigger",
+			"description": "Delete the Trigger that was used to validate that a Trigger can match values in a nested structure.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"rawModeData": ""
 		},
 		{
 			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
@@ -1941,20 +1933,15 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"id": "d84231e1-9a8e-1546-d865-3978de162e92",
-			"name": "2nd page Query - Event",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "Check that the second page of of the Event list can be accessed.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/event?perPage=3&page=1",
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    tests[\"3 items in data array\"] = data.data.length === 3;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent/) && data.type.match(/[Ll]ist/) && !data.type.match(/[Tt]ype/);\n}",
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'pagination.count')) {\n    var numberDisplayed = Math.max(Math.min(data.pagination.count - 3, 3), 0);\n    if (testLevels(tests, data, 'data') && Array.isArray(data.data)) {\n        tests[\"Correct number should be preent on second page\"] = numberDisplayed == data.data.length;\n    }\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Reporting page 1\"] = data.pagination.page === 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Reporting 3 per page\"] = data.pagination.perPage === 3;\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Ee]vent/) && data.type.match(/[Ll]ist/) && !data.type.match(/[Tt]ype/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1962,6 +1949,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1489500777969,
+			"name": "2nd page Query - Event",
+			"description": "Check that the second page of of the Event list can be accessed.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
