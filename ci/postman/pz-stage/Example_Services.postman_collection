@@ -555,20 +555,15 @@
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
 		},
 		{
-			"folder": "ff19cac1-72d1-4bd3-70ce-9b77174fb1c9",
 			"id": "669ebced-0832-af29-f93d-4d55c467fb7b",
-			"name": "Get Resulting Lightning dataId",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "Download the output of the lightning service job when run through Piazza.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/file/{{dataId_lightning}}",
 			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'strike')) {\n    tests[\"'strike' is a boolean\"] = typeof data.strike === 'boolean';\n    if (testLevels(tests, data, 'lat')) {\n        tests[\"Valid lat\"] = data.lat >= -180 && data.lat <= 180;\n    }\n    if (testLevels(tests, data, 'lon')) {\n        tests[\"Valid lon\"] = data.lon >= -90 && data.lon <= 90;\n    }\n}",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'strike')) {\n    tests[\"'strike' is a boolean\"] = typeof data.strike === 'boolean';\n    if (testLevels(tests, data, 'lat')) {\n        tests[\"Valid lat\"] = data.lat >= -90 && data.lat <= 90;\n    }\n    if (testLevels(tests, data, 'lon')) {\n        tests[\"Valid lon\"] = data.lon >= -180 && data.lon <= 180;\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -576,6 +571,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1489502516450,
+			"name": "Get Resulting Lightning dataId",
+			"description": "Download the output of the lightning service job when run through Piazza.",
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
 		},
 		{
