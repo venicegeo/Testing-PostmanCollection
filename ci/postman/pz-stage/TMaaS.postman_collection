@@ -247,7 +247,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\nvar NoFail = {};  // Don't fail right away if an empty array is returned.\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(NoFail, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_workflow', data.data[i].jobId);\n                }\n            }\n        }\n    }\n}\nif (found) {\n    tests[\"alert found\"] = true;\n    postman.setEnvironmentVariable('retry_loop', 0);\n}\nelse {\n    if (parseInt(postman.getEnvironmentVariable('retry_loop')) < parseInt(postman.getEnvironmentVariable('max_retries'))) {\n        postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n        postman.setNextRequest('Find Alert');\n        wait(1000);\n    }\n    else {\n        tests[\"alert found\"] = false;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n}",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\nvar NoFail = {};  // Don't fail right away if an empty array is returned.\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(NoFail, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_workflow', data.data[i].jobId);\n                }\n            }\n        }\n    }\n}\nif (found) {\n    tests[\"alert found\"] = true;\n    postman.setEnvironmentVariable('retry_loop', 0);\n}\nelse {\n    if (parseInt(postman.getEnvironmentVariable('retry_loop')) < parseInt(postman.getEnvironmentVariable('max_retries'))) {\n        postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n        postman.setNextRequest('Workflow - Find Alert');\n        wait(1000);\n    }\n    else {\n        tests[\"alert found\"] = false;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -255,7 +255,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1489498743805,
+			"time": 1490098967003,
 			"name": "Workflow - Find Alert",
 			"description": "Part of a sequence of tests that execute a job through a trigger.\nThis finds the alert (and jobId) spawned from the trigger/event.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
@@ -381,18 +381,14 @@
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
 		},
 		{
-			"folder": "6d70c66f-7d7b-ab43-5a8a-31dc326f6a5e",
 			"id": "21982a66-aefe-36e6-4cb2-3b01c4d4544a",
-			"name": "Timeout - Register Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "Create a task-managed service with the timeout parameter.",
 			"headers": "Content-Type: application/json\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/service",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"      These tests create objects needed elsewhere.       \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < NORMAL > > > > > > > > > > > >\");\nconsole.log(\"      These tests represent important features.      \");\nconsole.log(\"Use extreme caution when pushing if these tests fail.\");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_timeout\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -401,6 +397,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1490098928378,
+			"name": "Timeout - Register Service",
+			"description": "Create a task-managed service with the timeout parameter.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
 			"rawModeData": "{\n    \"url\": \"garbage\",\n    \"contractUrl\": \"garbage\",\n    \"isTaskManaged\": true,\n    \"method\" : \"GET\",\n    \"timeout\": 10,\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"TMS Testing.\" \n    }\n}"
 		},
@@ -501,18 +500,14 @@
 			"rawModeData": "{\n  \"data\": {\n      \"dataInputs\": {},\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\n      \"serviceId\": \"{{serviceId_delete}}\"\n  },\n  \"type\": \"execute-service\"\n}"
 		},
 		{
-			"folder": "6d70c66f-7d7b-ab43-5a8a-31dc326f6a5e",
 			"id": "321e979d-4254-f3a3-070b-d13e271efa0b",
-			"name": "Deletion - Register Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "This series of tests validates the behavior of the TMaaS when the service is deleted (or softDeleted).\nRegister the service to be (soft) deleted.",
 			"headers": "Content-Type: application/json\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/service",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"      These tests create objects needed elsewhere.       \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_delete\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -521,6 +516,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1490099008354,
+			"name": "Deletion - Register Service",
+			"description": "This series of tests validates the behavior of the TMaaS when the service is deleted (or softDeleted).\nRegister the service to be (soft) deleted.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
 			"rawModeData": "{\n    \"url\": \"garbage\",\n    \"contractUrl\": \"garbage\",\n    \"isTaskManaged\": true,\n    \"taskAdministrators\": [\n      \"PiazzaAustere03@Piazza.geointservices.io\"\n    ],\n    \"method\" : \"GET\",\n    \"timeout\": 10,\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"TMS Testing.\" \n    }\n}"
 		},
@@ -1316,18 +1314,14 @@
 			"rawModeData": "{\n  \"status\": \"Success\"\n}"
 		},
 		{
-			"folder": "ac88632b-2291-f023-dcbf-046ae5fd75a1",
 			"id": "e48c1a97-65ad-c198-8885-52e9e8da9eec",
-			"name": "Update Job - Bad Status",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "Attempt to update the status of a job to an invalid string.",
 			"headers": "Content-Type: application/json\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task/{{jobId}}",
-			"preRequestScript": null,
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < LOW > > > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'errors', 'array')) {\n    if (testLevels(tests, data.errors[0], 'field', 'skip', 'errors[0].')) {\n        tests[\"Problem with 'status' field\"] = data.errors[0].field === 'status';\n    }\n    if (testLevels(tests, data.errors[0], 'defaultMessage', 'string', 'errors[0].')) {\n        tests[\"'Must Match' message\"] = data.errors[0].defaultMessage.match(/must.*match/i);\n    }\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -1336,6 +1330,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1490099055676,
+			"name": "Update Job - Bad Status",
+			"description": "Attempt to update the status of a job to an invalid string.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
 			"rawModeData": "{\n  \"status\": \"foo\"\n}"
 		},

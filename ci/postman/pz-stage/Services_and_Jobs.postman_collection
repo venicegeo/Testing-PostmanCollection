@@ -1026,19 +1026,14 @@
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
 			"id": "9f8a4ae8-686a-71e4-0ee3-31568914960a",
-			"name": "Check Standard Job Status Details",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "Check the details of the job status of a completed synchronous job.",
 			"headers": "Content-Type: application/json\n",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_standard}}",
-			"preRequestScript": "",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < LOW > > > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.executedServiceId')) {\n    tests[\"Originating serviceId included in metadata\"] = data.data.executedServiceId === postman.getEnvironmentVariable('serviceId');\n}\nif (testLevels(tests, data, 'data.createdOn', 'string', '(Bug # 11746) ')) {\n    tests[\"Date Generated\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}/);\n    tests[\"Created in the last half hour\"] = (Date.now() - Date.parse(data.data.createdOn)) <= 1800000;\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -1047,6 +1042,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1490099076055,
+			"name": "Check Standard Job Status Details",
+			"description": "Check the details of the job status of a completed synchronous job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
@@ -1502,19 +1500,14 @@
 			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\"\n}"
 		},
 		{
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
 			"id": "f6eda7c9-4f59-09f3-7805-b69f1e411e67",
-			"name": "Job Not Found - GET",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "Attempt to get the status of a non-existant Job.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/job/foo",
-			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < LOW > > > > > > > > > > > \");\nconsole.log(\"  These tests represent less-important features.  \");\nconsole.log(\"More attention is given to options and edge cases.\");\nconsole.log(\"You may push if these tests fail, but be careful. \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
 			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 404\"] = responseCode.code === 404;\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Not Found Message\"] = data.message.match(/no.*found/i);\n}\nif (testLevels(tests, data, 'type')) {\n    tests[\"Error Type (Bug #9332)\"] = data.type === 'error';\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -1523,6 +1516,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1490099071108,
+			"name": "Job Not Found - GET",
+			"description": "Attempt to get the status of a non-existant Job.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
