@@ -944,10 +944,10 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('serviceId','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('dataId','');\npostman.setEnvironmentVariable('New Name', 'This is a N3W N@M3!');\npostman.setEnvironmentVariable('text description', 'Service created for integration testing.');\npostman.setEnvironmentVariable('recheck', 'false');\n\ntests[\"I'm forcing this to fail\"] = false;",
+			"tests": "tests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('retry_loop',0);\npostman.setEnvironmentVariable('max_retries', 9);\npostman.setEnvironmentVariable('serviceId','');\npostman.setEnvironmentVariable('jobId','');\npostman.setEnvironmentVariable('dataId','');\npostman.setEnvironmentVariable('New Name', 'This is a N3W N@M3!');\npostman.setEnvironmentVariable('text description', 'Service created for integration testing.');\npostman.setEnvironmentVariable('recheck', 'false');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1490802977189,
+			"time": 1490812065740,
 			"name": "Hello, pz-gateway!",
 			"description": "Simple Health check to pz-gateway.  Postman Environemnt Variables are initialized in this step.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
