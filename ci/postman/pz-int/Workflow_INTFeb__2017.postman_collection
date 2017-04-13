@@ -118,7 +118,7 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId);\npostman.setEnvironmentVariable(\"apikey\",\"6354ff81-b415-4986-b543-79d4fe420dbd\");\ntests[\"PIPELINE BLOCKED\"] = false;",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"eventtype_id\",data.data.eventTypeId);\npostman.setEnvironmentVariable(\"apikey\",\"6354ff81-b415-4986-b543-79d4fe420dbd\");",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -126,7 +126,7 @@
 				"password": "jtkirkncc-17o1G",
 				"saveToRequest": true
 			},
-			"time": 1491910819318,
+			"time": 1492109293675,
 			"name": "Create Event Type",
 			"description": "",
 			"collectionId": "9ce52bfc-1fcc-c55b-a5cc-19bacdfe312b",
