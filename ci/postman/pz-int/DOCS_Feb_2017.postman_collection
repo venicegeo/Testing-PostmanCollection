@@ -1,8 +1,4 @@
 {
-	"owner": "300577",
-	"lastUpdatedBy": "300577",
-	"lastRevision": 1081430638,
-	"team": null,
 	"id": "64054757-24cb-aa41-aae5-5a1504e25cda",
 	"name": "DOCS_FEB_2017",
 	"description": null,
@@ -27,8 +23,13 @@
 		"f2b013d4-4a35-9762-caa8-7ec8f35205f3",
 		"b40cdd5a-e8e6-df5b-f732-1c216189fd70",
 		"305efd2d-6c53-1f0f-fc34-9b17dbb57033",
-		"af17b538-6094-e0d2-7309-72dd5710ac36"
+		"af17b538-6094-e0d2-7309-72dd5710ac36",
+		"b92280c1-4075-dc5b-c4fb-0c963e109b97"
 	],
+	"folders": [],
+	"timestamp": 0,
+	"owner": "300577",
+	"public": false,
 	"requests": [
 		{
 			"id": "2aaf31b6-342d-be7e-c9f9-38c2f5d7f02b",
@@ -397,6 +398,29 @@
 			},
 			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda",
 			"rawModeData": "{\r\n    \"name\": \"High Severity\",\r\n    \"eventTypeId\": \"{{eventtype_id}}\",\r\n    \"condition\": {\r\n        \"query\": { \"query\": { \"match_all\": {} } }\r\n    },\r\n    \"job\": {\r\n        \"userName\": \"test\",\r\n        \"jobType\": {\r\n            \"type\": \"execute-service\",\r\n            \"data\": {\r\n                \"serviceId\": \"{{serviceId}}\",\r\n                \"dataInputs\": {},\r\n                \"dataOutput\": [\r\n                    {\r\n                        \"mimeType\": \"application/json\",\r\n                        \"type\": \"text\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    },\r\n    \"enabled\": true\r\n}"
+		},
+		{
+			"id": "b92280c1-4075-dc5b-c4fb-0c963e109b97",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NTRmZjgxLWI0MTUtNDk4Ni1iNTQzLTc5ZDRmZTQyMGRiZDo=\n",
+			"url": "https://pz-gateway.{{domain}}/service",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "\nvar data = JSON.parse(responseBody);\ntests[\"error\"] = responseBody.has(\"error\");\n\n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "54ff81-b415-4986-b543-79d4fe420dbd",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1492532570742,
+			"name": "5.2.1 ERROR wrong APIRegister Hello Example Service copy",
+			"description": "",
+			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda",
+			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Hello World Example\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "c5987bef-0776-3d34-f2cd-e73c82563dd8",
