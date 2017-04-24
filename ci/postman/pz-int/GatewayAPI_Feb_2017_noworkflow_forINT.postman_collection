@@ -175,26 +175,25 @@
 			"collectionId": "0a55ef5a-3c31-8ed3-48dc-77882b9b9f45"
 		},
 		{
-			"folder": null,
 			"id": "1aa5ede9-895d-a4d3-8f38-c5aec7d6909e",
-			"name": "Register Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic YjdkMTUzZWMtMjQ4MC00ZGEzLTg0ZjctMDE0NWNmNTlhMjk4Og==\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "https://pz-gateway.int.geointservices.io/service",
 			"preRequestScript": "",
-			"tests": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikey\",\"6354ff81-b415-4986-b543-79d4fe420dbd\")",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\n//postman.setEnvironmentVariable(\"resourceId\",data.serviceId)\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId)\npostman.setEnvironmentVariable(\"apikey\",\"059e8f62-2215-4b55-92b7-3ca09ab32d3c\")",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "6354ff81-b415-4986-b543-79d4fe420dbd",
+				"username": "059e8f62-2215-4b55-92b7-3ca09ab32d3c",
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1493039747358,
+			"name": "Register Service",
+			"description": "",
 			"collectionId": "0a55ef5a-3c31-8ed3-48dc-77882b9b9f45",
 			"rawModeData": "{\n \"serviceId\" : \"0bcc6896-642e-4a30-a01e-6bd0467b57ba\",\n \"url\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"contractUrl\" : \"http://pzsvc-hello.int.geointservices.io/\",\n \"method\" : \"GET\",\n \"resourceMetadata\" : {\n   \"name\" : \"Patrick and Marge Test\",\n   \"description\" : \"Hello world test\",\n   \"classType\" : \"U\"\n }\n}"
 		},
@@ -924,20 +923,15 @@
 			"rawModeData": "{\n  \"data\": {\n    \"dataInputs\": {\n      \"\": {\n        \"content\": \"cmd=shoreline --image LC80340432016061LGN00_B3.TIF,LC80340432016061LGN00_B6.TIF&inFiles=8cac8caa-cbdc-46fa-8e55-fa507522efc6,13299df7-37b5-445e-bc06-70c26c3e72c2&outGeoJson=BF_20160412144633012.geojson\",\n        \"type\": \"tet\"\n      }\n    },\n    \"serviceId\": \"{{resourceId}}\"\n  },\n  \"type\": \"execute-service\"\n}"
 		},
 		{
-			"folder": null,
 			"id": "f7012c66-7e18-7955-6511-ef2a691637b6",
-			"name": "Abort Job",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": "",
-			"descriptionFormat": null,
-			"description": "",
-			"headers": "Authorization: Basic MTMzOTU5OTQtMzg1OC00MzE1LThiYzEtMjkyN2RmZTRkNDgzOnRlc3Q0bGlmZQ==",
-			"method": "DELETE",
-			"pathVariables": null,
+			"headers": "Authorization: Basic MDU5ZThmNjItMjIxNS00YjU1LTkyYjctM2NhMDlhYjMyZDNjOnRlc3Q0bGlmZQ==\n",
 			"url": "https://pz-gateway.int.geointservices.io/job/{{jobId}}",
 			"preRequestScript": "",
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -945,6 +939,9 @@
 				"password": "test4life",
 				"saveToRequest": true
 			},
+			"time": 1493039864204,
+			"name": "Abort Job",
+			"description": "",
 			"collectionId": "0a55ef5a-3c31-8ed3-48dc-77882b9b9f45"
 		},
 		{

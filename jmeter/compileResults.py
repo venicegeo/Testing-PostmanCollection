@@ -38,12 +38,14 @@ for timestamp in timestamps:
 		# Move past the first (header) line.
 		next(csvRead)
 		# Write each line (after the first) to the writer.
+		days = 0
 		for i, line in enumerate(csvRead):
 			if i == 0:
 				startTime = getSeconds(line[0])
 			elapsed = getSeconds(line[0]) - startTime
-			if elapsed < 0:
+			if elapsed < days*86400:
 				elapsed += 86400
+				days += 1
 			line += [timestamp, elapsed]
 			csvWrite.writerow(line)
 

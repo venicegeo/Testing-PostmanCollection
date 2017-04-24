@@ -17,7 +17,9 @@
 		"94e9df5a-1b51-f0a5-13ed-0499bab89e01",
 		"4d3cace7-7919-04a9-263b-a113d9f4edd8",
 		"3060f0ce-5da3-cf38-ed02-bef0b09e0d33",
+		"64b79628-7047-dbc7-8595-c3a1cb1b3719",
 		"6cf24a11-5bd9-397d-17f3-afba6fa2a604",
+		"61b08257-a9f8-e5c4-7c84-0531cfe35da2",
 		"7f490d6a-0bfd-baac-3e8a-d7f471dccd40",
 		"46837252-6db5-4dbf-7556-420cc6f14752",
 		"f2b013d4-4a35-9762-caa8-7ec8f35205f3",
@@ -147,15 +149,15 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apikey\",\"6354ff81-b415-4986-b543-79d4fe420dbd\")\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
+			"tests": "\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apikey\",\"059e8f62-2215-4b55-92b7-3ca09ab32d3c\")\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "6354ff81-b415-4986-b543-79d4fe420dbd",
+				"username": "059e8f62-2215-4b55-92b7-3ca09ab32d3c",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1491842947304,
+			"time": 1493038989169,
 			"name": "5.2.1 Register Hello Example Service",
 			"description": "",
 			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda",
@@ -254,6 +256,63 @@
 			},
 			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda",
 			"rawModeData": "{\n    \"dataId\": \"{{dataId_localimage}}\",\n    \"type\": \"access\",\n    \"deploymentType\": \"geoserver\"\n}\n"
+		},
+		{
+			"id": "61b08257-a9f8-e5c4-7c84-0531cfe35da2",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
+			"url": "https://pz-gateway.{{domain}}/file/{{dataId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "\n\n\n\n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1492947606147,
+			"name": "4.2 GET File: dog",
+			"description": "",
+			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda"
+		},
+		{
+			"id": "64b79628-7047-dbc7-8595-c3a1cb1b3719",
+			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
+			"url": "https://pz-gateway.{{domain}}/data/file",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [
+				{
+					"key": "data",
+					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"The crazy dog.\" } } }",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"value": "terrametrics.tif",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1492947750230,
+			"name": "4.1 Modifiy: dog copy",
+			"description": "",
+			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda"
 		},
 		{
 			"folder": null,
