@@ -17,7 +17,6 @@
 		"94e9df5a-1b51-f0a5-13ed-0499bab89e01",
 		"4d3cace7-7919-04a9-263b-a113d9f4edd8",
 		"3060f0ce-5da3-cf38-ed02-bef0b09e0d33",
-		"64b79628-7047-dbc7-8595-c3a1cb1b3719",
 		"6cf24a11-5bd9-397d-17f3-afba6fa2a604",
 		"61b08257-a9f8-e5c4-7c84-0531cfe35da2",
 		"7f490d6a-0bfd-baac-3e8a-d7f471dccd40",
@@ -142,7 +141,7 @@
 		},
 		{
 			"id": "30f530e9-7c27-b4b5-8ab5-633601c9c7de",
-			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: Basic MDU5ZThmNjItMjIxNS00YjU1LTkyYjctM2NhMDlhYjMyZDNjOg==\n",
 			"url": "https://pz-gateway.{{domain}}/service",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -157,7 +156,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1493038989169,
+			"time": 1493042043796,
 			"name": "5.2.1 Register Hello Example Service",
 			"description": "",
 			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda",
@@ -276,41 +275,6 @@
 			},
 			"time": 1492947606147,
 			"name": "4.2 GET File: dog",
-			"description": "",
-			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda"
-		},
-		{
-			"id": "64b79628-7047-dbc7-8595-c3a1cb1b3719",
-			"headers": "Authorization: Basic NjM1NGZmODEtYjQxNS00OTg2LWI1NDMtNzlkNGZlNDIwZGJkOg==\n",
-			"url": "https://pz-gateway.{{domain}}/data/file",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "PUT",
-			"data": [
-				{
-					"key": "data",
-					"value": "{ \"type\": \"ingest\", \"host\": \"true\", \"data\" : { \"dataType\": { \"type\": \"raster\" }, \"metadata\": { \"name\": \"terrametrics.tif\", \"description\": \"The crazy dog.\" } } }",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "file",
-					"value": "terrametrics.tif",
-					"type": "file",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n    postman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1492947750230,
-			"name": "4.1 Modifiy: dog copy",
 			"description": "",
 			"collectionId": "64054757-24cb-aa41-aae5-5a1504e25cda"
 		},
