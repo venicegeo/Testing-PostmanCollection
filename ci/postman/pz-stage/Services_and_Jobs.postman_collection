@@ -16,7 +16,8 @@
 				"314da4b5-9a7e-4056-2f77-8250f7be4334",
 				"2c75fd00-6eb4-a0f4-40be-9e0ea11fbf90",
 				"c52d2ba3-3eb0-536b-a91e-87438c9f1910"
-			]
+			],
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
 			"owner": "699425",
@@ -372,7 +373,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n}",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    postman.setNextRequest('');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -380,7 +381,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1493658844447,
+			"time": 1493659926276,
 			"name": "Create Key",
 			"description": "Create a new API key for testing",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",

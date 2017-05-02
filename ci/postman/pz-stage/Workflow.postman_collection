@@ -13,13 +13,14 @@
 			"description": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n < < < < < < < < < < < < START-UP > > > > > > > > > > > > \nThese tests create required environment variables.\nAny failures here will cause other tests to fail.\nDO NOT PUSH if these tests fail.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 			"order": [
 				"382f4799-3a18-7d68-b591-6f25694cbb5a",
+				"bb76c1cf-b106-16a2-a6e0-3bad4f35604b",
 				"12600a27-3e5a-7916-920e-f21b393bca3c",
 				"17ce21f2-b177-9824-8c04-6b91587ca8ee",
 				"3364457e-20b2-ea0c-0ea8-d581af4b5b19",
 				"0418aa09-bf63-8e65-1e4b-62641162da03",
-				"a8f0c07b-d52c-ea85-05ae-ff579895c7b3",
-				"bb76c1cf-b106-16a2-a6e0-3bad4f35604b"
-			]
+				"a8f0c07b-d52c-ea85-05ae-ff579895c7b3"
+			],
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
 			"owner": "699425",
