@@ -13,6 +13,7 @@
 			"description": "",
 			"order": [
 				"9333601e-593c-9bb4-bcdf-b437349d4e7b",
+				"314da4b5-9a7e-4056-2f77-8250f7be4334",
 				"2c75fd00-6eb4-a0f4-40be-9e0ea11fbf90",
 				"c52d2ba3-3eb0-536b-a91e-87438c9f1910"
 			]
@@ -93,6 +94,7 @@
 				"052a62bc-7a69-d8a7-abbb-a7b71e32c5bb",
 				"edd57179-6da4-ce97-f66e-6cd52eb43fa0",
 				"129f49e0-8a94-37df-12c1-526be6b240fa",
+				"64f820d3-a708-4461-925d-369a74b83400",
 				"f5b67f48-2dcb-b8f9-3c4f-9b87e911c3da",
 				"cf0fe603-796d-bd1f-fa68-dcc3207c43a6",
 				"6d7646ca-b685-82e0-55ec-d18b3d80a1ff",
@@ -102,7 +104,8 @@
 				"0055d086-a9dc-759c-34b8-c37c1fdc8001",
 				"7e698f3b-a1bb-7550-037d-ad2983fd62b8",
 				"4d9dac29-bdb0-31b9-b4a1-b80f44b2b531"
-			]
+			],
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
 			"owner": "699425",
@@ -358,6 +361,31 @@
 			"name": "Check Asynch Job Status",
 			"description": "Check the job status of the asynchronous job to get the dataId.  Repeat up to 10 times until the job is successful.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
+		},
+		{
+			"id": "314da4b5-9a7e-4056-2f77-8250f7be4334",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{cert}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1493658844447,
+			"name": "Create Key",
+			"description": "Create a new API key for testing",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"responses": [],
+			"rawModeData": ""
 		},
 		{
 			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
@@ -670,6 +698,32 @@
 				"saveToRequest": true
 			},
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
+		},
+		{
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"currentHelper": "basicAuth",
+			"data": [],
+			"dataMode": "raw",
+			"description": "Attempt to register a Service with a no \"url\" parameter.",
+			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
+			"headers": "Content-Type: application/json\n",
+			"helperAttributes": {
+				"id": "basic",
+				"password": "",
+				"saveToRequest": true,
+				"username": "{{API Key}}"
+			},
+			"id": "64f820d3-a708-4461-925d-369a74b83400",
+			"isFromCollection": true,
+			"method": "POST",
+			"name": "Register Service - No url",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"tests": "tests[\"Status code is 400 (Bug #17299)\"] = responseCode.code === 400;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Problem with `url` message\"] = data.message.match(/url/);\n}\n\n// Old response format:\n\n// if (testLevels(tests, data, 'errors', 'array')) {\n//     if (testLevels(tests, data.errors[0], 'code', 'string')) {\n//         tests[\"Not Null Message\"] = data.errors[0].code.match(/[Nn]ull/);\n//     }\n//     if (testLevels(tests, data.errors[0], 'field')) {\n//         tests[\"The problem is with 'url'\"] = data.errors[0].field === 'url';\n//     }\n// }",
+			"time": 1488464529517,
+			"url": "https://pz-gateway.{{domain}}/service",
+			"collectionRequestId": "dd6034d9-128c-a59d-ff1f-38cc1d4cfdd4",
+			"rawModeData": "{\n    \"method\": \"GET\",\n    \"contractUrl\": \"http://helloContract\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"folder": "f7908e06-7328-8027-9d6d-a04c8bfe0055",

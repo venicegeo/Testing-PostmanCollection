@@ -17,7 +17,8 @@
 				"17ce21f2-b177-9824-8c04-6b91587ca8ee",
 				"3364457e-20b2-ea0c-0ea8-d581af4b5b19",
 				"0418aa09-bf63-8e65-1e4b-62641162da03",
-				"a8f0c07b-d52c-ea85-05ae-ff579895c7b3"
+				"a8f0c07b-d52c-ea85-05ae-ff579895c7b3",
+				"bb76c1cf-b106-16a2-a6e0-3bad4f35604b"
 			]
 		},
 		{
@@ -335,11 +336,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1488402025756,
+			"time": 1489520671767,
 			"name": "Register Service",
 			"description": "Register the pzsvc-hello service, to be used in Trigger creation.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
-			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"serviceId\": \"\",\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Service for Workflow Integration Testing\"\n    }\n}"
+			"rawModeData": "{\n    \"url\": \"https://pz-gateway.{{domain}}\",\n    \"contractUrl\": \"http://helloContract\",\n    \"method\" : \"GET\",\n    \"serviceId\": \"\",\n    \"resourceMetadata\": {\n        \"classType\": \"hello\",\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"Service for Workflow Integration Testing\"\n    }\n}"
 		},
 		{
 			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
@@ -1644,6 +1645,34 @@
 			},
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"rawModeData": "{\n    \"data\": {\n        \"dataId\": \"testId\",\n    \"dataType\": \"raster\",\n    \"epsg\": 3,\n    \"minX\": 1,\n    \"minY\": 1.0,\n    \"maxX\": 10.0,\n    \"maxY\": 10.0,\n    \"hosted\": true,\n        \"sampleNest\": {\n            \"someParam\": \"someValue\"\n        }\n    },\n  \"eventTypeId\": \"{{eventTypeId}}\"\n}"
+		},
+		{
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"collectionRequestId": "76acb163-0850-ebe7-394a-08864170e975",
+			"currentHelper": "basicAuth",
+			"data": [],
+			"dataMode": "raw",
+			"description": "Create a new API key for testing",
+			"folder": "3107dc0f-c42b-f0c8-b00b-ca317cce8468",
+			"headers": "",
+			"helperAttributes": {
+				"id": "basic",
+				"password": "",
+				"saveToRequest": true,
+				"username": "{{cert}}"
+			},
+			"id": "bb76c1cf-b106-16a2-a6e0-3bad4f35604b",
+			"isFromCollection": true,
+			"method": "POST",
+			"name": "Create Key",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"responses": [],
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    postman.setNextRequest('');\n}",
+			"time": 1493659943520,
+			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"version": 2,
+			"rawModeData": ""
 		},
 		{
 			"folder": "ed4acd95-58bc-4ffb-410b-92dc9085cce0",

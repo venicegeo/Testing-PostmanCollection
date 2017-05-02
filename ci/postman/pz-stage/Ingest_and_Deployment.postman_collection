@@ -13,6 +13,7 @@
 			"description": "",
 			"order": [
 				"8dd63204-ede6-6a79-d203-2f981dd8870a",
+				"3c3eb820-62af-805c-875b-21589c40a50f",
 				"25c9808c-c57a-67bb-1aba-8141bb74e7e5",
 				"a0b17535-532b-1430-ba19-d6c48b9ecd82",
 				"dbf61b56-d9c9-a9d5-5548-9ff76e5c8cba",
@@ -653,6 +654,34 @@
 				"saveToRequest": true
 			},
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
+		},
+		{
+			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
+			"collectionRequestId": "e0cbf70a-b3b3-bef0-9481-c67bb576ae24",
+			"currentHelper": "basicAuth",
+			"data": [],
+			"dataMode": "raw",
+			"description": "Create a new API key for testing",
+			"folder": "17e8a8db-12f5-c81b-4e5b-82b7f1420a09",
+			"headers": "",
+			"helperAttributes": {
+				"id": "basic",
+				"password": "",
+				"saveToRequest": true,
+				"username": "{{cert}}"
+			},
+			"id": "3c3eb820-62af-805c-875b-21589c40a50f",
+			"isFromCollection": true,
+			"method": "POST",
+			"name": "Create Key",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"responses": [],
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    postman.setNextRequest('');\n}",
+			"time": 1493659926276,
+			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"version": 2,
+			"rawModeData": ""
 		},
 		{
 			"folder": "eab39bb3-61a3-84aa-43ab-eac21622eb16",
