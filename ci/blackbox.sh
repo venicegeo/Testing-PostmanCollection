@@ -37,7 +37,7 @@ for space in $spaces; do
     newmancmd="newman"
   else
     npm install newman@2
-    newmancmd="./node_modules/newman/bin/newman.js"
+    newmancmd="./node_modules/newman/bin/newman"
   fi
 
 	cmd="$newmancmd -o results.json --requestTimeout 120000 -x -e $envfile -g $POSTMAN_FILE -c "
