@@ -12,6 +12,7 @@
 			"name": "1_Startup",
 			"description": "",
 			"order": [
+				"76acb163-0850-ebe7-394a-08864170e975",
 				"628691b3-aa86-e405-3b6d-b2bb3772dcd3",
 				"ce3780de-dc73-a99c-05d1-f6c59176c319"
 			]
@@ -810,6 +811,31 @@
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
 		},
 		{
+			"id": "76acb163-0850-ebe7-394a-08864170e975",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    postman.setNextRequest('');\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{cert}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1493659943520,
+			"name": "Create Key",
+			"description": "Create a new API key for testing",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
 			"folder": "6d70c66f-7d7b-ab43-5a8a-31dc326f6a5e",
 			"id": "778daeb1-fd3c-aaff-5214-101baa6c0643",
 			"name": "Ordering - Create Job2",
@@ -1194,19 +1220,14 @@
 			"rawModeData": "{\n  \"status\": \"Success\"\n}"
 		},
 		{
-			"folder": "7190aa14-a5cf-392c-d57d-63535a62e6b3",
 			"id": "ce3780de-dc73-a99c-05d1-f6c59176c319",
-			"name": "Get 2nd User Key",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"descriptionFormat": "html",
-			"description": "Retrieve the API key of a second user.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/v2/key",
 			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "tests[\"Status code is 200 (Bug #13283)\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('Other Key', data.uuid);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -1215,7 +1236,11 @@
 				"password": "{{bf_password}}",
 				"saveToRequest": true
 			},
-			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
+			"time": 1493726486445,
+			"name": "Get 2nd User Key",
+			"description": "Retrieve the API key of a second user.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"rawModeData": ""
 		},
 		{
 			"folder": "6d70c66f-7d7b-ab43-5a8a-31dc326f6a5e",
