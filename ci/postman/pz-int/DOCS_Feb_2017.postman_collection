@@ -1,13 +1,9 @@
 {
-	"owner": "699425",
-	"lastUpdatedBy": "300577",
-	"lastRevision": 1409007953,
-	"team": null,
 	"id": "b59f400f-7fac-ce01-7320-13f622a0cd83",
 	"name": "DOCS_FEB_2017",
 	"description": null,
-	"folders_order": [],
 	"order": [
+		"fd3d4c3c-718d-7f3e-4cf0-952c5d096f20",
 		"d54e7a07-a1aa-5f94-51f2-dd074c887b80",
 		"a305c585-1a7d-9cb4-2153-9001c5034503",
 		"aedf2502-60f3-5f76-25a5-7ba311047c27",
@@ -33,7 +29,9 @@
 		"7bf2225e-5984-50a3-8937-5f306e85243d"
 	],
 	"folders": [],
-	"hasRequests": true,
+	"timestamp": 0,
+	"owner": "699425",
+	"public": false,
 	"requests": [
 		{
 			"id": "031a9c57-706a-f848-eabd-9bc48722faa5",
@@ -617,6 +615,33 @@
 			"collectionId": "b59f400f-7fac-ce01-7320-13f622a0cd83",
 			"responses": [],
 			"rawModeData": "{\n    \"dataId\": \"{{dataId_localimage}}\",\n    \"type\": \"access\",\n    \"deploymentType\": \"geoserver\"\n}\n"
+		},
+		{
+			"id": "fd3d4c3c-718d-7f3e-4cf0-952c5d096f20",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable('apikey', data.uuid);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{cert}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1494264809134,
+			"name": "Create Key",
+			"description": "Create a new API key for testing",
+			"collectionId": "b59f400f-7fac-ce01-7320-13f622a0cd83",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "ea170f8d-6e8b-48f1-8673-78116e6cdf93",
+			"rawModeData": ""
 		}
 	]
 }
