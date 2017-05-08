@@ -1,0 +1,159 @@
+{
+	"id": "8a8e9513-32c4-48b4-8dba-512f038b1b5b",
+	"name": "DOCS_FEB_2017",
+	"allTests": [],
+	"timestamp": "2017-05-05T18:41:10.594Z",
+	"collection_id": "64054757-24cb-aa41-aae5-5a1504e25cda",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "ef38cce0-1c11-e826-254c-3d481c651432",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "64054757-24cb-aa41-aae5-5a1504e25cda",
+		"name": "DOCS_FEB_2017",
+		"description": null,
+		"order": [
+			"30f530e9-7c27-b4b5-8ab5-633601c9c7de",
+			"c5987bef-0776-3d34-f2cd-e73c82563dd8",
+			"d647916e-4484-9d1f-c90b-3fa4b8e33b9d",
+			"5efb48a9-02c8-fcfb-9d53-d7ad3bfc58ab",
+			"2f843286-230b-8352-f2eb-2a081d3868dd",
+			"db575453-c3c0-dd0e-223d-313528cf9099",
+			"975957d3-a0a7-5216-381a-81c0ac453408",
+			"2aaf31b6-342d-be7e-c9f9-38c2f5d7f02b",
+			"43ef16c1-1e2f-14db-6955-3796345bb4ab",
+			"fd609446-b33b-5e13-f790-528ed1750050",
+			"ddb1b607-ec0e-13be-4eb3-0cd0a67d9aad",
+			"94e9df5a-1b51-f0a5-13ed-0499bab89e01",
+			"4d3cace7-7919-04a9-263b-a113d9f4edd8",
+			"3060f0ce-5da3-cf38-ed02-bef0b09e0d33",
+			"6cf24a11-5bd9-397d-17f3-afba6fa2a604",
+			"61b08257-a9f8-e5c4-7c84-0531cfe35da2",
+			"7f490d6a-0bfd-baac-3e8a-d7f471dccd40",
+			"46837252-6db5-4dbf-7556-420cc6f14752",
+			"f2b013d4-4a35-9762-caa8-7ec8f35205f3",
+			"b40cdd5a-e8e6-df5b-f732-1c216189fd70",
+			"305efd2d-6c53-1f0f-fc34-9b17dbb57033",
+			"af17b538-6094-e0d2-7309-72dd5710ac36",
+			"b92280c1-4075-dc5b-c4fb-0c963e109b97"
+		],
+		"folders": [],
+		"timestamp": 1487537860147,
+		"synced": false,
+		"remote_id": "0",
+		"owner": "300577",
+		"sharedWithTeam": false,
+		"subscribed": false,
+		"remoteLink": null,
+		"remoteLinkUpdatedAt": null,
+		"public": false,
+		"createdAt": "2017-02-19T20:57:40.000Z",
+		"updatedAt": "2017-04-26T19:45:30.000Z",
+		"write": true,
+		"published": false,
+		"favorite": false,
+		"permissions": {},
+		"syncedPermissions": {}
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"key": "apikey",
+			"value": "13395994-3858-4315-8bc1-2927dfe4d483",
+			"type": "text",
+			"enabled": true
+		}
+	],
+	"results": [
+		{
+			"name": "5.2.1 Register Hello Example Service",
+			"id": "30f530e9-7c27-b4b5-8ab5-633601c9c7de",
+			"url": "https://pz-gateway.int.geointservices.io/service",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"400"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "400",
+			"totalRequestTime": "400",
+			"iterationResults": {}
+		},
+		{
+			"name": "3.1.1 Loading a Local Image",
+			"id": "c5987bef-0776-3d34-f2cd-e73c82563dd8",
+			"url": "https://pz-gateway.int.geointservices.io/data/file",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"226"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "226",
+			"totalRequestTime": "226",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 0,
+	"totalFail": 0,
+	"totalTime": 626,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "5.2.1 Register Hello Example Service",
+			"id": "30f530e9-7c27-b4b5-8ab5-633601c9c7de",
+			"url": "https://pz-gateway.int.geointservices.io/service",
+			"time": "2017-05-05T18:41:10.594Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "3.1.1 Loading a Local Image",
+			"id": "c5987bef-0776-3d34-f2cd-e73c82563dd8",
+			"url": "https://pz-gateway.int.geointservices.io/data/file",
+			"time": "2017-05-05T18:41:10.594Z",
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"testPassFailCounts": {}
+		}
+	],
+	"synced": false
+}
