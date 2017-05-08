@@ -111,7 +111,12 @@
 			"preRequestScript": null,
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n\n\n\n    postman.setEnvironmentVariable('eventId', data.data.eventId);\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -134,7 +139,12 @@
 			"preRequestScript": "",
 			"tests": "\nvar data = JSON.parse(responseBody);\n\n            postman.setEnvironmentVariable(\"dataId_dog\", data.data.result.dataId);\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -157,7 +167,12 @@
 			"preRequestScript": "",
 			"tests": "\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apikey\",\"d2aba2c5-3030-4202-8aca-4697307d9f5e\")\npostman.setEnvironmentVariable(\"serviceId\",data.data.serviceId);\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"d2aba2c5-3030-4202-8aca-4697307d9f5e\",\"password\":\"\",\"saveToRequest\":true}",
+            "helperAttributes": {
+				"id": "basic",
+				"username": "d2aba2c5-3030-4202-8aca-4697307d9f5e",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -180,7 +195,12 @@
 			"preRequestScript": "",
 			"tests": "var data = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"dataId\",data.data.result.dataId);\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -203,7 +223,12 @@
 			"preRequestScript": "",
 			"tests": "\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -226,7 +251,12 @@
 			"preRequestScript": "",
 			"tests": "\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"dataId_extraster\", data.data.result.dataId);\n\ntests[\"Body does not have supplied string\"] = !(responseBody.has(\"error\"));",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -296,7 +326,12 @@
 			"preRequestScript": null,
 			"tests": "\n\n\n\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -319,7 +354,12 @@
 			"preRequestScript": "",
 			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId);\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -342,7 +382,12 @@
 			"preRequestScript": null,
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -365,7 +410,12 @@
 			"preRequestScript": "",
 			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId\",data.data.jobId)",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"test4life\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -388,7 +438,12 @@
 			"preRequestScript": null,
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -411,7 +466,12 @@
 			"preRequestScript": null,
 			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\n\n\n\n    postman.setEnvironmentVariable('triggerId', data.data.triggerId);\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -434,7 +494,12 @@
 			"preRequestScript": "",
 			"tests": "\nvar data = JSON.parse(responseBody);\ntests[\"error\"] = responseBody.has(\"error\");\n\n",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"54ff81-b415-4986-b543-79d4fe420dbd\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -554,7 +619,12 @@
 			"preRequestScript": null,
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
@@ -601,7 +671,12 @@
 			"preRequestScript": null,
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": "basicAuth",
-			"helperAttributes": "{\"id\":\"basic\",\"username\":\"{{apikey}}\",\"password\":\"\",\"saveToRequest\":true}",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{apikey}}",
+				"password": "",
+				"saveToRequest": true
+			},
 			"queryParams": null,
 			"headerData": null,
 			"pathVariableData": null,
