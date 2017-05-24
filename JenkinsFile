@@ -1,0 +1,22 @@
+@Library('pipelib@master') _
+
+node {
+  stage('Setup') {
+    git([
+      url: "https://github.com/venicegeo/pztest-integration",
+      branch: "master"
+    ])
+  }
+
+  stage('Test') {
+    withEnv(["PCF_SPACE=test"]) {
+      withNpm {
+        sh './ci/blackbox.sh'
+      }
+    }
+  }
+
+  stage ('Cleanup') {
+    deleteDir()
+  }
+}
