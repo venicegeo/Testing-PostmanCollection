@@ -81,6 +81,10 @@
 				"a7e5d5e6-9b8d-fd38-4b13-9041550c828c",
 				"ed21ad5d-7a94-0fca-e9a7-8407eadadb2c",
 				"b1d531da-e9a7-7995-ada5-10eb4ebc87f3",
+				"082f3a3b-71d6-99cf-cf80-4493153ff996",
+				"b1ac73ca-70cf-f5ee-f3d3-830148365167",
+				"c617aa5e-5cdb-ee14-65e7-046e4812b44e",
+				"97cc7ba0-6483-fbcd-1ac0-8355deee5dd7",
 				"f3ed3487-0058-2e5c-07d4-abf6b3a7923c",
 				"4c73979f-b9c2-102b-f47b-93c6fc332101",
 				"b69ec83b-69a7-eb5e-699e-65e6a052c6db",
@@ -174,6 +178,29 @@
 				"saveToRequest": true
 			},
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
+		},
+		{
+			"id": "082f3a3b-71d6-99cf-cf80-4493153ff996",
+			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
+			"url": "https://pz-gateway.{{domain}}/service",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'data.serviceId', 'string')) {\n    postman.setEnvironmentVariable(\"serviceId_asynch_del\",data.data.serviceId);\n    tests[\"serviceId GUID created\"] = data.data.serviceId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1495561899151,
+			"name": "Delete Asynch Service - Register",
+			"description": "Suite of requests to test that if an asynch service is deleted before one of its jobs is complete, the job will not be stuck in a certain status.\n\nRegister the asynch service to be deleted.",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"rawModeData": "{\n  \"isAsynchronous\":true,\n  \"url\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"timeout\" : \"180000\",\n  \"method\" : \"POST\",\n  \"contractUrl\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"resourceMetadata\" : {\n    \"name\" : \"pz-svcs-prevgen crop raster test\",\n    \"description\" : \"pz-svcs-prevgen is an awesome sample crop image external service.\",\n    \"classType\": {\n        \"classification\": \"UNCLASSIFIED\"\n     }\n  }\n}"
 		},
 		{
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
@@ -653,18 +680,14 @@
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
-			"folder": "51708a3c-5f51-c0aa-0a3d-33d73a6ab454",
 			"id": "62399f36-bfb1-553a-72c4-b74c896ca162",
-			"name": "Update Service",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "Update the \"resourceMetadata.name\" field of the service.",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\n",
-			"method": "PUT",
-			"pathVariables": {},
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
 			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Success!\"] = data.type.match(/[Ss]uccess/);\n}\nif (testLevels(tests, data, 'data.message', 'string')) {\n    tests[\"Successful Update Message\"] = data.data.message.match(/[Uu]pdat/) && data.data.message.match(/[Ss]ervice/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -673,8 +696,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1495127916533,
+			"name": "Update Service",
+			"description": "Update the \"resourceMetadata.name\" field of the service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"name\": \"{{New Name}}\"\n    }\n}"
+			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"name\": \"{{New Name}}\",\n        \"nonExistentField\": \"foo\"\n    }\n}"
 		},
 		{
 			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
@@ -1031,6 +1057,28 @@
 			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"name\": \"bar\"\n    }\n}"
 		},
 		{
+			"id": "97cc7ba0-6483-fbcd-1ac0-8355deee5dd7",
+			"headers": "Content-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId_asynch_del}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Delete Asynch Service - Check Job');\n            wait(20000);\n        }\n        else {\n            tests[\"Job errored in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Error') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job errored in time\"] = true;\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1495567170558,
+			"name": "Delete Asynch Service - Check Job",
+			"description": "Suite of requests to test that if an asynch service is deleted before one of its jobs is complete, the job will not be stuck in a certain status.\n\nRepeatedly Check Job Status.",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
+		},
+		{
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
 			"id": "98ff3c22-87a4-f892-71da-7102d7cefe60",
 			"name": "List Services - Bad Page",
@@ -1173,6 +1221,29 @@
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
+			"id": "b1ac73ca-70cf-f5ee-f3d3-830148365167",
+			"headers": "Content-Type: application/json\n",
+			"url": "https://pz-gateway.{{domain}}/job",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.jobId', 'string')) {\n    tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    postman.setEnvironmentVariable(\"jobId_asynch_del\",data.data.jobId);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1495561895981,
+			"name": "Delete Asynch Service - Create Job",
+			"description": "Suite of requests to test that if an asynch service is deleted before one of its jobs is complete, the job will not be stuck in a certain status.\n\nRegister the asynch job.",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"rawModeData": "{\n    \"type\": \"execute-service\",\n    \"data\": {\n        \"serviceId\": \"{{serviceId_asynch_del}}\",\n        \"dataInputs\" : {      \n            \"test\" : {          \n                \"content\" : \"{\\n\\\"source\\\": {\\n\\\"domain\\\": \\\"s3.amazonaws.com\\\",\\n\\\"bucketName\\\": \\\"pz-svcs-prevgen\\\",\\n\\\"fileName\\\": \\\"NASA-GDEM-10km-colorized.tif\\\"\\n},\\n\\\"function\\\": \\\"crop\\\",\\n\\\"bounds\\\": {\\n\\\"minx\\\": -140.00,\\n\\\"miny\\\": 10.00,\\n\\\"maxx\\\": -60.00,\\n\\\"maxy\\\": 70.00\\n}\\n}\",    \n                \"type\" : \"body\",  \n                \"mimeType\" : \"application/json\"         \n           }\n        }, \n        \"dataOutput\": [{\n            \"mimeType\" : \"image/tiff\",          \n            \"type\" : \"raster\"\n        }]\n    }\n}"
+		},
+		{
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
 			"id": "b1d531da-e9a7-7995-ada5-10eb4ebc87f3",
 			"name": "Get Service Info Details",
@@ -1266,6 +1337,28 @@
 			"description": "Register the asynchronous Service (Preview Generator) to be used throughout this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"rawModeData": "{\n  \"isAsynchronous\":true,\n  \"url\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"timeout\" : \"180000\",\n  \"method\" : \"POST\",\n  \"contractUrl\" : \"https://pz-svcs-prevgen.{{domain}}/cropasync\",\n  \"resourceMetadata\" : {\n    \"name\" : \"pz-svcs-prevgen crop raster test\",\n    \"description\" : \"pz-svcs-prevgen is an awesome sample crop image external service.\",\n    \"classType\": {\n        \"classification\": \"UNCLASSIFIED\"\n     }\n  }\n}"
+		},
+		{
+			"id": "c617aa5e-5cdb-ee14-65e7-046e4812b44e",
+			"headers": "",
+			"url": "https://pz-gateway.{{domain}}/service/{{serviceId_asynch_del}}",
+			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\" < < < < < < < < < < < < TEAR-DOWN > > > > > > > > > > > \");\nconsole.log(\"These tests destroy any items created by previous tests. \");\nconsole.log(\" These tests represent important features, like DELETEs. \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1495561892747,
+			"name": "Delete Asynch Service - Delete Service",
+			"description": "Suite of requests to test that if an asynch service is deleted before one of its jobs is complete, the job will not be stuck in a certain status.\n\nDelete the service.",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
 			"folder": "51708a3c-5f51-c0aa-0a3d-33d73a6ab454",
