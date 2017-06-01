@@ -24,7 +24,8 @@
 				"a9dcf3be-7312-35fb-48e1-fdb79420690b",
 				"befaada0-9ba2-caa8-81d6-5cf5367af5d5",
 				"45feda0c-b5cc-cf6e-aa0d-ad2f9558a1b9"
-			]
+			],
+			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
 		},
 		{
 			"owner": "699425",
@@ -1765,19 +1766,60 @@
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
 		{
-			"folder": "eab39bb3-61a3-84aa-43ab-eac21622eb16",
 			"id": "ab37606f-d67f-526a-f5c5-d733ee179edf",
-			"name": "List Deployment with Keyword (GeoJSON deploymentId)",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "List deployments (filetered with the geoJSON deploymentId as the keyword), making sure that only that geoJSON deployment is returned.",
 			"headers": "Content-Type: application/json\n",
-			"method": "GET",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/deployment?perPage=200&sortBy=metadata.createdOn&order=desc&keyword={{deploymentId_geojson}}",
+			"queryParams": [
+				{
+					"key": "perPage",
+					"value": "200",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "sortBy",
+					"value": "metadata.createdOn",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "desc",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "keyword",
+					"value": "{{deploymentId_geojson}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"preRequestScript": "",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'deploymentId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].deploymentId === postman.getEnvironmentVariable('deploymentId_geojson'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(postman.getEnvironmentVariable('deploymentId_geojson'));\n    }\n    if (testLevels(tests, data, 'pagination.count')) {\n        tests[\"Count is correct\"] = data.pagination.count === data.data.length;\n    }\n}\n\ntests[\"Ingested geoJSON data found in list\"] = found_geojson;\ntests[\"All results contain the keyword\"] = found_keyword;",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'deploymentId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].deploymentId === postman.getEnvironmentVariable('deploymentId_geojson'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(postman.getEnvironmentVariable('deploymentId_geojson'));\n    }\n    if (testLevels(tests, data, 'pagination.count') && testLevels(tests, data, 'pagination.perPage')) {\n        tests[\"Count is correct\"] = data.pagination.count === data.data.length || data.pagination.perPage === data.data.length;\n    }\n}\n\ntests[\"Ingested geoJSON data found in list\"] = found_geojson;\ntests[\"All results contain the keyword\"] = found_keyword;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1785,6 +1827,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1496326974072,
+			"name": "List Deployment with Keyword (GeoJSON deploymentId)",
+			"description": "List deployments (filetered with the geoJSON deploymentId as the keyword), making sure that only that geoJSON deployment is returned.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
@@ -2244,19 +2289,60 @@
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
 		},
 		{
-			"folder": "eab39bb3-61a3-84aa-43ab-eac21622eb16",
 			"id": "d6b91e1a-1ccd-cca5-9a02-f597b552c986",
-			"name": "List Deployment with Keyword (Raster dataId)",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "Test that keyword search works for deployment lists, by searching for the dataId of the ingested Raster file.",
 			"headers": "Content-Type: application/json\n",
-			"method": "GET",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/deployment?perPage=200&sortBy=metadata.createdOn&order=desc&keyword={{dataId_raster}}",
+			"queryParams": [
+				{
+					"key": "perPage",
+					"value": "200",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "sortBy",
+					"value": "metadata.createdOn",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "desc",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "keyword",
+					"value": "{{dataId_raster}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"preRequestScript": "",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_raster = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'deploymentId', 'skip', 'data[]')) {\n            found_raster = (found_raster || data.data[i].deploymentId === postman.getEnvironmentVariable('deploymentId_raster'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(postman.getEnvironmentVariable('dataId_raster'));\n    }\n    if (testLevels(tests, data, 'pagination.count')) {\n        tests[\"Count is correct\"] = data.pagination.count === data.data.length;\n    }\n}\n\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"All results contain the keyword\"] = found_keyword;",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_raster = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'deploymentId', 'skip', 'data[]')) {\n            found_raster = (found_raster || data.data[i].deploymentId === postman.getEnvironmentVariable('deploymentId_raster'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match(postman.getEnvironmentVariable('dataId_raster'));\n    }\n    if (testLevels(tests, data, 'pagination.count') && testLevels(tests, data, 'pagination.perPage')) {\n        tests[\"Count is correct\"] = data.pagination.count === data.data.length || data.pagination.perPage === data.data.length;\n    }\n}\n\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"All results contain the keyword\"] = found_keyword;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2264,6 +2350,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1496326960157,
+			"name": "List Deployment with Keyword (Raster dataId)",
+			"description": "Test that keyword search works for deployment lists, by searching for the dataId of the ingested Raster file.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
@@ -2351,19 +2440,60 @@
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
 		},
 		{
-			"folder": "eab39bb3-61a3-84aa-43ab-eac21622eb16",
 			"id": "de7293da-5bcc-cc27-2c1b-fd9ce5fe327e",
-			"name": "List Data with Keyword",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "List ingested data (filetered with the keyword, \"integration\"), making sure that the data ingested in this suite of tests is present.",
 			"headers": "Content-Type: application/json\n",
-			"method": "GET",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/data?perPage=200&sortBy=metadata.createdOn&order=desc&keyword=integration",
+			"queryParams": [
+				{
+					"key": "perPage",
+					"value": "200",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "sortBy",
+					"value": "metadata.createdOn",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "desc",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "keyword",
+					"value": "integration",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"preRequestScript": "",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\nvar found_raster = false;\nvar found_shape = false;\nvar found_text = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n            found_raster = (found_raster || data.data[i].dataId === postman.getEnvironmentVariable('dataId_raster'));\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n            found_text = (found_text || data.data[i].dataId === postman.getEnvironmentVariable('dataId_text'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match('integration');\n    }\n    if (testLevels(tests, data, 'pagination.count')) {\n        tests[\"Count is correct\"] = data.pagination.count === data.data.length;\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"Ingested Shape data found in list\"] = found_shape;\ntests[\"Ingested Text data found in list\"] = found_text;\ntests[\"All results contain 'integration'\"] = found_keyword;",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_geojson = false;\nvar found_raster = false;\nvar found_shape = false;\nvar found_text = false;\nvar found_keyword = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n            found_raster = (found_raster || data.data[i].dataId === postman.getEnvironmentVariable('dataId_raster'));\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n            found_text = (found_text || data.data[i].dataId === postman.getEnvironmentVariable('dataId_text'));\n        }\n        found_keyword = found_keyword && JSON.stringify(data.data[i]).match('integration');\n    }\n    if (testLevels(tests, data, 'pagination.count') && testLevels(tests, data, 'pagination.perPage')) {\n        tests[\"Count is correct\"] = data.pagination.count === data.data.length || data.pagination.perPage === data.data.length;\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"Ingested Shape data found in list\"] = found_shape;\ntests[\"Ingested Text data found in list\"] = found_text;\ntests[\"All results contain 'integration'\"] = found_keyword;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2371,6 +2501,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1496326916467,
+			"name": "List Data with Keyword",
+			"description": "List ingested data (filetered with the keyword, \"integration\"), making sure that the data ingested in this suite of tests is present.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
