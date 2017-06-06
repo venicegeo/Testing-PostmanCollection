@@ -69,7 +69,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496748156130,
+			"time": 1496778321227,
 			"name": "Verify Key Does Not Work",
 			"description": "List services - a 401 response means that the key was deleted.",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
@@ -135,11 +135,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "{{cert}}",
+				"username": "{{volatile_cert}}",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496747170048,
+			"time": 1496778311956,
 			"name": "Verify No Key Returned",
 			"description": "Create a new API key for testing",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
@@ -204,7 +204,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496748172485,
+			"time": 1496778326804,
 			"name": "Test Key",
 			"description": "List services - a 200 response means that the key is working.",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
@@ -213,9 +213,19 @@
 		{
 			"id": "ab22a0d2-9d65-cf8b-8dec-c50a88b7899b",
 			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
@@ -224,11 +234,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "{{cert}}",
+				"username": "{{volatile_cert}}",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1495630502344,
+			"time": 1496778285827,
 			"name": "Create Key",
 			"description": "Create a new API key for testing",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
@@ -238,9 +248,19 @@
 		{
 			"id": "b160f2ee-63a2-0141-ccf2-5b6e5a8dc253",
 			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
@@ -249,11 +269,11 @@
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
-				"username": "{{cert}}",
+				"username": "{{volatile_cert}}",
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1495631070509,
+			"time": 1496778278725,
 			"name": "Get Key",
 			"description": "Create a new API key for testing",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
