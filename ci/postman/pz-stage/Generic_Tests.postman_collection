@@ -131,7 +131,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\nNoTest = {};\n\ntests[\"No Key Available\"] = !testLevels(NoTest, data, 'uuid');\n\nif(testLevels(tests, data, 'message', 'string')) {\n    tests[\"Username should be in message\"] = data.message.match(postman.getEnvironmentVariable('username'));\n    tests[\"Message should say 'not found'\"] = data.message.match(/no.*found/i);\n    tests[\"Message should instruct to create a new key\"] = data.message.match(/new.*key/i);\n}",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\nNoTest = {};\n\ntests[\"No Key Available\"] = !testLevels(NoTest, data, 'uuid');\n\nif(testLevels(tests, data, 'message', 'string')) {\n    tests[\"Username should be in message\"] = data.message.match(postman.getEnvironmentVariable('volatile_user'));\n    tests[\"Message should say 'not found'\"] = data.message.match(/no.*found/i);\n    tests[\"Message should instruct to create a new key\"] = data.message.match(/new.*key/i);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -139,7 +139,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496778311956,
+			"time": 1496782260064,
 			"name": "Verify No Key Returned",
 			"description": "Create a new API key for testing",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
