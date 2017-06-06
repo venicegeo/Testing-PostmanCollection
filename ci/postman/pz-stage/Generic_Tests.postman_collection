@@ -38,10 +38,26 @@
 	"requests": [
 		{
 			"id": "027bb10b-838f-135f-68f1-d96225c72815",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: \n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/service",
+			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
@@ -53,7 +69,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1495639623142,
+			"time": 1496748156130,
 			"name": "Verify Key Does Not Work",
 			"description": "List services - a 401 response means that the key was deleted.",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
@@ -97,15 +113,25 @@
 		},
 		{
 			"id": "32e41fec-9f7c-c56f-f7b6-dc10fb4cd8d1",
-			"headers": "",
+			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/v2/key",
+			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\nNoTest = {};\n\ntests[\"No Key Available\"] = !testLevels(NoTest, data, 'uuid');",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\nNoTest = {};\n\ntests[\"No Key Available\"] = !testLevels(NoTest, data, 'uuid');\n\nif(testLevels(tests, data, 'message', 'string')) {\n    tests[\"Username should be in message\"] = data.message.match(postman.getEnvironmentVariable('username'));\n    tests[\"Message should say 'not found'\"] = data.message.match(/no.*found/i);\n    tests[\"Message should instruct to create a new key\"] = data.message.match(/new.*key/i);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -113,7 +139,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1495639713673,
+			"time": 1496747170048,
 			"name": "Verify No Key Returned",
 			"description": "Create a new API key for testing",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
@@ -147,10 +173,26 @@
 		},
 		{
 			"id": "a98e8368-ca0d-5f40-31ef-a020b1c85c15",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: \n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/service",
+			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
@@ -162,7 +204,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1495639617092,
+			"time": 1496748172485,
 			"name": "Test Key",
 			"description": "List services - a 200 response means that the key is working.",
 			"collectionId": "65c86921-823a-d9ac-f40b-92a923028da1",
@@ -170,7 +212,7 @@
 		},
 		{
 			"id": "ab22a0d2-9d65-cf8b-8dec-c50a88b7899b",
-			"headers": "",
+			"headers": "Authorization: \n",
 			"url": "https://pz-gateway.{{domain}}/v2/key",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -195,7 +237,7 @@
 		},
 		{
 			"id": "b160f2ee-63a2-0141-ccf2-5b6e5a8dc253",
-			"headers": "",
+			"headers": "Authorization: \n",
 			"url": "https://pz-gateway.{{domain}}/v2/key",
 			"preRequestScript": "",
 			"pathVariables": {},
