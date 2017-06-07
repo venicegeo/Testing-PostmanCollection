@@ -1476,7 +1476,7 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 401 (Bug #13285)\"] = responseCode.code === 401;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"message contains user\"] = data.message.match(postman.getGlobalVariable('username2'));\n    tests[\"message indicates user is not allowed\"] = data.message.match(/no.*allow/i);\n}",
+			"tests": "tests[\"Status code is 401 (Bug #13285)\"] = responseCode.code === 401;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"message contains user\"] = data.message.match(postman.getEnvironmentVariable('username2'));\n    tests[\"message indicates user is not allowed\"] = data.message.match(/no.*allow/i);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1484,7 +1484,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496780226984,
+			"time": 1496844423170,
 			"name": "Second User - Unauthorized Pull",
 			"description": "Try to get a job from the queue with an unauthorized user.",
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
