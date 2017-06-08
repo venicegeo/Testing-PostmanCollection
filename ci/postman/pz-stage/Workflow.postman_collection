@@ -96,6 +96,9 @@
 			"name": "4_Low",
 			"description": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n< < < < < < < < < < < < < < LOW > > > > > > > > > > > > > >\nThese tests represent less-important features.\nMore attention is given to options and edge cases.\nYou may push if these tests fail, but be careful.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
 			"order": [
+				"6d94d06f-8d37-de68-7586-d419908f86cd",
+				"22ca3417-6865-5bb4-4647-d790aa396dfb",
+				"6b4fe2ea-531f-643b-3fe7-e176c0786d98",
 				"dc1b1e97-783e-bea9-e180-e3862218669e",
 				"3e73dc36-6955-d9ce-7143-3b82e29e0de6",
 				"1819142b-32b8-72be-34ae-7cfd228fe9f3",
@@ -126,7 +129,8 @@
 				"89cf9440-5759-47e9-6957-3cfac30a819b",
 				"2784ced1-e08a-8943-df1b-44bfa5c72ea8",
 				"fa777617-04f6-bbc2-af3c-17a3b262e22b"
-			]
+			],
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
 			"owner": "699425",
@@ -438,6 +442,47 @@
 				"saveToRequest": true
 			},
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
+		},
+		{
+			"id": "22ca3417-6865-5bb4-4647-d790aa396dfb",
+			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://pz-gateway.{{domain}}/event?eventTypeId={{eventTypeId}}",
+			"queryParams": [
+				{
+					"key": "eventTypeId",
+					"value": "{{eventTypeId}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\nmatch_eventTypeId = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].')) {\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data.data[0].')) {\n            if (data.data[i].eventTypeId != postman.getEnvironmentVariable('eventTypeId')) {\n                match_eventTypeId = false;\n                console.log(data.data[i].eventId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"Event found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Query Event');\n            wait(1000);\n        }\n        else {\n            tests[\"Event found\"] = true;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All results should match the provided eventTypeId\"] = match_eventTypeId;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1496944390642,
+			"name": "Query Event - Filter by eventTypeId",
+			"description": "List Events, filtering by eventTypeId",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": []
 		},
 		{
 			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
@@ -955,6 +1000,47 @@
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
 		{
+			"id": "6b4fe2ea-531f-643b-3fe7-e176c0786d98",
+			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://pz-gateway.{{domain}}/event?eventTypeName={{eventTypeName}}",
+			"queryParams": [
+				{
+					"key": "eventTypeName",
+					"value": "{{eventTypeName}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\nmatch_eventTypeName = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].')) {\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data.data[0].')) {\n            if (data.data[i].eventTypeId != postman.getEnvironmentVariable('eventTypeId')) {\n                match_eventTypeName = false;\n                console.log(data.data[i].eventId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"Event found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Query Event');\n            wait(1000);\n        }\n        else {\n            tests[\"Event found\"] = true;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All results should match the eventTypeId of the matched eventTypeName\"] = match_eventTypeName;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1496944400833,
+			"name": "Query Event - Filter by eventTypeName",
+			"description": "List Events, filtering by eventTypeId",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": []
+		},
+		{
 			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"id": "6c3b1ce7-5452-839c-1064-2a042a789864",
 			"name": "Query Alert - Descending eventId",
@@ -979,19 +1065,31 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
 			"id": "6c6933b5-d290-5f00-2145-7a77c6b60e23",
-			"name": "Get EventType",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "Get the metadata of the EventType.",
 			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "GET",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/eventType/{{eventTypeId}}",
+			"queryParams": [],
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < IMPORTANT > > > > > > > > > > >\");\nconsole.log(\"      These tests represent important features.      \");\nconsole.log(\"Use extreme caution when pushing if these tests fail.\");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.name')) {\n    postman.setEnvironmentVariable('eventTypeName', data.data.name);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -999,8 +1097,51 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1496943336748,
+			"name": "Get EventType",
+			"description": "Get the metadata of the EventType.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
+		},
+		{
+			"id": "6d94d06f-8d37-de68-7586-d419908f86cd",
+			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://pz-gateway.{{domain}}/eventType?name={{eventTypeName}}",
+			"queryParams": [
+				{
+					"key": "name",
+					"value": "{{eventTypeName}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\nmatch_eventTypeName = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data[].')) {\n            if (data.data[i].eventTypeId === postman.getEnvironmentVariable('eventTypeId')) {\n                found = true;\n            }\n        }\n        if (testLevels(tests, data.data[i], 'name', 'skip', 'data.data[0].')) {\n            if (data.data[i].name != postman.getEnvironmentVariable('eventTypeName')) {\n                match_eventTypeName = false;\n                console.log(data.data[i].eventTypeId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"EventType found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Query EventType');\n            wait(1000);\n        }\n        else {\n            tests[\"EventType found\"] = true;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All results should match the provided name\"] = match_eventTypeName;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1496944310074,
+			"name": "Query EventType - Filter by name",
+			"description": "List EventTypes, and verify that the one created in this test is present.",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
 			"folder": "0e29f236-2061-8522-5123-eab4334b560d",
@@ -1504,20 +1645,54 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "3107dc0f-c42b-f0c8-b00b-ca317cce8468",
 			"id": "a8f0c07b-d52c-ea85-05ae-ff579895c7b3",
-			"name": "Find Alert",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "Verify that an Alert was created from the Event matching the criteria of the Trigger.",
 			"headers": "Authorization: \n",
-			"method": "GET",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=createdOn",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://pz-gateway.{{domain}}/alert?perPage=100&order=desc&sortBy=createdOn&triggerId={{triggerId}}",
+			"queryParams": [
+				{
+					"key": "perPage",
+					"value": "100",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "desc",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "sortBy",
+					"value": "createdOn",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "triggerId",
+					"value": "{{triggerId}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_orig', data.data[i].jobId);\n                }\n            }\n        }\n    }\n    if (found) {\n        tests[\"alert found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Find Alert');\n            wait(1000);\n        }\n        else {\n            tests[\"alert found\"] = false;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfound = false;\nmatch_trigger = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_orig', data.data[i].jobId);\n                }\n            }\n        }\n        if (testLevels(tests, data.data[i], 'triggerId', 'skip', 'data.data[0].')) {\n            if (data.data[i].triggerId != postman.getEnvironmentVariable('triggerId')) {\n                match_trigger = false;\n                console.log(data.data[i].alertId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"alert found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Find Alert');\n            wait(1000);\n        }\n        else {\n            tests[\"alert found\"] = false;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All responses match the triggerId\"] = match_trigger;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1525,6 +1700,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1496935894912,
+			"name": "Find Alert",
+			"description": "Verify that an Alert was created from the Event matching the criteria of the Trigger.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
@@ -1663,11 +1841,11 @@
 			"preRequestScript": "",
 			"pathVariables": {},
 			"pathVariableData": [],
-			"method": "POST",
+			"method": "GET",
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    // postman.setNextRequest('');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    // postman.setNextRequest('');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1675,7 +1853,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496780356199,
+			"time": 1496946921028,
 			"name": "GetKey",
 			"description": "Get an API key for testing",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
