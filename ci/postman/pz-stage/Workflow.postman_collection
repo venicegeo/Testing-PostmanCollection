@@ -103,6 +103,7 @@
 				"3e73dc36-6955-d9ce-7143-3b82e29e0de6",
 				"1819142b-32b8-72be-34ae-7cfd228fe9f3",
 				"6a535752-5478-cf69-5995-7a21ff75c962",
+				"a3fc6f5d-41ec-588f-dad0-4f00979eeb85",
 				"2d780775-a840-d234-791f-14417e4e01a6",
 				"56a048d9-0a5f-acdd-c960-b78fe9876c76",
 				"6eac2dc5-cdc5-aafa-7a6b-e7927573eb09",
@@ -470,7 +471,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\nmatch_eventTypeId = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].')) {\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data.data[0].')) {\n            if (data.data[i].eventTypeId != postman.getEnvironmentVariable('eventTypeId')) {\n                match_eventTypeId = false;\n                console.log(data.data[i].eventId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"Event found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Query Event');\n            wait(1000);\n        }\n        else {\n            tests[\"Event found\"] = true;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All results should match the provided eventTypeId\"] = match_eventTypeId;",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nmatch_eventTypeId = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data.data[0].')) {\n            if (data.data[i].eventTypeId != postman.getEnvironmentVariable('eventTypeId')) {\n                match_eventTypeId = false;\n                console.log(data.data[i].eventId);\n            }\n        }\n    }\n}\n\ntests[\"All results should match the provided eventTypeId\"] = match_eventTypeId;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -478,7 +479,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496944390642,
+			"time": 1497015380620,
 			"name": "Query Event - Filter by eventTypeId",
 			"description": "List Events, filtering by eventTypeId",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
@@ -1026,7 +1027,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\nmatch_eventTypeName = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].')) {\n            if (data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n            }\n        }\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data.data[0].')) {\n            if (data.data[i].eventTypeId != postman.getEnvironmentVariable('eventTypeId')) {\n                match_eventTypeName = false;\n                console.log(data.data[i].eventId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"Event found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Query Event');\n            wait(1000);\n        }\n        else {\n            tests[\"Event found\"] = true;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All results should match the eventTypeId of the matched eventTypeName\"] = match_eventTypeName;",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nmatch_eventTypeName = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data.data[0].')) {\n            if (data.data[i].eventTypeId != postman.getEnvironmentVariable('eventTypeId')) {\n                match_eventTypeName = false;\n                console.log(data.data[i].eventId);\n            }\n        }\n    }\n}\n\ntests[\"All results should match the eventTypeId of the matched eventTypeName\"] = match_eventTypeName;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1034,7 +1035,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496944400833,
+			"time": 1497015401885,
 			"name": "Query Event - Filter by eventTypeName",
 			"description": "List Events, filtering by eventTypeId",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
@@ -1130,7 +1131,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar found = false;\nmatch_eventTypeName = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventTypeId', 'skip', 'data[].')) {\n            if (data.data[i].eventTypeId === postman.getEnvironmentVariable('eventTypeId')) {\n                found = true;\n            }\n        }\n        if (testLevels(tests, data.data[i], 'name', 'skip', 'data.data[0].')) {\n            if (data.data[i].name != postman.getEnvironmentVariable('eventTypeName')) {\n                match_eventTypeName = false;\n                console.log(data.data[i].eventTypeId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"EventType found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Query EventType');\n            wait(1000);\n        }\n        else {\n            tests[\"EventType found\"] = true;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All results should match the provided name\"] = match_eventTypeName;",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nmatch_eventTypeName = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'name', 'skip', 'data.data[0].')) {\n            if (data.data[i].name != postman.getEnvironmentVariable('eventTypeName')) {\n                match_eventTypeName = false;\n                console.log(data.data[i].eventTypeId);\n            }\n        }\n    }\n}\n\ntests[\"All results should match the provided name\"] = match_eventTypeName;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1138,7 +1139,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496944310074,
+			"time": 1497015396101,
 			"name": "Query EventType - Filter by name",
 			"description": "List EventTypes, and verify that the one created in this test is present.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
@@ -1645,6 +1646,47 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
+			"id": "a3fc6f5d-41ec-588f-dad0-4f00979eeb85",
+			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://pz-gateway.{{domain}}/alert?inflate=true",
+			"queryParams": [
+				{
+					"key": "inflate",
+					"value": "true",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\n// found = false;\n\n// if (testLevels(tests, data, 'data', 'array')) {\n//     for (i = 0; i < data.data.length; i++) {\n//         if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n//             if (data.data[i].alertId === postman.getEnvironmentVariable('alertId')) {\n//                 found = true;\n//                 if (testLevels(tests, data.data[i], 'trigger.triggerId', 'skip', 'data[].')) {\n//                     tests[\"Correct triggerId should be found in the trigger inflation\"] = data.data[i].trigger.triggerId === postman.getEnvironmentVariable('triggerId');\n//                 }\n//                 if (testLevels(tests, data.data[i], 'event.eventId', 'skip', 'data[].')) {\n//                     tests[\"Correct eventId should be found in the event inflation\"] = data.data[i].event.eventId === postman.getEnvironmentVariable('eventId');\n//                 }\n//             }\n//         }\n//     }\n// }\n\n// tests[\"Alert should be found\"] = found;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"time": 1497016069958,
+			"name": "Inflate Alerts",
+			"description": "List Alerts, using the inflate option, and verify that the inflated data is correct",
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"responses": []
+		},
+		{
 			"id": "a8f0c07b-d52c-ea85-05ae-ff579895c7b3",
 			"headers": "Authorization: \n",
 			"headerData": [
@@ -1692,7 +1734,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfound = false;\nmatch_trigger = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_orig', data.data[i].jobId);\n                }\n            }\n        }\n        if (testLevels(tests, data.data[i], 'triggerId', 'skip', 'data.data[0].')) {\n            if (data.data[i].triggerId != postman.getEnvironmentVariable('triggerId')) {\n                match_trigger = false;\n                console.log(data.data[i].alertId);\n            }\n        }\n    }\n    if (found) {\n        tests[\"alert found\"] = true;\n        postman.setEnvironmentVariable('retry_loop', 0);\n    }\n    else {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Find Alert');\n            wait(1000);\n        }\n        else {\n            tests[\"alert found\"] = false;\n            postman.setEnvironmentVariable('retry_loop', 0);\n        }\n    }\n}\n\ntests[\"All responses match the triggerId\"] = match_trigger;",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfound = false;\nmatch_trigger = true;\nnoTest = {}\n\nif (testLevels(noTest, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n            if (data.data[i].triggerId === postman.getEnvironmentVariable('triggerId') && data.data[i].eventId === postman.getEnvironmentVariable('eventId')) {\n                found = true;\n                if (testLevels(tests, data.data[i], 'alertId', 'skip', 'data[].')) {\n                    tests[\"alertId GUID created\"] = data.data[i].alertId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('alertId', data.data[i].alertId);\n                }\n                if (testLevels(tests, data.data[i], 'jobId', 'skip', 'data[].')) {\n                    tests[\"jobId GUID created\"] = data.data[i].jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n                    postman.setEnvironmentVariable('jobId_orig', data.data[i].jobId);\n                }\n            }\n        }\n        if (testLevels(tests, data.data[i], 'triggerId', 'skip', 'data.data[0].')) {\n            if (data.data[i].triggerId != postman.getEnvironmentVariable('triggerId')) {\n                match_trigger = false;\n                console.log(data.data[i].alertId);\n            }\n        }\n    }\n}\nif (found) {\n    tests[\"alert found\"] = true;\n    postman.setEnvironmentVariable('retry_loop', 0);\n}\nelse if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n    postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n    postman.setNextRequest('Find Alert');\n    wait(1000);\n} else {\n    tests[\"alert found\"] = false;\n    postman.setEnvironmentVariable('retry_loop', 0);\n}\n\ntests[\"All responses match the triggerId\"] = match_trigger;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1700,7 +1742,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496935894912,
+			"time": 1497014647469,
 			"name": "Find Alert",
 			"description": "Verify that an Alert was created from the Event matching the criteria of the Trigger.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
