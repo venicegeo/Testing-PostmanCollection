@@ -605,22 +605,23 @@
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
-			"folder": "3107dc0f-c42b-f0c8-b00b-ca317cce8468",
 			"id": "382f4799-3a18-7d68-b591-6f25694cbb5a",
-			"name": "Hello & Variable Initialization",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": null,
-			"description": "Simple Health check to pz-gateway.  Postman Environemnt Variables are initialized in this step.",
 			"headers": "",
-			"method": "GET",
-			"pathVariables": {},
+			"headerData": [],
 			"url": "https://pz-gateway.{{domain}}/",
+			"queryParams": [],
 			"preRequestScript": "console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");\nconsole.log(\"< < < < < < < < < < < < < START-UP > > > > > > > > > > > \");\nconsole.log(\"   These tests create required environment variables.    \");\nconsole.log(\"    Any failures here will cause other tests to fail.    \");\nconsole.log(\"            DO NOT PUSH if these tests fail.             \");\nconsole.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");",
-			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\n\n\ntests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('eventTypeId', '');\npostman.setEnvironmentVariable('serviceId', '');\npostman.setEnvironmentVariable('triggerId', '');\npostman.setEnvironmentVariable('eventId', '');\npostman.setEnvironmentVariable('alertId', '');\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 5);\n\npostman.setEnvironmentVariable('eventId_notrigger', '');\npostman.setEnvironmentVariable('triggerId_nested', '');\npostman.setEnvironmentVariable('eventId_nested', '');\npostman.setEnvironmentVariable('eventTypeId_deletion', '');\npostman.setEnvironmentVariable('eventId_deletion', '');\npostman.setEnvironmentVariable('triggerId_deletion', '');\npostman.setEnvironmentVariable('eventId_soft', '');\npostman.setEnvironmentVariable('jobId_soft', '');\npostman.setEnvironmentVariable('eventType Name', '');",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\n\n\ntests[\"Says Hello!\"] = responseBody.has('Hello');\npostman.setEnvironmentVariable('eventTypeId', '');\npostman.setEnvironmentVariable('serviceId', '');\npostman.setEnvironmentVariable('triggerId', '');\npostman.setEnvironmentVariable('eventId', '');\npostman.setEnvironmentVariable('alertId', '');\npostman.setEnvironmentVariable('jobId', '');\npostman.setEnvironmentVariable('dataId', '');\npostman.setEnvironmentVariable('retry_loop', 0);\npostman.setEnvironmentVariable('max_retries', 5);\n\npostman.setEnvironmentVariable('eventId_notrigger', '');\npostman.setEnvironmentVariable('triggerId_nested', '');\npostman.setEnvironmentVariable('eventId_nested', '');\npostman.setEnvironmentVariable('eventTypeId_deletion', '');\npostman.setEnvironmentVariable('eventId_deletion', '');\npostman.setEnvironmentVariable('triggerId_deletion', '');\npostman.setEnvironmentVariable('eventId_soft', '');\npostman.setEnvironmentVariable('jobId_soft', '');\npostman.setEnvironmentVariable('eventType Name', '');\n\npostman.setEnvironmentVariable('trigger_name', 'CI Testing Trigger');",
 			"currentHelper": "normal",
 			"helperAttributes": {},
+			"time": 1497026953381,
+			"name": "Hello & Variable Initialization",
+			"description": "Simple Health check to pz-gateway.  Postman Environemnt Variables are initialized in this step.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e"
 		},
 		{
@@ -1656,8 +1657,15 @@
 					"enabled": true
 				}
 			],
-			"url": "https://pz-gateway.{{domain}}/alert?inflate=true",
+			"url": "https://pz-gateway.{{domain}}/alert?triggerId={{triggerId}}&inflate=true",
 			"queryParams": [
+				{
+					"key": "triggerId",
+					"value": "{{triggerId}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
 				{
 					"key": "inflate",
 					"value": "true",
@@ -1672,7 +1680,7 @@
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\n// found = false;\n\n// if (testLevels(tests, data, 'data', 'array')) {\n//     for (i = 0; i < data.data.length; i++) {\n//         if (testLevels(tests, data.data[i], 'eventId', 'skip', 'data[].') && testLevels(tests, data.data[i], 'triggerId', 'skip', 'data[].')) {\n//             if (data.data[i].alertId === postman.getEnvironmentVariable('alertId')) {\n//                 found = true;\n//                 if (testLevels(tests, data.data[i], 'trigger.triggerId', 'skip', 'data[].')) {\n//                     tests[\"Correct triggerId should be found in the trigger inflation\"] = data.data[i].trigger.triggerId === postman.getEnvironmentVariable('triggerId');\n//                 }\n//                 if (testLevels(tests, data.data[i], 'event.eventId', 'skip', 'data[].')) {\n//                     tests[\"Correct eventId should be found in the event inflation\"] = data.data[i].event.eventId === postman.getEnvironmentVariable('eventId');\n//                 }\n//             }\n//         }\n//     }\n// }\n\n// tests[\"Alert should be found\"] = found;",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nfound = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (data.data[i].alertId === postman.getEnvironmentVariable('alertId')) {\n            found = true;\n            // Verify Trigger Inflation:\n            if (testLevels(tests, data.data[i], 'trigger.triggerId', 'skip', 'data[].')) {\n                tests[\"Correct triggerId should be found in the trigger inflation\"] = data.data[i].trigger.triggerId === postman.getEnvironmentVariable('triggerId');\n            }\n            if (testLevels(tests, data.data[i], 'trigger.eventTypeId', 'skip', 'data[].')) {\n                tests[\"Correct eventTypeId should be found in the trigger inflation\"] = data.data[i].trigger.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n            }\n            if (testLevels(tests, data.data[i], 'trigger.name', 'skip', 'data[].')) {\n                tests[\"Correct name should be found in the trigger inflation\"] = data.data[i].trigger.name === postman.getEnvironmentVariable('trigger_name');\n            }\n            if (testLevels(tests, data.data[i], 'trigger.createdBy', 'skip', 'data[].')) {\n                tests[\"Correct createdBy should be found in the trigger inflation\"] = data.data[i].trigger.createdBy === postman.getEnvironmentVariable('username');\n            }\n            \n            // Verify Event Inflation:\n            if (testLevels(tests, data.data[i], 'event.eventId', 'skip', 'data[].')) {\n                tests[\"Correct eventId should be found in the event inflation\"] = data.data[i].event.eventId === postman.getEnvironmentVariable('eventId');\n            }\n            if (testLevels(tests, data.data[i], 'event.eventTypeId', 'skip', 'data[].')) {\n                tests[\"Correct eventTypeId should be found in the event inflation\"] = data.data[i].event.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n            }\n            if (testLevels(tests, data.data[i], 'event.createdBy', 'skip', 'data[].')) {\n                tests[\"Correct createdBy should be found in the event inflation\"] = data.data[i].event.createdBy === postman.getEnvironmentVariable('username');\n            }\n        }\n    }\n}\n\ntests[\"Alert should be found\"] = found;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1680,7 +1688,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1497016069958,
+			"time": 1497027631064,
 			"name": "Inflate Alerts",
 			"description": "List Alerts, using the inflate option, and verify that the inflated data is correct",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
