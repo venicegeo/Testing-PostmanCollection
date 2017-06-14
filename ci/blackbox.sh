@@ -33,6 +33,9 @@ for space in $spaces; do
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
+	
+	newman --version
+	
   if type newman >/dev/null 2>&1; then
     newmancmd="newman"
   else
