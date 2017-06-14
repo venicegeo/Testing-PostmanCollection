@@ -43,6 +43,7 @@ for space in $spaces; do
   
 	$newmancmd --version
 	$newmancmd -h
+	which $newmancmd
 
 	
 	cmd="$newmancmd -o results.json --requestTimeout 120000 -x -e $envfile -g $POSTMAN_FILE -c "
