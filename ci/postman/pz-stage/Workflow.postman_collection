@@ -673,19 +673,31 @@
 			"rawModeData": "{\n    \"data\": {\n        \"dummy\": \"nothing\"\n    },\n  \"eventTypeId\": \"{{eventTypeId_deletion}}\"\n}"
 		},
 		{
-			"folder": "b7a13432-9b2d-fe79-c6cf-02041888db50",
 			"id": "3e73dc36-6955-d9ce-7143-3b82e29e0de6",
-			"name": "Get Trigger Details",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "Check the details of the Trigger metadata.",
 			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "GET",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/trigger/{{triggerId}}",
+			"queryParams": [],
 			"preRequestScript": "",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.triggerId')) {\n    tests[\"Correct triggerId returned\"] = data.data.triggerId === postman.getEnvironmentVariable('triggerId');\n}\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.enabled')) {\n    tests[\"Trigger is enabled\"] = data.data.enabled === true;\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.condition.query.bool.must','array')) {\n    if (testLevels(tests, data.data.condition.query.bool.must[0], 'match')) {\n        tests[\"eventType Name added to query parameter\"] = data.data.condition.query.bool.must[0].match.hasOwnProperty('data.' + postman.getEnvironmentVariable('eventType Name') + '.dataType');\n        if (tests[\"eventType Name added to query parameter\"]) {\n            tests[\"Correct query value\"] = data.data.condition.query.bool.must[0].match['data.' + postman.getEnvironmentVariable('eventType Name') + '.dataType'] === 'raster';\n        }\n    }\n}\n\nif (testLevels(tests, data, 'data.job.jobType.data.serviceId')) {\n    tests[\"Correct serviceId\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'data.triggerId')) {\n    tests[\"Correct triggerId returned\"] = data.data.triggerId === postman.getEnvironmentVariable('triggerId');\n}\nif (testLevels(tests, data, 'data.eventTypeId')) {\n    tests[\"Correct eventTypeId returned\"] = data.data.eventTypeId === postman.getEnvironmentVariable('eventTypeId');\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}\nif (testLevels(tests, data, 'data.enabled')) {\n    tests[\"Trigger is enabled\"] = data.data.enabled === true;\n}\nif (testLevels(tests, data, 'data.createdOn', 'string')) {\n    tests[\"Timestamp created\"] = data.data.createdOn.match(/\\d{4}-\\d{2}-\\d{2}/) && data.data.createdOn.match(/\\d{2}:\\d{2}:\\d{2}/);\n}\nif (testLevels(tests, data, 'data.condition.query.bool.must','array')) {\n    if (testLevels(tests, data.data.condition.query.bool.must[0], 'match')) {\n        tests[\"Correct query value\"] = data.data.condition.query.bool.must[0].match['data.dataType'] === 'raster';\n    }\n}\n\nif (testLevels(tests, data, 'data.job.jobType.data.serviceId')) {\n    tests[\"Correct serviceId\"] = data.data.job.jobType.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Correct Type\"] = data.type.match(/[Tt]rigger/);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -693,6 +705,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1497540770158,
+			"name": "Get Trigger Details",
+			"description": "Check the details of the Trigger metadata.",
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
