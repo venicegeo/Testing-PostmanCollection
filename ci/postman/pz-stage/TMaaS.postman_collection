@@ -973,20 +973,31 @@
 			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
 		},
 		{
-			"folder": "1898293e-c24f-33a4-d9f8-62e2c268737a",
 			"id": "9587687d-8feb-f887-4217-3b3314060353",
-			"name": "Pull Job from Queue",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"descriptionFormat": null,
-			"description": "Get a job from the service's queue.",
 			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "POST",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}/task",
+			"queryParams": [],
 			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.jobId')) {\n    tests[\"Correct jobId pulled from queue\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n}\nif (testLevels(tests, data, 'data.serviceData.data.serviceId')) {\n    tests[\"Correct serviceId given in response\"] = data.data.serviceData.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}\n\nwait(250);",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'data.jobId')) {\n    tests[\"Correct jobId pulled from queue\"] = data.data.jobId === postman.getEnvironmentVariable('jobId');\n}\nif (testLevels(tests, data, 'data.serviceData.data.serviceId')) {\n    tests[\"Correct serviceId given in response\"] = data.data.serviceData.data.serviceId === postman.getEnvironmentVariable('serviceId');\n}\n\nwait(2000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -994,7 +1005,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543"
+			"time": 1497548823687,
+			"name": "Pull Job from Queue",
+			"description": "Get a job from the service's queue.",
+			"collectionId": "4b065ce9-e3b4-400f-8257-66663884a543",
+			"rawModeData": ""
 		},
 		{
 			"folder": "6d70c66f-7d7b-ab43-5a8a-31dc326f6a5e",
