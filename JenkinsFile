@@ -1,6 +1,8 @@
-@Library('pipelib@master') _
-
 node {
+  def root = pwd()
+  def nodejs = tool 'NodeJS_6'
+  def POSTMAN_SECRET_FILE = '579f8660-01e6-4feb-8764-ec132432ebb1'
+
   stage('Setup') {
     git([
       url: "https://github.com/venicegeo/pztest-integration",
@@ -9,9 +11,10 @@ node {
   }
 
   stage('Test') {
-    withEnv(["PCF_SPACE=test"]) {
-      withNpm {
-        sh './ci/blackbox.sh'
+    withCredentials([file(credentialsId: "${POSTMAN_SECRET_FILE}", variable: 'POSTMAN_FILE')]) {
+      withEnv(["PATH+=${root}/integration-tests/node_modules/newman/bin:${nodejs}/bin", "PCF_SPACE=int", "HOME=${root}"]) {
+        sh "npm install newman@2"
+        sh "ci/blackbox.sh"
       }
     }
   }
