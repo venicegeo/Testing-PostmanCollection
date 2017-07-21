@@ -1,7 +1,6 @@
 node {
   def root = pwd()
   def nodejs = tool 'NodeJS_6'
-  def POSTMAN_SECRET_FILE = '579f8660-01e6-4feb-8764-ec132432ebb1'
 
   stage('Setup') {
     git([
