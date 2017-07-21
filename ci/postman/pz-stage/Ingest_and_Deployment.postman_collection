@@ -426,9 +426,19 @@
 		{
 			"id": "28935e7f-02b7-0032-7ea2-7c1c7f227a3a",
 			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/data/file",
+			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "POST",
 			"data": [
 				{
@@ -453,7 +463,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1489431513995,
+			"time": 1500641881525,
 			"name": "Ingest Raster",
 			"description": "Ingest a local raster file into piazza.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
@@ -552,9 +562,19 @@
 		{
 			"id": "369eb786-5bb2-7c1a-8572-505663d7195b",
 			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/data/file",
+			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "POST",
 			"data": [
 				{
@@ -579,7 +599,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1489432251974,
+			"time": 1500642267570,
 			"name": "Large - Ingest GeoJSON",
 			"description": "Ingest a large (~ 5MB) geoJSON file into piazza.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
@@ -2414,9 +2434,19 @@
 		{
 			"id": "dbf61b56-d9c9-a9d5-5548-9ff76e5c8cba",
 			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/data/file",
+			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "POST",
 			"data": [
 				{
@@ -2441,7 +2471,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1489431486409,
+			"time": 1500641858915,
 			"name": "Ingest GeoJSON",
 			"description": "Ingest a local geoJSON file into piazza.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
@@ -2661,9 +2691,19 @@
 		{
 			"id": "f34b3995-c211-b38e-44c1-0ffadc4c0a6a",
 			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/data/file",
+			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "POST",
 			"data": [
 				{
@@ -2688,7 +2728,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1489431533301,
+			"time": 1500641906687,
 			"name": "Ingest Shape",
 			"description": "Ingest a local shape file into piazza.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"

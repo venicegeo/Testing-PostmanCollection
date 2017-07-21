@@ -76,7 +76,6 @@
 				"56cc8148-ca72-0550-3c7f-e02a0148464d",
 				"a09540e4-d655-775e-ce0e-2ad02a32c16c",
 				"b3bd365b-f4f3-8936-2ed1-833ba6ae5171",
-				"f293b3a0-7ffb-b38b-15a0-3e603e704327",
 				"8fc295ab-c416-da26-0ae7-00777626b6a3",
 				"b99eda6e-0ba5-4b1f-9cc1-c131596854ad",
 				"c5063351-e0d6-94bb-60b6-c16a8a9fc209",
@@ -2425,30 +2424,6 @@
 			},
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"rawModeData": "{\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
-		},
-		{
-			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
-			"id": "f293b3a0-7ffb-b38b-15a0-3e603e704327",
-			"name": "Create Trigger w/ Bad ServiceId",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": null,
-			"description": "Attempt to Create a Trigger with a non-existant serviceId.",
-			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "POST",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/trigger",
-			"preRequestScript": "",
-			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\n\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Not found / exist message\"] = data.message.match(/[Nn]o.*(([Ee]xist)|([Ff]ound))/);\n    tests[\"Service is the problem\"] = data.message.match(/[Ss]ervice/);\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
-			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"eventTypeId\": \"{{eventTypeId}}\",\n    \"condition\": {\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"data.dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"foo\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
 		},
 		{
 			"folder": "ed4acd95-58bc-4ffb-410b-92dc9085cce0",

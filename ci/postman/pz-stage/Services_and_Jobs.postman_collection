@@ -94,10 +94,8 @@
 				"f06dd39a-63e5-1f0c-6e81-1cf2f4a48e4c",
 				"94549de0-800f-d5ca-41fa-88fd747a79b1",
 				"7c0a2afb-01f8-f75b-abd4-a166b847c615",
-				"4bc180ba-b526-34e3-c94f-4754d1b4aaa2",
 				"98ff3c22-87a4-f892-71da-7102d7cefe60",
 				"052a62bc-7a69-d8a7-abbb-a7b71e32c5bb",
-				"edd57179-6da4-ce97-f66e-6cd52eb43fa0",
 				"129f49e0-8a94-37df-12c1-526be6b240fa",
 				"64f820d3-a708-4461-925d-369a74b83400",
 				"f5b67f48-2dcb-b8f9-3c4f-9b87e911c3da",
@@ -348,9 +346,49 @@
 		{
 			"id": "2c75fd00-6eb4-a0f4-40be-9e0ea11fbf90",
 			"headers": "Content-Type: application/json\nsize: 30\nfrom: 0\nkey: stamp\norder: true\nAuthorization: \n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "size",
+					"value": "30",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "from",
+					"value": "0",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "key",
+					"value": "stamp",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "true",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/service",
+			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
@@ -362,11 +400,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1488309617839,
+			"time": 1500633592705,
 			"name": "Register Service",
 			"description": "Register the synchronous Service (pzsvc-hello) to be used throughout this collection.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"rawModeData": "{\n    \"url\": \"https://pzsvc-hello.{{domain}}/\",\n    \"contractUrl\": \"garbage\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
+			"rawModeData": "{\n    \"url\": \"https://pz-gateway.{{domain}}/\",\n    \"contractUrl\": \"garbage\",\n    \"method\" : \"GET\",\n    \"isAsynchronous\" : \"false\",\n    \"resourceMetadata\": {\n        \"name\": \"pzsvc-hello service\",\n        \"description\": \"{{text description}}\",\n        \"classType\": {\n            \"classification\": \"UNCLASSIFIED\"\n         }\n    }\n}"
 		},
 		{
 			"id": "2e85c001-987b-fcea-e715-2c507ebb00e8",
@@ -568,30 +606,6 @@
 			},
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"availability\": \"anything\"\n    }\n}"
-		},
-		{
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"id": "4bc180ba-b526-34e3-c94f-4754d1b4aaa2",
-			"name": "List Services - Negative Page",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "Attempt to list Services, specifying a negative page.",
-			"headers": "Authorization: \n",
-			"method": "GET",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/service?page=-1",
-			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 400\"] = responseCode.code === 400;\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Problem with page parameter\"] = data.message.match(/page/i);\n}\nif (testLevels(tests, data, 'type')) {\n    tests[\"Error Type\"] = data.type === 'error';\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
@@ -811,18 +825,30 @@
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
-			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
 			"id": "677d2925-a9e1-5fe2-6dea-1c3b1e8b220e",
-			"name": "Rerun - Create Job",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "Rerun the job run on the synch Service.  Verify that a new jobId is returned.",
 			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "POST",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId_standard}}",
+			"queryParams": [],
 			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 201\"] = responseCode.code === 201;\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.jobId', 'string')) {\n    tests[\"GUID created for jobId\"] = data.data.jobId.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);\n    tests[\"New GUID created\"] = data.data.jobId != postman.getEnvironmentVariable('jobId');\n    postman.setEnvironmentVariable(\"jobId_rerun\",data.data.jobId);\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -831,8 +857,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1497649469032,
+			"name": "Rerun - Create Job",
+			"description": "Rerun the job run on the synch Service.  Verify that a new jobId is returned.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
+			"rawModeData": ""
 		},
 		{
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
@@ -1504,30 +1533,6 @@
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
 			"preRequestScript": "",
 			"tests": "var wait = eval(postman.getEnvironmentVariable('wait'));\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.status')) {\n    if (data.data.status === 'Running' || data.data.status === 'Submitted') {\n        if (postman.getEnvironmentVariable('retry_loop') < postman.getEnvironmentVariable('max_retries')) {\n            postman.setEnvironmentVariable('retry_loop', parseInt(postman.getEnvironmentVariable('retry_loop')) + 1);\n            postman.setNextRequest('Reenable - Check Job Status');\n            wait(1000);\n        }\n        else {\n            tests[\"Job finished in time\"] = false;\n            postman.setEnvironmentVariable('retry_loop',0);\n        }\n    }\n    else if (data.data.status === 'Success') {\n        postman.setEnvironmentVariable('retry_loop',0);\n        tests[\"Job finished in time\"] = true;\n        if (testLevels(tests, data, 'data.result.dataId')) {\n            postman.setEnvironmentVariable(\"dataId\", data.data.result.dataId);\n        }\n    }\n    else {\n        tests[\"status should not be \" + data.data.status] = false;\n        postman.setEnvironmentVariable('retry_loop',0);\n    }\n}\nif (testLevels(tests, data, 'data.createdBy')) {\n    tests[\"Correct createdBy\"] = data.data.createdBy === postman.getEnvironmentVariable('username');\n}",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
-		},
-		{
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"id": "edd57179-6da4-ce97-f66e-6cd52eb43fa0",
-			"name": "List Services - Bad order",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "Attempt to list Services, giving an invalid string for the \"sortBy\" parameter.",
-			"headers": "Authorization: \n",
-			"method": "GET",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/service?order=foo",
-			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 400 (Bug #7542)\"] = responseCode.code === 400;\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Problem with order parameter\"] = data.message.match(/order/i);\n    tests[\"Needs to be 'asc' or 'desc'\"] = data.message.match(/asc/i) && data.message.match(/desc/i);\n}\nif (testLevels(tests, data, 'type')) {\n    tests[\"Error Type\"] = data.type === 'error';\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
