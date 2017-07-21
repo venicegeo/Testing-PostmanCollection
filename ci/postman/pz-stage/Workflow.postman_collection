@@ -80,6 +80,7 @@
 				"b99eda6e-0ba5-4b1f-9cc1-c131596854ad",
 				"c5063351-e0d6-94bb-60b6-c16a8a9fc209",
 				"d3b9f618-821d-ad92-d81b-adb619184f06",
+				"e49ec19d-a202-6262-1c5f-6785f829092e",
 				"e6883d62-8670-c9b7-312c-f230f22ff663",
 				"5f5dd927-345f-7550-9277-acbbe22de4bc",
 				"8bfe9aad-8553-dfb8-4a0d-fdec67099b46",
@@ -2352,6 +2353,32 @@
 			},
 			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
+		},
+		{
+			"collectionId": "30ac1784-57ab-b235-ae51-e2515cf7826e",
+			"collectionRequestId": "3e93b1b7-f114-4e5e-d03e-7b8a60b8a4ca",
+			"currentHelper": "basicAuth",
+			"data": [],
+			"dataMode": "raw",
+			"description": "Attempt to Create a Trigger with a non-existant serviceId.",
+			"descriptionFormat": null,
+			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
+			"headers": "Content-Type: application/json\nAuthorization: \n",
+			"helperAttributes": {
+				"id": "basic",
+				"password": "",
+				"saveToRequest": true,
+				"username": "{{API Key}}"
+			},
+			"id": "e49ec19d-a202-6262-1c5f-6785f829092e",
+			"isFromCollection": true,
+			"method": "POST",
+			"name": "Create Trigger w/ Bad ServiceId",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;\n\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\nvar data = JSON.parse(responseBody);\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Not found / exist message\"] = data.message.match(/[Nn]o.*(([Ee]xist)|([Ff]ound))/);\n    tests[\"Service is the problem\"] = data.message.match(/[Ss]ervice/);\n}",
+			"url": "https://pz-gateway.{{domain}}/trigger",
+			"rawModeData": "{\n    \"name\": \"CI Testing Trigger\",\n    \"enabled\": true,\n    \"eventTypeId\": \"{{eventTypeId}}\",\n    \"condition\": {\n        \"query\": {\n            \"query\": {\n                \"bool\": {\n                    \"must\": [\n                        {\n                            \"match\": {\n                                \"data.dataType\": \"raster\"\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    },\n    \"job\": {\n        \"jobType\": {\n            \"type\": \"execute-service\",\n            \"data\": {\n                \"serviceId\": \"foo\",\n                \"dataInputs\": {\n                    \"test\": {\n                        \"content\": \"{ \\\"log\\\": \\\"Received event with type $dataType\\\" }\",\n                        \"type\": \"body\",\n                        \"mimeType\": \"application/json\"\n                    }\n                },\n                \"dataOutput\": [ {\n                    \"content\": \"filler text\",\n                    \"mimeType\":\"application/json\",\n                    \"type\":\"text\"\n                } ]\n            }\n        }\n    }\n}"
 		},
 		{
 			"folder": "0815a7ca-5a76-79ac-e882-d4d5a5d65783",
