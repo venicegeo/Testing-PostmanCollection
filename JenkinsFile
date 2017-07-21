@@ -11,7 +11,7 @@ node {
 
   stage('Test') {
     withCredentials([file(credentialsId: "${POSTMAN_SECRET_FILE}", variable: 'POSTMAN_FILE')]) {
-      withEnv(["PATH+=${root}/node_modules/newman/bin:${nodejs}/bin", "PCF_SPACE=int", "HOME=${root}"]) {
+      withEnv(["PATH+=${root}/node_modules/newman/bin:${nodejs}/bin", "PCF_SPACE=test", "HOME=${root}"]) {
         sh "npm install newman@2"
         sh "ci/blackbox.sh"
       }
