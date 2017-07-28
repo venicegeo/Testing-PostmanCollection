@@ -1,6 +1,7 @@
 #!/bin/bash -ex
 echo start
 #mail settings
+# TODO: parameterize the email address
 RCVR="jamesyarrington88@gmail.com"
 SUBJ= $BUILDURL
 
