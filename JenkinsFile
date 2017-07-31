@@ -20,7 +20,7 @@ node {
   }
 
   stage('Sync with GitLab') {
-    withCredentials([file(credentialsId: 'gitlab-piazza-jenkins', variable: 'GIT_KEY']) {
+    withCredentials([file(credentialsId: 'gitlab-piazza-jenkins', variable: 'GIT_KEY')]) {
       sh """
         export HOME=\$(pwd)
 
