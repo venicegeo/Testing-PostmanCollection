@@ -15,20 +15,21 @@ node {
       sh """
         export HOME=\$(pwd)
 
-      eval "\$(ssh-agent -s)"
-      if [ ! -f \$HOME/.ssh/config ]; then
-            touch \$HOME/.ssh/config
-      fi
-      [ -f "\$GIT_KEY" ] && ssh-add "\$GIT_KEY"
-      chmod 600 \$HOME/.ssh/config
-      cat <<- EOF > \$HOME/.ssh/config
+        eval "\$(ssh-agent -s)"
+        if [ ! -f \$HOME/.ssh/config ]; then
+          mkdir -p \$HOME/.ssh
+          touch \$HOME/.ssh/config
+        fi
+        [ -f "\$GIT_KEY" ] && ssh-add "\$GIT_KEY"
+        chmod 600 \$HOME/.ssh/config
+        cat <<- EOF > \$HOME/.ssh/config
 Host gitlab.devops.geointservices.io
   HostName gitlab.devops.geointservices.io
   User git
   IdentityFile \$GIT_KEY
   IdentitiesOnly yes
 EOF
-      chmod 400 \$HOME/.ssh/config
+        chmod 400 \$HOME/.ssh/config
 
         git remote add gitlab git@gitlab.devops.geointservices.io:venicegeo/pztest-integration-source.git
         git push gitlab master
