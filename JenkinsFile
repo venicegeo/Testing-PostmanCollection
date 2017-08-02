@@ -15,6 +15,7 @@ node {
       sh """
         export HOME=\$(pwd)
 
+        # We need to use our own write-access key for this push to gitlab.
         eval "\$(ssh-agent -s)"
         if [ ! -f \$HOME/.ssh/config ]; then
           mkdir -p \$HOME/.ssh
