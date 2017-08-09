@@ -2,6 +2,10 @@ node {
   def root = pwd()
   def nodejs = tool 'NodeJS_6'
 
+  stage('Clean') {
+    deleteDir()
+  }
+
   stage('Setup') {
     git([
       url: "https://github.com/venicegeo/pztest-integration",
