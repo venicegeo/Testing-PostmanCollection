@@ -2383,7 +2383,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://pz-idam.{{domain}}/v2/key",
+			"url": "https://pz-gateway.{{domain}}/v2/key",
 			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -2400,7 +2400,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1496779243509,
+			"time": 1500918023242,
 			"name": "Get Key",
 			"description": "Retrieve an API key for testing.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
