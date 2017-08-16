@@ -5,27 +5,26 @@
 	"order": [],
 	"folders": [
 		{
-			"owner": "699425",
-			"lastUpdatedBy": "699425",
-			"lastRevision": 691274335,
-			"id": "d56edcab-e1a2-8302-8254-b12766417afb",
-			"name": "1_Startup",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"description": "",
+			"id": "d56edcab-e1a2-8302-8254-b12766417afb",
+			"lastRevision": 691274335,
+			"lastUpdatedBy": "699425",
+			"name": "1_Startup",
 			"order": [
 				"9333601e-593c-9bb4-bcdf-b437349d4e7b",
 				"314da4b5-9a7e-4056-2f77-8250f7be4334",
 				"2c75fd00-6eb4-a0f4-40be-9e0ea11fbf90",
 				"c52d2ba3-3eb0-536b-a91e-87438c9f1910"
 			],
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
+			"owner": "699425"
 		},
 		{
-			"owner": "699425",
-			"lastUpdatedBy": "699425",
-			"lastRevision": 698371682,
-			"id": "51708a3c-5f51-c0aa-0a3d-33d73a6ab454",
-			"name": "2_Critical",
 			"description": "",
+			"id": "51708a3c-5f51-c0aa-0a3d-33d73a6ab454",
+			"lastRevision": 698371682,
+			"lastUpdatedBy": "699425",
+			"name": "2_Critical",
 			"order": [
 				"34f5cb55-bacd-726f-4e4a-2bb838938858",
 				"667dabcf-9904-981d-c876-1e63376a1864",
@@ -36,15 +35,15 @@
 				"fef41362-f65b-83c1-cde6-bcd71870cc49",
 				"2e85c001-987b-fcea-e715-2c507ebb00e8",
 				"f247d54a-bedd-816f-7ca8-721a251e27de"
-			]
+			],
+			"owner": "699425"
 		},
 		{
-			"owner": "699425",
-			"lastUpdatedBy": "699425",
-			"lastRevision": 919922861,
-			"id": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
-			"name": "3_Normal",
 			"description": "",
+			"id": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
+			"lastRevision": 919922861,
+			"lastUpdatedBy": "699425",
+			"name": "3_Normal",
 			"order": [
 				"d8bebf66-1119-749f-4087-0a9b28f7e079",
 				"27295b58-09e3-078b-b52c-f9a968a3d303",
@@ -54,15 +53,16 @@
 				"9f40825b-5d25-6bd8-f467-f3ce5b87ad43",
 				"64f2abe3-e926-f721-7ddf-458f8a0d63be",
 				"34b2eb58-200c-4952-171a-aeb761dee126"
-			]
+			],
+			"owner": "699425"
 		},
 		{
-			"owner": "699425",
-			"lastUpdatedBy": "699425",
-			"lastRevision": 841416562,
-			"id": "77205174-4d78-0434-2e54-a9eae4174623",
-			"name": "4_Low",
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"description": "",
+			"id": "77205174-4d78-0434-2e54-a9eae4174623",
+			"lastRevision": 841416562,
+			"lastUpdatedBy": "699425",
+			"name": "4_Low",
 			"order": [
 				"9f8a4ae8-686a-71e4-0ee3-31568914960a",
 				"febb7eb9-ccdb-a834-ae53-c37862fbfd87",
@@ -73,7 +73,6 @@
 				"734b2868-631b-2288-71d0-0d22da21070f",
 				"c84a5cf0-b44c-7aea-d56c-a4a98e54b7dd",
 				"fd9d2b67-b2f9-93e2-9652-d0e31be7e659",
-				"bbcd6358-db92-801a-d4c6-c750f1fd781d",
 				"35a40a05-7aa6-d57e-7c27-f0030f31e694",
 				"a7b2cd63-f52b-4698-72e3-7e2422e8f41b",
 				"89ba72d6-fd54-abff-3cf4-fd9fac236c10",
@@ -94,8 +93,10 @@
 				"f06dd39a-63e5-1f0c-6e81-1cf2f4a48e4c",
 				"94549de0-800f-d5ca-41fa-88fd747a79b1",
 				"7c0a2afb-01f8-f75b-abd4-a166b847c615",
+				"0016adb3-2b1b-cafe-1947-30c5b76b770b",
 				"98ff3c22-87a4-f892-71da-7102d7cefe60",
 				"052a62bc-7a69-d8a7-abbb-a7b71e32c5bb",
+				"3cf43555-1ad5-71b7-c433-a2d522dfb1ee",
 				"129f49e0-8a94-37df-12c1-526be6b240fa",
 				"64f820d3-a708-4461-925d-369a74b83400",
 				"f5b67f48-2dcb-b8f9-3c4f-9b87e911c3da",
@@ -108,27 +109,60 @@
 				"7e698f3b-a1bb-7550-037d-ad2983fd62b8",
 				"4d9dac29-bdb0-31b9-b4a1-b80f44b2b531"
 			],
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
+			"owner": "699425"
 		},
 		{
-			"owner": "699425",
-			"lastUpdatedBy": "699425",
-			"lastRevision": 906306011,
-			"id": "f7908e06-7328-8027-9d6d-a04c8bfe0055",
-			"name": "5_Teardown",
 			"description": "",
+			"id": "f7908e06-7328-8027-9d6d-a04c8bfe0055",
+			"lastRevision": 906306011,
+			"lastUpdatedBy": "699425",
+			"name": "5_Teardown",
 			"order": [
 				"5def9700-4e0c-c03e-f168-c364e88e5563",
 				"fd2883ea-d726-c3e4-8c9a-8a9f99b24f9d",
 				"76226aca-af9d-f43e-5262-f04aad3e4d87",
 				"65549667-aa67-b960-47a7-2629ad28bbef"
-			]
+			],
+			"owner": "699425"
 		}
+	],
+	"folders_order": [
+		"d56edcab-e1a2-8302-8254-b12766417afb",
+		"51708a3c-5f51-c0aa-0a3d-33d73a6ab454",
+		"bdc131bd-0cb7-965b-ab53-5bd33449c247",
+		"77205174-4d78-0434-2e54-a9eae4174623",
+		"f7908e06-7328-8027-9d6d-a04c8bfe0055"
 	],
 	"timestamp": 0,
 	"owner": "699425",
 	"public": false,
 	"requests": [
+		{
+			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
+			"id": "0016adb3-2b1b-cafe-1947-30c5b76b770b",
+			"name": "List Services - Negative Page",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Attempt to list Services, specifying a negative page.",
+			"headers": "Authorization: \n",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "https://pz-gateway.{{domain}}/service?page=-1",
+			"preRequestScript": null,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 400\"] = responseCode.code === 400;\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Problem with page parameter\"] = data.message.match(/page/i);\n}\nif (testLevels(tests, data, 'type')) {\n    tests[\"Error Type\"] = data.type === 'error';\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"isFromCollection": true,
+			"collectionRequestId": "c2e98b30-1019-e8f6-0a0c-021dc8c6c569"
+		},
 		{
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
 			"id": "0055d086-a9dc-759c-34b8-c37c1fdc8001",
@@ -512,19 +546,60 @@
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataInputs\": {},\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
 		},
 		{
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
 			"id": "35a40a05-7aa6-d57e-7c27-f0030f31e694",
-			"name": "List Services Pagination",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "Verify that the pagination parameters match the requested values.",
 			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "GET",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&page=1",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://pz-gateway.{{domain}}/service?perPage=25&sortBy=resourceMetadata.createdOn&order=desc&page=1",
+			"queryParams": [
+				{
+					"key": "perPage",
+					"value": "25",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "sortBy",
+					"value": "resourceMetadata.createdOn",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "order",
+					"value": "desc",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"preRequestScript": "",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_cancel'));\n        }\n    }\n    if (testLevels(tests, data, 'pagination.count')) {\n        tests[\"Displays second page\"] = Math.min(200, Math.max(data.pagination.count - 200, 0)) == data.data.length;\n    }\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Displays second page\"] = data.pagination.page == 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Correct perPage\"] = data.pagination.perPage == 200;\n}\nif (testLevels(tests, data, 'pagination.sortBy')) {\n    tests[\"Correct sortBy\"] = data.pagination.sortBy == 'resourceMetadata.createdOn';\n}\nif (testLevels(tests, data, 'pagination.order')) {\n    tests[\"Correct order\"] = data.pagination.order == 'desc';\n}\n\ntests[\"Service not found in list\"] = !found_service;",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_service = false;\n\nif (testLevels(tests, data, 'pagination.count')) {\n    if (data.pagination.count - 25 >= 0) {\n        if (testLevels(tests, data, 'data', 'array')) {\n            for (i = 0; i < data.data.length; i++) {\n                if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n                    found_service = (found_service || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_cancel'));\n                }\n            }\n            tests[\"correct array size: \" + typeof data.data] = Math.min(25, Math.max(data.pagination.count - 25, 0)) == data.data.length;\n        }\n    } else {\n        tests[\"Second page should be empty, not enough data\"] = data.data.length === 0;\n    }\n}\nif (testLevels(tests, data, 'pagination.page')) {\n    tests[\"Displays second page\"] = data.pagination.page == 1;\n}\nif (testLevels(tests, data, 'pagination.perPage')) {\n    tests[\"Correct perPage\"] = data.pagination.perPage == 25;\n}\nif (testLevels(tests, data, 'pagination.sortBy')) {\n    tests[\"Correct sortBy\"] = data.pagination.sortBy == 'resourceMetadata.createdOn';\n}\nif (testLevels(tests, data, 'pagination.order')) {\n    tests[\"Correct order\"] = data.pagination.order == 'desc';\n}\n\ntests[\"Service not found in list\"] = !found_service;",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -532,6 +607,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1502803644822,
+			"name": "List Services Pagination",
+			"description": "Verify that the pagination parameters match the requested values.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
@@ -558,6 +636,32 @@
 			},
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
 			"rawModeData": "{\r\n  \"data\": {\r\n      \"dataOutput\": [{ \"mimeType\":\"application/json\", \"type\":\"text\" }],\r\n      \"serviceId\": \"{{serviceId}}\"\r\n  },\r\n  \"type\": \"execute-service\"\r\n}"
+		},
+		{
+			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
+			"id": "3cf43555-1ad5-71b7-c433-a2d522dfb1ee",
+			"name": "List Services - Bad order",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Attempt to list Services, giving an invalid string for the \"sortBy\" parameter.",
+			"headers": "Authorization: \n",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "https://pz-gateway.{{domain}}/service?order=foo",
+			"preRequestScript": null,
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 400 (Bug #7542)\"] = responseCode.code === 400;\n\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Problem with order parameter\"] = data.message.match(/order/i);\n    tests[\"Needs to be 'asc' or 'desc'\"] = data.message.match(/asc/i) && data.message.match(/desc/i);\n}\nif (testLevels(tests, data, 'type')) {\n    tests[\"Error Type\"] = data.type === 'error';\n}",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{API Key}}",
+				"password": "",
+				"saveToRequest": true
+			},
+			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
+			"isFromCollection": true,
+			"collectionRequestId": "de661756-1ea1-5d0d-c9a4-97f0e8785e85"
 		},
 		{
 			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
@@ -727,19 +831,24 @@
 			"rawModeData": "{\n    \"resourceMetadata\": {\n        \"name\": \"{{New Name}}\",\n        \"nonExistentField\": \"foo\"\n    }\n}"
 		},
 		{
-			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
 			"id": "64f2abe3-e926-f721-7ddf-458f8a0d63be",
-			"name": "Disable - Validate Soft Delete",
-			"dataMode": "params",
-			"data": null,
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "This sequence of tests verifies that a job cannot be created from a softDeleted Serivce.\nLook for \"OFFLINE\" in the Service metadata.",
 			"headers": "Authorization: \n",
-			"method": "GET",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}",
+			"queryParams": [],
 			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar data = JSON.parse(responseBody);\nif (testLevels(tests, data, 'data.resourceMetadata.availability')) {\n    tests[\"Service is now OFFLINE\"] = data.data.resourceMetadata.availability === 'OFFLINE';\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -748,6 +857,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1502808993774,
+			"name": "Disable - Validate Soft Delete",
+			"description": "This sequence of tests verifies that a job cannot be created from a softDeleted Serivce.\nLook for \"OFFLINE\" in the Service metadata.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
@@ -1142,20 +1254,33 @@
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
-			"folder": "bdc131bd-0cb7-965b-ab53-5bd33449c247",
 			"id": "9f40825b-5d25-6bd8-f467-f3ce5b87ad43",
-			"name": "Disable - Soft Delete Service",
-			"dataMode": "params",
-			"data": [],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "This request belongs to a sequence that verifies that a job cannot be created from a softDeleted Serivce.\n\"softDelete\" the Service.",
 			"headers": "Authorization: \n",
-			"method": "DELETE",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/service/{{serviceId}}?softDelete=true",
+			"queryParams": [
+				{
+					"key": "softDelete",
+					"value": "true",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"preRequestScript": null,
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\nwait(5000);",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1163,6 +1288,9 @@
 				"password": "",
 				"saveToRequest": true
 			},
+			"time": 1502892869268,
+			"name": "Disable - Soft Delete Service",
+			"description": "This request belongs to a sequence that verifies that a job cannot be created from a softDeleted Serivce.\n\"softDelete\" the Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
 		},
 		{
@@ -1329,30 +1457,6 @@
 				"saveToRequest": true
 			},
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
-		},
-		{
-			"folder": "77205174-4d78-0434-2e54-a9eae4174623",
-			"id": "bbcd6358-db92-801a-d4c6-c750f1fd781d",
-			"name": "List Services with regex",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "List services, filtered by a regEx keyword, verifying that the synchronous service is present, and that all results match the keyword search.",
-			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "GET",
-			"pathVariables": {},
-			"url": "https://pz-gateway.{{domain}}/service?perPage=200&sortBy=resourceMetadata.createdOn&order=desc&keyword=^Serv.*[Ii1][Nn][j-t][b-h].*(ing)\\.$",
-			"preRequestScript": "",
-			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_synch = false;\nvar found_asynch = false;\nvar found_regex = true;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'serviceId', 'skip', 'data[]')) {\n            found_synch = (found_synch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId'));\n            found_asynch = (found_asynch || data.data[i].serviceId === postman.getEnvironmentVariable('serviceId_asynch'));\n        }\n        found_regex = found_regex && JSON.stringify(data.data[i]).match(/Serv.*[Ii1][Nn][j-t][b-h].*(ing)\\./);\n    }\n}\n\ntests[\"Synchronous service found in list\"] = found_synch;\ntests[\"Asynchronous service missing from list\"] = !found_asynch;\ntests[\"All services had specified regular expression\"] = found_regex;",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{API Key}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c",
-			"rawModeData": "{\r\n  \"name\": \"{{$timestamp}}\",\r\n  \"mapping\": {\r\n    \"dataId\": \"string\",\r\n    \"dataType\": \"string\",\r\n    \"epsg\": \"short\",\r\n    \"minX\": \"long\",\r\n    \"minY\": \"long\",\r\n    \"maxX\": \"long\",\r\n    \"maxY\": \"long\",\r\n    \"hosted\": \"boolean\"\r\n  }\r\n}  "
 		},
 		{
 			"id": "c52d2ba3-3eb0-536b-a91e-87438c9f1910",
