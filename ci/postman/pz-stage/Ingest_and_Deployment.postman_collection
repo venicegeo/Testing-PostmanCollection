@@ -1061,20 +1061,31 @@
 			"rawModeData": "{\r\n  \"dataId\": \"{{dataId_geojson}}\",\r\n  \"deploymentType\": \"~geoserver\",\r\n  \"type\": \"access\"\r\n}"
 		},
 		{
-			"folder": "eab39bb3-61a3-84aa-43ab-eac21622eb16",
 			"id": "6de3ba54-091d-d836-bea1-960749b10f52",
-			"name": "Delete Deployment in Group",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "",
-			"descriptionFormat": "html",
-			"description": "Attempt to delete a deployment, the (Local) Raster, without deleting the group to which it was deployed.",
 			"headers": "Content-Type: application/json\nAuthorization: \n",
-			"method": "DELETE",
-			"pathVariables": {},
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
 			"url": "https://pz-gateway.{{domain}}/deployment/{{deploymentId_raster}}",
+			"queryParams": [],
 			"preRequestScript": "",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 500\"] = responseCode.code === 500;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Error response\"] = data.type.match(/[Ee]rror/);\n}\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Unable to delete message\"] = data.message.match(/unable.*delet/i);\n    tests[\"Deployment Id included in message\"] = data.message.match(postman.getEnvironmentVariable('dataId_raster'));\n    tests[\"Deployment Group Id included in message\"] = data.message.match(postman.getEnvironmentVariable('deploymentGroupId'));\n}",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\n\ntests[\"Status code is 403\"] = responseCode.code === 403;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Error response\"] = data.type.match(/[Ee]rror/);\n}\nif (testLevels(tests, data, 'message', 'string')) {\n    tests[\"Unable to delete message\"] = data.message.match(/unable.*delet/i);\n    tests[\"Deployment Id included in message\"] = data.message.match(postman.getEnvironmentVariable('dataId_raster'));\n    tests[\"Deployment Group Id included in message\"] = data.message.match(postman.getEnvironmentVariable('deploymentGroupId'));\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1082,7 +1093,11 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00"
+			"time": 1502919057360,
+			"name": "Delete Deployment in Group",
+			"description": "Attempt to delete a deployment, the (Local) Raster, without deleting the group to which it was deployed.",
+			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
+			"rawModeData": ""
 		},
 		{
 			"folder": "8c5d6086-e0a0-057e-55c8-e356ef1cae8d",
@@ -2392,7 +2407,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    postman.setNextRequest('');\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar parseJSON = eval(postman.getEnvironmentVariable('parseJSON'));\nvar data = parseJSON(tests, responseBody);\n\nif (testLevels(tests, data, 'uuid')) {\n    postman.setEnvironmentVariable('API Key', data.uuid);\n} else {\n    // postman.setNextRequest('');\n}",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -2400,7 +2415,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1500918023242,
+			"time": 1502822262438,
 			"name": "Get Key",
 			"description": "Retrieve an API key for testing.",
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",

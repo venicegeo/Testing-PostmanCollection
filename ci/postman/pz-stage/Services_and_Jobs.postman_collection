@@ -1280,7 +1280,7 @@
 			"method": "DELETE",
 			"data": [],
 			"dataMode": "params",
-			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\nwait(5000);",
+			"tests": "var data = JSON.parse(responseBody);\nvar testLevels = eval(postman.getEnvironmentVariable('testLevels'));\nvar wait = eval(postman.getEnvironmentVariable('wait'));\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nif (testLevels(tests, data, 'type', 'string')) {\n    tests[\"Deletion successful\"] = data.type.match(/[Ss]uccess/);\n}\nwait(10000); // 10 seconds should be more than enough time.",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
@@ -1288,7 +1288,7 @@
 				"password": "",
 				"saveToRequest": true
 			},
-			"time": 1502892869268,
+			"time": 1502920100810,
 			"name": "Disable - Soft Delete Service",
 			"description": "This request belongs to a sequence that verifies that a job cannot be created from a softDeleted Serivce.\n\"softDelete\" the Service.",
 			"collectionId": "cd22abe9-ce24-1562-5ecc-8a24224f8c2c"
