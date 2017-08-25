@@ -2,10 +2,19 @@
 	"id": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 	"name": "Example_Services",
 	"description": "",
-	"order": [
-		"1c1a3799-756a-162a-4101-604d48038c0b"
-	],
+	"order": [],
 	"folders": [
+		{
+			"name": "Get Key",
+			"description": "",
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"order": [
+				"1c1a3799-756a-162a-4101-604d48038c0b"
+			],
+			"owner": "699425",
+			"folders_order": [],
+			"id": "1ccc4045-d152-0028-3008-32589a037aba"
+		},
 		{
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
 			"description": "",
@@ -123,6 +132,7 @@
 		}
 	],
 	"folders_order": [
+		"1ccc4045-d152-0028-3008-32589a037aba",
 		"c7a2a43d-e1c5-8fda-1e2e-589814dbe35c",
 		"ff19cac1-72d1-4bd3-70ce-9b77174fb1c9",
 		"35c743d1-078b-1560-4d69-afb668adf4c5",
@@ -227,7 +237,7 @@
 			"url": "https://pz-gateway.{{domain}}/data/{{dataId_norm}}"
 		},
 		{
-			"folder": null,
+			"folder": "1ccc4045-d152-0028-3008-32589a037aba",
 			"id": "1c1a3799-756a-162a-4101-604d48038c0b",
 			"name": "Get Key",
 			"dataMode": "raw",
@@ -258,7 +268,9 @@
 				}
 			],
 			"pathVariableData": [],
-			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3"
+			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
+			"isFromCollection": true,
+			"collectionRequestId": "1c1a3799-756a-162a-4101-604d48038c0b"
 		},
 		{
 			"collectionId": "07fcff34-0010-ab89-a0d2-2af1fb664bd3",
