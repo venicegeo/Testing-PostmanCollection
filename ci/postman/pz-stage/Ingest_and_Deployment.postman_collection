@@ -219,7 +219,7 @@
 				"saveToRequest": true
 			},
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
-			"rawModeData": "{\n    \"query\": {\n        \"match\": {\n            \"dataResource.metadata.name\": \"TestShape.zip\"\n        }\n    }\n}"
+			"rawModeData": "{\n    \"query\": {\n        \"match\": {\n            \"dataResource.metadata.name\": \"foo\"\n        }\n    }\n}"
 		},
 		{
 			"collectionId": "2cc18137-6a8d-22d4-51ec-e369c240cb00",
