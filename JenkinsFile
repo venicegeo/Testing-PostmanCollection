@@ -52,7 +52,7 @@ EOF
     }
   }
 
-  stage ('Cleanup') {
-    deleteDir()
-  }
+//  stage ('Cleanup') {
+  //  deleteDir()
+ // }
 }
