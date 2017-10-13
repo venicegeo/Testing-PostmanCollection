@@ -38,9 +38,7 @@ for space in $spaces; do
   if type newman >/dev/null 2>&1; then
     newmancmd="newman"
   else
-    #npm install newman@2
-    npm install newman
-    #newmancmd="./node_modules/newman/bin/newman"
+    npm install newman@3
     newmancmd="./node_modules/newman/bin/newman.js"
   fi
   
