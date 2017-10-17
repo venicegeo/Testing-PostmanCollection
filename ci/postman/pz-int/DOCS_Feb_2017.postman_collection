@@ -224,7 +224,7 @@
 			"method": "POST",
 			"data": [],
 			"dataMode": "raw",
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\n\nsetTimeout(function() {\nvar data =JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_deploy\",data.data.jobId);\n}, 50000);",
+			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\n\nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 50000);\n\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_deploy\",data.data.jobId);\n",
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
 				"id": "basic",
