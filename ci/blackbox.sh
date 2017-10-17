@@ -1,9 +1,5 @@
 #!/bin/bash -ex
 echo start
-#mail settings
-# TODO: parameterize the email address
-RCVR="jamesyarrington88@gmail.com"
-SUBJ= $BUILDURL
 
 #awm
 
@@ -21,7 +17,7 @@ echo $PCF_SPACE
 
 if [ "$PCF_SPACE" == "test" ]; then
 	echo "test case"
-	spaces="int stage prod"
+	spaces="int stage"
 else
 	spaces=$PCF_SPACE
 fi
@@ -46,41 +42,29 @@ for space in $spaces; do
 	$newmancmd -h
 	which $newmancmd
 
-	
-	cmd="$newmancmd -o results.json --requestTimeout 120000 -e $envfile -g $POSTMAN_FILE -c "
+	# Newman v3 required
+	cmd="$newmancmd run COLLECTION_NAME --timeout-request 120000 --timeout-script 300000 -e $envfile -g $POSTMAN_FILE"
 
 	latch=0
 
 	set -e
 	
 	BODY="Failing Collections:"	
-	
-	#Run all generic tests.
-	for f in $(ls -1 $base/postman/pz-all/*postman_collection); do
-		echo $f
-		filename=$(basename $f)
-		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || { latch=1; BODY="${BODY}\n${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
-		# Removing curl part of script, to get tests passing.
-		# curl -H "Content-Type: application/json" -X POST -d @- http://dashboard.venicegeo.io/cgi-bin/piazza/$space/load.pl < results.json
-		echo $latch
-	done
 
 	#Run all specific environment tests.
 	for f in $(ls -1 $base/postman/pz-$space/*postman_collection); do
 		echo $f
 		filename=$(basename $f)
-		#Try the command first.  If it returns an error, latch & e-mail.
-		$cmd $f || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of the e-mail.
+		#Try the command first.  If it returns an error, latch
+		fullCommand=$(echo $cmd | sed -e "s/COLLECTION_NAME/${f}/g")
+		$fullCommand || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of errors
 		# curl -H "Content-Type: application/json" -X POST -d @- "$json_results" http://dashboard.venicegeo.io/cgi-bin/piazza/$space/load.pl < results.json
 		echo $latch
 	done
 	
-	SUBJ="Piazza failure in $space environment!"
-
 	if [ "$latch" -eq "1" ]; then
-		echo -e "${BODY}" | mail -s "$SUBJ" $RCVR
-		echo "mail sent!"
+		echo "Piazza failure in $space environment!"
+		echo -e "${BODY}"
 		bigLatch=1
 	fi
 done
