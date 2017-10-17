@@ -47,7 +47,7 @@ for space in $spaces; do
 	which $newmancmd
 
 	
-	cmd="$newmancmd -o results.json --timeout-request 120000 --timeout-script 300000 -e $envfile -g $POSTMAN_FILE -c "
+	cmd="$newmancmd -o results.json --requestTimeout 120000 -e $envfile -g $POSTMAN_FILE -c "
 
 	latch=0
 
