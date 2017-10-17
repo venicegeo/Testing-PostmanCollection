@@ -30,13 +30,7 @@ for space in $spaces; do
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
 
-	
-  if type newman >/dev/null 2>&1; then
-    newmancmd="newman"
-  else
-    npm install newman@3
     newmancmd="./node_modules/newman/bin/newman.js"
-  fi
   
 	$newmancmd --version
 	$newmancmd -h
