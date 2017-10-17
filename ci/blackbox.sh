@@ -56,7 +56,7 @@ for space in $spaces; do
 		echo $f
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch
-		fullCommand=$(echo $cmd | sed -e "s/COLLECTION_NAME/${f}/g")
+		fullCommand=$(echo $cmd | sed -e "s/COLLECTION_NAME/\"${f}\"/g")
 		$fullCommand || { latch=1; BODY="${BODY}\n$space: ${filename%.*}"; } #append the failing collection to the pending body of errors
 		# curl -H "Content-Type: application/json" -X POST -d @- "$json_results" http://dashboard.venicegeo.io/cgi-bin/piazza/$space/load.pl < results.json
 		echo $latch
