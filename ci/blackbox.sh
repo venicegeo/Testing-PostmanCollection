@@ -29,8 +29,9 @@ for space in $spaces; do
 	echo $envfile
 
 	[ -f $envfile ] || { echo "no tests configured for this environment"; exit 0; }
-
-    newmancmd="./node_modules/newman/bin/newman.js"
+	
+	npm install newman@3
+	newmancmd="./node_modules/newman/bin/newman.js"
   
 	$newmancmd --version
 	$newmancmd -h
