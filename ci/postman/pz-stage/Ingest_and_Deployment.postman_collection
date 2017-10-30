@@ -2032,7 +2032,7 @@
 			"pathVariables": {},
 			"preRequestScript": null,
 			"tests": "var testLevels = eval(postman.getEnvironmentVariable('testLevels'));\ntests[\"Status code is 200 (Bug #11888)\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar found_external = false;\nvar found_geojson = false;\nvar found_raster = false;\nvar found_shape = false;\nvar found_text = false;\n\nif (testLevels(tests, data, 'data', 'array')) {\n    for (i = 0; i < data.data.length; i++) {\n        if (testLevels(tests, data.data[i], 'dataId', 'skip', 'data[]')) {\n            found_external = (found_external || data.data[i].dataId === postman.getEnvironmentVariable('dataId_external'));\n            found_geojson = (found_geojson || data.data[i].dataId === postman.getEnvironmentVariable('dataId_geojson'));\n            found_raster = (found_raster || data.data[i].dataId === postman.getEnvironmentVariable('dataId_raster'));\n            found_shape = (found_shape || data.data[i].dataId === postman.getEnvironmentVariable('dataId_shape'));\n            found_text = (found_text || data.data[i].dataId === postman.getEnvironmentVariable('dataId_text'));\n        }\n    }\n}\n\ntests[\"Ingested GeoJSON data found in list\"] = found_geojson;\ntests[\"Ingested External Raster data found in list\"] = found_external;\ntests[\"Ingested Raster data found in list\"] = found_raster;\ntests[\"Ingested Shape data found in list\"] = found_shape;\ntests[\"Ingested Text data found in list\"] = found_text;",
-			"url": "https://pz-gateway.{{domain}}/data/query",
+			"url": "https://pz-gateway.{{domain}}/data/query?perPage=200",
 			"rawModeData": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
 		},
 		{
