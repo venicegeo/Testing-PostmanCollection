@@ -147,7 +147,7 @@
 		{
 			"id": "2a69b0fb-1b50-2498-2511-bf278b5fde3b",
 			"headers": "Content-Type: application/json\nsize: 30\nkey: stamp\norder: true\n",
-			"url": "https://pz-gateway.{{domain}}/job/{{jobId_extraster}}",
+			"url": "https://pz-gateway.{{domain}}/job/{{jobId_localimage}}",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
