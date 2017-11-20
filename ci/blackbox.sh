@@ -7,17 +7,17 @@ pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
 
-[ -z "$space" ] && space=int
+space=$PCF_SPACE
 
 if [[ $space == *"pz-"* ]]; then
 	space=${space#$"pz-"}
 fi
 
+echo "Testing $PCF_SPACE"
+
 bigLatch=0
 
 curl -s http://whatismyip.akamai.com/
-
-echo $PCF_SPACE
 
 if [ "$PCF_SPACE" == "test" ]; then
 	echo "test case"
