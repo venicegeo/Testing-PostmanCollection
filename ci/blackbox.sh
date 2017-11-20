@@ -7,21 +7,21 @@ pushd `dirname $0` > /dev/null
 base=$(pwd -P)
 popd > /dev/null
 
-space=$PCF_SPACE
+spaces_to_test=$PCF_SPACE
 
-if [[ $space == *"pz-"* ]]; then
-	space=${space#$"pz-"}
+if [[ $spaces_to_test == *"pz-"* ]]; then
+	spaces_to_test=${spaces_to_test#$"pz-"}
 fi
 
 bigLatch=0
 
 curl -s http://whatismyip.akamai.com/
 
-if [ "$PCF_SPACE" == "test" ]; then
+if [ "$spaces_to_test" == "test" ]; then
 	echo "test case"
 	spaces="int stage"
 else
-	spaces=$PCF_SPACE
+	spaces=$spaces_to_test
 fi
 
 echo "Testing environments : $spaces"
