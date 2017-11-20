@@ -9,7 +9,7 @@ popd > /dev/null
 
 [ -z "$space" ] && space=int
 
-if [ "$space" == *"pz-"*]; then
+if [ "$space" == *"pz-"* ]; then
 	space=${space#$"pz-"}
 fi
 
