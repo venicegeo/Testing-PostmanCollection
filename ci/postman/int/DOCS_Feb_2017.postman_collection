@@ -265,55 +265,6 @@
 			"collection_id": "016fb849-7165-5437-b6ea-eec51b3c5261"
 		},
 		{
-			"id": "5edf1a49-c666-c254-c2f7-62b0fa94bd91",
-			"headers": "Content-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/data",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\n\n\nvar t = new Date().getTime();\nwhile (new Date().getTime() < t + 5000);\n\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"jobId_extraster\",data.data.jobId);\n",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1494254395888,
-			"name": "3.2 Ingest External Raster",
-			"description": "",
-			"collectionId": "016fb849-7165-5437-b6ea-eec51b3c5261",
-			"responses": [],
-			"rawModeData": "{\n  \"type\": \"ingest\",\n  \"host\": \"false\",\n  \"data\": {\n    \"dataType\": {\n      \"type\": \"raster\",\n      \"location\": {\n        \"type\": \"s3\",\n        \"bucketName\": \"external-public-access-test\",\n        \"fileName\": \"terrametrics.tif\",\n        \"domainName\": \"s3.amazonaws.com\"\n      }\n    },\n    \"metadata\": {\n      \"name\": \"My Test raster external file\",\n      \"description\": \"This is a test.\",\n      \"classType\": \"unclassified\"\n    }\n  }\n}",
-			"collection_id": "016fb849-7165-5437-b6ea-eec51b3c5261"
-		},
-		{
-			"id": "71df3ceb-6e75-57fb-5f2a-f93c646601f7",
-			"headers": "Content-Type: application/json\n",
-			"url": "https://pz-gateway.{{domain}}/job/{{jobId_extraster}}",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": "\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"dataId_extraster\", data.data.result.dataId);\n\ntests[\"Body does not have supplied string\"] = !(responseBody.has(\"error\"));",
-			"currentHelper": "basicAuth",
-			"helperAttributes": {
-				"id": "basic",
-				"username": "{{apikey}}",
-				"password": "",
-				"saveToRequest": true
-			},
-			"time": 1494263145468,
-			"name": "3.2 Status of External Ingest",
-			"description": "",
-			"collectionId": "016fb849-7165-5437-b6ea-eec51b3c5261",
-			"responses": [],
-			"collection_id": "016fb849-7165-5437-b6ea-eec51b3c5261"
-		},
-		{
 			"id": "8c4b9cbf-a526-4a73-1e17-944c3564296d",
 			"headers": "Content-Type: application/json\n",
 			"url": "https://pz-gateway.{{domain}}/job/{{jobId}}",
