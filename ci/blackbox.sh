@@ -47,7 +47,7 @@ for space in $spaces; do
 	BODY="Failing Collections:"	
 
 	#Run all specific environment tests.
-	for f in $(ls -1 $base/postman/pz-$space/*postman_collection); do
+	for f in $(ls -1 $base/postman/$space/*postman_collection); do
 		echo $f
 		filename=$(basename $f)
 		#Try the command first.  If it returns an error, latch
