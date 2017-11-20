@@ -1,1 +1,0 @@
-echo "Do nothing.  These tests have moved to bftest-integration."
