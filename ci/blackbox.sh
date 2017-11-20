@@ -9,6 +9,10 @@ popd > /dev/null
 
 [ -z "$space" ] && space=int
 
+if [[ $space == *"pz-"*]]; then
+	space=${space#$"pz-"}
+fi
+
 bigLatch=0
 
 curl -s http://whatismyip.akamai.com/
