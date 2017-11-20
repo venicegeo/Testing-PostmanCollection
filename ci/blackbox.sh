@@ -13,8 +13,6 @@ if [[ $space == *"pz-"* ]]; then
 	space=${space#$"pz-"}
 fi
 
-echo "Testing $PCF_SPACE"
-
 bigLatch=0
 
 curl -s http://whatismyip.akamai.com/
@@ -25,6 +23,8 @@ if [ "$PCF_SPACE" == "test" ]; then
 else
 	spaces=$PCF_SPACE
 fi
+
+echo "Testing environments : $spaces"
 
 for space in $spaces; do
 	echo $space
