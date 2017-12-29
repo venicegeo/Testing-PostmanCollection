@@ -1,0 +1,26 @@
+node {
+  // Run the Integration Tests on the Phase Two Environment
+  def root = pwd()
+  def nodejs = tool 'NodeJS_6'
+
+  stage('Phase Two Integration Tests') {
+    if(!fileExists("integration-tests")) {
+      sh "mkdir -p integration-tests"
+    }
+    // Clone Test Repository
+    withCredentials([file(credentialsId: "${POSTMAN_SECRET_FILE}", variable: 'POSTMAN_FILE')]) {
+      withEnv(["PATH+=${root}/integration-tests/node_modules/newman/bin:${nodejs}/bin", "PCF_SPACE=${env.PHASE_TWO_PCF_SPACE}", "HOME=${WORKSPACE}"]) {
+        dir ("integration-tests") {
+          if(env.INTEGRATION_GITLAB_CREDS) {
+            git url: "${env.INTEGRATION_GIT_URL}", branch: "${env.INTEGRATION_GIT_BRANCH}", credentialsId: "${env.INTEGRATION_GITLAB_CREDS}"
+          } else {
+            git url: "${env.INTEGRATION_GIT_URL}", branch: "${env.INTEGRATION_GIT_BRANCH}"
+          }
+          sh "npm install newman@3"
+          sh "ci/blackbox.sh"
+        }
+      }
+    }
+  }
+  
+}
