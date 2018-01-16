@@ -19,7 +19,7 @@ curl -s http://whatismyip.akamai.com/
 
 if [ "$spaces_to_test" == "test" ]; then
 	echo "test case"
-	spaces="int stage"
+	spaces="int test"
 else
 	spaces=$spaces_to_test
 fi
